@@ -1,0 +1,140 @@
+% !TeX root=../tfg2.tex
+
+% TODO
+% G-modulos
+
+\chapter{Extensiones de grupos}
+
+\begin{definicion}
+	Una sucesión de grupos $G_i$ y homomorfismos $f_i$
+	\begin{equation*}
+		G_0\xrightarrow{f_1} G_1 \xrightarrow{f_2} G_2\xrightarrow{f_3} \cdots \xrightarrow{f_n} G_n \xrightarrow{f_{n+1}} \cdots
+	\end{equation*}
+	se dice que es exacta si $\Ker(f_{i+1})=\Image(f_i)$. Diremos que es una sucesión exacta corta cuando es de la forma
+	\begin{equation}\label{eq:sec}
+		1\xrightarrow{} G_1 \xrightarrow{f_2} G_2\xrightarrow{f_3} G_3 \xrightarrow{} 1
+	\end{equation}
+\end{definicion}
+
+\begin{observacion}
+	Una sucesión exacta corta como \eqref{eq:sec} es equivalente a decir que $f_2$ es inyectiva, $f_3$ sobreyectiva y $G_2/f_2(G_1)\cong G_3$
+	\begin{demostracion}
+		$\Ker(f_2)=\Image(f_1)=\{1\} \implies f_2$ es inyectiva.
+		
+		$\Image(f_3)=\Ker(f_4)=G_3 \implies f_3$ es sobreyectiva.
+		
+		$\Ker(f_3)=\Image(f_2) \cong G_1 \implies {G_2}/{f_2(G_1)}\cong G_3$ por el Primer Teorema de Isomorfía.
+	\end{demostracion}
+\end{observacion}
+
+\begin{definicion}
+	Una extensión de un grupo $Q$ por un grupo $N$ es una sucesión exacta corta
+	\begin{equation}\label{eq:ext}
+		\extension i \pi N E Q 
+	\end{equation}
+	Decimos que otra extensión $\extension {i'} {\pi'} N {E'} Q $ es equivalente si existe un homomorfismo $\homo f E {E'}$ tal que el siguiente diagrama conmuta:
+
+%	\begin{figure}[h!] % quitar figure?
+%		\centering	
+		% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiTiJdLFsyLDAsIkUiXSxbMywwLCJRIl0sWzQsMCwiMSJdLFswLDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiTiJdLFszLDEsIlEiXSxbNCwxLCIxIl0sWzIsMSwiRSciXSxbNCwwXSxbMCwxLCJpIl0sWzEsMiwiXFxwaSJdLFsyLDNdLFs1LDZdLFs2LDksImknIl0sWzksNywiXFxwaSciXSxbNyw4XSxbMiw3LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsMiwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDksImYiXSxbMCw2LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\begin{equation}\begin{tikzcd}
+	1 & N & E & Q & 1 \\
+	1 & N & {E'} & Q & 1
+	\arrow[from=1-1, to=1-2]
+	\arrow["i", from=1-2, to=1-3]
+	\arrow["\pi", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{i'}", from=2-2, to=2-3]
+	\arrow["{\pi'}", from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow[shift left=1, no head, from=1-4, to=2-4]
+	\arrow[shift left=1, no head, from=2-4, to=1-4]
+	\arrow["f", from=1-3, to=2-3]
+	\arrow[shift left=1, no head, from=1-2, to=2-2]
+	\arrow[shift left=1, no head, from=2-2, to=1-2]
+\end{tikzcd}
+\end{equation}
+	%\end{figure}
+	% observar que necesariamente f es iso
+\end{definicion}
+
+% limpiar
+\begin{observacion}\label{prop:eqiso}Dos extensiones equivalentes son isomorfas.
+	\begin{demostracion}
+		Sea $x_2\in E$ tal que $f(x_2)=1$, por la conmutatividad de $f$, $\pi(x_2)=\pi'(f(x_2)) = \pi'(1) = 1$. $x_2\in \Ker(\pi) = Im(i)$, por tanto existe $x_1\in N$ tal que $i(x_1)=x_2$, utilizando que $f\circ i=i'$, $i'(x_1)=f(i(x_1))=1$ y como $i$ es inyectiva, $x_2$ es único y $f$ es inyectiva.
+		
+		Sea $x_2'\in E'$, como $\pi$ es sobreyectiva existe $x_2\in E$ tal que $\pi'(x_2')=\pi(x_2) = \pi'(f(x_2))$. Por tanto, $x_2' f(x_2)^{-1} \in \Ker(\pi')=Im(i')$ y existe $x_1\in N$ tal que $f(i(x_1))=i'(x_1)=x_2' f(x_2)^{-1}$, $x_2' = f(i(x_1)x_2)$ y $f$ es sobreyectiva.
+	\end{demostracion}
+\end{observacion}
+
+% define isomorfismo de extensiones, reeescribir demostracion
+\begin{observacion}
+	Ser una equivalencia de extensiones es más débil que ser un isomorfismo, como se ve en el siguiente ejemplo.
+	% https://q.uiver.app/?q=WzAsMTAsWzAsMCwiMSJdLFsxLDAsIlxcbWF0aGJie1p9XzMiXSxbMiwwLCJcXG1hdGhiYntafV85Il0sWzMsMCwiXFxtYXRoYmJ7Wn1fMyJdLFs0LDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiXFxtYXRoYmJ7Wn1fMyJdLFsyLDEsIlxcbWF0aGJie1p9XzkiXSxbMywxLCJcXG1hdGhiYntafV8zIl0sWzQsMSwiMSJdLFswLDFdLFsxLDIsIlxcdGltZXMgMyJdLFsyLDMsIlxcdGltZXMgMSJdLFszLDRdLFs1LDZdLFs2LDcsIlxcdGltZXMgMyJdLFs3LDgsIlxcdGltZXMgMiJdLFs4LDldLFsxLDYsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiwxLCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNywiZiIsMl0sWzMsOCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDMsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+\[\begin{tikzcd}
+	1 & {\mathbb{Z}_3} & {\mathbb{Z}_9} & {\mathbb{Z}_3} & 1 \\
+	1 & {\mathbb{Z}_3} & {\mathbb{Z}_9} & {\mathbb{Z}_3} & 1
+	\arrow[from=1-1, to=1-2]
+	\arrow["{\times 3}", from=1-2, to=1-3]
+	\arrow["{\times 1}", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{\times 3}", from=2-2, to=2-3]
+	\arrow["{\times 2}", from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow[shift left=1, no head, from=1-2, to=2-2]
+	\arrow[shift left=1, no head, from=2-2, to=1-2]
+	\arrow["f"', from=1-3, to=2-3]
+	\arrow[shift left=1, no head, from=1-4, to=2-4]
+	\arrow[shift left=1, no head, from=2-4, to=1-4]
+\end{tikzcd}\]
+	\begin{demostracion}
+		Un automorfismo $f$ de $\mathbb{Z}_9$ viene dado por $f(x) = kx$ con $x\in \mathbb{Z}_9$ y $k\in \mathbb{Z}_9^{\times} = \{1,2,4,5,7,8\}$		 
+		
+		Para que el diagrama conmute a la derecha, $(\times2\circ f)(x) = 2kx = x \mod 3$, $k \equiv 2 \mod 3 \implies k = 2,5,8$
+		
+		Por otro lado, para que conmute a la izquierda, $(f\circ \times3)(x) = 3kx = 3x \mod 9$, por lo que $k = 1,4,8$.
+		
+		Por tanto, no existe un isomorfismo $f$ que haga al diagrama conmutativo y las extensiones no son equivalentes.
+	\end{demostracion}
+\end{observacion}
+
+% definir E_j, \pi_j e i_j?
+\begin{proposicion}
+	La equivalencia de extensiones es una relación de equivalencia.
+	\begin{demostracion}
+		\begin{enumerate}
+			\item Reflexiva: $E$ es equivalente a sí misma tomando $f=1_E$
+			\item Simétrica: Si $\homo f {E_1} {E_2}$ es una equivalencia, por la Observación \eqref{prop:eqiso}, $\homo {f^{-1}} {E_2} {E_1}$ es una equivalencia. % obvio? f \circ i_1 = i_2 \implies 
+						\item Transitiva: Si $\homo f {E_1} {E_2}$ y $\homo g {E_2} {E_3}$ son equivalencias, $g\circ f\circ i_1 = g\circ i_2 = i_3$ y $\pi_1 \circ g \circ f = \pi_2 \circ f = \pi_3$ entonces $\homo {g\circ f} {E_1} {E_3}$ es una equivalencia.
+		\end{enumerate}
+	\end{demostracion}
+\end{proposicion}
+
+\begin{observacion}\label{extact}
+	Una extensión \eqref{eq:ext} determina, por conjugación por elementos de $E$, un homomorfismo $\homo \alpha E {\Aut(N)}$ definido por % 
+	\begin{equation*}
+		\alpha(g)(n) = n^g = g^{-1}ng
+	\end{equation*}
+	
+	Entonces, $\alpha(N) = \Inn(N)$ y $\alpha$ induce un homomorfismo $\homo {\tilde\alpha} {E/N} {\Out(N)}$ % explicar que esta bien definida
+	\begin{equation*}
+		\tilde\alpha(gN) = \overline{\alpha(g)} % esto es el abstract kernel de la extension
+	\end{equation*}
+	
+	El homomorfismo $\tilde\alpha$ se conoce como el kernel abstracto de la extensión. % no se usa
+	
+	Fijando una sección $s$ de $\pi$, para todo $q\in Q$, la conjugación por $s(q)$ determina un automorfismo $\varphi(s(q))$ de $N$ definido por $\varphi(s(q))(n) = \alpha(s(q))(n)$. Notese que la función $\homo \varphi Q {\Aut(N)}$ no es necesariamente un homomorfismo de grupos, pero sí lo es salvo automorfismos internos. En particular, si la sección $s$ es un homomorfismo o el grupo de automorfismos internos de $N$ es trivial, como se estudia en las secciones \ref{sec:split} y \ref{sec:ab}, entonces $\varphi$ sí es un homomorfismo y podremos hablar de la acción de la extensión. %%?????????????????
+\end{observacion}
+
+\begin{observacion}% extensiones equivalentes dan lugar al mismo kernel abstracto
+	Dos extensiones $E$ y $E'$ equivalentes vienen dadas por una misma acción de $Q$ en $N$. Por ello, para estudiar las extensiones salvo equivalencia podemos fijar una acción $\homo \varphi Q {\Aut(N)}$ y estudiar las extensiones que dan lugar a esa acción.
+	\begin{demostracion}
+	 	$f\left(i(n)^{s(q)}\right) = f(i(n))^{f(s(q))} = i'(n)^{s'(q)}$
+	 \end{demostracion}
+\end{observacion}
+
+\begin{definicion}
+	Denotamos por $\Ext_\varphi(Q,N)$ a las clases de extensiones equivalentes que dan lugar a la acción $\varphi$ de $Q$ en $N$.
+\end{definicion}

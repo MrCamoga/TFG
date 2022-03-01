@@ -1,0 +1,112 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{TFG}[25/03/2013]
+
+\usepackage[es-noindentfirst,es-lcroman]{babel}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,fancyhdr,graphics}
+
+\theoremstyle{plain}
+
+\newtheorem{lema}{Lema}[section]
+\newtheorem{proposicion}[lema]{Proposici\'on}
+\newtheorem{teorema}[lema]{Teorema}
+\newtheorem{corolario}[lema]{Corolario}
+
+\theoremstyle{definition}
+
+\newtheorem*{definicion*}{Definici\'on}
+\newtheorem*{observacion*}{Observaci\'on}
+\newtheorem*{observaciones*}{Observaciones}
+\newtheorem*{ejemplo*}{Ejemplo}
+\newtheorem*{ejemplos*}{Ejemplos}
+\newtheorem*{conjetura*}{Conjetura}
+\newtheorem*{conjeturas*}{Conjeturas}
+\newtheorem*{ejercicio*}{Ejercicio}
+\newtheorem*{ejercicios*}{Ejercicios}
+\newtheorem*{problema*}{Problema}
+\newtheorem*{problemas*}{Problemas}
+\newtheorem{definicion}{Definici\'on}[section]
+\newtheorem{observacion}{Observaci\'on}[section]
+\newtheorem{observaciones}{Observaciones}
+\newtheorem{ejemplo}{Ejemplo}[section]
+\newtheorem{ejemplos}{Ejemplos}
+\newtheorem{conjetura}{Conjetura}
+\newtheorem{conjeturas}{Conjeturas}
+\newtheorem{ejercicio}{Ejercicio}
+\newtheorem{ejercicios}{Ejercicios}
+\newtheorem{problema}{Problema}
+\newtheorem{problemas}{Problemas}
+
+\newenvironment{demostracion}{\begin{proof}[Demostraci\'on]}{\end{proof}}
+\newenvironment{solucion}{\begin{proof}[Soluci\'on]}{\end{proof}}
+
+\renewcommand{\contentsname}{Indice}
+\renewcommand{\bibname}{Bibliograf\'{\i}a}
+\renewcommand{\chaptername}{Cap\'{\i}tulo}
+\renewcommand{\partname}{Parte}
+\renewcommand{\appendixname}{Ap\'endice}
+
+\newcommand{\incluir}[1]{\include{#1}\clearpage{\pagestyle{empty}\cleardoublepage}}
+\newcommand{\apendices}{\appendix\renewcommand{\chaptername}{Ap\'endice}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\labelenumi}{\upshape (\roman{enumi})}
+
+\newlength{\margen}
+\setlength{\margen}{\paperwidth}
+\addtolength{\margen}{-\textwidth}
+\setlength{\margen}{0.5\margen}
+\addtolength{\margen}{-1in}
+\setlength{\oddsidemargin}{\margen}
+\setlength{\evensidemargin}{\margen}
+
+\newcommand{\titulo}[1]{\newcommand{\eltitulo}{#1}}
+\newcommand{\nombre}[1]{\newcommand{\tunombre}{#1}}
+\newcommand{\fecha}[1]{\newcommand{\lafecha}{#1}}
+\newcommand{\director}[1]{\newcommand{\eldirector}{#1}}
+\newcommand{\otrodirector}[1]{\newcommand{\elotrodirector}{#1}}
+
+\title{\vspace{-100pt}
+\begin{center}\scalebox{1.06}{\includegraphics{UPVyFCT.jpg}}\end{center}
+\vspace{0.2cm}
+\hrule\vspace{0.5cm}
+\textsf{
+ {\Huge \textsf{\eltitulo}\\}
+\vspace{.5cm}
+\hrule
+\vspace{1.8 cm}\hfill {\LARGE Trabajo  Fin de Grado\\ \hfill Grado en Matem\'aticas}\\\vspace{30pt}
+ \hfill
+{\Huge \tunombre}\\ \vspace{30pt}
+\hfill {\LARGE Trabajo dirigido por \\ \hfill\eldirector}\\
+\hfill {\LARGE  \elotrodirector}
+\vfill
+\hfill{\LARGE Leioa, \lafecha}\\
+ }
+\date{}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Si se quiere, a~nadir aqui otras definiciones
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\apl}[3]{#1 :#2 \longrightarrow #3}
+\newcommand{\ontop}[2]{\genfrac{}{}{0pt}{1}{#1}{#2}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\NN}{\mathcal{N}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Si se quiere, a~nadir aqui otras palabras con indicacion de los
+% posibles puntos de corte de linea.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\hyphenation{pro-ble-ma e-qui-va-len-tes}
+
+\endinput

@@ -1,0 +1,87 @@
+\chapter{Ejercicios resueltos}
+\label{ApendiceEjercicios}
+
+\section{Ejercicios del Cap\'\i tulo 1}
+
+\begin{ejercicio}\label{EjercicioCassini} Demostrar la f\'ormula de Cassini:
+$$F_{n-1}F_{n+1}-F_n^2=(-1)^n,\ n\geq 2.$$
+\end{ejercicio}
+
+\begin{solucion}
+Basta tomar determinantes en (\ref{FormulaPotenciaN}). Alternativamente, se puede razonar por inducci\'on:
+\begin{eqnarray*}D_n&=&F_{n-1}F_{n+1}-F_n^2=F_{n-1}(F_n+F_{n-1})-F_n(F_{n-1}+F_{n-2})\\ &=&
+F_{n-1}^2-F_nF_{n-2}=-D_{n-1}.\end{eqnarray*}
+Como $D_2=1$, es claro que $D_n=(-1)^n$.
+\end{solucion}
+
+\begin{ejercicio}\label{EjercicioConvergencia} Demostrar que la sucesi\'on $\{F_n/F_{n-1}\}$ es convergente y que su l\'\i mite es $\Phi$.
+\end{ejercicio}
+
+\begin{solucion}
+Es f\'acil demostrar que si la sucesi\'on es convergente su l\'\i mite $l$ tiene que ser $\Phi$. En efecto, si $n\geq 3$,
+$$\frac{F_n}{F_{n-1}}=\frac{F_{n-1}+F_{n-2}}{F_{n-1}}=1+\frac{1}{F_{n-1}/F_{n-2}}.$$
+Tomando l\'\i mites obtenemos la ecuaci\'on $l=1+1/l$, es decir, $l^2-l-1=0$ y, necesariamente, $l=\Phi$ (la otra ra\'\i z es $-1/\Phi<0$, luego no puede ser l\'\i mite de la sucesi\'on dada, que es de t\'erminos positivos).
+
+Para demostrar que la sucesi\'on es convergente, demostramos que es de Cauchy. En primer lugar
+$$\left|\frac{F_n}{F_{n-1}}-\frac{F_{n+1}}{F_n}\right|=\left|\frac{F_n^2-F_{n-1}F_{n+1}}{F_{n-1}F_n}\right|=\frac{1}{F_{n-1}F_n}\leq \frac{1}{n(n-1)},\ n\geq 6,$$
+donde, en la segunda igualdad hemos utilizado la f\'ormula  del Ejercicio \ref{EjercicioCassini} y, para la desigualdad, que $F_n\geq n$ para $n\geq 5$.
+Entonces, si $n<m$,
+\begin{eqnarray*}\left|\frac{F_n}{F_{n-1}}-\frac{F_m}{F_{m-1}}\right|&=&
+\left|\frac{F_n}{F_{n-1}}-\frac{F_{n+1}}{F_n}+\cdots +\frac{F_{m-1}}{F_{m-2}}-\frac{F_m}{F_{m-1}}\right|\\ &\leq& \sum_{i=n}^{m-1}\frac{1}{i(i-1)}=\frac{1}{n-1}-\frac{1}{m-1},\end{eqnarray*}
+que es tan peque\~no como se desee si $n$ y $m$ son suficientemente grandes.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:Recurrencia}
+Sea $\{x_n\}$ una sucesi\'on que satisface la relaci\'on de recurrencia $x_n=4x_{n-1}-4x_{n-2}$ para $n\geq 3$. Expresar $x_n$ en funci\'on de los dos primeros valores $x_1$ y $x_2$.
+\end{ejercicio}
+
+\begin{solucion}
+Sea $C=\begin{pmatrix}\phantom{-}0&1\\-4&4\end{pmatrix}$. Observamos que, si $n\geq 3$,
+$$C\begin{pmatrix}x_{n-2}\\ x_{n-1}\end{pmatrix}=
+\begin{pmatrix}x_{n-1}\\ 4x_{n-1}-4x_{n-2}\end{pmatrix}
+=\begin{pmatrix}x_{n-1}\\ x_n\end{pmatrix},$$
+por tanto
+\begin{equation}\label{RelacionMatricial}\begin{pmatrix}x_{n-1}&x_n\\ x_n&x_{n+1}\end{pmatrix}=
+C\begin{pmatrix}x_{n-2}&x_{n-1}\\ x_{n-1}&x_n\end{pmatrix}=\dots =
+C^{n-2}\begin{pmatrix}x_1&x_2\\ x_2&x_3\end{pmatrix}.\end{equation}
+Por otro lado, podemos calcular $C^{n-2}$ expl\'\i citamente si conocemos su forma can\'onica de Jordan. El polinomio caracter\'\i stico de $C$ es $x^2-4x+4=(x-2)^2$ y, si $f$ es el endomorfismo de $\R^2$ con matriz asociada respecto de la base can\'onica $C$, el subespacio propio de $f$ correspondiente al valor propio $2$ es $\langle (1,2)\rangle$. De hecho $(f-2\id)(0,1)=(1,2)$ ($\id$ es el endomorfismo identidad), por tanto se cumple que $P^{-1}CP=J$, donde
+$$J=\begin{pmatrix} 2&1\\ 0&2\end{pmatrix}\quad\text{y}\quad P=\begin{pmatrix} 1&0\\ 2&1\end{pmatrix}.$$ Entonces
+\begin{eqnarray*}C^{n-2}&=&(PJP^{-1})^{n-2}=PJ^{n-2}P^{-1}=P(2I_2+H)^{n-2}P^{-1}\\&=&
+P(2^{n-2}I_2+(n-2)2^{n-3}H)P^{-1}=
+\begin{pmatrix}
+-(n-3)2^{n-2} & (n-2)2^{n-3}\\ -(n-2)2^{n-1} & (n-1)2^{n-2}\end{pmatrix},\end{eqnarray*}
+donde naturalmente $I_2$ denota la matriz identidad $2\times 2$ y $H=\begin{pmatrix}0&1\\ 0&0\end{pmatrix}$. N\'otese que $(2I_2+H)^{n-2}$ puede calcularse mediante la f\'ormula del binomio de Newton, que se simplifica notablemente dado que $H^2=0$.
+Ahora, de (\ref{RelacionMatricial}), se obtiene que
+$$x_n=-(n-2)2^{n-1}x_1+(n-1)2^{n-2}x_2=2^{n-2}(-2(n-2)x_1+(n-1)x_2).$$
+\end{solucion}
+\begin{observacion*} El m\'etodo utilizado en este ejercicio se puede usar con cualquier sucesi\'on definida mediante una f\'ormula de recurrencia lineal. La idea es, dada la f\'ormula de recurrencia $x_n=c_1x_{n-1}+\cdots +c_kx_{n-k}$, $n>k$, considerar la matriz $k\times k$
+$$C=\begin{pmatrix}
+0&1&0&\dots & 0 &0\\
+0&0&1&\dots & 0&0\\
+0&0&0&\dots & 0&0\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+0&0&0&\dots&0&1\\
+-c_1&-c_2&-c_3&\dots &-c_{k-1}&-c_k
+\end{pmatrix},$$
+(se llama \emph{matriz compa\~nera} del polinomio $x^k-c_1x^{k-1}-\cdots -c_k$). Razonando como en el ejercicio, resulta que $C^{n-k}$ relaciona una matriz construida a partir de $x_1,\dots ,x_{k+1}$ con otra similar que involucra $x_{n-k+1},\dots ,x_n,\dots,x_{n+k-1}$. Calculando $C^{n-k}$ a trav\'es de su forma can\'onica de Jordan se obtiene el valor expl\'\i cito de $x_n$ en funci\'on de los valores iniciales $x_1,\dots,x_k$. Sobre c\'omo es en general la forma can\'onica de Jordan de la matriz compa\~nera de un polinomio puede consultarse \cite[Teorema 4.3, Corolario 4.4]{Hungerford}.
+\end{observacion*}
+
+\section{Ejercicios del Cap\'\i tulo 2}
+
+\begin{ejercicio} \label{ej.tangente} Demostrar que $\tg z=\ctg z-2\ctg 2z$.
+\end{ejercicio}
+
+\begin{solucion}
+$$\ctg 2z=\frac{1}{\tg 2z}=\frac{1-\tg^2 z}{2\tg z}=
+\frac{1}{2}\ctg z-\frac{1}{2}\tg z.$$
+El resultado se sigue sin m\'as que despejar $\tg z$.
+\end{solucion}
+
+\begin{ejercicio}\label{EjercicioCosecante} Demostrar que $\csec z=\ctg \frac{z}{2}-\ctg z$ y deducir el desarrollo en serie de Laurant de la funci\'on cosecante alrededor de cero.
+\end{ejercicio}
+
+\begin{solucion}
+$$\ctg z-\ctg 2z=\frac{\cos z}{\sin z}-\frac{\cos^2z-\sin^2z}{2\sin z\cos z}=\frac{1}{2\sin z\cos z}=\csec 2z.$$
+Ahora basta cambiar $z$ por $z/2$. Usando esta f\'ormula y (\ref{ctg}) queda
+$$\csec z=\frac{1}{z}+\sum_{n=1}^\infty (-1)^{n+1}\frac{b_{2n}}{(2n)!}(2^{2n}-2)z^{2n-1}.$$
+\end{solucion} 

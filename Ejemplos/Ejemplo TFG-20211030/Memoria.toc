@@ -1,0 +1,16 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{Introducci\'on}{v}{}%
+\contentsline {chapter}{\numberline {1}Los n\'umeros de Fibonacci: un ejemplo del \'area de \'Algebra}{1}{}%
+\contentsline {section}{\numberline {1.1}La sucesi\'on de Fibonacci}{1}{}%
+\contentsline {section}{\numberline {1.2}Una f\'ormula expl\'\i cita para los n\'umeros de Fibonacci}{2}{}%
+\contentsline {chapter}{\numberline {2}Los n\'umeros de Bernoulli: un ejemplo del \'area de An\'alisis}{5}{}%
+\contentsline {section}{\numberline {2.1}Los n\'umeros de Bernoulli}{5}{}%
+\contentsline {section}{\numberline {2.2}La suma de las $n$ primeras potencias $p$-\'esimas}{6}{}%
+\contentsline {section}{\numberline {2.3}El desarrollo en serie de potencias de la funci\'on tangente}{9}{}%
+\contentsline {section}{\numberline {2.4}N\'umeros de Fibonacci y n\'umeros de Bernoulli}{11}{}%
+\contentsline {chapter}{\numberline {A}Ejercicios resueltos}{13}{}%
+\contentsline {section}{\numberline {A.1}Ejercicios del Cap\'\i tulo 1}{13}{}%
+\contentsline {section}{\numberline {A.2}Ejercicios del Cap\'\i tulo 2}{15}{}%
+\contentsline {chapter}{\numberline {B}Los $81$ primeros n\'umeros de Bernoulli}{17}{}%
+\contentsline {chapter}{\numberline {C}Ars Conjectandi}{19}{}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{21}{}%

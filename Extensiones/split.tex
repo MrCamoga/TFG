@@ -1,0 +1,88 @@
+% !TeX root=../tfg2.tex
+
+\section{Extensiones separables}\label{sec:split}
+
+\begin{definicion} % mover antes de explicar 
+	Sea $\homo \pi A B$ un homomorfismo de grupos, una sección $s$ de $\pi$ es una inversa a la derecha de $\pi$, esto es, $\homo s B A$ tal que $\pi \circ s = 1_B$.
+\end{definicion}
+
+\begin{definicion}	
+	Decimos que una extensión $\extension i \pi N E Q$ es separable cuando existe una sección $\homo s Q E$ de $\pi$ que es un homomorfismo.
+\end{definicion}
+
+%G tiene un subgrupo isomorfo a Q, interseca trivialmente con N por ser una sucesion exacta y por tanto es un producto semidirecto...
+\begin{teorema}\label{splitext}
+	Una extensión $\extension i \pi N E Q$ es separable sí y solo sí E es equivalente a $\extension {} {} N {Q\ltimes_{\varphi} N} Q$, donde $\homo \varphi Q \Aut(N)$ es una acción de grupos de $Q$ en $N$. % explicar que es una accion y no una funcion
+	\begin{demostracion}
+		% =>
+		Si $E$ es separable, existe una sección $\homo s Q E$ que es homomorfismo. $s$ es inyectiva porque es una inversa por la derecha de $\pi$ y, por tanto, $Q\cong s(Q) \leq E$.
+		$\pi (i(N)) = \{1\}$ y $s(q)\in i(N) \iff q = 1$, por lo que $s(Q)\cap i(N) = {1_E}$ y $E$ es isomorfo a un producto semidirecto externo de $Q$ por $N$.
+		
+		% <=
+		En la otra dirección, definiendo para $n\in N, \ q\in Q$ $i(n) = (1_Q,n)$ y $\pi((n,q)) = qN$ % TODO
+	\end{demostracion}
+\end{teorema}
+
+\begin{teorema}
+	Una extension $\extension i \pi N E Q$ separable es equivalente
+\end{teorema}
+% Splittings (Escisiones)
+\subsection{Clasificación de las escisiones}
+
+Para clasificar las escisiones consideraremos la extensión separable canónica 
+
+\begin{equation}\label{extsplit}
+	\extension i \pi A {Q \ltimes A} Q
+\end{equation}
+
+% escisiones vienen dadas por 1-cociclos
+\begin{proposicion}
+	Las escisiones de \eqref{extsplit} son homomorfismos de la forma $s(q) = (q,c(q))$ donde $\homo c Q A$ es un $1$-cociclo.
+	\begin{proof}
+		Una sección $s$ de $\pi$ tiene la forma $s(q) = (q,c(q))$ donde $c$ es una función $\homo c Q A$. Imponiendo que la sección sea un homomorfismo
+		\begin{align*}
+			s(q_1)s(q_2) &= (q_1q_2,c(q_1)\cdot q_2 + c(q_2)) \\
+			s(q_1q_2) &= (q_1q_2,c(q_1q_2))
+		\end{align*}
+		la función $c$ tiene que verificar la ecuación de un $1$-cociclo para que $s$ sea una escisión.
+		\begin{equation}
+			c(q_1q_2) = c(q_1)\cdot q_2 + c(q_2)
+		\end{equation}
+	\end{proof}
+\end{proposicion}
+
+\begin{definicion}
+	Dos escisiones $s_1$ y $s_2$ se dice que son $A$-conjugadas si existe un $a\in A$ tal que $s_1(q)=s_2(q)^{i(a)}$ para todo $q\in Q$
+\end{definicion}
+
+\begin{proposicion}
+	Sean $s_1$ y $s_2$ dos escisiones y $c_1$ y $c_2$ los $1$-cociclos asociados. Entonces $s_1$ y $s_2$ son $A$-conjugadas si $c_1$ y $c_2$ se diferencian en un $1$-coborde.
+	\begin{demostracion}
+		Si existe un $a \in A$ tal que $s_1(q) = s_2(q)^{i(a)}$ para todo $q\in Q$, 
+		\begin{align*}
+		(q,c_1(q)) &= (1,-a)(q,c_2(q))(1,a) \\
+					&= (q,-a \cdot q +  c_2(q) + a)
+		\end{align*}
+		
+		La diferencia entre $c_1$ y $c_2$ verifica la ecuación de un $1$-coborde
+		
+		\begin{equation}
+			c_2(q) - c_1(q) = a\cdot q - a
+		\end{equation}
+	\end{demostracion}
+\end{proposicion}
+
+%\begin{observacion}
+%	Las definiciones de $1$-cociclos y $1$-cobordes dadas se corresponden con las definiciones usuales en el caso en que $N$ es abeliano.
+%	\begin{align}
+%		c(q_1q_2) = c(q_1)^{q_2}c(q_2) = c(q_1)\cdot q_2 + c(q_2) \\
+%		c_1(q) = n^{-q}c_2(q)n \iff c_2(q)-c_1(q) = n\cdot q - n
+%	\end{align}
+%\end{observacion}
+
+% explicar que se corresponde con el grupo de cohomologia en el caso abeliano
+\begin{teorema}\label{h1}
+	Sea $E$ una extensión separable de $Q$ por $A$. Entonces, las clases de escisiones $A$-conjugadas están en correspondencia uno a uno con los elementos de $H^1(Q,A)$
+\end{teorema}
+
+% se comprueba trivialmente que es una relacion de equivalencia

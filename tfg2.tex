@@ -1,0 +1,88 @@
+\documentclass[11pt,a4paper,twoside,spanish]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pkgs/TFG}
+
+\usepackage{amsfonts, amsmath, amssymb, amsthm}
+\usepackage{hyperref}
+\usepackage{tikz,pgfplots,pkgs/quiver}
+\usetikzlibrary{positioning, babel}
+\pgfplotsset{compat=1.18}
+
+\usepackage{verbatim}
+
+
+%\newcommand{\Z}{\mathbb{Z}}
+%\newcommand{\N}{\mathbb{N}}
+
+
+
+
+\DeclareMathOperator{\SylowSubgroup}{Syl}
+\DeclareMathOperator{\Normalizer}{N}
+\DeclareMathOperator{\Center}{Z}
+\DeclareMathOperator{\mcd}{mcd}
+%\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Image}{Im}
+%\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Out}{Out}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\car}{car}
+
+
+\newcommand{\Syl}[2]{\SylowSubgroup_#1(#2)}
+\newcommand{\Norm}[2]{\Normalizer_#1(#2)}
+\newcommand{\norm}{\trianglelefteq}
+\newcommand{\ord}[1]{\vert#1\vert}
+\newcommand{\homo}[3]{#1\colon #2\to #3}
+\newcommand{\extension}[5]{1\xrightarrow{} #3 \xrightarrow{#1} #4\xrightarrow{#2} #5 \xrightarrow{} 1}
+%\def\mcd{\mathop{\rm mcd}\nolimits}
+
+%\includeonly{Extensiones/split.tex}
+\begin{document}
+\renewcommand{\tablename}{Tabla}
+\frontmatter
+
+\titulo{Cosa nose}
+\nombre{Carlos Moya García}
+\director{Jon González Sánchez}
+\otrodirector{}
+\fecha{}
+
+%\maketitle
+\thispagestyle{empty}
+\pagestyle{plain}
+\tableofcontents
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancyhead[LO]{\slshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\thepage}
+\fancyhead[LE]{\thepage}
+\fancyhead[RE]{\slshape\nouppercase{\rightmark}}
+
+%\incluir{Introduccion}
+
+\mainmatter
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter. #1}{}}
+% Extensiones
+\input{Extensiones/sucio.tex}
+\input{Extensiones/extensiones.tex}
+\input{Extensiones/split.tex}
+\input{Extensiones/abelian.tex}
+\input{Extensiones/central.tex}
+%\incluir{extensions}
+
+%\input{Hall/hall.tex}
+%\input{Hall/schurzassenhaus.tex}
+
+%\apendices
+
+
+
+%\incluir{Bibliografia}
+
+\end{document}

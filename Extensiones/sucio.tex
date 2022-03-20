@@ -9,59 +9,59 @@
 % cociclos cobordes
 % cambiar la accion a derecha
 \begin{definicion}
-	Sea $A$ un $Q$-módulo dado por una acción $\homo \varphi Q A$ y $n\in\N$. 
+	Sea $A$ un $Q$-módulo dado por una acción a derechas $\homo \varphi Q A$ y $n\in\N$. 
 	Un $n$-cociclo es una función $\homo f {Q^n} A$ tal que $\forall q_1,\hdots,q_{n+1}\in Q$ se verifica
 	\begin{equation*}
-		q_1\cdot f(q_2,\hdots,q_{n+1}) + \left[\sum\limits_{i=1}^{n}(-1)^i f(q_1,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] + (-1)^{n+1}f(q_1,\hdots,q_n) = 0
+	 f(q_1,\hdots,q_n)\cdot q_{n+1} + \left[\sum\limits_{i=1}^{n}(-1)^i f(q_1,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] + (-1)^{n+1}f(q_2,\hdots,q_{n+1}) = 0
 	\end{equation*}
 	
 	Un $n$-coborde es una función $\homo f {Q^n} A$ tal que existe una función $\homo \phi {Q^{n-1}} A$ tal que
 	
 	\begin{equation*}
-		f(q_1,\hdots, q_n) = q_1\cdot \phi(q_2,\hdots,q_{n+1}) + \left[\sum\limits_{i=1}^{n}(-1)^i \phi(q_1,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] + (-1)^{n+1}\phi(q_1,\hdots,q_n)
+		f(q_1,\hdots, q_n) = \phi(q_1,\hdots,q_{n-1})\cdot q_n + \left[\sum\limits_{i=1}^{n-1}(-1)^{n-i} \phi(q_1,\hdots,q_iq_{i+1},\hdots,q_n) \right] + (-1)^n\phi(q_2,\hdots,q_{n-1})
 	\end{equation*} 
 	
 	Los cociclos y cobordes heredan de $A$ una estructura de grupo abeliano. A estos grupos los denotamos $Z^n_\varphi(Q,A)$ y $B^n_\varphi(Q,A)$ respectivamente.
 \end{definicion}
 
-\begin{proposicion}
-	\begin{demostracion}
-		A partir de las extensiones $E_1$ y $E_2$ se construye la extensión del producto directo tomando la inclusión y proyección coordenada a coordenada. El objetivo será utilizar los cociclos $c_1$ y $c_2$ para construir una sucesión exacta $1\xrightarrow{} A\xrightarrow{i_3} E_3\xrightarrow{\pi_3} Q \xrightarrow{} 1$ cuyo cociclo asociado sea $c_3=c_1+c_2$.
-		\begin{equation}
-			1\xrightarrow{} A\times A \xrightarrow{i_1\times i_2} E_1\times E_2\xrightarrow{\pi_1\times\pi_2} Q\times Q \xrightarrow{} 1 % comprobar que es exacta
-		\end{equation}
-		La sección $s_1\times s_2$ de $\pi_1\times \pi_2$ tiene como cociclo asociado
-		\begin{align}
-			(c_1\times c_2)\colon (Q\times Q)\times (Q\times Q) &\to A\times A \\
-			                              ((q_{11},q_{12}),(q_{21},q_{22})) &\mapsto (c_1(q_{11},q_{12}),c_2(q_{21},q_{22})) % comprobar el orden de la operacion
-		\end{align}
-		Proyectando $A\times A$ sobre $A$ y haciendo la suma de componentes en $A$ movemos $(c_1\times c_2)((q_{11},q_{12}),(q_{21},q_{22}))$ a $c_1(q_{11},q_{12}) + c_2(q_{21},q_{22})$. Basta identificar $q_{11}$ con $q_{21}$ y $q_{12}$ con $q_{22}$ mediante $\homo \Delta Q {Q\times Q}$ definido por $\Delta(q)=(q,q)$. Notese que el morfismo diagonal está definido para las secciones $s_1$ y $s_2$, por tanto, para los cociclos estará definido de $Q\times Q$ en $(Q\times Q)\times (Q\times Q)$.
-		
-		\begin{equation}
-			Q\times Q \xrightarrow{\Delta} (Q\times Q)\times (Q\times Q) \xrightarrow{c_1\times c_2} A\times A\xrightarrow{+} A
-		\end{equation}
-		El cociclo que buscamos es $c_3=+\circ (c_1\times c_2)\circ \Delta=c_1+c_2$
-		
-		Completando el diagrama de $\Delta$ y $\pi_1 \times \pi_2$ con $\homo i {\tilde E} {E_1\times E_2}$ y $\homo {\tilde\pi} E Q$, para $x\in \tilde E$ $(\pi_1(i(x)),\pi_2(i(x)))=(\tilde\pi(x),\tilde\pi(x))$ lo que implica que $\pi_1(i(x))=\pi_2(i(x))$ y por tanto $i(x)\in E_1\times_Q E_2$. Lo natural es tomar $\tilde E = E_1\times_Q E_2$, $i$ la inclusión y $\tilde\pi(e_1,e_2)=\pi_1(e_1)=\pi_2(e_2)$.
-		
-		% https://q.uiver.app/?q=WzAsNCxbMCwwLCJFXzFcXHRpbWVzIEVfMiJdLFsyLDAsIlFcXHRpbWVzIFEiXSxbMiwxLCJRIl0sWzAsMSwiXFx0aWxkZSBFIl0sWzMsMCwiaSJdLFsxLDAsInNfMVxcdGltZXMgc18yIl0sWzIsMSwiXFxEZWx0YSJdLFsyLDMsIlxcdGlsZGUgcyJdXQ==
-		\[\begin{tikzcd}
-			{E_1\times E_2} && {Q\times Q} \\
-			{\tilde E} && Q
-			\arrow["i", from=2-1, to=1-1]
-			\arrow["{\pi_1\times \pi_2}", from=1-1, to=1-3]
-			\arrow["\Delta", from=2-3, to=1-3]
-			\arrow["{\tilde \pi}", from=2-1, to=2-3]
-		\end{tikzcd}\]
-		
-		$\Ker(\tilde \pi) = \{(e_1,e_2)\in E_1\times_Q E_2 \colon \tilde\pi(e_1,e_2)=0\}=\{(e_1,e_2)\in E_1\times_Q E_2 \colon \pi_1(e_1)=\pi_2(e_2)=0\} = A\times A$
-	
-		Por tanto, la sucesión $1\xrightarrow{} A\times A \xrightarrow{\tilde\imath} E_1\times_Q E_2\xrightarrow{\tilde\pi} Q \xrightarrow{} 1$ es exacta.
-		
-		$i_3(a_1+a_2)=\pi(a_1,a_2)=\pi(a_1+a_2,0)=\pi(0,a_1+a_2)$, para que esté bien definida, tenemos que cocientar $E_1\times_Q E_2$ por $Ker(+)=\{(a_1,a_2)\in A\times A \colon a_1+a_2=0\}=\{(a,-a) \colon a\in A\}$
-		
-		
-		% Fin
-		El cociclo correspondiente a la extensión es por tanto $c_1+c_2$ y por la proposición \ref{extsum} la suma está bien definida en clases de extensiones equivalentes.
-	\end{demostracion}
-\end{proposicion}
+%\begin{proposicion}
+%	\begin{demostracion}
+%		A partir de las extensiones $E_1$ y $E_2$ se construye la extensión del producto directo tomando la inclusión y proyección coordenada a coordenada. El objetivo será utilizar los cociclos $c_1$ y $c_2$ para construir una sucesión exacta $1\xrightarrow{} A\xrightarrow{i_3} E_3\xrightarrow{\pi_3} Q \xrightarrow{} 1$ cuyo cociclo asociado sea $c_3=c_1+c_2$.
+%		\begin{equation}
+%			1\xrightarrow{} A\times A \xrightarrow{i_1\times i_2} E_1\times E_2\xrightarrow{\pi_1\times\pi_2} Q\times Q \xrightarrow{} 1 % comprobar que es exacta
+%		\end{equation}
+%		La sección $s_1\times s_2$ de $\pi_1\times \pi_2$ tiene como cociclo asociado
+%		\begin{align}
+%			(c_1\times c_2)\colon (Q\times Q)\times (Q\times Q) &\to A\times A \\
+%			                              ((q_{11},q_{12}),(q_{21},q_{22})) &\mapsto (c_1(q_{11},q_{12}),c_2(q_{21},q_{22})) % comprobar el orden de la operacion
+%		\end{align}
+%		Proyectando $A\times A$ sobre $A$ y haciendo la suma de componentes en $A$ movemos $(c_1\times c_2)((q_{11},q_{12}),(q_{21},q_{22}))$ a $c_1(q_{11},q_{12}) + c_2(q_{21},q_{22})$. Basta identificar $q_{11}$ con $q_{21}$ y $q_{12}$ con $q_{22}$ mediante $\homo \Delta Q {Q\times Q}$ definido por $\Delta(q)=(q,q)$. Notese que el morfismo diagonal está definido para las secciones $s_1$ y $s_2$, por tanto, para los cociclos estará definido de $Q\times Q$ en $(Q\times Q)\times (Q\times Q)$.
+%		
+%		\begin{equation}
+%			Q\times Q \xrightarrow{\Delta} (Q\times Q)\times (Q\times Q) \xrightarrow{c_1\times c_2} A\times A\xrightarrow{+} A
+%		\end{equation}
+%		El cociclo que buscamos es $c_3=+\circ (c_1\times c_2)\circ \Delta=c_1+c_2$
+%		
+%		Completando el diagrama de $\Delta$ y $\pi_1 \times \pi_2$ con $\homo i {\tilde E} {E_1\times E_2}$ y $\homo {\tilde\pi} E Q$, para $x\in \tilde E$ $(\pi_1(i(x)),\pi_2(i(x)))=(\tilde\pi(x),\tilde\pi(x))$ lo que implica que $\pi_1(i(x))=\pi_2(i(x))$ y por tanto $i(x)\in E_1\times_Q E_2$. Lo natural es tomar $\tilde E = E_1\times_Q E_2$, $i$ la inclusión y $\tilde\pi(e_1,e_2)=\pi_1(e_1)=\pi_2(e_2)$.
+%		
+%		% https://q.uiver.app/?q=WzAsNCxbMCwwLCJFXzFcXHRpbWVzIEVfMiJdLFsyLDAsIlFcXHRpbWVzIFEiXSxbMiwxLCJRIl0sWzAsMSwiXFx0aWxkZSBFIl0sWzMsMCwiaSJdLFsxLDAsInNfMVxcdGltZXMgc18yIl0sWzIsMSwiXFxEZWx0YSJdLFsyLDMsIlxcdGlsZGUgcyJdXQ==
+%		\[\begin{tikzcd}
+%			{E_1\times E_2} && {Q\times Q} \\
+%			{\tilde E} && Q
+%			\arrow["i", from=2-1, to=1-1]
+%			\arrow["{\pi_1\times \pi_2}", from=1-1, to=1-3]
+%			\arrow["\Delta", from=2-3, to=1-3]
+%			\arrow["{\tilde \pi}", from=2-1, to=2-3]
+%		\end{tikzcd}\]
+%		
+%		$\Ker(\tilde \pi) = \{(e_1,e_2)\in E_1\times_Q E_2 \colon \tilde\pi(e_1,e_2)=0\}=\{(e_1,e_2)\in E_1\times_Q E_2 \colon \pi_1(e_1)=\pi_2(e_2)=0\} = A\times A$
+%	
+%		Por tanto, la sucesión $1\xrightarrow{} A\times A \xrightarrow{\tilde\imath} E_1\times_Q E_2\xrightarrow{\tilde\pi} Q \xrightarrow{} 1$ es exacta.
+%		
+%		$i_3(a_1+a_2)=\pi(a_1,a_2)=\pi(a_1+a_2,0)=\pi(0,a_1+a_2)$, para que esté bien definida, tenemos que cocientar $E_1\times_Q E_2$ por $Ker(+)=\{(a_1,a_2)\in A\times A \colon a_1+a_2=0\}=\{(a,-a) \colon a\in A\}$
+%		
+%		
+%		% Fin
+%		El cociclo correspondiente a la extensión es por tanto $c_1+c_2$ y por la proposición \ref{extsum} la suma está bien definida en clases de extensiones equivalentes.
+%	\end{demostracion}
+%\end{proposicion}

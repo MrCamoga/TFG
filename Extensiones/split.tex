@@ -2,9 +2,6 @@
 
 \section{Extensiones separables}\label{sec:split}
 
-\begin{definicion} % mover antes de explicar 
-	Sea $\homo \pi A B$ un homomorfismo de grupos, una sección $s$ de $\pi$ es una inversa a la derecha de $\pi$, esto es, $\homo s B A$ tal que $\pi \circ s = 1_B$.
-\end{definicion}
 
 \begin{definicion}	
 	Decimos que una extensión $\extension i \pi N E Q$ es separable cuando existe una sección $\homo s Q E$ de $\pi$ que es un homomorfismo.
@@ -12,28 +9,39 @@
 
 %G tiene un subgrupo isomorfo a Q, interseca trivialmente con N por ser una sucesion exacta y por tanto es un producto semidirecto...
 \begin{teorema}\label{splitext}
-	Una extensión $\extension i \pi N E Q$ es separable sí y solo sí E es equivalente a $\extension {} {} N {Q\ltimes_{\varphi} N} Q$, donde $\homo \varphi Q \Aut(N)$ es una acción de grupos de $Q$ en $N$. % explicar que es una accion y no una funcion
+	Una extensión $\extension i \pi N E Q$ separable es equivalente a $\extension {} {} N {Q\ltimes_{\varphi} N} Q$, donde $\homo \varphi Q \Aut(N)$ es una acción de grupos de $Q$ en $N$. % explicar que es una accion y no una funcion
 	\begin{demostracion}
-		% =>
 		Si $E$ es separable, existe una sección $\homo s Q E$ que es homomorfismo. $s$ es inyectiva porque es una inversa por la derecha de $\pi$ y, por tanto, $Q\cong s(Q) \leq E$.
 		$\pi (i(N)) = \{1\}$ y $s(q)\in i(N) \iff q = 1$, por lo que $s(Q)\cap i(N) = {1_E}$ y $E$ es isomorfo a un producto semidirecto externo de $Q$ por $N$.
 		
+		El isomorfismo $\homo f {Q\ltimes N} E$ viene dado por $(q,n)\in Q\ltimes N$, $f(q,n) = s(q)i(n)$. Para ver que es un isomorfismo basta comprobar que la operación de grupo en $E$ es compatible con la del producto semidirecto.
+		
+		Sean $n_1,n_2\in N$ y $q_1,q_2\in Q$
+		\begin{equation*}
+			s(q_1)i(n_1)s(q_2)i(n_2) = s(q_1)s(q_2)i(n_1)^{q_2}i(n_2) = s(q_1q_2)i(n_1^{q_2}n_2) 
+		\end{equation*}
+		
+		Para ver que las extensiones son equivalentes, se toman la inclusión $i'$ y proyección $\pi'$ canónicas de $Q\ltimes N$ y se verifica trivialmente que $i=f \circ i'$ y $\pi = \pi' \circ f$.
 		% <=
-		En la otra dirección, definiendo para $n\in N, \ q\in Q$ $i(n) = (1_Q,n)$ y $\pi((n,q)) = qN$ % TODO
+		%En la otra dirección, definiendo para $n\in N, \ q\in Q$ $i(n) = (1_Q,n)$ y $\pi((n,q)) = qN$ % TODO
 	\end{demostracion}
 \end{teorema}
 
-\begin{teorema}
-	Una extension $\extension i \pi N E Q$ separable es equivalente
-\end{teorema}
+
 % Splittings (Escisiones)
 \subsection{Clasificación de las escisiones}
 
-Para clasificar las escisiones consideraremos la extensión separable canónica 
+Hemos visto que las extensiones separables son únicas salvo equivalencia. A continuación, tomaremos la extensión separable canónica
 
 \begin{equation}\label{extsplit}
 	\extension i \pi A {Q \ltimes A} Q
 \end{equation}
+y daremos una clasificación de todas las escisiones posibles de la extensión cuando A es abeliano.
+% caso no abeliano H^1 blablabla
+
+\begin{definicion}
+	Diremos que dos escisiones $s_1$ y $s_2$ son $A$-conjugadas si existe un $a\in A$ tal que $s_1(q)=s_2(q)^{i(a)}$ para todo $q\in Q$
+\end{definicion}
 
 % escisiones vienen dadas por 1-cociclos
 \begin{proposicion}
@@ -51,9 +59,7 @@ Para clasificar las escisiones consideraremos la extensión separable canónica
 	\end{proof}
 \end{proposicion}
 
-\begin{definicion}
-	Dos escisiones $s_1$ y $s_2$ se dice que son $A$-conjugadas si existe un $a\in A$ tal que $s_1(q)=s_2(q)^{i(a)}$ para todo $q\in Q$
-\end{definicion}
+
 
 \begin{proposicion}
 	Sean $s_1$ y $s_2$ dos escisiones y $c_1$ y $c_2$ los $1$-cociclos asociados. Entonces $s_1$ y $s_2$ son $A$-conjugadas si $c_1$ y $c_2$ se diferencian en un $1$-coborde.
@@ -82,7 +88,7 @@ Para clasificar las escisiones consideraremos la extensión separable canónica
 
 % explicar que se corresponde con el grupo de cohomologia en el caso abeliano
 \begin{teorema}\label{h1}
-	Sea $E$ una extensión separable de $Q$ por $A$. Entonces, las clases de escisiones $A$-conjugadas están en correspondencia uno a uno con los elementos de $H^1(Q,A)$
+	Sea $E$ una extensión separable de $Q$ por $A$. Entonces, las clases de escisiones $A$-conjugadas están en correspondencia uno a uno con los elementos de $H^1(Q,A)$.
 \end{teorema}
 
 % se comprueba trivialmente que es una relacion de equivalencia

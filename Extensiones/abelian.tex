@@ -17,8 +17,11 @@ A continuación estudiaremos el caso en que $N$ es un grupo abeliano que a parti
 	\varphi \colon Q \to Aut(A)
 \end{equation}
 
-% definir seccion arriba
-Para estudiar esta extensión, consideramos una sección de $\pi$, esto es, una función $\homo s Q E$ tal que $\pi \circ s = id$. Como $Q\cong E/i(A)$, dados $g,h\in Q$, $\pi\left(s(g)s(h)s(gh)^{-1}\right) = 1_{Q}$ por ser $\pi$ homomorfismo. Por tanto, $s(gh)$ y $s(g)s(h)$ distan en un elemento de $i(A)$ y podemos definir una función $\homo c {Q\times Q} {A}$ que mide cuánto dista $s$ de ser un homomorfismo:
+\begin{definicion}
+	Denotamos por $\Ext_\varphi(Q,A)$ a las clases de extensiones equivalentes que dan lugar a la acción $\varphi$ de $Q$ en $A$.
+\end{definicion}
+
+Para estudiar esta extensión, consideramos una sección de $\pi$. Como $Q\cong E/i(A)$, dados $g,h\in Q$, $\pi\left(s(g)s(h)s(gh)^{-1}\right) = 1_{Q}$ por ser $\pi$ homomorfismo. Por tanto, $s(gh)$ y $s(g)s(h)$ distan en un elemento de $i(A)$ y podemos definir una función $\homo c {Q\times Q} {A}$ que mide cuánto dista $s$ de ser un homomorfismo:
 
 \begin{equation}
 	s(g)s(h) = s(gh)i\left(c(g,h)\right)
@@ -112,7 +115,7 @@ Hemos visto en \ref{prop:res1} que una extensión de $Q$ por $A$ viene dada por 
 	Sean $[E_1],[E_2]\in Ext(Q,A)$ dos extensiones y $[c_1],[c_2]\in H^2(Q,A)$ sus cociclos asociados, podemos definir la suma $[E_1] + [E_2]$ como la clase de extensiones equivalentes asociada a $[c1+c2]\in H^2(Q,A)$. Es decir, $Ext_\varphi(Q,A)$ tiene una estructura de grupo abeliano heredada de $H^2(Q,A)$.
 \end{proposicion}
 
-\begin{proposicion}\label{prop:pullback}
+\begin{lema}\label{prop:pullback}
 	Dada una extensión $\extension i \pi A E Q$ y un homomorfismo $\homo \alpha {Q'} Q$, existe una extensión $\extension {} {} A {E'} {Q'}$ única salvo equivalencia que hace al siguiente diagrama conmutativo.
 	
 	% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiTiJdLFsyLDAsIkUiXSxbMywwLCJRIl0sWzQsMCwiMSJdLFswLDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiTiJdLFszLDEsIlEnIl0sWzQsMSwiMSJdLFsyLDEsIkUnIl0sWzQsMF0sWzAsMV0sWzEsMl0sWzIsM10sWzUsNl0sWzYsOV0sWzksN10sWzcsOF0sWzAsNiwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDAsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywyLCJcXGFscGhhIl0sWzksMV1d
@@ -132,10 +135,10 @@ Hemos visto en \ref{prop:res1} que una extensión de $Q$ por $A$ viene dada por 
 	\arrow["\alpha", from=2-4, to=1-4]
 	\arrow[from=2-3, to=1-3]
 \end{tikzcd}\]
-\end{proposicion}
+\end{lema}
 
-\begin{proposicion}\label{prop:pushout}
-	Dada una extensión $\extension i \pi A E Q$ y un homomorfismo $\homo \beta {A} {A'}$, existe una extensión $\extension {} {} {A'} {E'} Q$salvo equivalencia que hace al siguiente diagrama conmutativo.
+\begin{lema}\label{prop:pushout}
+	Dada una extensión $\extension i \pi A E Q$ y un homomorfismo $\homo \beta {A} {A'}$, existe una extensión $\extension {} {} {A'} {E'} Q$ única salvo equivalencia que hace al siguiente diagrama conmutativo.
 	
 	% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiTiJdLFsyLDAsIkUiXSxbMywwLCJRIl0sWzQsMCwiMSJdLFswLDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiTiJdLFszLDEsIlEiXSxbNCwxLCIxIl0sWzIsMSwiRSciXSxbNCwwXSxbMCwxXSxbMSwyXSxbMiwzXSxbNSw2XSxbNiw5XSxbOSw3XSxbNyw4XSxbMCw2LCJcXGJldGEiXSxbMSw5LCJmIl0sWzcsMiwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDcsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 \[\begin{tikzcd}
@@ -154,12 +157,11 @@ Hemos visto en \ref{prop:res1} que una extensión de $Q$ por $A$ viene dada por 
 	\arrow[shift left=1, no head, from=2-4, to=1-4]
 	\arrow[shift left=1, no head, from=1-4, to=2-4]
 \end{tikzcd}\]
-\end{proposicion}
+\end{lema}
 
 \begin{teorema}
 	Podemos expresar la suma de extensiones anterior a partir de las extensiones $\extension{i_j} {\pi_j} A {E_j} Q$, para $j=1,2$, como muestra el siguiente diagrama conmutativo. La última fila se conoce como la suma de Baer de las extensiones $E_1$ y $E_2$.
 	
-	%La última fila se corresponde a una extensión de $[E_1] + [E_2]$.
 	% https://q.uiver.app/?q=WzAsMTUsWzEsNCwiQSJdLFszLDQsIlxcZnJhY3tFXzFcXHRpbWVzX1EgRV8yfXtLZXIoKyl9Il0sWzUsNCwiUSJdLFszLDAsIkVfMVxcdGltZXMgRV8yIl0sWzEsMiwiQVxcdGltZXMgQSJdLFs1LDIsIlEiXSxbMSwwLCJBXFx0aW1lcyBBIl0sWzUsMCwiUVxcdGltZXMgUSJdLFszLDIsIkVfMVxcdGltZXNfUSBFXzIiXSxbMCw0LCIxIl0sWzAsMiwiMSJdLFswLDAsIjEiXSxbNiw0LCIxIl0sWzYsMiwiMSJdLFs2LDAsIjEiXSxbNiwzLCJpXzFcXHRpbWVzIGlfMiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzMsNywiXFxwaV8xXFx0aW1lcyBcXHBpXzIiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbNCw4LCJcXHRpbGRlXFxpbWF0aCIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzgsNSwiXFx0aWxkZVxccGkiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbNCwwLCIrIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzAsMSwiaV8zIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwyLCJcXHBpXzMiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbNywzLCJzXzFcXHRpbWVzIHNfMiIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzIsMSwic18zIiwwLHsib2Zmc2V0IjotMSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbNSw3LCJcXERlbHRhIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbNSw4LCJcXHRpbGRlIHMiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs4LDMsImkiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs2LDQsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw2LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNSwiIiwyLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDIsIiIsMix7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCwxLCJcXHBpX3tLZXIoKyl9IiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzExLDZdLFsxMCw0XSxbOSwwXSxbNywxNF0sWzUsMTNdLFsyLDEyXV0=
 		\begin{tikzcd}
 			1 & {A\times A} && {E_1\times E_2} && {Q\times Q} & 1 \\
@@ -191,55 +193,83 @@ Hemos visto en \ref{prop:res1} que una extensión de $Q$ por $A$ viene dada por 
 			\arrow[from=3-6, to=3-7]
 			\arrow[from=5-6, to=5-7]
 		\end{tikzcd}
-\end{teorema}
-
-\begin{lema}
-	Sea $Q$ un grupo y $A$ un grupo abeliano tal que $\mcd(\ord{Q}, \ord{A}) = 1$. Entonces $H^n(Q,A)$ es trivial para todo $i\in\N$
-	\begin{demostracion}
-		Sean $\ord{Q} = q$ y $\ord{A}=a$. Sea $c$ un $n$-cociclo
 		
-		\begin{equation*}
-			c(q_1,\hdots,q_n)\cdot q_{n+1} + \left[\sum\limits_{i=1}^{n}(-1)^i c(q_1,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] + (-1)^{n+1}c(q_1,\hdots,q_n) = 0
-		\end{equation*}
-		
-		Haciendo el producto en $q_1\in Q$
-		
-		\begin{equation*}
-			\tilde c(q_2,\hdots,q_n)\cdot q_{n+1} + \left[\sum\limits_{i=1}^{n}(-1)^i \tilde c(q_2,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] + \ord{Q}(-1)^{n+1}\tilde c(q_1,\hdots,q_n) = 0
-		\end{equation*}
-		Multiplicando por $k \equiv (-1)^{n+1}|Q|^{-1} \mod |A|$
+		\begin{demostracion}
+			A partir de las extensiones $E_1$ y $E_2$ se construye la extensión del producto directo tomando la inclusión y proyección coordenada a coordenada. El objetivo será utilizar los cociclos $c_1$ y $c_2$ para construir una sucesión exacta $\extension {i_3} {\pi_3} A {E_3} Q$ cuyo cociclo asociado sea $c_3=c_1+c_2$.
+		\begin{equation}
+			1\xrightarrow{} A\times A \xrightarrow{i_1\times i_2} E_1\times E_2\xrightarrow{\pi_1\times\pi_2} Q\times Q \xrightarrow{} 1 % comprobar que es exacta
+		\end{equation}
+		La sección $s_1\times s_2$ de $\pi_1\times \pi_2$ tiene como cociclo asociado
+		\begin{align}
+			(c_1\times c_2)\colon (Q\times Q)\times (Q\times Q) &\to A\times A \\
+			                              ((q_{11},q_{12}),(q_{21},q_{22})) &\mapsto (c_1(q_{11},q_{12}),c_2(q_{21},q_{22})) % comprobar el orden de la operacion
+		\end{align}
+		Proyectando $A\times A$ sobre $A$ haciendo la suma de componentes movemos $(c_1\times c_2)((q_{11},q_{12}),(q_{21},q_{22}))$ a $c_1(q_{11},q_{12}) + c_2(q_{21},q_{22})$. Ahora identificando $q_{11}$ con $q_{21}$ y $q_{12}$ con $q_{22}$ mediante $\homo \Delta Q {Q\times Q}$ definido por $\Delta(q)=(q,q)$.
 		
 		\begin{equation}
-			\tilde c(q_1,\hdots,q_n) = k\tilde c(q_2,\hdots,q_n)\cdot q_{n+1} + \left[\sum\limits_{i=1}^{n}(-1)^i k\tilde c(q_2,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right]
+			Q\times Q \xrightarrow{\Delta} (Q\times Q)\times (Q\times Q) \xrightarrow{c_1\times c_2} A\times A\xrightarrow{+} A
 		\end{equation}
+		El cociclo que buscamos es $c_3=+\circ (c_1\times c_2)\circ \Delta=c_1+c_2$.
+		
+		\end{demostracion}
+\end{teorema}
+
+\subsection{Teorema de Schur-Zassenhaus. Caso abeliano}
+
+\begin{lema}% por favor revisar los indices antes de publicarlo
+	% dicho de otra forma, H^n(Q,A) es un Z_m-modulo donde m=|Q|
+	Sea $Q$ un grupo y $A$ un grupo abeliano con $\mcd(\ord{Q}, \ord{A}) = 1$. Entonces $H^n(Q,A)$ es trivial para todo $n\in\Z^+$.
+	\begin{demostracion}
+		Sea $c$ un $n$-cociclo
+		\begin{multline}\label{eq:ncocycle}
+			c(q_1,\hdots,q_n)\cdot q_{n+1} + \left[\sum\limits_{i=1}^{n}(-1)^{n+1-i} c(q_1,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] + \\ + (-1)^{n+1}c(q_2,\hdots,q_{n+1}) = 0
+		\end{multline}
+		
+		Definiendo $\tilde c(q_2,\hdots,q_{n}) = {\displaystyle \sum_{q_1\in Q} c(q_1,\hdots,q_{n})}$ y haciendo la suma en \eqref{eq:ncocycle} para cada $q_1 \in Q$
+		\begin{multline*}
+			\tilde c(q_2,\hdots,q_n)\cdot q_{n+1} + \left[\sum\limits_{i=2}^{n}(-1)^{n-i}\tilde c(q_2,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] +\\+ (-1)^n\tilde c(q_3,\hdots,q_{n+1})+ \ord{Q}(-1)^{n+1} c(q_2,\hdots,q_{n+1}) = 0
+		\end{multline*}
+		
+		Como $\mcd(\ord{Q}, \ord{A}) = 1$, podemos multiplicar por $k \equiv (-1)^n|Q|^{-1} \mod |A|$
+		\begin{multline*}
+			c(q_2,\hdots,q_{n+1}) = k\tilde c(q_2,\hdots,q_n)\cdot q_{n+1} +\\+ \left[\sum\limits_{i=2}^{n}(-1)^{n-i}k\tilde c(q_2,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] + (-1)^nk\tilde c(q_3,\hdots,q_{n+1})
+		\end{multline*}
+		
+		El cociclo $c$ verifica la ecuación de un coborde para la función $k \tilde c$ y por tanto $H^n(Q,A)$ es trivial.
+		
+		
 	\end{demostracion}
 \end{lema}
 
 \begin{teorema}\label{thmschurab} Sea $G$ un grupo finito y sea $N \norm G$ abeliano, $\ord{N}=n$ y $\ord{G:N}=m$ con $\mcd(n,m)=1$. Entonces $G$ contiene subgrupos de orden $m$ y dos cualesquiera son conjugados.
 	\begin{demostracion}
-		Tomamos una sección $s$ y su $2$-cociclo asociado $c$. 
-		\begin{equation}
-			c(q_1,q_2)\cdot q_3  - c(q_1,q_2q_3)+ c(q_1q_2,q_3) -c(q_2,q_3) =0
-		\end{equation}
-		Definimos la función ${\displaystyle \tilde c(x) = \sum_{t\in Q} c(t,x)}$ y hacemos la suma en $q_1\in Q$
-		\begin{equation}\label{coccob}
-			m c(q_2,q_3) = \tilde c(q_2)\cdot q_3 + \tilde c(q_3) - \tilde c(q_2q_3)
-		\end{equation}
+%		Tomamos una sección $s$ y su $2$-cociclo asociado $c$. 
+%		\begin{equation}
+%			c(q_1,q_2)\cdot q_3  - c(q_1,q_2q_3)+ c(q_1q_2,q_3) -c(q_2,q_3) =0
+%		\end{equation}
+%		Definimos la función ${\displaystyle \tilde c(x) = \sum_{t\in Q} c(t,x)}$ y hacemos la suma en $q_1\in Q$
+%		\begin{equation}\label{coccob}
+%			m c(q_2,q_3) = \tilde c(q_2)\cdot q_3 + \tilde c(q_3) - \tilde c(q_2q_3)
+%		\end{equation}
+%		
+%		Como $\mcd(m,n)=1$, existe un $k\in \Z$ tal que $km\equiv 1 \mod n$. Multiplicando por $k$ llegamos a 
+%		\begin{equation}
+%			c(q_2,q_3) = k \tilde c(q_2)\cdot q_3 + k \tilde c(q_3) - k \tilde c(q_2q_3)
+%		\end{equation}
+%		Por tanto, $c$ verifica la ecuación de un coborde para la función $k \tilde c$ y $H^{2}(Q,N)$ es trivial. Por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $N$.
+%		
+%		Para ver que dos subgrupos cualesquiera son conjugados, cogemos $s$ una escisión de $G$ y $a$ su $1$-cociclo asociado. 
+%		\begin{equation}
+%			a(q_1q_2)=a(q_1)\cdot q_2 + a(q_2)
+%		\end{equation}
+%		Haciendo la suma en $q_1\in Q$ y multiplicando por $k$
+%		\begin{equation}
+%			a(q_2) = k\tilde a - k\tilde a \cdot q_2
+%		\end{equation}
+%		vemos que $a$ verifica la ecuación de un $1$-coborde para la función $k\tilde a$ y $H^1(Q,N)$ es trivial. Por el Teorema $\ref{h1}$, todas las escisiones son $N$-conjugadas y por tanto son conjugadas.
+
+		Por el lema anterior, $H^2(Q,N)$ es trivial y por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $N$. Esto prueba la parte de existencia.
 		
-		Como $\mcd(m,n)=1$, existe un $k\in \Z$ tal que $km\equiv 1 \mod n$. Multiplicando por $k$ llegamos a 
-		\begin{equation}
-			c(q_2,q_3) = k \tilde c(q_2)\cdot q_3 + k \tilde c(q_3) - k \tilde c(q_2q_3)
-		\end{equation}
-		Por tanto, $c$ verifica la ecuación de un coborde para la función $k \tilde c$ y $H^{2}(Q,N)$ es trivial. Por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $N$.
-		
-		Para ver que dos subgrupos cualesquiera son conjugados, cogemos $s$ una escisión de $G$ y $a$ su $1$-cociclo asociado. 
-		\begin{equation}
-			a(q_1q_2)=a(q_1)\cdot q_2 + a(q_2)
-		\end{equation}
-		Haciendo la suma en $q_1\in Q$ y multiplicando por $k$
-		\begin{equation}
-			a(q_2) = k\tilde a - k\tilde a \cdot q_2
-		\end{equation}
-		vemos que $a$ verifica la ecuación de un $1$-coborde para la función $k\tilde a$ y $H^1(Q,N)$ es trivial. Por el Teorema $\ref{h1}$, todas las escisiones son $N$-conjugadas y por tanto son conjugadas.
+		Para la conjugación, cualquier subgrupo $\tilde Q$ de $G$ de orden $m$, al ser $\mcd(n,m)=1$, tiene intersección trivial con $N$ y la proyección sobre $G/N$ es inyectiva. Por tanto, $\tilde Q$ es una escición de $G$. Por el mismo lema, $H^1(Q,N)$ es trivial y por el Teorema \ref{h1} todas las escisiones de la extensión $G$ son $N$-conjugadas y por tanto conjugadas. 
 	\end{demostracion}
 \end{teorema}

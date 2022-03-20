@@ -16,12 +16,20 @@
 %\newcommand{\N}{\mathbb{N}}
 
 
+% dark theme
+\usepackage{xcolor}
+%\pagecolor[rgb]{0,0,0}
+%\color[rgb]{1,1,1}
+
 
 
 \DeclareMathOperator{\SylowSubgroup}{Syl}
+\DeclareMathOperator{\HallSubgroup}{Hall}
+\DeclareMathOperator{\OSubgroup}{O}
 \DeclareMathOperator{\Normalizer}{N}
 \DeclareMathOperator{\Center}{Z}
 \DeclareMathOperator{\mcd}{mcd}
+\DeclareMathOperator{\mcm}{mcm}
 %\DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\Image}{Im}
 %\DeclareMathOperator{\Hom}{Hom}
@@ -33,14 +41,18 @@
 
 
 \newcommand{\Syl}[2]{\SylowSubgroup_#1(#2)}
+\newcommand{\Hall}[2]{\HallSubgroup_#1(#2)}
+\newcommand{\Core}[2]{\OSubgroup_#1(#2)}
+\newcommand{\gensub}[1]{\left\langle#1\right\rangle}
 \newcommand{\Norm}[2]{\Normalizer_#1(#2)}
 \newcommand{\norm}{\trianglelefteq}
-\newcommand{\ord}[1]{\vert#1\vert}
+\newcommand{\ord}[1]{\left|#1\right|}%\vert
 \newcommand{\homo}[3]{#1\colon #2\to #3}
 \newcommand{\extension}[5]{1\xrightarrow{} #3 \xrightarrow{#1} #4\xrightarrow{#2} #5 \xrightarrow{} 1}
 %\def\mcd{\mathop{\rm mcd}\nolimits}
 
 %\includeonly{Extensiones/split.tex}
+\includeonly{Hall/hall.tex}
 \begin{document}
 \renewcommand{\tablename}{Tabla}
 \frontmatter
@@ -54,7 +66,7 @@
 %\maketitle
 \thispagestyle{empty}
 \pagestyle{plain}
-\tableofcontents
+%\tableofcontents
 \clearpage{\pagestyle{empty}\cleardoublepage}
 \pagestyle{fancy}
 \fancyhf{}
@@ -69,15 +81,14 @@
 \mainmatter
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter. #1}{}}
 % Extensiones
-\input{Extensiones/sucio.tex}
-\input{Extensiones/extensiones.tex}
-\input{Extensiones/split.tex}
-\input{Extensiones/abelian.tex}
-\input{Extensiones/central.tex}
+\include{Extensiones/sucio.tex}
+\include{Extensiones/extensiones.tex}
+\include{Extensiones/split.tex}
+\include{Extensiones/abelian.tex}
+%\input{Extensiones/central.tex}
 %\incluir{extensions}
 
-%\input{Hall/hall.tex}
-%\input{Hall/schurzassenhaus.tex}
+\include{Hall/hall.tex}
 
 %\apendices
 

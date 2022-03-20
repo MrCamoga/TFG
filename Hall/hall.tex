@@ -1,6 +1,148 @@
+% !TeX root=../tfg2.tex
+
 \chapter{Teoremas de Hall}
 
-\begin{definicion} 
-	\pi subgrupos
-	O_\pi subgrupos
+%\begin{definicion} 
+%	\pi subgrupos
+%	O_\pi subgrupos
+%\end{definicion}
+
+% explicar que los pi subgrupos generalizan los p-subgrupos, hall subgrupos si existen son conjugados.
+\begin{definicion}
+	Sea $G$ un grupo y $\pi$ un conjunto no vacío de primos. Llamamos $\pi$-subgrupo de $G$ a un subgrupo cuyo orden es un $\pi$-número, esto es, un número que es producto de primos de $\pi$.
+	Definimos un $\pi$-subgrupo de Sylow como un $\pi$-subgrupo maximal y al conjunto de los $\pi$-subgrupos de Sylow lo denotaremos por $\Syl \pi G$.
 \end{definicion}
+\begin{definicion}
+	Un $\pi$-subgrupo $H$ de $G$ decimos que es un $\pi$-subgrupo de Hall si $\ord{G:H}$ es un $\pi'$-número, es decir, un número que no es divisible por ningún primo de $\pi$. Denotaremos por $\Hall \pi G$ al conjunto de los $\pi$-subgrupos de Hall.
+\end{definicion}
+
+\begin{observacion}
+	Claramente los $\pi$-subgrupos de Hall son $\pi$-subgrupos de Sylow, pero mientras que estos últimos siempre existen, la existencia de los subgrupos de Hall no está garantizada. Por ejemplo, en $A_5$ no hay $\pi$-subgrupos de Hall para $\pi = \{2,5\}, \{3,5\}$ ya que un grupo simple no abeliano no puede tener subgrupos propios de índice menor que 5.% explicar en una proposicion? 
+\end{observacion}
+
+\begin{definicion}
+	Al subgrupo generado por todos los $\pi$-subgrupos normales de $G$ lo denotamos por $\Core \pi G$. Este subgrupo es a su vez un $\pi$-subgrupo ya que si $H,K\norm G$, $\ord{HK} = \frac{\ord{H}\ord{K}}{\ord{H\cap K}}$ es un $\pi$-número. Además es el único $\pi$-subgrupo normal maximal de $G$.
+\end{definicion}
+
+\begin{proposicion}\label{prop:coreint}% al igual q pasa con los p-Sylow
+	Sea $G$ un grupo y $\pi$ un conjunto de primos. Entonces, $\Core \pi G$ es la intersección de todos los $\pi$-subgrupos de Sylow de $G$.
+	\begin{demostracion}
+		Sea $M=\Core \pi G$ y $S\in \Syl \pi G$, entonces $MS$ es un $\pi$-subgrupo. Por maximalidad de $S$, se sigue que $M\leq MS = S$. Por otro lado, la intersección de todos los $\pi$-subgrupos de Sylow es un subgrupo característico y por tanto está contenida en $M$.
+	\end{demostracion}
+\end{proposicion}
+
+% subgrupos de hall de subgrupo normal y cociente
+\begin{proposicion}\label{prop:normalhall}
+	Sea $G$ un grupo finito, $N\norm G$ y $H\in \Hall \pi G$. Entonces $H\cap N \in \Hall \pi N$ y $HN/N \in \Hall \pi {G/N}$.
+	\begin{demostracion}
+		Basta comprobar que $\ord{H\cap N}$ y $\ord{HN/N}$ son $\pi$-números y que $\ord{N:H\cap N}$ y $\ord{G/N:HN/N}$ son $\pi'$-números.
+		
+		$H\cap N$ es un subgrupo de $H$ y por tanto $\ord{H\cap N}$ es un $\pi$-número. Por ser $N$ normal, $HN$ es un subgrupo y $\ord{N:H\cap N} = \ord{HN:H}$ divide a $\ord{G:H}$ que es un $\pi'$-número. Por tanto, $H\cap N \in \Hall \pi N$.
+		
+		$\ord{HN:N} = \ord{H:H\cap N}$ es un $\pi$-número y $\ord{\frac{G}{N}:\frac{HN}{N}} = \frac{\ord{G}}{\ord{HN}}$ divide a $\frac{\ord{G}}{\ord{N}}$ por lo que es un $\pi'$-número y $HN/N \in \Hall \pi {G/N}$.
+	\end{demostracion}
+\end{proposicion}
+
+\begin{teorema}[Schur-Zassenhaus]\label{thm:schur} Sea $G$ un grupo finito y $N\norm G$ un subgrupo de Hall, es decir, $\ord{N}=n$ y $\ord{G:N}=m$ con $\mcd(n,m)=1$. Entonces $G$ contiene subgrupos de orden $m$ y son conjugados. % explicar que G es producto semidirecto de N por Q
+	\begin{demostracion}
+		El caso $N$ abeliano ya ha sido demostrado en el Teorema \ref{thmschurab}. Basta demostrar la existencia y la conjugación en el caso general.
+		
+		\textit{(i) Existencia.} Lo demostramos por inducción fuerte sobre el orden de $G$. 
+		Podemos tomar como caso base $C_p$, que como es abeliano se cumple el resultado. 
+		Para el caso general, tomemos un primo $p$ que divida a $n$ y $P\in \Syl p N$. Sean $L=\Norm G P$ y $C=\Center(P)$.
+		Como $C$ es característico en $P$ y $P\norm L$, tenemos que $C\norm L$.
+		Por el argumento de Frattini, $G=LN$.
+		Observamos que $\ord{L:N\cap L} = \ord{LN:N} = m$ y que $N\cap L \norm L$ por el Segundo Teorema de Isomorfía.
+		
+		El subgrupo $C$ es no trivial ya que es el centro de un $p$-subgrupo. Aplicando inducción sobre el grupo $L/C$, existe $H/C\leq L/C$ de orden $m$ y volviendo a $G$ por el Teorema de Correspondencia, existe un subgrupo $H$ de índice $m$ en $C$. Aplicando el caso abeliano a $C$ y $H$ se concluye que existe un subgrupo $Q\leq H$ de orden $m$.
+%		\begin{figure}[h!]
+%			\begin{tikzpicture}[node distance=2cm, scale=1, transform shape]
+%				\title{Diagrama}
+%				
+%				\node(G) {$G$};
+%				\node(N)		[below right = 1cm and 3cm of G] {$N$};
+%				\node(L)		[below = 1.5cm of G] {$L=N_{G}(P)$};
+%				\node(NcL)	[below = 1.5cm of N] {$N\cap L$};
+%				\node(P)		[below = 0.5cm of NcL] {$P$};
+%				\node(C)		[below = 1.5cm of NcL] {$C=Z(P)$};
+%				\node(H)		[below = 1.5cm of L] {$H$};
+%				\node(Q)		[below = 1.5cm of H] {$Q$};
+%				\node(C1)	[below = 1.5cm of C] {$1$};
+%				
+%				
+%				\draw(G)-- node[above]{$\norm$} node[below]{$m$}(N);
+%				\draw(G)--(L);
+%				\draw(N)--(NcL);
+%				\draw(L)-- node[above]{$\norm$} node[below]{$m$}(NcL);
+%				\draw(L)--(H);
+%				%\draw(NcL)--(C);
+%				\draw(NcL)--(P);
+%				\draw(P)--(C);
+%				\draw(H)-- node[above]{$\norm$} node[below]{$m$}(C);
+%				\draw(H)--(Q);
+%				\draw(Q)-- node[above]{$\norm$} node[below]{$m$}(C1);
+%				\draw(C)--(C1);
+%	
+%			\end{tikzpicture}
+%		\end{figure}
+		
+		\textit{(ii) Conjugación (Caso N resoluble)}. Sean $Q_1$ y $Q_2$ subgrupos de $G$ de orden $m$. Como $N$ es resoluble $N'\neq N$, $N'\car N\norm G$ y por tanto, $N'\norm G$. Aplicando el caso abeliano a $N/N'$ y $G/N'$, $Q_1N'/N'$ y $Q_2N'/N'$ son conjugados. Por tanto, existe $g_1\in G$ tal que $Q_1^{g_1} \leq Q_2 N'$. % aclarar esto
+		$Q_1^{g_1}$ y $Q_2$ son subgrupos de orden $m$ en $Q_2N'$, aplicando inducción sobre la longitud derivada de $N$ se llega a $Q_1^{g_d}\leq Q_2N^{(d)} = Q_2$.
+		
+		\textit{(iii) Conjugación (Caso G/N resoluble)}. 
+		Lo demostramos por inducción sobre el orden de $G$. Sean $\pi$ el conjunto de divisores primos de $m$ y $H$ y $K$ dos $\pi$-subgrupos de Hall. 
+		%CASO BASE
+		
+		%Caso Opi=1
+		Si $\Core \pi G=1$, tomamos un subgrupo normal minimal $L/N$ de $G/N$, que existe por ser $G/N$ resoluble. 
+		Éste es un $p$-subgrupo elemental abeliano para algún $p\in\pi$. Por la Proposición \ref{prop:normalhall}, $H\cap L,K\cap L \in \Hall \pi L = \Syl p L$. Aplicando el Segundo Teorema de Sylow, existe un $g\in L$ tal que $H\cap L = (K\cap L)^g = K^g\cap L$. $H\cap L\norm H$ y $K^g\cap L\norm K^g$, por tanto, $H\cap L \norm \gensub {H,K^g} = J$. $J$ no puede ser todo $G$ porque $H\cap L$ sería un $\pi$-subgrupo no trivial, lo que contradice que $\Core \pi G$ sea trivial. Entonces $\ord{J} < \ord{G}$ y aplicando inducción se sigue que $H$ y $K^g$ son conjugados en $J < G$.
+		
+		%Caso Opi!=1
+		Si $\Core \pi G\neq 1$, por la Proposición \ref{prop:coreint} $\Core \pi G \norm H\cap K$ y pasando al cociente, $G/\Core \pi G = 1$ por lo que $H/\Core \pi G$ y $K/\Core \pi G$ son conjugados.
+	\end{demostracion}
+\end{teorema}
+
+\begin{observacion}
+	% 
+\end{observacion}
+
+\begin{teorema}
+	Sea $G$ un grupo finito resoluble. Entonces para todo conjunto de primos $\pi$ existen $\pi$-subgrupos de Hall y todos ellos son conjugados.
+	\begin{demostracion}
+		Lo demostramos por inducción sobre el orden de $G$. Basta probar que todo $\pi$-subgrupo de Sylow $S$ es también un $\pi$-subgrupo de Hall.
+		%caso base
+		%caso O_pi!=1
+		Si $R = \Core \pi G \neq 1$, por la Proposición \ref{prop:coreint} $R \leq S$ y pasando al cociente $S/R$ es un $\pi$-subgrupo de Hall de $G/R$ por inducción. $\ord{G:S} = \ord{G/R:S/R}$ que es un $\pi'$-número y por tanto $S \in \Hall \pi G$. Sea $S_2$ otro $\pi$-subgrupo de Hall, por inducción $S/R$ y $S_2/R$ son conjugados y existe $g\in G$ tal que $S^g/R = S_2/R$ y $S^g=S_2$ por el teorema de correspondencia.
+		
+		%caso O_pi=1
+		Si $R=1$, como $G$ es resoluble existe un subgrupo normal minimal $M$ de $G$ y es un $p$-subgrupo elemental abeliano. Entonces $M$ está contenido en $R' = \Core {\pi'} G$. $SR'/R'$ es un $\pi$-subgrupo de Hall por inducción y por tanto $S\in \Hall \pi G$. Si $S_2$ es otro $\pi$-subgrupo de Hall, por inducción existe $g\in G$ tal que $S^gR'/R'=S_2R'/R'$. Se sigue que $S^gR' = S_2R'$ y por tanto $S^g \leq S_2R'$. Tenemos que $R'\norm S_2R'$ y podemos aplicar el Teorema \ref{thm:schur} para concluir que $S$ y $S_2$ son conjugados en $S_2R'$ y por tanto también en $G$.
+	\end{demostracion}
+\end{teorema}
+
+\begin{lema}
+	Sean $H, K$ $p'$ y $q'$-subgrupos de Hall respectivamente, $p$ y $q$ primos distintos. Entonces $\ord{G:H\cap K} = \ord{G:H}\ord{G:K}$, es decir, $H\cap K$ es un $\{p,q\}'$-subgrupo de Hall.
+	\begin{demostracion}
+	 	Por la formula del producto de subgrupos
+	 	\begin{equation*}
+	 		\ord{H:H\cap K} = \ord{HK:K} \leq \ord{G:K}
+	 	\end{equation*}
+	 	Multiplicando por $\ord{G:H}$
+	 	\begin{equation*}
+	 		\ord{G:H}\ord{H:H\cap K} = \ord{G:H\cap K} \leq \ord{G:H}\ord{G:K}
+	 	\end{equation*}
+	 	
+	 	Por otro lado, como $p\neq q$, $\mcd(\ord{G:H},\ord{G:K}) = 1$ y tanto $\ord{G:H}$ como $\ord{G:K}$ dividen a $\ord{G:H\cap K}$, tenemos que $\ord{G:H}\ord{G:K}$ divide a $\ord{G:H\cap K}$ y $\ord{G:H}\ord{G:K} \leq \ord{G:H\cap K}$.
+	\end{demostracion}
+\end{lema}
+
+\begin{teorema}%[Recíproco de Hall]
+	Sea $G$ un grupo finito tal que para todo primo $p$ existe un $p'$-subgrupo de Hall. Entonces $G$ es resoluble.
+	\begin{demostracion}
+		Lo demostramos por reducción al absurdo. Si el resultado es falso, existe un grupo $G$ de orden mínimo para el que no se cumple. Sea $N\norm G$ y $H$ un $p'$-subgrupo de Hall, por la Proposición \ref{prop:normalhall}, $H\cap N$ y $HN/N$ son $p'$-subgrupos de Hall de $N$ y $G/N$ respectivamente. Por minimalidad de $G$, $N$ y $G/N$ son resolubles. Esto es absurdo y por tanto $G$ no tiene subgrupos normales propios y es simple.
+		
+		Sea $\ord{G} = p_1^{a_1}\cdots p_n^{a_n}$ con $a_i>0$ y los $p_i$ primos distintos. Sea $G_i$ un $p_i'$-subgrupo de Hall, es decir, $\ord{G:G_i} = p_i^{a_i}$. Tomemos $H=\bigcap_{i=3}^{n} G_i$, por el lema, $\ord{H}=p_1^{a_1}p_2^{a_2} < \ord{G}$ y $H$ es resoluble por minimalidad de $G$. Tomamos $N$ un subgrupo normal minimal de $H$, entonces $N$ es un $p$-grupo elemental abeliano donde $p=p_1$ o $p_2$. Sin perdida de generalidad, supongamos que es $p_1$.
+		
+		Por el lema, $\ord {H\cap G_2} = p_1^{a_1}$ y $H\cap G_2$ es un $p_1$-subgrupo de Sylow de $G$, de igual manera, $H\cap G_1$ es un $p_2$-subgrupo de Sylow. Un $p$-subgrupo normal está contenido en todos los $p$-subgrupos de Sylow y, por tanto, $N \leq H\cap G_2 < G$. Podemos escribir $G=(H\cap G_1)G_2$ ya que $\mcd(\ord{H\cap G_1},\ord{G_2}) = 1$. La clausura normal de $N$, $N^{G} = N^{(H\cap G_1)G_2} = N^{G_2}\leq G_2 < G$ es un subgrupo normal propio de $G$, lo que contradice la hipótesis de que $G$ sea simple.
+		
+	\end{demostracion}
+\end{teorema}

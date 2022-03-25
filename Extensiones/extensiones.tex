@@ -18,7 +18,7 @@
 
 % poner mas bonito o redactar sin separar por lineas
 \begin{observacion}
-	Una sucesión exacta corta como \eqref{eq:sec} es equivalente a decir que $f_2$ es inyectiva, $f_3$ sobreyectiva y $G_2/f_2(G_1)\cong G_3$
+	Una sucesión exacta corta como \eqref{eq:sec} es equivalente a decir que $f_2$ es inyectiva, $f_3$ sobreyectiva y $G_2/\Image(f_2)\cong G_3$
 	\begin{demostracion}
 		$\Ker(f_2)=\Image(f_1)=\{1\} \implies f_2$ es inyectiva.
 		
@@ -60,8 +60,8 @@
 	% observar que necesariamente f es iso
 \end{definicion}
 
-% limpiar
-\begin{observacion}\label{prop:eqiso}Dos extensiones equivalentes $\extension {i_{j}} {\pi_j} N {E_j} Q$ para $j=1,2$, son isomorfas.
+% define isomorfismo de extensiones, reeescribir demostracion
+\begin{proposicion}\label{prop:eqiso}Dos extensiones equivalentes $\extension {i_{j}} {\pi_j} N {E_j} Q$ para $j=1,2$, son isomorfas.
 	\begin{demostracion}
 		Para verlo, demostramos que $f$ es inyectiva y sobreyectiva.
 		
@@ -69,11 +69,11 @@
 		
 		\textit{(ii) Sobreyectiva. } Sea $x\in \Image(f)$, como $\pi_1$ es sobreyectiva existe $ x_1\in E_1$ tal que $\pi_2(x)=\pi_1(x_1) = \pi_2(f(x_1))$. Por tanto, $x f(x_1)^{-1} \in \Ker(\pi_2)= \Image(i_2)$ y existe $\tilde x\in N$ tal que $f(i_1(\tilde x))=i_2(\tilde x)=x f(x_1)^{-1}$. Despejando $x = f(i_1(\tilde x) x_1)$, $f$ es sobreyectiva.
 	\end{demostracion}
-\end{observacion}
+\end{proposicion}
 
-% define isomorfismo de extensiones, reeescribir demostracion
+% ejemplo, poner dem en apendice?
 \begin{observacion}
-	Ser una equivalencia de extensiones es más débil que ser un isomorfismo, como se ve en el siguiente ejemplo.
+	Ser una equivalencia de extensiones es más fuerte que ser un isomorfismo, como se ve en el siguiente ejemplo.
 	% https://q.uiver.app/?q=WzAsMTAsWzAsMCwiMSJdLFsxLDAsIlxcbWF0aGJie1p9XzMiXSxbMiwwLCJcXG1hdGhiYntafV85Il0sWzMsMCwiXFxtYXRoYmJ7Wn1fMyJdLFs0LDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiXFxtYXRoYmJ7Wn1fMyJdLFsyLDEsIlxcbWF0aGJie1p9XzkiXSxbMywxLCJcXG1hdGhiYntafV8zIl0sWzQsMSwiMSJdLFswLDFdLFsxLDIsIlxcdGltZXMgMyJdLFsyLDMsIlxcdGltZXMgMSJdLFszLDRdLFs1LDZdLFs2LDcsIlxcdGltZXMgMyJdLFs3LDgsIlxcdGltZXMgMiJdLFs4LDldLFsxLDYsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiwxLCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNywiZiIsMl0sWzMsOCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDMsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 \[\begin{tikzcd}
 	1 & {\mathbb{Z}_3} & {\mathbb{Z}_9} & {\mathbb{Z}_3} & 1 \\
@@ -109,7 +109,7 @@
 	\begin{demostracion}
 		\begin{enumerate}
 			\item Reflexiva: $E$ es equivalente a sí misma tomando $f=1_E$
-			\item Simétrica: Si $\homo f {E_1} {E_2}$ es una equivalencia, por la Observación \eqref{prop:eqiso}, $\homo {f^{-1}} {E_2} {E_1}$ es una equivalencia. 
+			\item Simétrica: Si $\homo f {E_1} {E_2}$ es una equivalencia, por la Proposicion \eqref{prop:eqiso}, $\homo {f^{-1}} {E_2} {E_1}$ es una equivalencia. 
 			\item Transitiva: Si $\homo f {E_1} {E_2}$ y $\homo g {E_2} {E_3}$ son equivalencias, $g\circ f\circ i_1 = g\circ i_2 = i_3$ y $\pi_1 \circ g \circ f = \pi_2 \circ f = \pi_3$, entonces $\homo {g\circ f} {E_1} {E_3}$ es una equivalencia.
 		\end{enumerate}
 	\end{demostracion}

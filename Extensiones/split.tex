@@ -1,27 +1,28 @@
 % !TeX root=../tfg2.tex
 
-\section{Extensiones separables}\label{sec:split}
+\section{Extensiones que escinden}\label{sec:split}
 
 
 \begin{definicion}	
-	Decimos que una extensión $\extension i \pi N E Q$ es separable cuando existe una sección $\homo s Q E$ de $\pi$ que es un homomorfismo.
+	Decimos que una extensión $\extension i \pi N E Q$ escinde cuando existe una sección $\homo s Q E$ de $\pi$ que es un homomorfismo.
 \end{definicion}
 
 %G tiene un subgrupo isomorfo a Q, interseca trivialmente con N por ser una sucesion exacta y por tanto es un producto semidirecto...
 \begin{teorema}\label{splitext}
-	Una extensión $\extension i \pi N E Q$ separable es equivalente a $\extension {} {} N {Q\ltimes_{\varphi} N} Q$, donde $\homo \varphi Q \Aut(N)$ es una acción de grupos de $Q$ en $N$. % explicar que es una accion y no una funcion
+	Una extensión $\extension i \pi N E Q$ separable es equivalente a $\extension {} {} N {N\rtimes_{\varphi} Q} Q$, donde $\homo \varphi Q \Aut(N)$ es una acción de grupos de $Q$ en $N$. % explicar que es una accion y no una funcion
 	\begin{demostracion}
 		Si $E$ es separable, existe una sección $\homo s Q E$ que es homomorfismo. $s$ es inyectiva porque es una inversa por la derecha de $\pi$ y, por tanto, $Q\cong s(Q) \leq E$.
 		$\pi (i(N)) = \{1\}$ y $s(q)\in i(N)$ sí y solo sí $q = 1$, por lo que $s(Q)\cap i(N) = {1_E}$ y $E$ es isomorfo a un producto semidirecto externo de $Q$ por $N$.
 		
-		El isomorfismo $\homo f {Q\ltimes N} E$ viene dado por $(q,n)\in Q\ltimes N$, $f(q,n) = s(q)i(n)$. Para ver que es un isomorfismo basta comprobar que la operación de grupo en $E$ es compatible con la del producto semidirecto.
+		El isomorfismo $\homo f {N\rtimes Q} E$ viene dado por $(n,q)\in N\rtimes Q$, $f(n,q) = i(n)s(q)$. Para ver que es un isomorfismo basta comprobar que la operación de grupo en $E$ es compatible con la del producto semidirecto.
 		
 		Sean $n_1,n_2\in N$ y $q_1,q_2\in Q$
 		\begin{equation*}
-			s(q_1)i(n_1)s(q_2)i(n_2) = s(q_1)s(q_2)i(n_1)^{q_2}i(n_2) = s(q_1q_2)i(n_1^{q_2}n_2) 
+			i(n_1)s(q_1)i(n_2)s(q_2) = i(n_1)i(n_2)^{q_1}s(q_1)s(q_2) = i(n_1 n_2^{q_1})s(q_1q_2) 
+			%s(q_1)i(n_1)s(q_2)i(n_2) &= s(q_1)s(q_2)i(n_1)^{q_2}i(n_2) = s(q_1q_2)i(n_1^{q_2}n_2) 
 		\end{equation*}
 		
-		Para ver que las extensiones son equivalentes, se toman la inclusión $i'$ y proyección $\pi'$ canónicas de $Q\ltimes N$ y se verifica trivialmente que $i=f \circ i'$ y $\pi = \pi' \circ f$.
+		Para ver que las extensiones son equivalentes, se toman la inclusión $i'$ y proyección $\pi'$ canónicas de $N\rtimes Q$ y se verifica trivialmente que $i=f \circ i'$ y $\pi = \pi' \circ f$.
 		% <=
 		%En la otra dirección, definiendo para $n\in N, \ q\in Q$ $i(n) = (1_Q,n)$ y $\pi((n,q)) = qN$ % TODO
 	\end{demostracion}
@@ -34,27 +35,27 @@
 Hemos visto que las extensiones separables son únicas salvo equivalencia. A continuación, tomaremos la extensión separable canónica
 
 \begin{equation}\label{extsplit}
-	\extension i \pi A {Q \ltimes A} Q
+	\extension i \pi A {A \rtimes Q} Q
 \end{equation}
 y daremos una clasificación de todas las escisiones posibles de la extensión cuando A es abeliano.
 % caso no abeliano H^1 blablabla
 
 \begin{definicion}
-	Diremos que dos escisiones $s_1$ y $s_2$ son $A$-conjugadas si existe un $a\in A$ tal que $s_1(q)=s_2(q)^{i(a)}$ para todo $q\in Q$
+	Diremos que dos escisiones $s_1$ y $s_2$ son $A$-conjugadas si existe un $a\in A$ tal que $s_1(q)=s_2(q)^{i(a)}$ para todo $q\in Q$ % es accion a izq pero da igual porque si existe a existe a^-1
 \end{definicion}
 
 % escisiones vienen dadas por 1-cociclos
 \begin{proposicion}
-	Las escisiones de \eqref{extsplit} son homomorfismos de la forma $s(q) = (q,c(q))$ donde $\homo c Q A$ es un $1$-cociclo.
+	Las escisiones de \eqref{extsplit} son homomorfismos de la forma $s(q) = (c(q),q)$ donde $\homo c Q A$ es un $1$-cociclo.
 	\begin{proof}
-		Una sección $s$ de $\pi$ tiene la forma $s(q) = (q,c(q))$ donde $c$ es una función $\homo c Q A$. Imponiendo que la sección sea un homomorfismo
+		Una sección $s$ de $\pi$ tiene la forma $s(q) = (c(q),q)$ donde $c$ es una función $\homo c Q A$. Imponiendo que la sección sea un homomorfismo
 		\begin{align*}
-			s(q_1)s(q_2) &= (q_1q_2,c(q_1)\cdot q_2 + c(q_2)) \\
-			s(q_1q_2) &= (q_1q_2,c(q_1q_2))
+			s(q_1)s(q_2) &= (c(q_1) + q_1\cdot c(q_2),q_1q_2) \\
+			s(q_1q_2) &= (c(q_1q_2),q_1q_2)
 		\end{align*}
 		la función $c$ tiene que verificar la ecuación de un $1$-cociclo para que $s$ sea una escisión.
 		\begin{equation}
-			c(q_1q_2) = c(q_1)\cdot q_2 + c(q_2)
+			q_1 \cdot c(q_2) = c(q_1q_2) - c(q_1) 
 		\end{equation}
 	\end{proof}
 \end{proposicion}
@@ -66,14 +67,14 @@ y daremos una clasificación de todas las escisiones posibles de la extensión c
 	\begin{demostracion}
 		Si existe un $a \in A$ tal que $s_1(q) = s_2(q)^{i(a)}$ para todo $q\in Q$, 
 		\begin{align*}
-		(q,c_1(q)) &= (1,-a)(q,c_2(q))(1,a) \\
-					&= (q,-a \cdot q +  c_2(q) + a)
+		(c_1(q),q) &= (a,1)(c_2(q),q)(-a,1) \\
+					&= (a  + c_2(q) + q\cdot -a,q)
 		\end{align*}
 		
 		La diferencia entre $c_1$ y $c_2$ verifica la ecuación de un $1$-coborde
 		
 		\begin{equation}
-			c_2(q) - c_1(q) = a\cdot q - a
+			c_2(q) - c_1(q) = q\cdot a - a
 		\end{equation}
 	\end{demostracion}
 \end{proposicion}

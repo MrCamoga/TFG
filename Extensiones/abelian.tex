@@ -24,18 +24,18 @@ A continuación estudiaremos el caso en que $N$ es un grupo abeliano que a parti
 Para estudiar esta extensión, consideramos una sección de $\pi$. Como $Q\cong E/i(A)$, dados $g,h\in Q$, $\pi\left(s(g)s(h)s(gh)^{-1}\right) = 1_{Q}$ por ser $\pi$ homomorfismo. Por tanto, $s(gh)$ y $s(g)s(h)$ distan en un elemento de $i(A)$ y podemos definir una función $\homo c {Q\times Q} {A}$ que mide cuánto dista $s$ de ser un homomorfismo:
 
 \begin{equation}
-	s(g)s(h) = s(gh)i\left(c(g,h)\right)
+	s(g)s(h) = i\left(c(g,h)\right)s(gh)
 \end{equation}
 
 % explicar que s(Q) \cong Q ya que s es inyectiva?
-Podemos recuperar la extensión \eqref{exta} a partir de la acción $\varphi$ que hemos fijado y de la función $c$. Como $E=\bigcup\limits_{q\in Q} s(q)i(A) = s(Q)i(A)$ es una unión disjunta, podemos expresar unívocamente cada elemento de $E$ como un producto de elementos de $s(Q)$ e $i(A)$. Es decir, tenemos una biyección $Q\times A \to E$. A partir del producto en $E$, podemos definir una operación de grupo en $Q\times A$, que denotaremos por $E_{c}$. Dados $a_1,a_2\in A, \ q_1,q_2\in Q$ tenemos:
+Podemos recuperar la extensión \eqref{exta} a partir de la acción $\varphi$ que hemos fijado y de la función $c$. Como $E=\bigcup\limits_{q\in Q} i(A)s(q) = i(A)s(Q)$ es una unión disjunta, podemos expresar unívocamente cada elemento de $E$ como un producto de elementos de $i(A)$ y $s(Q)$. Es decir, tenemos una biyección $A\times Q \to E$. A partir del producto en $E$, podemos definir una operación de grupo en $A\times Q$, que denotaremos por $E_{c}$. Dados $a_1,a_2\in A, \ q_1,q_2\in Q$ tenemos:
 \begin{align}\begin{split}
-s(q_1)i(a_1) s(q_2)i(a_2) &= s(q_1)s(q_2)i(a_1\cdot q_2)i(a_2) \\ &= s(q_1q_2)i(c(q_1,q_2) + a_1\cdot q_2+a_2)
+i(a_1)s(q_1)i(a_2)s(q_2) &= i(a_1)i(q_1\cdot a_2)s(q_1)s(q_2) \\ &= i(a_1+ q_1\cdot a_2 + c(q_1,q_2))s(q_1q_2)
 \end{split}\end{align}
 \noindent Por tanto, la operación en $E_c$ viene dada por:
 
 \begin{equation}\label{extop}
-(q_1,a_1)(q_2,a_2) = (q_1q_2,c(q_1,q_2) + a_1 \cdot q_2 + a_2)
+(a_1,q_1)(a_2,q_2) = (a_1 + q_1\cdot a_2 + c(q_1,q_2),q_1q_2)
 \end{equation}
 Notese que este producto no depende directamente de la sección $s$ escogida. Por ello, supondremos que la sección $s$ es normalizada 
 \begin{equation}
@@ -45,7 +45,7 @@ de donde obtenemos que
 \begin{equation}\label{cocnorm}
 	c(1,q) = 0 = c(q,1)
 \end{equation}
-De esta forma el isomorfismo $\homo f E E_c$ viene dado por $q\in Q,\ a\in A$ $s(q)i(a) \mapsto (q,a)$. La inclusión de $A$ a $E_c$ y la proyección a $Q$ son las canónicas, haciendo a la extensión $E_c$ equivalente a \eqref{exta}.
+De esta forma, el isomorfismo $\homo f E E_c$ viene dado por $a\in A,\ q\in Q$ $i(a)s(q) \mapsto (a,q)$. La inclusión de $A$ a $E_c$ y la proyección a $Q$ son las canónicas, haciendo a la extensión $E_c$ equivalente a \eqref{exta}.
 
 
 %La siguiente proposición prueba que una función $\homo c {Q\times Q} A$ define una operación de grupo en $E_c$ con la acción $\varphi$ cuando es $c$ es un 2-cociclo.
@@ -55,41 +55,54 @@ Sea $\varphi$ una acción de $Q$ en $A$ y $\homo c {Q\times Q} A$ una función q
 	\begin{demostracion}
 	Para ver que la funcion define una operación de grupo comprobamos la asociatividad y la existencia de identidad e inversos.
 	
-	Imponiendo que $[(q_1,a_1)(q_2,a_2)](q_3,a_3) = (q_1,a_1)[(q_2,a_2)(q_3,a_3)]$ llegamos a la siguiente condición que garantiza que la operación sea asociativa
+	Imponiendo que $[(a_1,q_1)(a_2,q_2)](a_3,q_3) = (a_1,q_1)[(a_2,q_2)(a_3,q_3)]$ llegamos a la siguiente condición que garantiza que la operación sea asociativa
 	
-	\begin{equation}\label{eq2coc}
-			c(q_1,q_2)\cdot q_3  - c(q_1,q_2q_3)+ c(q_1q_2,q_3) -c(q_2,q_3) =0
+%	(a_1+q_1\cdot a_2 + c(q_1,q_2),q_1q_2)(a_3,q_3) = 
+%	(a_1+q_1\cdot a_2 + c(q_1,q_2) + q_1q_2\cdot a_3 + c(q_1q_2,q_3),q_1q_2q_3)
+	
+%	(a_1,q_1)(a_2+q_2\cdot a_3 + c(q_2,q_3),q_2q_3) = 
+%	(a_1 + q_1\cdot a_2 + q_1q_2\cdot a_3 + q_1\cdot c(q_2,q_3) + c(q_1,q_2q_3),q_1q_2q_3)
+	
+%	c(q_1,q_2) + c(q_1q_2,q_3) = q_1\cdot c(q_2,q_3) + c(q_1,q_2q_3)
+	
+	
+	\begin{equation}\label{eq2coc}	
+		 q_1\cdot c(q_2,q_3) - c(q_1q_2,q_3) + c(q_1,q_2q_3) - c(q_1,q_2) = 0
 	\end{equation}
 	
-	Identidad: $(1,0)$
+	% CAMBIAR A ACCIONES A IZQUIERDA
+	Identidad: $(0,1)$
 	
-	Sea $(q,a)\in Q\times A$,
+	Sea $(a,q)\in A\times Q$,
 	
-	$(1,0)(q,a) = (q,c(1,q) + 0\cdot q + a) = (q,a)$
+	$(0,1)(a,q) = (0 + 1\cdot a + c(1,q), q) = (a,q)$
 	
-	$(q,a)(1,0) = (q,c(q,1) + a\cdot 1 + 0) = (q,a)$
+	$(a,q)(0,1) = (a+q\cdot 0 + c(q,1),q) = (a,q)$
 	
-	Inverso de $(q,a)\in Q\times A$: $(q^{-1}, - c(q,q^{-1})-a\cdot q)$
+	Inverso de $(a,q)\in A\times Q$: $(-q^{-1}\cdot a -c(q^{-1},q),q^{-1})$
 	
 	A continuación, comprobamos que la inclusión de $A$ a $A\times Q$ y la proyección a $Q$ definen homomorfismos y hacen a la sucesión exacta.
 	
-	$i(a_1)i(a_2)=(1,a_1)(1,a_2) = (1,c(1,1) + a_1\cdot 1 + a_2) = (1,a_1+a_2)=i(a_1+a_2)$
+	$i(a_1)i(a_2)=(a_1,1)(a_2,1) = (a_1 + 1 \cdot a_2+c(1,1),1) = (a_1+a_2,1)=i(a_1+a_2)$
 	
-	$\pi((q_1,a_1)(q_2,a_2))=\pi((q_1q_2,-)) = q_1q_2 = \pi((q_1,-))\pi((q_2,-))$
+	$\pi((a_1,q_1)(a_2,q_2))=\pi((-,q_1q_2)) = q_1q_2 = \pi((-,q_1))\pi((-,q_2))$
 	
-	$\pi(i(a)) = \pi(1,a) = 1$
+	$\pi(i(a)) = \pi(a,1) = 1$
 	\end{demostracion}
 \end{proposicion}
 
 \begin{proposicion}\label{prop:res2}
-	Sea $E$ una extensión de $Q$ por $A$ y $s,s'$ dos secciones de $Q$ a $E$ y $c,c'$ los cociclos asociados a $s$ y $s'$. Entonces, $c$ y $c'$ se diferencian en un 2-coborde. Esto es, la extensión $E$ determina la clase $[c]\in H^2_\varphi(Q,A)$.
+	Sea $E$ una extensión de $Q$ por $A$ y $s_1,s_2$ dos secciones de $Q$ a $E$ y $c_1,c_2$ los cociclos asociados a $s_1$ y $s_2$. Entonces, $c_1$ y $c_2$ se diferencian en un $2$-coborde. Esto es, la extensión $E$ determina la clase $[c_1]\in H^2_\varphi(Q,A)$.
 	
 	\begin{demostracion}
-		La diferencia de $s$ y $s'$ es una función $\homo e Q {A}$, $s'(q) = s(q)i(e(q))$ % tecnicamente es una funcion en i(A)
-		\begin{align}\begin{split}
-			s'(gh)i(c'(g,h)) &= s'(g)s'(h) \\ &= s(g)i(e(g))s(h)i(e(h))\\ &= s(g)s(h)i(e(g)\cdot h + e(h))  \\ &= s(gh)i(c(g,h) + e(g)\cdot h + e(h))
-		\end{split}\end{align}
-		De donde obtenemos $c'(g,h)-c(g,h) = e(g)\cdot h + e(h) - e(gh)$.
+		La diferencia de $s_1$ y $s_2$ es una función $\homo e Q {A}$, $s_2(q) = i(e(q))s_1(q)$ % tecnicamente es una funcion en i(A)
+		\begin{align*}
+			i(c_2(g,h))s_2(gh) &= s_2(g)s_2(h) \\ &= i(e(g))s_1(g)i(e(h))s_1(h)\\ &= i(e(g) + g \cdot e(h)) s_1(g)s_1(h) \\ &= i(e(g) + g \cdot e(h) + c(g,h))s_1(gh)
+		\end{align*}
+		De donde obtenemos
+		\begin{equation} 
+			(c_2-c_1)(g,h) = g \cdot e(h) - e(gh) + e(g)
+		\end{equation}
 	\end{demostracion}
 \end{proposicion}
 
@@ -113,23 +126,23 @@ Hemos visto en \ref{prop:res1} que una extensión de $Q$ por $A$ viene dada por 
 
 \subsection{Teorema de Schur-Zassenhaus. Caso abeliano}
 
-\begin{lema}% por favor revisar los indices antes de publicarlo
+\begin{lema}\label{lem:trivh2}% por favor revisar los indices antes de publicarlo
 	% dicho de otra forma, H^n(Q,A) es un Z_m-modulo donde m=|Q|
 	Sea $Q$ un grupo y $A$ un grupo abeliano con $\mcd(\ord{Q}, \ord{A}) = 1$. Entonces $H^n(Q,A)$ es trivial para todo $n\in\Z^+$.
 	\begin{demostracion}
 		Sea $c$ un $n$-cociclo
 		\begin{multline}\label{eq:ncocycle}
-			c(q_1,\hdots,q_n)\cdot q_{n+1} + \left[\sum\limits_{i=1}^{n}(-1)^{n+1-i} c(q_1,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] + \\ + (-1)^{n+1}c(q_2,\hdots,q_{n+1}) = 0
+			q_1\cdot c(q_2,\hdots,q_{n+1}) + \left[\sum\limits_{i=1}^{n} (-1)^i c(q_1,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] + \\ + (-1)^{n+1}c(q_1,\hdots,q_n) = 0
 		\end{multline}
 		
-		Definiendo $\tilde c(q_2,\hdots,q_{n}) = {\displaystyle \sum_{q_1\in Q} c(q_1,\hdots,q_{n})}$ y haciendo la suma en \eqref{eq:ncocycle} para cada $q_1 \in Q$
+		Definiendo $\tilde c(q_1,\hdots,q_{n-1}) = {\displaystyle \sum_{q_n\in Q} c(q_1,\hdots,q_{n})}$ y haciendo la suma en \eqref{eq:ncocycle} para cada $q_{n+1} \in Q$
 		\begin{multline*}
-			\tilde c(q_2,\hdots,q_n)\cdot q_{n+1} + \left[\sum\limits_{i=2}^{n}(-1)^{n-i}\tilde c(q_2,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] +\\+ (-1)^n\tilde c(q_3,\hdots,q_{n+1})+ \ord{Q}(-1)^{n+1} c(q_2,\hdots,q_{n+1}) = 0
+			q_1\cdot \tilde c(q_2,\hdots,q_n) + \left[\sum\limits_{i=1}^{n-1}(-1)^i \tilde c(q_1,\hdots,q_iq_{i+1},\hdots,q_{n}) \right] +\\+ (-1)^n\tilde c(q_1,\hdots,q_{n-1})+ \ord{Q}(-1)^{n+1} c(q_1,\hdots,q_n) = 0
 		\end{multline*}
 		
-		Como $\mcd(\ord{Q}, \ord{A}) = 1$, podemos multiplicar por $k \equiv (-1)^n|Q|^{-1} \mod |A|$
+		Como $\mcd(\ord{Q}, \ord{A}) = 1$, podemos multiplicar por $k \equiv (-1)^n\ord{Q}^{-1} \mod \ord{A}$
 		\begin{multline*}
-			c(q_2,\hdots,q_{n+1}) = k\tilde c(q_2,\hdots,q_n)\cdot q_{n+1} +\\+ \left[\sum\limits_{i=2}^{n}(-1)^{n-i}k\tilde c(q_2,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] + (-1)^nk\tilde c(q_3,\hdots,q_{n+1})
+			c(q_1,\hdots,q_n) = q_1\cdot k\tilde c(q_2,\hdots,q_n) + \\ + \left[\sum\limits_{i=1}^{n-1}(-1)^i k\tilde c(q_1,\hdots,q_iq_{i+1},\hdots,q_{n}) \right] + (-1)^nk\tilde c(q_1,\hdots,q_{n-1}) 
 		\end{multline*}
 		
 		El cociclo $c$ verifica la ecuación de un coborde para la función $k \tilde c$ y por tanto $H^n(Q,A)$ es trivial.
@@ -165,7 +178,7 @@ Hemos visto en \ref{prop:res1} que una extensión de $Q$ por $A$ viene dada por 
 %		\end{equation}
 %		vemos que $a$ verifica la ecuación de un $1$-coborde para la función $k\tilde a$ y $H^1(Q,N)$ es trivial. Por el Teorema $\ref{h1}$, todas las escisiones son $N$-conjugadas y por tanto son conjugadas.
 
-		Por el lema anterior, $H^2(Q,N)$ es trivial y por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $N$. Esto prueba la parte de existencia.
+		Por el Lema \ref{lem:trivh2}, $H^2(Q,N)$ es trivial y por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $N$. Esto prueba la parte de existencia.
 		
 		Para la conjugación, cualquier subgrupo $\tilde Q$ de $G$ de orden $m$, al ser $\mcd(n,m)=1$, tiene intersección trivial con $N$ y la proyección sobre $G/N$ es inyectiva. Por tanto, $\tilde Q$ es una escición de $G$. Por el mismo lema, $H^1(Q,N)$ es trivial y por el Teorema \ref{h1} todas las escisiones de la extensión $G$ son $N$-conjugadas y por tanto conjugadas. 
 	\end{demostracion}

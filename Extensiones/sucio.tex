@@ -9,16 +9,16 @@
 % cociclos cobordes
 % cambiar la accion a derecha
 \begin{definicion}
-	Sea $A$ un $Q$-módulo dado por una acción a derechas $\homo \varphi Q A$ y $n\in\N$. 
+	Sea $A$ un $Q$-módulo dado por una acción a izquierdas $\homo \varphi Q A$ y $n\in\N$. 
 	Un $n$-cociclo es una función $\homo f {Q^n} A$ tal que $\forall q_1,\hdots,q_{n+1}\in Q$ se verifica
 	\begin{equation*}
-	 f(q_1,\hdots,q_n)\cdot q_{n+1} + \left[\sum\limits_{i=1}^{n}(-1)^i f(q_1,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] + (-1)^{n+1}f(q_2,\hdots,q_{n+1}) = 0
+	 q_1\cdot f(q_2,\hdots,q_{n+1}) + \left[\sum\limits_{i=1}^{n} (-1)^i f(q_1,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] + (-1)^{n+1}f(q_1,\hdots,q_n) = 0
 	\end{equation*}
 	
 	Un $n$-coborde es una función $\homo f {Q^n} A$ tal que existe una función $\homo \phi {Q^{n-1}} A$ tal que
 	
 	\begin{equation*}
-		f(q_1,\hdots, q_n) = \phi(q_1,\hdots,q_{n-1})\cdot q_n + \left[\sum\limits_{i=1}^{n-1}(-1)^{n-i} \phi(q_1,\hdots,q_iq_{i+1},\hdots,q_n) \right] + (-1)^n\phi(q_2,\hdots,q_{n-1})
+		f(q_1,\hdots, q_n) = q_1\cdot \phi(q_2,\hdots,q_n) + \left[\sum\limits_{i=1}^{n-1}(-1)^{i} \phi(q_1,\hdots,q_iq_{i+1},\hdots,q_n) \right] + (-1)^n\phi(q_1,\hdots,q_{n-1})
 	\end{equation*} 
 	
 	Los cociclos y cobordes heredan de $A$ una estructura de grupo abeliano. A estos grupos los denotamos $Z^n_\varphi(Q,A)$ y $B^n_\varphi(Q,A)$ respectivamente.

@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{pkgs/TFG}
 
-\usepackage{amsfonts, amsmath, amssymb, amsthm}
+\usepackage{amsfonts, amsmath, amssymb, amsthm, mathtools}
 \usepackage{hyperref}
 \usepackage{tikz,pgfplots,pkgs/quiver}
 \usetikzlibrary{positioning, babel}
@@ -51,7 +51,7 @@
 \newcommand{\extension}[5]{1\xrightarrow{} #3 \xrightarrow{#1} #4\xrightarrow{#2} #5 \xrightarrow{} 1}
 
 %\includeonly{Extensiones/split.tex}
-\includeonly{Hall/hall.tex}
+%\includeonly{Hall/hall.tex}
 \begin{document}
 \renewcommand{\tablename}{Tabla}
 \frontmatter
@@ -65,7 +65,7 @@
 %\maketitle
 \thispagestyle{empty}
 \pagestyle{plain}
-%\tableofcontents
+\tableofcontents
 \clearpage{\pagestyle{empty}\cleardoublepage}
 \pagestyle{fancy}
 %\fancyhf{}
@@ -80,12 +80,12 @@
 \mainmatter
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter. #1}{}}
 % Extensiones
-%\include{Extensiones/sucio.tex}
-%\include{Extensiones/extensiones.tex}
-%\include{Extensiones/split.tex}
-%\include{Extensiones/abelian.tex}
+\include{Extensiones/sucio.tex}
+\include{Extensiones/extensiones.tex}
+\include{Extensiones/split.tex}
+\include{Extensiones/abelian.tex}
 %\input{Extensiones/central.tex}
-%\incluir{extensions}
+\incluir{extensions}
 
 \include{Hall/hall.tex}
 \include{Transfer/transfer.tex}

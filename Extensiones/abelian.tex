@@ -1,13 +1,13 @@
 % !TeX root=../tfg2.tex
 
-\section{Extensiones con núcleo abeliano}\label{sec:ab}
+\section{Extensiones con kernel abeliano}\label{sec:ab}
  % q coño significa esto kernel de qué de pi(i)?
 % fijamos una acción de Q en A. Si dos extensiones son equivalentes tienen la misma acción. para cada Q-modulo sobre A tenemos tantas extensiones equivalentes como elementos tiene H2(Q,A)?
 A continuación estudiaremos el caso en que $N$ es un grupo abeliano que a partir de ahora denotaremos por $A$. 
 %Si consideramos la acción de $E$ por conjugación sobre $i(A)$, la acción restringida a $i(A)$ es trivial y por tanto está contenida en el kernel de la acción. Esto induce una acción en el cociente $E/i(A)\cong Q$, haciendo a $A$ un $Q$-módulo. 
  % esto no se entiende XD
  
- Por la Observación \ref{extact}, como $\Inn(A)$ es trivial, la acción de $Q$ en $A$ es un homomorfismo de grupos, lo que hace a $A$ un $Q$-módulo.
+ Por la Observación \ref{extact}, como $\Inn(A)$ es trivial, la acción de $Q$ en $A$ es un homomorfismo de grupos, lo que hace a $A$ un $Q$-módulo. A partir de ahora, fijaremos una acción de $Q$ en $A$ y estudiaremos todas las extensiones que dan lugar a dicha acción.
 
 \begin{equation}\label{exta}
 	1\to A\xrightarrow{i} E\xrightarrow{\pi} Q\to 1
@@ -17,18 +17,14 @@ A continuación estudiaremos el caso en que $N$ es un grupo abeliano que a parti
 	\varphi \colon Q \to Aut(A)
 \end{equation}
 
-\begin{definicion}
-	Denotamos por $\Ext_\varphi(Q,A)$ a las clases de extensiones equivalentes que dan lugar a la acción $\varphi$ de $Q$ en $A$.
-\end{definicion}
-
-Para estudiar esta extensión, consideramos una sección de $\pi$. Como $Q\cong E/i(A)$, dados $g,h\in Q$, $\pi\left(s(g)s(h)s(gh)^{-1}\right) = 1_{Q}$ por ser $\pi$ homomorfismo. Por tanto, $s(gh)$ y $s(g)s(h)$ distan en un elemento de $i(A)$ y podemos definir una función $\homo c {Q\times Q} {A}$ que mide cuánto dista $s$ de ser un homomorfismo:
+Para estudiar esta extensión, consideramos una sección $s$ de $\pi$. Como $Q\cong E/i(A)$, dados $g,h\in Q$, $\pi\left(s(g)s(h)s(gh)^{-1}\right) = 1_{Q}$ por ser $\pi$ homomorfismo. Por tanto, $s(gh)$ y $s(g)s(h)$ distan en un elemento de $i(A)$ y podemos definir una función $\homo c {Q\times Q} {A}$ que mide cuánto dista $s$ de ser un homomorfismo
 
 \begin{equation}
 	s(g)s(h) = i\left(c(g,h)\right)s(gh)
 \end{equation}
 
-% explicar que s(Q) \cong Q ya que s es inyectiva?
-Podemos recuperar la extensión \eqref{exta} a partir de la acción $\varphi$ que hemos fijado y de la función $c$. Como $E=\bigcup\limits_{q\in Q} i(A)s(q) = i(A)s(Q)$ es una unión disjunta, podemos expresar unívocamente cada elemento de $E$ como un producto de elementos de $i(A)$ y $s(Q)$. Es decir, tenemos una biyección $A\times Q \to E$. A partir del producto en $E$, podemos definir una operación de grupo en $A\times Q$, que denotaremos por $E_{c}$. Dados $a_1,a_2\in A, \ q_1,q_2\in Q$ tenemos:
+Podemos recuperar la extensión \eqref{exta} a partir de la acción $\varphi$ que hemos fijado y de la función $c$. 
+Como $E=\bigcup\limits_{q\in Q} i(A)s(q) = i(A)s(Q)$ es una unión disjunta, podemos expresar unívocamente cada elemento de $E$ como un producto de elementos de $i(A)$ y $s(Q)$. Es decir, tenemos una biyección $A\times Q \to E$. A partir del producto en $E$, podemos definir una operación de grupo en $A\times Q$, que denotaremos por $E_{c}$. Dados $(a_1,q_1),(a_2,q_2)\in A\times Q$ tenemos:
 \begin{align}\begin{split}
 i(a_1)s(q_1)i(a_2)s(q_2) &= i(a_1)i(q_1\cdot a_2)s(q_1)s(q_2) \\ &= i(a_1+ q_1\cdot a_2 + c(q_1,q_2))s(q_1q_2)
 \end{split}\end{align}
@@ -37,79 +33,106 @@ i(a_1)s(q_1)i(a_2)s(q_2) &= i(a_1)i(q_1\cdot a_2)s(q_1)s(q_2) \\ &= i(a_1+ q_1\c
 \begin{equation}\label{extop}
 (a_1,q_1)(a_2,q_2) = (a_1 + q_1\cdot a_2 + c(q_1,q_2),q_1q_2)
 \end{equation}
+
 Notese que este producto no depende directamente de la sección $s$ escogida. Por ello, supondremos que la sección $s$ es normalizada 
+
 \begin{equation}
 	s(1) = 1
 \end{equation}
-de donde obtenemos que
+de donde obtenemos que $c$ verifica la siguiente condición de normalización
 \begin{equation}\label{cocnorm}
 	c(1,q) = 0 = c(q,1)
 \end{equation}
-De esta forma, el isomorfismo $\homo f E E_c$ viene dado por $a\in A,\ q\in Q$ $i(a)s(q) \mapsto (a,q)$. La inclusión de $A$ a $E_c$ y la proyección a $Q$ son las canónicas, haciendo a la extensión $E_c$ equivalente a \eqref{exta}.
+De esta forma, el isomorfismo $\homo f {E_c} E$ viene dado por $f(a,q) = i(a)s(q)$. La inclusión de $A$ a $E_c$ y la proyección a $Q$ son las canónicas, haciendo a la extensión $E_c$ equivalente a \eqref{exta}.
 
+%Queda demostrada la siguiente proposición.
+%\begin{proposicion}\label{prop:equivcoc}
+%	La extensión $\extension {i'} {\pi'} A {E_c} Q$ es equivalente a \eqref{exta}.
+%\end{proposicion}
 
-%La siguiente proposición prueba que una función $\homo c {Q\times Q} A$ define una operación de grupo en $E_c$ con la acción $\varphi$ cuando es $c$ es un 2-cociclo.
+%La siguiente proposición prueba que una función $\homo c {Q\times Q} A$ define una operación de grupo en $E_c$ con la acción $\varphi$ cuando $c$ es un 2-cociclo.
 
 \begin{proposicion}\label{prop:res1}
-Sea $\varphi$ una acción de $Q$ en $A$ y $\homo c {Q\times Q} A$ una función que verifica la condición de normalización \eqref{cocnorm}. Entonces, la operación \eqref{extop} define una extensión de $Q$ por $A$ cuando $c$ es un 2-cociclo.
+Sea $\varphi$ una acción de $Q$ en $A$ y $\homo c {Q\times Q} A$ una función que verifica la condición de normalización \eqref{cocnorm}. Entonces, la operación \eqref{extop} define una extensión de $Q$ por $A$ cuando $c$ es un $2$-cociclo normalizado.
 	\begin{demostracion}
 	Para ver que la funcion define una operación de grupo comprobamos la asociatividad y la existencia de identidad e inversos.
-	
-	Imponiendo que $[(a_1,q_1)(a_2,q_2)](a_3,q_3) = (a_1,q_1)[(a_2,q_2)(a_3,q_3)]$ llegamos a la siguiente condición que garantiza que la operación sea asociativa
-	
-%	(a_1+q_1\cdot a_2 + c(q_1,q_2),q_1q_2)(a_3,q_3) = 
+	%	(a_1+q_1\cdot a_2 + c(q_1,q_2),q_1q_2)(a_3,q_3) = 
 %	(a_1+q_1\cdot a_2 + c(q_1,q_2) + q_1q_2\cdot a_3 + c(q_1q_2,q_3),q_1q_2q_3)
 	
 %	(a_1,q_1)(a_2+q_2\cdot a_3 + c(q_2,q_3),q_2q_3) = 
 %	(a_1 + q_1\cdot a_2 + q_1q_2\cdot a_3 + q_1\cdot c(q_2,q_3) + c(q_1,q_2q_3),q_1q_2q_3)
 	
 %	c(q_1,q_2) + c(q_1q_2,q_3) = q_1\cdot c(q_2,q_3) + c(q_1,q_2q_3)
-	
-	
+
+	\textit{(i) Asociatividad.}
+	Imponiendo que para todo $(a_i,q_i)\in A\times Q$ con $i=1,2,3$
+	\begin{equation*}
+		[(a_1,q_1)(a_2,q_2)](a_3,q_3) = (a_1,q_1)[(a_2,q_2)(a_3,q_3)]
+	\end{equation*} 
+	llegamos a que $c$ verifica la ecuación de un $2$-cociclo normalizado	
 	\begin{equation}\label{eq2coc}	
 		 q_1\cdot c(q_2,q_3) - c(q_1q_2,q_3) + c(q_1,q_2q_3) - c(q_1,q_2) = 0
 	\end{equation}
 	
-	% CAMBIAR A ACCIONES A IZQUIERDA
-	Identidad: $(0,1)$
-	
+	\textit{(ii) Identidad.} Comprobamos que $(0,1)$ es la identidad de $E_c$. 
 	Sea $(a,q)\in A\times Q$,
+	\begin{align*}
+		(0,1)(a,q) &= (0 + 1\cdot a + c(1,q), q) = (a,q) \\
+		(a,q)(0,1) &= (a+q\cdot 0 + c(q,1),q) = (a,q)
+	\end{align*}
 	
-	$(0,1)(a,q) = (0 + 1\cdot a + c(1,q), q) = (a,q)$
+	\textit{(iii) Inverso.} Se comprueba utilizando \eqref{eq2coc} que el inverso de $(a,q)\in A\times Q$ es $(-q^{-1}\cdot a -c(q^{-1},q),q^{-1})$.
+%	\begin{align*}
+%		(a,q)(-q^{-1}\cdot a -c(q^{-1},q),q^{-1}) 
+%		&= (a+q\cdot (-q^{-1}\cdot a -c(q^{-1},q)) + c(q,q^{-1}),1)   \\
+%		&= (a - a - q\cdot c(q^{-1},q)+c(q,q^{-1}),1) \\
+%		&= (c(q,1)-c(1,q),1) = (0,1) \\
+%		(-q^{-1}\cdot a -c(q^{-1},q),q^{-1})(a,q)
+%	\end{align*}
 	
-	$(a,q)(0,1) = (a+q\cdot 0 + c(q,1),q) = (a,q)$
-	
-	Inverso de $(a,q)\in A\times Q$: $(-q^{-1}\cdot a -c(q^{-1},q),q^{-1})$
-	
-	A continuación, comprobamos que la inclusión de $A$ a $A\times Q$ y la proyección a $Q$ definen homomorfismos y hacen a la sucesión exacta.
-	
-	$i(a_1)i(a_2)=(a_1,1)(a_2,1) = (a_1 + 1 \cdot a_2+c(1,1),1) = (a_1+a_2,1)=i(a_1+a_2)$
-	
-	$\pi((a_1,q_1)(a_2,q_2))=\pi((-,q_1q_2)) = q_1q_2 = \pi((-,q_1))\pi((-,q_2))$
-	
-	$\pi(i(a)) = \pi(a,1) = 1$
+	Finalmente, comprobamos que la inclusión $i$ y proyección $\pi$ canónicas de $A\times Q$ son homomorfismos y hacen a la sucesión exacta.
+	\begin{equation*}
+		i(a_1)i(a_2)=(a_1 + 1 \cdot a_2+c(1,1),1) = (a_1+a_2,1)=i(a_1+a_2)
+	\end{equation*}
+	\begin{equation*}
+		\pi((a_1,q_1)(a_2,q_2))=\pi(-,q_1q_2) = q_1q_2 = \pi(a_1,q_1)\pi(a_2,q_2)
+	\end{equation*}
+	\begin{equation*}
+		\pi(i(a)) = \pi(a,1) = 1
+	\end{equation*}
 	\end{demostracion}
 \end{proposicion}
 
 \begin{proposicion}\label{prop:res2}
-	Sea $E$ una extensión de $Q$ por $A$ y $s_1,s_2$ dos secciones de $Q$ a $E$ y $c_1,c_2$ los cociclos asociados a $s_1$ y $s_2$. Entonces, $c_1$ y $c_2$ se diferencian en un $2$-coborde. Esto es, la extensión $E$ determina la clase $[c_1]\in H^2_\varphi(Q,A)$.
+	Sea $E$ una extensión de $Q$ por $A$ y $s_1,s_2$ dos secciones normalizadas de $Q$ a $E$ y $c_1,c_2$ los cociclos asociados a $s_1$ y $s_2$. Entonces, $c_1$ y $c_2$ se diferencian en un $2$-coborde normalizado. %Esto es, la extensión $E$ determina la clase $[c_1]\in H^2_\varphi(Q,A)$.
 	
 	\begin{demostracion}
-		La diferencia de $s_1$ y $s_2$ es una función $\homo e Q {A}$, $s_2(q) = i(e(q))s_1(q)$ % tecnicamente es una funcion en i(A)
+		La diferencia de $s_1$ y $s_2$ define una función $\homo e Q {A}$ por $s_2(q) = i(e(q))s_1(q)$.
+		
+		Cambiando la sección $s_2$ por $s_1$
 		\begin{align*}
 			i(c_2(g,h))s_2(gh) &= s_2(g)s_2(h) \\ &= i(e(g))s_1(g)i(e(h))s_1(h)\\ &= i(e(g) + g \cdot e(h)) s_1(g)s_1(h) \\ &= i(e(g) + g \cdot e(h) + c(g,h))s_1(gh)
 		\end{align*}
-		De donde obtenemos
+		obtenemos que la diferencia de $c_2$ y $c_1$ verifica la ecuación de un $2$-coborde
 		\begin{equation} 
 			(c_2-c_1)(g,h) = g \cdot e(h) - e(gh) + e(g)
 		\end{equation}
+		
+		Además, por ser $c_1$ y $c_2$ cociclos normalizados
+		\begin{equation*}
+			(c_2-c_1)(1,1) = e(1) = 0
+		\end{equation*}
+		$c_2-c_1$ es un coborde normalizado.
 	\end{demostracion}
 \end{proposicion}
 
-Hemos visto en \ref{prop:res1} que una extensión de $Q$ por $A$ viene dada por un $2$-cociclo normalizado y en \ref{prop:res2} que dos extensiones son equivalentes cuando los $2$-cociclos se diferencian en un $2$-coborde. Por tanto, queda demostrado el siguiente teorema.
+%En \ref{prop:equivcoc} hemos probado que la extens
+Hemos visto en \ref{prop:res1} que un $2$-cociclo normalizado da lugar a una extensión de $Q$ por $A$ y en \ref{prop:res2} que dos extensiones son equivalentes cuando los $2$-cociclos normalizados se diferencian en un $2$-coborde normalizado. La elección de cociclos normalizados es valida ya que como se ha visto en la Proposición \ref{prop:normcoc}, todo $2$-cociclo es cohomólogo a uno normalizado. En el Apéndice $\ref{apen:norm}$ se da la expresión de $E_c$ para un cociclo no normalizado.
+
+Queda demostrado el siguiente teorema. % Como se dice cuando algo no pierde generalidad
 
 \begin{teorema}\label{h2}
-	Sea $A$ un $Q$-módulo dado por una acción $\homo \varphi Q {Aut(A)}$. Entonces, las extensiones equivalentes de $Q$ por $A$ están en correspondencia uno a uno con los elementos del segundo grupo de cohomología.
+	Sea $A$ un $Q$-módulo dado por una acción $\homo \varphi Q {Aut(A)}$. Entonces, las extensiones salvo equivalencia de $Q$ por $A$ están en correspondencia uno a uno con los elementos del segundo grupo de cohomología.
 	\begin{equation*}
 		\Ext_{\varphi}(Q,A)\cong H^2_{\varphi}(Q,A)
 	\end{equation*}
@@ -122,7 +145,13 @@ Hemos visto en \ref{prop:res1} que una extensión de $Q$ por $A$ viene dada por 
 	\end{demostracion}
 \end{observacion}
 
+% hablar de la estructura de grupo de H2 (suma de cociclos es cociclo): de esto hablo en la definicion de cociclo
+% mencionar que es no vacio
+\begin{proposicion}\label{extsum}
+	Sean $[E_1],[E_2]\in Ext(Q,A)$ dos extensiones y $[c_1],[c_2]\in H^2(Q,A)$ sus cociclos asociados, podemos definir la suma $[E_1] + [E_2]$ como la clase de extensiones equivalentes asociada a $[c1+c2]\in H^2(Q,A)$. Es decir, $Ext_\varphi(Q,A)$ tiene una estructura de grupo abeliano heredada de $H^2(Q,A)$.
+\end{proposicion}
 
+En el Apéndice \ref{baersum}, se da otra forma de construir la suma anterior sin el uso de cociclos.
 
 \subsection{Teorema de Schur-Zassenhaus. Caso abeliano}
 

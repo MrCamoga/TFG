@@ -101,31 +101,30 @@ A continuación se dan unos ejemplos conocidos de extensiones de grupos.
 	\end{demostracion}
 \end{proposicion}
 
-El siguiente ejemplo muestra que la equivalencia de extensiones es más fuerte que ser un isomorfismo. 
+El siguiente ejemplo muestra que la equivalencia de extensiones es más fuerte que tener grupos centrales isomorfos. 
 % ejemplo, poner dem en apendice?
 \begin{ejemplo}
-	Las dos extensiones siguientes de $\Z_3$ por $\Z_3$ no equivalentes son isomorfas a $\Z_9$.
+	Las extensiones $\extension {\times 3} {\times n} {\Z_3} {\Z_9} {\Z_3}$ para $n=1,2$ no son equivalentes.
 	% https://q.uiver.app/?q=WzAsMTAsWzAsMCwiMSJdLFsxLDAsIlxcbWF0aGJie1p9XzMiXSxbMiwwLCJcXG1hdGhiYntafV85Il0sWzMsMCwiXFxtYXRoYmJ7Wn1fMyJdLFs0LDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiXFxtYXRoYmJ7Wn1fMyJdLFsyLDEsIlxcbWF0aGJie1p9XzkiXSxbMywxLCJcXG1hdGhiYntafV8zIl0sWzQsMSwiMSJdLFswLDFdLFsxLDIsIlxcdGltZXMgMyJdLFsyLDMsIlxcdGltZXMgMSJdLFszLDRdLFs1LDZdLFs2LDcsIlxcdGltZXMgMyJdLFs3LDgsIlxcdGltZXMgMiJdLFs4LDldLFsxLDYsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiwxLCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNywiZiIsMl0sWzMsOCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDMsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-\[\begin{tikzcd}
-	1 & {\Z_3} & {\Z_9} & {\Z_3} & 1 \\
-	1 & {\Z_3} & {\Z_9} & {\Z_3} & 1
-	\arrow[from=1-1, to=1-2]
-	\arrow["{\times 3}", from=1-2, to=1-3]
-	\arrow["{\times 1}", from=1-3, to=1-4]
-	\arrow[from=1-4, to=1-5]
-	\arrow[from=2-1, to=2-2]
-	\arrow["{\times 3}", from=2-2, to=2-3]
-	\arrow["{\times 2}", from=2-3, to=2-4]
-	\arrow[from=2-4, to=2-5]
-	\arrow[shift left=1, no head, from=1-2, to=2-2]
-	\arrow[shift left=1, no head, from=2-2, to=1-2]
-	\arrow["f"', from=1-3, to=2-3]
-	\arrow[shift left=1, no head, from=1-4, to=2-4]
-	\arrow[shift left=1, no head, from=2-4, to=1-4]
-\end{tikzcd}\]
+%\[\begin{tikzcd}
+%	1 & {\Z_3} & {\Z_9} & {\Z_3} & 1 \\
+%	1 & {\Z_3} & {\Z_9} & {\Z_3} & 1
+%	\arrow[from=1-1, to=1-2]
+%	\arrow["{\times 3}", from=1-2, to=1-3]
+%	\arrow["{\times 1}", from=1-3, to=1-4]
+%	\arrow[from=1-4, to=1-5]
+%	\arrow[from=2-1, to=2-2]
+%	\arrow["{\times 3}", from=2-2, to=2-3]
+%	\arrow["{\times 2}", from=2-3, to=2-4]
+%	\arrow[from=2-4, to=2-5]
+%	%\arrow[shift left=1, no head, from=1-2, to=2-2]
+%	%\arrow[shift left=1, no head, from=2-2, to=1-2]
+%	%\arrow["f"', from=1-3, to=2-3]
+%	%\arrow[shift left=1, no head, from=1-4, to=2-4]
+%	%\arrow[shift left=1, no head, from=2-4, to=1-4]
+%\end{tikzcd}\]
 	\begin{demostracion} %$\Z_9$ tiene un único subgrupo de orden $3$ y por tanto la inclusión es única. Para la proyección, se debe mandar el $\bar1$ de $\Z_9$ al $\bar1$ o $\bar2$ de $\Z_3$, lo que da lugar a las dos extensiones mostradas.
-	
-		Un automorfismo $f$ de $\Z_9$ viene dado por $f(x) = kx$ con $x\in \Z_9$ y $k\in \Z_9^{\times} = \{1,2,4,5,7,8\}$		 
+		Lo probamos por reducción al absurdo. Supongamos que existe $\homo f {\Z_9} {\Z_9}$ que haga a las dos extensiones equivalentes. Un automorfismo $f$ de $\Z_9$ viene dado por $f(x) = kx$ con $x\in \Z_9$ y $k\in \Z_9^{\times} = \{1,2,4,5,7,8\}$		 
 		
 		Para que $\pi_2\circ f = \pi_1$, $(\times2\circ f)(x) = 2kx = x \mod 3$, $k \equiv 2 \mod 3$, por lo que $k = 2,5,8$.
 		
@@ -139,7 +138,7 @@ El siguiente ejemplo muestra que la equivalencia de extensiones es más fuerte q
 	La equivalencia de extensiones es una relación de equivalencia.
 	\begin{demostracion}
 		\begin{enumerate}
-			\item Reflexiva: $E$ es equivalente a sí misma tomando $f=1_E$
+			\item Reflexiva: $E$ es equivalente a $E$ tomando $f=1_E$.
 			\item Simétrica: Si $\homo f {E_1} {E_2}$ es una equivalencia, por la Proposición \eqref{prop:eqiso}, $\homo {f^{-1}} {E_2} {E_1}$ es una equivalencia. 
 			\item Transitiva: Si $\homo f {E_1} {E_2}$ y $\homo g {E_2} {E_3}$ son equivalencias, $g\circ f\circ i_1 = g\circ i_2 = i_3$ y $\pi_1 \circ g \circ f = \pi_2 \circ f = \pi_3$, entonces $\homo {g\circ f} {E_1} {E_3}$ es una equivalencia.
 		\end{enumerate}

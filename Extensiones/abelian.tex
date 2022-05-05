@@ -155,30 +155,7 @@ En el Apéndice \ref{baersum}, se da otra forma de construir la suma anterior si
 
 \subsection{Teorema de Schur-Zassenhaus. Caso abeliano}
 
-\begin{lema}\label{lem:trivh2}% por favor revisar los indices antes de publicarlo
-	% dicho de otra forma, H^n(Q,A) es un Z_m-modulo donde m=|Q|
-	Sea $Q$ un grupo y $A$ un grupo abeliano con $\mcd(\ord{Q}, \ord{A}) = 1$. Entonces $H^n(Q,A)$ es trivial para todo $n\in\Z^+$.
-	\begin{demostracion}
-		Sea $c$ un $n$-cociclo
-		\begin{multline}\label{eq:ncocycle}
-			q_1\cdot c(q_2,\hdots,q_{n+1}) + \left[\sum\limits_{i=1}^{n} (-1)^i c(q_1,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] + \\ + (-1)^{n+1}c(q_1,\hdots,q_n) = 0
-		\end{multline}
-		
-		Definiendo $\tilde c(q_1,\hdots,q_{n-1}) = {\displaystyle \sum_{q_n\in Q} c(q_1,\hdots,q_{n})}$ y haciendo la suma en \eqref{eq:ncocycle} para cada $q_{n+1} \in Q$
-		\begin{multline*}
-			q_1\cdot \tilde c(q_2,\hdots,q_n) + \left[\sum\limits_{i=1}^{n-1}(-1)^i \tilde c(q_1,\hdots,q_iq_{i+1},\hdots,q_{n}) \right] +\\+ (-1)^n\tilde c(q_1,\hdots,q_{n-1})+ \ord{Q}(-1)^{n+1} c(q_1,\hdots,q_n) = 0
-		\end{multline*}
-		
-		Como $\mcd(\ord{Q}, \ord{A}) = 1$, podemos multiplicar por $k \equiv (-1)^n\ord{Q}^{-1} \mod \ord{A}$
-		\begin{multline*}
-			c(q_1,\hdots,q_n) = q_1\cdot k\tilde c(q_2,\hdots,q_n) + \\ + \left[\sum\limits_{i=1}^{n-1}(-1)^i k\tilde c(q_1,\hdots,q_iq_{i+1},\hdots,q_{n}) \right] + (-1)^nk\tilde c(q_1,\hdots,q_{n-1}) 
-		\end{multline*}
-		
-		El cociclo $c$ verifica la ecuación de un coborde para la función $k \tilde c$ y por tanto $H^n(Q,A)$ es trivial.
-		
-		
-	\end{demostracion}
-\end{lema}
+
 
 \begin{teorema}\label{thmschurab} Sea $G$ un grupo finito y sea $N \norm G$ abeliano, $\ord{N}=n$ y $\ord{G:N}=m$ con $\mcd(n,m)=1$. Entonces $G$ contiene subgrupos de orden $m$ y dos cualesquiera son conjugados.
 	\begin{demostracion}
@@ -207,8 +184,8 @@ En el Apéndice \ref{baersum}, se da otra forma de construir la suma anterior si
 %		\end{equation}
 %		vemos que $a$ verifica la ecuación de un $1$-coborde para la función $k\tilde a$ y $H^1(Q,N)$ es trivial. Por el Teorema $\ref{h1}$, todas las escisiones son $N$-conjugadas y por tanto son conjugadas.
 
-		Por el Lema \ref{lem:trivh2}, $H^2(Q,N)$ es trivial y por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $N$. Esto prueba la parte de existencia.
+		Por el Teorema \ref{thm:trivialH}, $H^2(Q,N)$ es trivial y por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $N$. Esto prueba la parte de existencia.
 		
-		Para la conjugación, cualquier subgrupo $\tilde Q$ de $G$ de orden $m$, al ser $\mcd(n,m)=1$, tiene intersección trivial con $N$ y la proyección sobre $G/N$ es inyectiva. Por tanto, $\tilde Q$ es una escición de $G$. Por el mismo lema, $H^1(Q,N)$ es trivial y por el Teorema \ref{h1} todas las escisiones de la extensión $G$ son $N$-conjugadas y por tanto conjugadas. 
+		Para la conjugación, cualquier subgrupo $\tilde Q$ de $G$ de orden $m$, al ser $\mcd(n,m)=1$, tiene intersección trivial con $N$ y la proyección sobre $G/N$ es inyectiva. Por tanto, $\tilde Q$ es una escisión de $G$. Por el mismo teorema, $H^1(Q,N)$ es trivial y por el Teorema \ref{h1} todas las escisiones de la extensión $G$ son $N$-conjugadas y por tanto conjugadas. 
 	\end{demostracion}
 \end{teorema}

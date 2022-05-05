@@ -4,24 +4,6 @@
 
 %Esto son cosas a sucio para meter en el capítulo de extensiones o en uno previo de cohomología.
 
-% definir Q modulos
-% cociclos cobordes
-\begin{definicion}
-	Sea $A$ un $Q$-módulo dado por una acción a izquierdas $\homo \varphi Q A$ y $n\in\N$. 
-	Un $n$-cociclo es una función $\homo f {Q^n} A$ tal que $\forall q_1,\hdots,q_{n+1}\in Q$ se verifica
-	\begin{multline*}
-	 q_1\cdot f(q_2,\hdots,q_{n+1}) + \left[\sum\limits_{i=1}^{n} (-1)^i f(q_1,\hdots,q_iq_{i+1},\hdots,q_{n+1}) \right] + \\ + (-1)^{n+1}f(q_1,\hdots,q_n) = 0
-	\end{multline*}
-	
-	Un $n$-coborde es una función $\homo f {Q^n} A$ tal que existe una función $\homo \phi {Q^{n-1}} A$ tal que
-	
-	\begin{multline*}
-		f(q_1,\hdots, q_n) = q_1\cdot \phi(q_2,\hdots,q_n) + \left[\sum\limits_{i=1}^{n-1}(-1)^{i} \phi(q_1,\hdots,q_iq_{i+1},\hdots,q_n) \right] + \\ + (-1)^n\phi(q_1,\hdots,q_{n-1})
-	\end{multline*} 
-	
-	Los cociclos y cobordes heredan de $A$ una estructura de grupo abeliano. A estos grupos los denotamos $Z^n_\varphi(Q,A)$ y $B^n_\varphi(Q,A)$ respectivamente.
-\end{definicion}
-
 \begin{definicion}
 	Un $2$-cociclo $\homo c {Q\times Q} A$ se dice que es normalizado cuando $c(1,1)= 0$
 \end{definicion}

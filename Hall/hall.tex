@@ -2,29 +2,77 @@
 
 \chapter{Teoremas de Hall}
 
-%\begin{definicion} 
-%	\pi subgrupos
-%	O_\pi subgrupos
-%\end{definicion}
 
 % explicar que los pi subgrupos generalizan los p-subgrupos, hall subgrupos si existen son conjugados.
+
+En este capítulo se expone una generalización de los subgrupos de Sylow dada por Hall, en la que el orden de los subgrupos es coprimo con el índice. Estos subgrupos no tienen porqué existir pero cuando existen comparten muchas similitudes con los subgrupos de Sylow y como veremos, dan información sobre la resolubilidad del grupo.
+
+\section{Subgrupos de Hall}
+
 \begin{definicion}
 	Sea $G$ un grupo y $\pi$ un conjunto no vacío de primos. Llamamos $\pi$-subgrupo de $G$ a un subgrupo cuyo orden es un $\pi$-número, esto es, un número que es producto de primos de $\pi$.
 	Definimos un $\pi$-subgrupo de Sylow como un $\pi$-subgrupo maximal y al conjunto de los $\pi$-subgrupos de Sylow lo denotaremos por $\Syl \pi G$.
 \end{definicion}
+
 \begin{definicion}
-	Un $\pi$-subgrupo $H$ de $G$ decimos que es un $\pi$-subgrupo de Hall si $\ord{G:H}$ es un $\pi'$-número, es decir, un número que no es divisible por ningún primo de $\pi$. Denotaremos por $\Hall \pi G$ al conjunto de los $\pi$-subgrupos de Hall.
+	Un $\pi$-subgrupo $H$ de $G$ decimos que es un $\pi$-subgrupo de Hall si $\ord{H}$ es un $\pi$-número y $\ord{G:H}$ es un $\pi'$-número, es decir, un número que no es divisible por ningún primo de $\pi$. Denotaremos por $\Hall \pi G$ al conjunto de los $\pi$-subgrupos de Hall.
+\end{definicion}
+
+Claramente los $\pi$-subgrupos de Hall son $\pi$-subgrupos de Sylow, pero mientras que estos últimos siempre existen, la existencia de los subgrupos de Hall no está garantizada. %A continuación se dan dos ejemplos de grupos en los que no existen subgrupos de Hall y 
+
+\begin{ejemplo}
+	En $A_5$ no hay $\pi$-subgrupos de Hall para $\pi = \{2,5\}, \{3,5\}$. Por reducción al absurdo, si $A_5$ tuviese un subgrupo $H$ de índice menor que $5$, la acción sobre las coclases bien a derecha o a izquierda inducirían un homomorfismo de $A_5$ sobre $S_{A_5/H}\cong S_{\ord{A_5:H}}$. Como $A_5$ es simple y la acción no es trivial, el homomorfismo debería ser inyectivo pero esto es imposible ya que $\ord{A_5}=60 > n!$ para $n\leq 4$.
+	
+	% https://q.uiver.app/?q=WzAsNyxbMSwwLCJBXzUiXSxbMiwxXSxbMCwyLCJDXzJeMj1cXGxhbmdsZSAoMTIpKDM0KSwoMTMpKDI0KVxccmFuZ2xlIl0sWzEsMiwiQ18zPVxcbGFuZ2xlKDEyMylcXHJhbmdsZSJdLFsyLDIsIkNfNT1cXGxhbmdsZSgxMjM0NSlcXHJhbmdsZSJdLFsxLDMsIjEiXSxbMCwxLCJBXzQ9XFxsYW5nbGUgKDEyMyksKDEyKSgzNClcXHJhbmdsZSJdLFswLDQsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw1LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNSwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCw2LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMiwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDMsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+	
+	En general, se puede probar que un grupo $G$ simple no abeliano no puede tener subgrupos propios de índice menor que 5.
+\end{ejemplo}
+
+\begin{ejemplo}
+	Todo grupo de orden $p^aq^b$ con $p$ y $q$ primos tiene subgrupos de Hall porque los subgrupos de Hall propios son subgrupos de Sylow. El caso más pequeño no trivial que tiene subgrupos de $Hall$ para todo conjunto de primos es $|G|=2\cdot3\cdot5=30$, por ejemplo $D_{30} = \langle x,y \ | \ x^{15}=y^2=1 \ x^y = x^{-1}\rangle$.
+	
+	A continuación se muestra la rejilla de subgrupos de Hall de $D_{30}$. Estos subgrupos no son los únicos, pero como se verá al final del capítulo, en un grupo resoluble son todos conjugados.
+%	\begin{itemize}
+%		\item $2$-subgrupo de Hall: $C_2 = \langle y \rangle$
+%		\item $3$-subgrupo de Hall: $C_3 = \langle x^5 \rangle$
+%		\item $5$-subgrupo de Hall: $C_5 = \langle x^3 \rangle$
+%		\item $\{2,5\}$-subgrupo de Hall: $D_{10} = \langle x^3,y\rangle$ 
+%		\item $\{2,3\}$-subgrupo de Hall: $D_{6} = \langle x^5,y\rangle$ 
+%		\item $\{3,5\}$-subgrupo de Hall: $C_{15} = \langle x \rangle$
+%	\end{itemize}
+	
+	% https://q.uiver.app/?q=WzAsOCxbMSwwLCJEX3szMH0iXSxbMCwxLCJDX3sxNX09XFxsYW5nbGUgeFxccmFuZ2xlIl0sWzEsMSwiRF97MTB9PVxcbGFuZ2xlIHheMyx5XFxyYW5nbGUiXSxbMiwxLCJEXzY9XFxsYW5nbGUgeF41LHlcXHJhbmdsZSJdLFswLDIsIkNfMj1cXGxhbmdsZSB5XFxyYW5nbGUiXSxbMSwyLCJDXzM9XFxsYW5nbGUgeF41XFxyYW5nbGUiXSxbMiwyLCJDXzU9XFxsYW5nbGUgeF4zXFxyYW5nbGUiXSxbMSwzLCIxIl0sWzMsNSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNiwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDUsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSw2LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDAsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywwLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDcsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw3LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+	% https://q.uiver.app/?q=WzAsOCxbMSwwLCJEX3szMH0iXSxbMCwxLCJEX3sxMH09XFxsYW5nbGUgeF4zLHlcXHJhbmdsZSJdLFsxLDEsIkRfNj1cXGxhbmdsZSB4XjUseVxccmFuZ2xlIl0sWzIsMSwiQ197MTV9PVxcbGFuZ2xlIHhcXHJhbmdsZSJdLFswLDIsIkNfMj1cXGxhbmdsZSB5XFxyYW5nbGUiXSxbMSwyLCJDXzM9XFxsYW5nbGUgeF41XFxyYW5nbGUiXSxbMiwyLCJDXzU9XFxsYW5nbGUgeF4zXFxyYW5nbGUiXSxbMSwzLCIxIl0sWzEsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDAsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywwLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDcsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw3LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNSwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDYsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw1LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNCwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDQsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSw2LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+	% https://q.uiver.app/?q=WzAsOCxbMSwwLCJEX3szMH0iXSxbMCwxLCJEXzY9XFxsYW5nbGUgeF41LHlcXHJhbmdsZSJdLFsxLDEsIkRfezEwfT1cXGxhbmdsZSB4XjMseVxccmFuZ2xlIl0sWzIsMSwiQ197MTV9PVxcbGFuZ2xlIHhcXHJhbmdsZSJdLFswLDIsIkNfMj1cXGxhbmdsZSB5XFxyYW5nbGUiXSxbMSwyLCJDXzM9XFxsYW5nbGUgeF41XFxyYW5nbGUiXSxbMiwyLCJDXzU9XFxsYW5nbGUgeF4zXFxyYW5nbGUiXSxbMSwzLCIxIl0sWzEsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDAsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywwLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDcsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw3LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNSwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDYsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw0LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsNCwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDYsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSw1LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+	\[\begin{tikzcd}
+		& {D_{30}} \\
+		{D_6=\langle x^5,y\rangle} & {D_{10}=\langle x^3,y\rangle} & {C_{15}=\langle x\rangle} \\
+		{C_2=\langle y\rangle} & {C_3=\langle x^5\rangle} & {C_5=\langle x^3\rangle} \\
+		& 1
+		\arrow[no head, from=2-1, to=1-2]
+		\arrow[no head, from=2-2, to=1-2]
+		\arrow[no head, from=2-3, to=1-2]
+		\arrow[no head, from=3-1, to=4-2]
+		\arrow[no head, from=3-2, to=4-2]
+		\arrow[no head, from=3-3, to=4-2]
+		\arrow[no head, from=2-3, to=3-2]
+		\arrow[no head, from=2-3, to=3-3]
+		\arrow[no head, from=2-2, to=3-1]
+		\arrow[no head, from=2-1, to=3-1]
+		\arrow[no head, from=2-2, to=3-3]
+		\arrow[no head, from=2-1, to=3-2]
+	\end{tikzcd}\]
+\end{ejemplo}
+
+\begin{definicion}
+	Al subgrupo generado por todos los $\pi$-subgrupos normales de $G$ lo denotamos por $\Core \pi G$. Este subgrupo es a su vez un $\pi$-subgrupo ya que si $H,K\norm G$, $\ord{HK} = \frac{\ord{H}\ord{K}}{\ord{H\cap K}}$ es un $\pi$-número. Además es el único $\pi$-subgrupo normal maximal de $G$ y por tanto es característico en $G$.
 \end{definicion}
 
 \begin{observacion}
-	Claramente los $\pi$-subgrupos de Hall son $\pi$-subgrupos de Sylow, pero mientras que estos últimos siempre existen, la existencia de los subgrupos de Hall no está garantizada. Por ejemplo, en $A_5$ no hay $\pi$-subgrupos de Hall para $\pi = \{2,5\}, \{3,5\}$ ya que un grupo simple no abeliano no puede tener subgrupos propios de índice menor que 5.% explicar en una proposicion? 
+	Un $\pi$-subgrupo de Hall normal $N$ de un grupo $G$ es característico porque $N=\Core \pi G$.
 \end{observacion}
 
-\begin{definicion}
-	Al subgrupo generado por todos los $\pi$-subgrupos normales de $G$ lo denotamos por $\Core \pi G$. Este subgrupo es a su vez un $\pi$-subgrupo ya que si $H,K\norm G$, $\ord{HK} = \frac{\ord{H}\ord{K}}{\ord{H\cap K}}$ es un $\pi$-número. Además es el único $\pi$-subgrupo normal maximal de $G$.
-\end{definicion}
-
-\begin{proposicion}\label{prop:coreint}% al igual q pasa con los p-Sylow
+\begin{proposicion}\label{prop:coreint} % al igual q pasa con los p-Sylow
 	Sea $G$ un grupo y $\pi$ un conjunto de primos. Entonces, $\Core \pi G$ es la intersección de todos los $\pi$-subgrupos de Sylow de $G$.
 	\begin{demostracion}
 		Sea $M=\Core \pi G$ y $S\in \Syl \pi G$, entonces $MS$ es un $\pi$-subgrupo. Por maximalidad de $S$, se sigue que $M\leq MS = S$. Por otro lado, la intersección de todos los $\pi$-subgrupos de Sylow es un subgrupo característico y por tanto está contenida en $M$.
@@ -39,11 +87,31 @@
 		
 		$H\cap N$ es un subgrupo de $H$ y por tanto $\ord{H\cap N}$ es un $\pi$-número. Por ser $N$ normal, $HN$ es un subgrupo y $\ord{N:H\cap N} = \ord{HN:H}$ divide a $\ord{G:H}$ que es un $\pi'$-número. Por tanto, $H\cap N \in \Hall \pi N$.
 		
-		$\ord{HN:N} = \ord{H:H\cap N}$ es un $\pi$-número y $\ord{\frac{G}{N}:\frac{HN}{N}} = \frac{\ord{G}}{\ord{HN}}$ divide a $\frac{\ord{G}}{\ord{N}}$ por lo que es un $\pi'$-número y $HN/N \in \Hall \pi {G/N}$.
+		$\ord{HN:N} = \ord{H:H\cap N}$ es un $\pi$-número y $\ord{\frac{G}{N}:\frac{HN}{N}} = \ord{G:HN}$ divide a $\ord{G:H}$ por lo que es un $\pi'$-número y $HN/N \in \Hall \pi {G/N}$.
 	\end{demostracion}
 \end{proposicion}
 
+\section{Teoremas de Hall}
+
+
+%\begin{definicion}
+%	Sea $G$ un grupo y $H,K\leq G$. Se dice que $H$ y $K$ son complementos
+%	\begin{enumerate}
+%		\item $G=HK$
+%		\item $H\cap K=\{1\}$
+%	\end{enumerate}
+%\end{definicion}
+
+\begin{lema}[Argumento de Frattini]
+	Sea $G$ un grupo finito, $N\norm G$ y $P\in \Syl p N$, entonces $G=\Norm G P N$.
+	\begin{demostracion}
+		Sea $g\in G$. Por la normalidad de $N$, $P^g\leq N$ y por el Segundo Teorema de Sylow existe un $n\in N$ tal que $P^g=P^n$. Conjugando por $n^{-1}$ se tiene que $P^{gn^{-1}} = P$, es decir, $gn^{-1} \in \Norm G P$ y por tanto $g\in \Norm G P n \subseteq \Norm G P N$.
+	\end{demostracion}
+\end{lema}
+
 \begin{teorema}[Schur-Zassenhaus]\label{thm:schur} Sea $G$ un grupo finito y $N\norm G$ un subgrupo de Hall, es decir, $\ord{N}=n$ y $\ord{G:N}=m$ con $\mcd(n,m)=1$. Entonces $G$ contiene subgrupos de orden $m$ y son conjugados. % explicar que G es producto semidirecto de N por Q
+
+Equivalentemente, la extensión $\extension {}{} N G {G/N}$ escinde y $G$ es isomorfo a un producto semidirecto externo de $G/N$ por $N$.
 	\begin{demostracion}
 		El caso $N$ abeliano ya ha sido demostrado en el Teorema \ref{thmschurab}. Basta demostrar la existencia y la conjugación en el caso general.
 		
@@ -55,36 +123,6 @@
 		Observamos que $\ord{L:N\cap L} = \ord{LN:N} = m$ y que $N\cap L \norm L$ por el Segundo Teorema de Isomorfía.
 		
 		El subgrupo $C$ es no trivial ya que es el centro de un $p$-subgrupo. Aplicando inducción sobre el grupo $L/C$, existe $H/C\leq L/C$ de orden $m$ y volviendo a $G$ por el Teorema de Correspondencia, existe un subgrupo $H$ de índice $m$ en $C$. Aplicando el caso abeliano a $C$ y $H$ se concluye que existe un subgrupo $Q\leq H$ de orden $m$.
-%		\begin{figure}[h!]
-%			\begin{tikzpicture}[node distance=2cm, scale=1, transform shape]
-%				\title{Diagrama}
-%				
-%				\node(G) {$G$};
-%				\node(N)		[below right = 1cm and 3cm of G] {$N$};
-%				\node(L)		[below = 1.5cm of G] {$L=N_{G}(P)$};
-%				\node(NcL)	[below = 1.5cm of N] {$N\cap L$};
-%				\node(P)		[below = 0.5cm of NcL] {$P$};
-%				\node(C)		[below = 1.5cm of NcL] {$C=Z(P)$};
-%				\node(H)		[below = 1.5cm of L] {$H$};
-%				\node(Q)		[below = 1.5cm of H] {$Q$};
-%				\node(C1)	[below = 1.5cm of C] {$1$};
-%				
-%				
-%				\draw(G)-- node[above]{$\norm$} node[below]{$m$}(N);
-%				\draw(G)--(L);
-%				\draw(N)--(NcL);
-%				\draw(L)-- node[above]{$\norm$} node[below]{$m$}(NcL);
-%				\draw(L)--(H);
-%				%\draw(NcL)--(C);
-%				\draw(NcL)--(P);
-%				\draw(P)--(C);
-%				\draw(H)-- node[above]{$\norm$} node[below]{$m$}(C);
-%				\draw(H)--(Q);
-%				\draw(Q)-- node[above]{$\norm$} node[below]{$m$}(C1);
-%				\draw(C)--(C1);
-%	
-%			\end{tikzpicture}
-%		\end{figure}
 		
 		\textit{(ii) Conjugación (Caso N resoluble)}. Sean $Q_1$ y $Q_2$ subgrupos de $G$ de orden $m$. Como $N$ es resoluble $N'\neq N$, $N'\car N\norm G$ y por tanto, $N'\norm G$. Aplicando el caso abeliano a $N/N'$ y $G/N'$, $Q_1N'/N'$ y $Q_2N'/N'$ son conjugados. Por tanto, existe $g_1\in G$ tal que $Q_1^{g_1} \leq Q_2 N'$. % aclarar esto
 		$Q_1^{g_1}$ y $Q_2$ son subgrupos de orden $m$ en $Q_2N'$, aplicando inducción sobre la longitud derivada de $N$ se llega a $Q_1^{g_d}\leq Q_2N^{(d)} = Q_2$.
@@ -100,11 +138,31 @@
 		%Caso Opi!=1
 		Si $\Core \pi G\neq 1$, por la Proposición \ref{prop:coreint} $\Core \pi G \norm H\cap K$ y pasando al cociente, $G/\Core \pi G = 1$ por lo que $H/\Core \pi G$ y $K/\Core \pi G$ son conjugados.
 		
-		\textit{(iv) Conjugación (Caso general)}. Por el Teorema de Feit-Thompson, todos los grupos de orden impar son resolubless, y como $m$ y $n$ son coprimos, $m$ o $n$ es impar y $G/N$ o $N$ es resoluble.
+		\textit{(iv) Conjugación (Caso general)}. Por el Teorema de Feit-Thompson, todos los grupos de orden impar son resolubles, y como $m$ y $n$ son coprimos, $m$ o $n$ es impar y $G/N$ o $N$ es resoluble.
 	\end{demostracion}
 \end{teorema}
+% https://q.uiver.app/?q=WzAsOCxbMCwwLCJHIl0sWzAsMSwiTCJdLFswLDIsIkgiXSxbMCwzLCJRIl0sWzEsMSwiTiJdLFsxLDIsIk5cXGNhcCBMIl0sWzEsMywiQyJdLFsxLDQsIjEiXSxbMSwwXSxbMiwxXSxbMywyXSxbNywzLCJtIiwxXSxbNiwyLCJtIiwxXSxbNSwxLCJtIiwxXSxbNCwwLCJtIiwxXSxbNSw0XSxbNiw1XSxbNyw2XV0=
+%\[\begin{tikzcd}
+%	G \\
+%	L & N \\
+%	H & {N\cap L} \\
+%	Q & C \\
+%	& 1
+%	\arrow[from=2-1, to=1-1]
+%	\arrow[from=3-1, to=2-1]
+%	\arrow[from=4-1, to=3-1]
+%	\arrow["m"{description}, from=5-2, to=4-1]
+%	\arrow["m"{description}, from=4-2, to=3-1]
+%	\arrow["m"{description}, from=3-2, to=2-1]
+%	\arrow["m"{description}, from=2-2, to=1-1]
+%	\arrow[from=3-2, to=2-2]
+%	\arrow[from=4-2, to=3-2]
+%	\arrow[from=5-2, to=4-2]
+%\end{tikzcd}\]
 
-\begin{teorema}[Hall]
+% el teorema de hall generaliza el primer y segundo teorema de sylow
+
+\begin{teorema}[Hall]\label{thm:hall}
 	Sea $G$ un grupo finito resoluble. Entonces para todo conjunto de primos $\pi$ existen $\pi$-subgrupos de Hall y todos ellos son conjugados.
 	\begin{demostracion}
 		Lo demostramos por inducción sobre el orden de $G$. Basta probar que todo $\pi$-subgrupo de Sylow $S$ es también un $\pi$-subgrupo de Hall.
@@ -116,9 +174,12 @@
 		Si $R=1$, como $G$ es resoluble existe un subgrupo normal minimal $M$ de $G$ y es un $p$-subgrupo elemental abeliano. Entonces $M$ está contenido en $R' = \Core {\pi'} G$. $SR'/R'$ es un $\pi$-subgrupo de Hall por inducción y por tanto $S\in \Hall \pi G$. Si $S_2$ es otro $\pi$-subgrupo de Hall, por inducción existe $g\in G$ tal que $S^gR'/R'=S_2R'/R'$. Se sigue que $S^gR' = S_2R'$ y por tanto $S^g \leq S_2R'$. Tenemos que $R'\norm S_2R'$ y podemos aplicar el Teorema \ref{thm:schur} para concluir que $S$ y $S_2$ son conjugados en $S_2R'$ y por tanto también lo son en $G$.
 	\end{demostracion}
 \end{teorema}
+% mencionar que se puede rebajar la condicion de resolubilidad a pi-separable?
 
 \begin{lema}\label{lem:inthall} % basta que tengan indice finito pero como estamos trabajando con grupos finitos da igual
 	Sea $G$ un grupo finito y $H, K$ $p'$ y $q'$-subgrupos de Hall respectivamente, $p$ y $q$ primos distintos. Entonces $\ord{G:H\cap K} = \ord{G:H}\ord{G:K}$, es decir, $H\cap K$ es un $\{p,q\}'$-subgrupo de Hall.
+	
+	En general, para $H$ y $K$ $\pi'$ y $\tau'$-subgrupos de Hall con $\pi\cap\tau=\emptyset$ se tiene la misma igualdad y $H\cap K$ es un $(\pi\cup\tau)'$-subgrupo de Hall.
 	\begin{demostracion}
 	 	Por la formula del producto de subgrupos
 	 	\begin{equation*}
@@ -135,12 +196,14 @@
 
 % explicar que la existencia de p' subgrupos de Hall implica la existencia de pi subgrupos de hall por el lema anterior
 
-\begin{teorema}%[Recíproco de Hall]
+El recíproco del Teorema \ref{thm:hall} también es cierto. Es decir, un grupo $G$ en el que existen $\pi$-subgrupos de Hall para todo conjunto de primos $\pi$ es resoluble. Por el lema anterior, es suficiente comprobar que existen $p'$-subgrupos de Hall y el resto de subgrupos de Hall provienen de la intersección de estos.
+
+\begin{teorema}[Hall]
 	Sea $G$ un grupo finito tal que para todo primo $p$ existe un $p'$-subgrupo de Hall. Entonces $G$ es resoluble.
 	\begin{demostracion}
-		Lo demostramos por reducción al absurdo. Si el resultado es falso, existe un grupo $G$ de orden mínimo para el que no se cumple. Sea $N\norm G$ y $H$ un $p'$-subgrupo de Hall, por la Proposición \ref{prop:normalhall}, $H\cap N$ y $HN/N$ son $p'$-subgrupos de Hall de $N$ y $G/N$ respectivamente. Por minimalidad de $G$, $N$ y $G/N$ son resolubles. Esto es absurdo y por tanto $G$ no tiene subgrupos normales propios y es simple.
+		Lo demostramos por reducción al absurdo. Si el resultado es falso, existe un grupo $G$ de orden mínimo para el que no se cumple. Sea $N\norm G$ y $H$ un $p'$-subgrupo de Hall, por la Proposición \ref{prop:normalhall}, $H\cap N$ y $HN/N$ son $p'$-subgrupos de Hall de $N$ y $G/N$ respectivamente. Por minimalidad de $G$, $N$ y $G/N$ son resolubles. Esto implicaría que $G$ es resoluble y por tanto, $G$ no puede tener subgrupos normales propios y debe simple.
 		
-		Sea $\ord{G} = p_1^{a_1}\cdots p_n^{a_n}$ con $a_i>0$ y $p_i$ primos distintos. Sea $G_i$ un $p_i'$-subgrupo de Hall, es decir, $\ord{G:G_i} = p_i^{a_i}$. Tomemos $H=\bigcap_{i=3}^{n} G_i$, por el Lema \ref{lem:inthall}, $\ord{H}=p_1^{a_1}p_2^{a_2} < \ord{G}$ y $H$ es resoluble por minimalidad de $G$. Tomamos $N$ un subgrupo normal minimal de $H$, entonces $N$ es un $p$-grupo elemental abeliano donde $p=p_1$ o $p_2$. Sin perdida de generalidad, supongamos que es $p_1$.
+		Sea $\ord{G} = p_1^{a_1}\cdots p_n^{a_n}$ con $a_i>0$ y $p_i$ primos distintos. Por el Teorema de Burnside $n>2$ ya que sino $G$ sería resoluble. Sea $G_i$ un $p_i'$-subgrupo de Hall, es decir, $\ord{G:G_i} = p_i^{a_i}$. Tomemos $H=\bigcap_{i=3}^{n} G_i$, por el Lema \ref{lem:inthall}, $\ord{H}=p_1^{a_1}p_2^{a_2} < \ord{G}$ y $H$ es resoluble por minimalidad de $G$. Tomamos $N$ un subgrupo normal minimal de $H$, entonces $N$ es un $p$-grupo elemental abeliano donde $p=p_1$ o $p_2$. Sin perdida de generalidad, supongamos que es $p_1$.
 		
 		Por el lema, $\ord {H\cap G_2} = p_1^{a_1}$ y $H\cap G_2$ es un $p_1$-subgrupo de Sylow de $G$, de igual manera, $H\cap G_1$ es un $p_2$-subgrupo de Sylow. Un $p$-subgrupo normal está contenido en todos los $p$-subgrupos de Sylow y, por tanto, $N \leq H\cap G_2 < G$. Podemos escribir $G=(H\cap G_1)G_2$ ya que $\mcd(\ord{H\cap G_1},\ord{G_2}) = 1$. La clausura normal de $N$, $N^{G} = N^{(H\cap G_1)G_2} = N^{G_2}\leq G_2 < G$ es un subgrupo normal propio de $G$, lo que contradice la hipótesis de que $G$ sea simple.
 		

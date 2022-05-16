@@ -1,13 +1,10 @@
 % !TeX root=../tfg2.tex
 
 \section{Extensiones con kernel abeliano}\label{sec:ab}
- % q coño significa esto kernel de qué de pi(i)?
-% fijamos una acción de Q en A. Si dos extensiones son equivalentes tienen la misma acción. para cada Q-modulo sobre A tenemos tantas extensiones equivalentes como elementos tiene H2(Q,A)?
+
 A continuación estudiaremos el caso en que $N$ es un grupo abeliano que a partir de ahora denotaremos por $A$. 
-%Si consideramos la acción de $E$ por conjugación sobre $i(A)$, la acción restringida a $i(A)$ es trivial y por tanto está contenida en el kernel de la acción. Esto induce una acción en el cociente $E/i(A)\cong Q$, haciendo a $A$ un $Q$-módulo. 
- % esto no se entiende XD
- 
- Por la Observación \ref{extact}, como $\Inn(A)$ es trivial, la acción de $Q$ en $A$ es un homomorfismo de grupos, lo que hace a $A$ un $Q$-módulo. A partir de ahora, fijaremos una acción de $Q$ en $A$ y estudiaremos todas las extensiones que dan lugar a dicha acción.
+
+Por la Observación \ref{extact}, como $\Inn(A)$ es trivial, $Out(N)=Aut(N)$ y la acción de $Q$ en $A$ es un homomorfismo de grupos, lo que hace a $A$ un $Q$-módulo. A partir de ahora, fijaremos una acción de $Q$ en $A$ y estudiaremos todas las extensiones que dan lugar a dicha acción.
 
 \begin{equation}\label{exta}
 	1\to A\xrightarrow{i} E\xrightarrow{\pi} Q\to 1
@@ -17,7 +14,8 @@ A continuación estudiaremos el caso en que $N$ es un grupo abeliano que a parti
 	\varphi \colon Q \to Aut(A)
 \end{equation}
 
-Para estudiar esta extensión, consideramos una sección $s$ de $\pi$. Como $Q\cong E/i(A)$, dados $g,h\in Q$, $\pi\left(s(g)s(h)s(gh)^{-1}\right) = 1_{Q}$ por ser $\pi$ homomorfismo. Por tanto, $s(gh)$ y $s(g)s(h)$ distan en un elemento de $i(A)$ y podemos definir una función $\homo c {Q\times Q} {A}$ que mide cuánto dista $s$ de ser un homomorfismo
+% suena raro lo del axioma de eleccion aprende a escribir
+Para estudiar esta extensión, consideramos una sección $s$ de $\pi$, que en el caso de $Q$ infinito se puede asegurar que existe asumiendo el axioma de elección. Como $Q\cong E/i(A)$, dados $g,h\in Q$, $\pi\left(s(g)s(h)s(gh)^{-1}\right) = 1_{Q}$ por ser $\pi$ homomorfismo. Por tanto, $s(gh)$ y $s(g)s(h)$ distan en un elemento de $i(A)$ y podemos definir una función $\homo c {Q\times Q} {A}$ que mide cuánto dista $s$ de ser un homomorfismo
 
 \begin{equation}
 	s(g)s(h) = i\left(c(g,h)\right)s(gh)

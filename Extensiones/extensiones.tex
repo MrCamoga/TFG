@@ -1,43 +1,13 @@
 % !TeX root=../tfg2.tex
 
-% TODO
-% G-modulos
-
 \chapter{Extensiones de grupos}
 
 % introduccion explicar qué se va a hacer, mencionar que se darán interpretaciones de los grupos H^1 y H^2. comentar si eso que el H^3
-
 El objetivo de este capítulo es estudiar todas las formas de construir un grupo $E$ a partir de dos grupos $Q$ y $N$, de tal forma que $E$ tenga un subgrupo normal isomorfo a $N$ y cuyo cociente sea isomorfo $Q$. Para ello, definiremos una relación de equivalencia sobre el conjunto de extensiones y daremos una clasificación usando los grupos de cohomología $H^1$ y $H^2$ (Teoremas \ref{h1} y \ref{h2}).
 
 \section{Equivalencia de extensiones}
 
-\begin{definicion}
-	Una sucesión de grupos $G_i$ y homomorfismos $f_i$
-	\begin{equation*}
-		G_0\xrightarrow{f_1} G_1 \xrightarrow{f_2} G_2\xrightarrow{f_3} \cdots \xrightarrow{f_n} G_n \xrightarrow{f_{n+1}} \cdots
-	\end{equation*}
-	se dice que es exacta si $\Ker(f_{i+1})=\Image(f_i)$ para todo $i$.
-	
-	Diremos que es una sucesión exacta corta cuando es de la forma
-	\begin{equation}\label{eq:sec}
-		1\xrightarrow{} G_1 \xrightarrow{f_2} G_2\xrightarrow{f_3} G_3 \xrightarrow{} 1
-	\end{equation}
-\end{definicion}
-
-% poner mas bonito o redactar sin separar por lineas
-La definición de sucesión exacta corta dice que $f_2$ es inyectiva, $f_3$ sobreyectiva y $G_2/\Image(f_2)\cong G_3$.
-
-Observemos que el recíproco también es cierto. 
-Dados dos grupos $G$ y $H$ y $\homo f G H$ un epimorfismo, se puede construir la sucesión exacta corta $\extension i f {\Ker(f)} G H$.
-De igual manera, si $N \norm G$, entonces $\extension i \pi N G {G/N}$ es una sucesión exacta corta.
-
-%	\begin{demostracion}
-%		$\Ker(f_2)=\Image(f_1)=\{1\} \implies f_2$ es inyectiva.
-%		
-%		$\Image(f_3)=\Ker(f_4)=G_3 \implies f_3$ es sobreyectiva.
-%		
-%		$\Ker(f_3)=\Image(f_2) \cong G_1 \implies {G_2}/{f_2(G_1)}\cong G_3$ por el Primer Teorema de Isomorfía.
-%	\end{demostracion}
+% comentar que ya se ha explicado en el cpaitulo anterior las sucesiones exactas etc
 
 \begin{definicion}
 	Una extensión de un grupo $Q$ por un grupo $N$ es una sucesión exacta corta
@@ -72,9 +42,8 @@ De igual manera, si $N \norm G$, entonces $\extension i \pi N G {G/N}$ es una su
 	%\end{figure}
 \end{definicion}
 
-El interés está en clasificar todas las extensiones de $Q$ por $N$. La equivalencia de extensiones captura la idea de que los grupos centrales se construyen a partir de $N$ y $Q$ esencialmente de la misma forma, ya que $N$ y $Q$ se incluyen y proyectan de la misma manera.
+El interés está en clasificar todas las extensiones de $Q$ por $N$. La equivalencia de extensiones captura la idea de que los grupos centrales se construyen a partir de $N$ y $Q$ esencialmente de la misma forma, ya que $N$ y $Q$ se incluyen y proyectan de la misma manera. % repetitivo: de la misma forma/manera
 
-% ejemplos
 A continuación se dan unos ejemplos conocidos de extensiones de grupos.
 
 \begin{ejemplo}
@@ -91,17 +60,11 @@ A continuación se dan unos ejemplos conocidos de extensiones de grupos.
 \end{ejemplo}
 
 % reeescribir demostracion
-\begin{proposicion}\label{prop:eqiso}Dos extensiones equivalentes $\extension {i_{j}} {\pi_j} N {E_j} Q$ para $j=1,2$, dan lugar a grupos centrales isomorfos.
-	\begin{demostracion}
-		Para verlo, demostramos que $f$ es inyectiva y sobreyectiva.
-		
-		\textit{(i) Inyectiva. }Sea $x\in \Ker(f)$, por la conmutatividad del diagrama, $\pi_1(x)=\pi_2(f(x)) = \pi_2(1) = 1$. Entonces, $x\in \Ker(\pi_1) = \Image(i_1)$, por tanto existe $\tilde x\in N$ tal que $i_1(\tilde x)=x$, de nuevo por conmutatividad, $i_2(\tilde x)=f(i_1(\tilde x))=f(x)=1$ y como $i_2$ es inyectiva, $\tilde x = 1$ y $x = i_1(\tilde x)=1$.
-		
-		\textit{(ii) Sobreyectiva. } Sea $x\in \Image(f)$, como $\pi_1$ es sobreyectiva existe $ x_1\in E_1$ tal que $\pi_2(x)=\pi_1(x_1) = \pi_2(f(x_1))$. Por tanto, $x f(x_1)^{-1} \in \Ker(\pi_2)= \Image(i_2)$ y existe $\tilde x\in N$ tal que $f(i_1(\tilde x))=i_2(\tilde x)=x f(x_1)^{-1}$. Despejando $x = f(i_1(\tilde x) x_1)$, $f$ es sobreyectiva.
-	\end{demostracion}
-\end{proposicion}
+\begin{observacion}\label{prop:eqiso}
+	Por la Proposición \ref{prop:sflem}, dos extensiones equivalentes $\extension {i_{j}} {\pi_j} N {E_j} Q$ para $j=1,2$ dan lugar a grupos centrales isomorfos.
+\end{observacion}
 
-El siguiente ejemplo muestra que la equivalencia de extensiones es más fuerte que tener grupos centrales isomorfos. 
+El siguiente ejemplo muestra que el recíproco no es cierto, y por tanto la equivalencia de extensiones es más fuerte que tener grupos centrales isomorfos. 
 % ejemplo, poner dem en apendice?
 \begin{ejemplo}
 	Las extensiones $\extension {\times 3} {\times n} {\Z_3} {\Z_9} {\Z_3}$ para $n=1,2$ no son equivalentes.
@@ -139,7 +102,7 @@ El siguiente ejemplo muestra que la equivalencia de extensiones es más fuerte q
 	\begin{demostracion}
 		\begin{enumerate}
 			\item Reflexiva: $E$ es equivalente a $E$ tomando $f=1_E$.
-			\item Simétrica: Si $\homo f {E_1} {E_2}$ es una equivalencia, por la Proposición \eqref{prop:eqiso}, $\homo {f^{-1}} {E_2} {E_1}$ es una equivalencia. 
+			\item Simétrica: Si $\homo f {E_1} {E_2}$ es una equivalencia, por la Observación \eqref{prop:eqiso}, $\homo {f^{-1}} {E_2} {E_1}$ es una equivalencia. 
 			\item Transitiva: Si $\homo f {E_1} {E_2}$ y $\homo g {E_2} {E_3}$ son equivalencias, $g\circ f\circ i_1 = g\circ i_2 = i_3$ y $\pi_1 \circ g \circ f = \pi_2 \circ f = \pi_3$, entonces $\homo {g\circ f} {E_1} {E_3}$ es una equivalencia.
 		\end{enumerate}
 	\end{demostracion}
@@ -170,14 +133,22 @@ El estudio de las extensiones lo haremos haciendo uso de secciones, que se defin
 \end{observacion}
 
 \begin{observacion}
-	Dos extensiones $E$ y $E'$ equivalentes dan lugar a un mismo kernel abstracto. Por ello, para estudiar las extensiones salvo equivalencia podemos fijar una acción $\homo \varphi Q {\Aut(N)}$ y estudiar las extensiones que dan lugar a esa acción.
+	Dos extensiones $E$ y $E'$ equivalentes dan lugar a un mismo kernel abstracto.
 	\begin{demostracion}
 	 	$f\left(i(n)^{s(q)}\right) = i'(n)^{s'(q)}$
 	 \end{demostracion}
 \end{observacion}
 
+Por ello, para estudiar las extensiones salvo equivalencia procederemos de la siguiente forma.
+\begin{enumerate}
+	\item Determinar todas las acciones externas de $Q$ en $N$ que dan lugar a una extensión de grupos de $Q$ por $N$.
+	\item Para cada acción, construir todas las extensiones de $Q$ por $N$ que dan lugar a esa acción.
+	\item Ver cuáles de ellas son equivalentes.
+\end{enumerate}
+% podemos fijar una acción $\homo \varphi Q {\Aut(N)}$ y estudiar las extensiones que dan lugar a esa acción.
+
 \begin{definicion}
-	Denotaremos por $\Ext_\varphi(Q,N)$ al conjunto de clases de extensiones equivalentes que dan lugar a la acción externa $\varphi$ de $Q$ en $N$.
+	Sean $Q$ y $N$ grupos y $\varphi$ una acción de $Q$ en $N$. Denotamos por $\Ext_\varphi(Q,N)$ al conjunto de clases de extensiones equivalentes de $Q$ por $N$ que dan lugar a la acción $\varphi$.
 \end{definicion}
 
 

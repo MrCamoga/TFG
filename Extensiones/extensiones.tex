@@ -51,12 +51,25 @@ A continuación se dan unos ejemplos conocidos de extensiones de grupos.
 \end{ejemplo}
 
 \begin{ejemplo}
-	El grupo alternado $A_n$ se define como el kernel del homomorfimo del signo $\homo {\sgn} {S_n} {\{1,-1\}^\times}$ que manda una permutación a $1$ si es producto de un número par de transposiciones, y a $-1$ si es un número impar. Por tanto, $S_n$ es una extensión de $C_2$ por $A_n$ dada por $\extension i {\sgn} {A_n} {S_n} {C_2}$.
-	%$\extension i {sgn} {A_n} {S_n} {C_2}$
+	El grupo alternado $A_n$ se define como el kernel del homomorfimo del signo $\homo {\sgn} {S_n} {\{1,-1\}^\times}$ que manda una permutación a $1$ si es producto de un número par de transposiciones, y a $-1$ si es un número impar. Por tanto, $S_n$ es una extensión de $C_2$ por $A_n$.
+	\begin{equation*}
+		\extension i {sgn} {A_n} {S_n} {C_2}
+	\end{equation*}
+\end{ejemplo}
+
+\begin{ejemplo}
+	Siguiendo el ejemplo anterior, dado un cuerpo $\mathbb K$ y $n\in \Z^+$, el grupo especial lineal $\SL_n(\mathbb K)$ es el grupo de las matrices $n\times n$ sobre $\mathbb K$ con determinante $1$. $\SL_n(\mathbb K)$ es precisamente el kernel del homomorfismo determinante $\homo \det {\GL_n(\mathbb K)} {\mathbb K^\times}$. Así, $\GL_n(\mathbb K)$ es una extensión de $\mathbb K^\times$ por $\SL_n(\mathbb K)$.
+	\begin{equation*}
+		\extension i \det {\SL_n(\mathbb K)} {\GL_n(\mathbb K)} {\mathbb K^\times}
+	\end{equation*}
 \end{ejemplo}
 
 \begin{ejemplo}
 	Dados dos grupos $G$ y $H$, se construye la extensión trivial $\extension i \pi  G {G\times H} H$ con $G\times H$ el producto directo e $i$ y $\pi$ la inclusión y proyección canónicas.
+\end{ejemplo}
+
+\begin{ejemplo}
+	Más generalmente, dados dos grupos $G$ y $N$ y una acción de grupos $\homo \varphi G {Aut(N)}$, el producto semidirecto $N\rtimes_\varphi G$ es una extensión de $G$ por $N$.
 \end{ejemplo}
 
 % reeescribir demostracion

@@ -1,0 +1,358 @@
+% !TeX root=../tfg2.tex
+
+\chapter{Cohomología}
+
+% introduccion explicando que es util para el estudio de extensiones etc
+Introduccion 
+
+%\section{No sé dónde meter la definicion de sucesiones exactas}% preeliminares
+
+\section{G-módulos}
+
+\begin{definicion}
+	Sea $G$ un grupo. Un $G$-módulo izquierdo es un grupo abeliano $A$ junto a una acción de grupo a izquierda $\homo \varphi {G\times A} A$, que escribiremos como $\varphi(g,a)=g\cdot a$, compatible con la operación de grupo de $A$. Es decir, para todo $g,g_1,g_2\in G$ y $a,a_1,a_2\in A$ se verifica
+	\begin{enumerate}
+		\item $1\cdot a=a$
+		\item $g_1\cdot(g_2\cdot a)=(g_1g_2)\cdot a$
+		\item $g\cdot (a_1+a_2)=g\cdot a_1+g\cdot a_2$
+	\end{enumerate} 
+	
+	% esto igual aqui no pinta mucho pero bueno nose
+	Se sigue de (iii) que $g\cdot 0 = 0$ y que $q\cdot (-a) = - q\cdot a$ para todo $g\in G$ y $a\in A$.
+\end{definicion}
+
+\begin{definicion}
+	Dados dos $G$-módulos $A$ y $B$, un homomorfismo de $G$-módulos o $G$-homomorfismo es una función $\homo f A B$ que verifica
+	\begin{enumerate}
+		\item $f(a_1+a_2) = f(a_1)+f(a_2)$
+		\item $f(g\cdot a) = g\cdot f(a)$
+	\end{enumerate}
+	
+	Denotamos por $\FHom G A B$ al conjunto de $G$-homomorfismos de $A$ a $B$.
+\end{definicion}
+
+% demostrar o dejar como ejercicio
+\begin{ejercicio}
+	$\FHom G A B$ tiene estructura de $G$-módulo.
+\end{ejercicio}
+
+%
+%\begin{observacion}
+%	$\FHom Q A B$ con la operación suma $(f+g)(a) = f(a)+g(a)$ y la acción de $Q$ dada por $(q\cdot f)(a) = q\cdot f(a)$ hacen a $\FHom Q A B$ un $Q$-módulo.
+%	\begin{demostracion}
+%		La función $f(a)=0$ es la identidad
+%	\end{demostracion}
+%\end{observacion}
+
+\section{Anillos de grupos}
+
+Dado un grupo $G$ definimos el anillo $\Z[G]$ como el $\Z$-módulo libre generado por los elementos de $G$. Es decir, un elemento en $\Z[G]$ es de la forma
+\begin{equation*}
+	\sum_i a_ig_i
+\end{equation*}
+donde $g_i\in G$ y $a_i\in \Z$ y $a_i=0$ para casi todo $i$.
+
+Definiendo el producto en $\Z[G]$ de la siguiente forma
+\begin{equation*}
+	\left(\sum_i a_ig_i\right) \left(\sum_jb_jh_j\right) = \sum_i\sum_j a_ib_jg_ih_j
+\end{equation*}
+$\Z[G]$ tiene estructura de anillo con unidad. Notese que este anillo será conmutativo si y solo si $G$ es abeliano.
+
+\begin{observacion}
+	Una estructura de $G$-módulo sobre un grupo abeliano $A$ extiende de manera única a un $\Z[G]$-módulo por linealidad.
+	%De igual manera, un homomorfismo de $G$-módulos extiende a un homomorfismo de $\Z[G]$-módulos.
+	Por ello, a partir de ahora hablaremos indistintamente de $G$ y $\Z[G]$-módulos.
+\end{observacion}
+
+\section{Sucesiones exactas}
+
+% introducir aqui las sucesiones exactas
+\begin{definicion}
+	Una sucesión de grupos $G_i$ y homomorfismos $f_i$
+	\begin{equation*}
+		\cdots \xrightarrow{f_{n-2}} G_{n-1} \xrightarrow{f_{n-1}} G_n \xrightarrow{f_{n}} G_{n+1} \xrightarrow{f_{n+1}} \cdots
+	\end{equation*}
+	se dice que es exacta en $G_n$ si $\Image(f_{n-1}) = \Ker(f_{n})$. Diremos que es la sucesión es exacta si lo es para todo $G_n$.
+	
+	Diremos que es una sucesión exacta corta cuando es de la forma
+	\begin{equation}\label{eq:sec}
+		1\xrightarrow{} G_1 \xrightarrow{f_1} G_2\xrightarrow{f_2} G_3 \xrightarrow{} 1
+	\end{equation}
+\end{definicion}
+
+% poner mas bonito o redactar sin separar por lineas
+\begin{observacion}\label{obs:exact}
+	La definición de sucesión exacta corta dice que $f_2$ es inyectiva, $f_3$ sobreyectiva y $G_2/\Image(f_2)\cong G_3$.
+	 
+	Observemos que el recíproco también es cierto. % reciproco de q explicar mejor
+	Dados dos grupos $G$ y $H$ y $\homo f G H$ un epimorfismo, se puede construir la sucesión exacta corta $\extension i f {\Ker(f)} G H$.
+	De igual manera, si $N \norm G$, entonces $\extension i \pi N G {G/N}$ es una sucesión exacta corta.
+\end{observacion}
+%	\begin{demostracion}
+%		$\Ker(f_2)=\Image(f_1)=\{1\} \implies f_2$ es inyectiva.
+%		
+%		$\Image(f_3)=\Ker(f_4)=G_3 \implies f_3$ es sobreyectiva.
+%		
+%		$\Ker(f_3)=\Image(f_2) \cong G_1 \implies {G_2}/{f_2(G_1)}\cong G_3$ por el Primer Teorema de Isomorfía.
+%	\end{demostracion}
+
+%\begin{definicion}
+%	Sean $\extension {}{} A B C$ y $\extension {}{} {A'} {B'} {C'}$ dos sucesiones exactas. Un homomorfismo de sucesiones exactas
+%\end{definicion}
+
+\begin{proposicion}[Lema corto de los cinco]\label{prop:sflem}
+	Si las filas del siguiente diagrama conmutativo son exactas y $g$ y $h$ son isomorfismos entonces $f$ es un isomorfismo.
+	% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiQSJdLFsxLDEsIkEnIl0sWzIsMCwiQiJdLFsyLDEsIkInIl0sWzMsMCwiQyJdLFszLDEsIkMnIl0sWzQsMCwiMSJdLFs0LDEsIjEiXSxbMCwwLCIxIl0sWzAsMSwiMSJdLFswLDEsImYiXSxbMCwyLCJpIl0sWzIsNCwiXFxwaSJdLFsyLDMsImciXSxbMSwzLCJpJyIsMl0sWzMsNSwiXFxwaSciLDJdLFs0LDUsImgiXSxbNCw2XSxbOSwxXSxbOCwwXSxbNSw3XV0=
+	\[\begin{tikzcd}
+		1 & {A_1} & {B_1} & {C_1} & 1 \\
+		1 & {A_2} & {B_2} & {C_2} & 1
+		\arrow["g", from=1-2, to=2-2]
+		\arrow["{i_1}", from=1-2, to=1-3]
+		\arrow["{\pi_1}", from=1-3, to=1-4]
+		\arrow["f", from=1-3, to=2-3]
+		\arrow["{i_2}"', from=2-2, to=2-3]
+		\arrow["{\pi_2}"', from=2-3, to=2-4]
+		\arrow["h", from=1-4, to=2-4]
+		\arrow[from=1-4, to=1-5]
+		\arrow[from=2-1, to=2-2]
+		\arrow[from=1-1, to=1-2]
+		\arrow[from=2-4, to=2-5]
+	\end{tikzcd}\]
+	\begin{demostracion}
+		Para verlo, demostramos que $f$ es inyectiva y sobreyectiva.
+		
+		Comenzamos viendo que $f$ es inyectiva. Sea $x\in \Ker(f)$, por la conmutatividad del diagrama, $h(\pi_1(x))=\pi_2(f(x)) = \pi_2(1) = 1$. Entonces, $\pi_1(x)\in \Ker(h) = \{1\}$ y $x\in \Ker(\pi_1)$, por tanto existe $\tilde x\in A_1$ tal que $i_1(\tilde x)=x$, de nuevo por conmutatividad, $i_2(g(\tilde x))=f(i_1(\tilde x))=f(x)=1$ y como $i_2$ y $g$ son inyectivas, $\tilde x = 1$ y $x = i_1(\tilde x)=1$.
+		
+		Ahora vemos la sobreyectividad. Sea $x\in B_2$, como $\pi_1$ y $h$ son sobreyectivas existe $ x_1\in B_1$ tal que $\pi_2(x)=h(\pi_1(x_1)) = \pi_2(f(x_1))$. Por tanto, $x f(x_1)^{-1} \in \Ker(\pi_2)= \Image(i_2)$ y existe $\tilde x\in A_2$ tal que $i_2(\tilde x)=x f(x_1)^{-1}$. Usando que $g$ es isomorfismo, $i_2(\tilde x) = f(i_1(g^{-1}(\tilde x)))$. Despejando $x = f(i_1(g^{-1}(\tilde x)) x_1)$, $f$ es sobreyectiva.
+	\end{demostracion}
+\end{proposicion}
+
+
+
+\section{Complejos de cadenas}
+	
+%Sea $R$ un anillo. Un $R$-módulo graduado es una sucesión $C=\{C_n\}_{n\in \Z}$ de $R$-módulos. 
+%Una función de grado $r\in\Z$ entre dos $R$-módulos graduados $C$ y $C'$ es una sucesión de homomorfismos de $R$-módulos $f=\{\homo {f_n} {C_n} {C_{n+r}}\}_{n\in\Z}$.
+
+%Un complejo de cadenas es un par $(C,d)$ donde $C$ es un $R$-módulo graduado y $d$ es un 
+% la cohomologia mide como de lejos está el complejo de ser exacto.
+Sea $R$ un anillo conmutativo con unidad. Un $R$-módulo graduado es una sucesión de $R$-módulos $C=\{C_n\}_{n\in\Z}$. Diremos que los elementos del $R$-módulo $C_n$ tienen grado $n$.
+Definimos un mapa de grado $r$ entre dos $R$-módulos graduados $C$ y $C'$ como una sucesión de homomorfismos de $R$-módulos $f=\{\homo {f_n} {C_n} {C_{n+r}'}\}_{n\in\Z}$.
+
+Un complejo de cadenas sobre $R$ es el par $(C,d)$ donde $C$ es un $R$-módulo graduado y $\homo d C C$ un mapa de grado $-1$ llamado operador de borde que verifica $d_{n}\circ d_{n+1}=0$ para todo $n\in\Z$, escrito sin subíndices como $d^2 = 0$. Equivalentemente, el operador de borde verifica $\Image(d_{n+1})\subseteq \Ker(d_{n})$.
+
+\begin{equation}
+	\cdots  \xrightarrow{} C_{n+1} \xrightarrow{d_{n+1}} C_n \xrightarrow{d_n} C_{n-1} \xrightarrow{} \cdots 
+\end{equation}
+
+Definimos los $n$-ciclos y $n$-bordes como $Z_n(C)=\Ker(d_{n})$ y $B_n(C)=\Image(d_{n+1})$ respectivamente. Asimismo, definimos el $n$-ésimo grupo de homología del complejo $C$ como $H_n(C) = \frac{Z_n(C)}{B_n(C)}$. El complejo de cadenas $C$ será exacto si y solo si $H_n(C) = 0$ para todo $n\in\Z$. Así, los grupos de homología miden cómo de lejos está el complejo de ser exacto.
+
+En el caso en que el operador $d$ tenga grado $1$ en vez de $-1$, se dirá que $(C,d)$ es un complejo de cocadenas y $d$ un operador de coborde. Se escribirá todo con superíndices y con el prefijo \textit{co-} para distinguirlo de un complejo de cadenas. De manera análoga definimos los $n$-cociclos, $n$-cobordes y el $n$-ésimo grupo de cohomología como $Z^n(C)=\Ker(d^n)$, $B^n(C)=\Image(d^{n-1})$ y $H^n(C)=\frac{Z^n(C)}{B^n(C)}$.
+
+Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocadenas y siempre podemos pasar de uno a otro cambiando los índices $C^n = C_{-n}$. En la práctica, para que no sean equivalentes, se suele requerir que los complejos de cadenas verifiquen $C_n = 0$ para todo $n>0$ y los complejos de cocadenas $C^n=0$ para $n<0$.
+
+\section{Cohomología de grupos}
+
+%introduccion explicar que queremos construir como lo haremos, si eso quitar esta definicion y ponerlo en un parrafo
+
+\begin{definicion}
+	Sea $A$ un $G$-módulo con acción $\varphi$ y sea $n\in \N$. Denotamos por $C^n_\varphi(G,A)$ al conjunto de funciones de $G^n$ a $A$. Este conjunto junto con la operación $(f+g)(g_1,\ldots,g_n) = f(g_1,\ldots,g_n) + g(g_1,\ldots,g_n)$ para $f,g\in C^n$ y la acción de $G$ dada por $(g\cdot f)(g_1,\ldots,g_n) = g\cdot f(g_1,\ldots,g_n)$ para $f\in C^n$ y $g\in G$ hacen a $C^n_\varphi(G,A)$ un $G$-módulo. % de hecho es un ZQ-modulo de anillos 
+	%(f+g)(q_1,...,q_n) = f(q_1,...,q_n)+g(q_1,...,q_n)
+	% (qf)(q_1,...,q_n) = q f(q_1,...,q_n)
+	% ((q_1+q_2)f)(q_1,...,q_n) = q_1f(q_1,...,q_n) + q_2f(q_1,...,q_n)
+	A los elementos de $C^n_\varphi(G,A)$ los llamaremos $n$-cocadenas. A menudo escribiremos $C^n$ cuando esté claro de qué $G$-módulo estamos hablando. % esto suena cringe
+
+	%$C=\bigoplus_{n=0}^\infty C^n$ para $f\in C^r$ y $g\in C^s$ definimos el producto de $f$ y $g$ como $(fg)(q_1,\ldots,q_{r+s}) = f()$
+\end{definicion}
+
+
+\begin{definicion}
+	Dado $n\in \N$, el operador coborde $\homo {\partial^n} {C^n} {C^{n+1}}$ se define como
+	\begin{equation*}
+		\partial^n f = \sum\limits_{i=0}^{n+1} (-1)^{i} d_i f
+	\end{equation*}
+	donde el operador $d_i$ viene dado por 
+	\[
+		(d_if)(g_1,\ldots,g_n) = 
+		\begin{cases*} % confuso porque en la formula de arriba f \in C^n y aqui f\in C^{n-1}
+			g_1\cdot f(g_2,\ldots,g_n) 				& si $ i=0$ \\
+			f(g_1,\ldots,g_ig_{i+1},\ldots,g_n) 	& si $ 0 < i <n$ \\ %f(q_1,\ldots,q_{i-1},q_iq_{i+1},q_{i+2},\ldots,q_{n+1}) & si $ 0 < i <n+1$ \\
+			f(g_1,\ldots,g_{n-1}) 					& si $ i=n$
+		\end{cases*}
+	\]
+	Diremos que $\partial f$ es el coborde de $f$. % definir el operador \partial C -> C
+\end{definicion}
+
+%Es obvio que el operador coborde es homomorfismo de Q-modulos
+
+% dar indicacion o ejemplo del calculo
+\begin{lema}\label{lem:coborde}
+	Sea $f\in C^n$, entonces para todo $i=0,\ldots,n+1$ y $j=i,\ldots,n$
+	\begin{equation}
+		d_id_jf=d_{j+1}d_if
+	\end{equation}
+	\begin{demostracion}
+%		Para facilitar los calculos, expresaremos la $n$-tupla $(g_1,\ldots,g_n)$ como $(\ldots,1,g_1,\ldots,g_n,1,\ldots)$ donde las barras indica el inicio y fin de la tupla. De esta forma, tras aplicar $d_i$ y $d_j$, todo lo que quede a la izquierda se aplicara sobre $f$ y todo lo que quede a la derecha se ignorará. % o se aplicara a la derecha con acción trivial.
+%		
+%		$(d_i(d_j))(\ldots,1,g_1,\ldots,g_n,1,\ldots) = 
+%		d_j(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_n,1,\ldots) = 
+%		(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_{j+1}g_{j+2},\ldots,g_n,1,\ldots) $
+%		
+%		$(d_{j+1}(d_i))(\ldots,1,g_1,\ldots,g_n,1,\ldots) = 
+%		d_i(\ldots,1,g_1,\ldots,g_{j+1}g_{j+2},\ldots,g_n,1,\ldots) = 
+%		(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_{j+1}g_{j+2},\ldots,g_n,1,\ldots) $
+		
+		\begin{align*}
+			(\partial^2(\partial^1f))(g_1,g_2,g_3) 
+			& = g_1\cdot (\partial^1f)(g_2,g_3) - (\partial^1f)(g_1g_2,g_3) + (\partial^1f)(g_1,g_2g_3) - (\partial^1f)(g_1,g_2) \\
+			& = g_1g_2\cdot f(g_3) - g_1\cdot f(g_2g_3) + g_1\cdot f(g_2) \\
+			& - g_1g_2\cdot f(g_3) + f(g_1g_2g_3) - f(g_1g_2) \\
+			& + g_1\cdot f(g_2g_3) - f(g_1g_2g_3) + f(g_1) \\
+			& - g_1\cdot f(g_2) + f(g_1g_2) - f(g_1)
+		\end{align*}
+	\end{demostracion}
+\end{lema}
+
+\begin{teorema}\label{prop:cochaincomplex}
+	Sea $n\in \N$, entonces $\partial^{n+1}\partial^n = 0$, lo que hace a
+%	\begin{equation*}
+%		C^0 \xrightarrow{\partial^0} C^1 \xrightarrow{\partial^1} C^2\xrightarrow{\partial^2} \cdots
+%	\end{equation*}
+	$(C,\partial)$ un complejo de cocadenas.
+	\begin{demostracion}
+		Sea $f\in C^n$ %y $g_1,\ldots,g_{n+2}\in G$, entonces
+		
+		Para probarlo separaremos la siguiente suma en dos triangulos,  $j<i$ y $j\geq i$, aplicaremos el Lema \ref{lem:coborde} al segundo y finalmente reescribiremos los índices del sumatorio.
+		\begin{align*}
+		\partial^{n+1}(\partial^{n} f) 
+			&= \sum_{i=0}^{n+2} (-1)^i d_i(\partial^n f) = \sum_{i=0}^{n+2}\sum_{j=0}^{n+1} (-1)^{i+j} d_i(d_jf)\\
+			&= \sum_{0\leq j < i \leq n+2} (-1)^{i+j} d_i(d_jf)  + \sum_{0\leq i \leq j \leq n+1} (-1)^{i+j} d_i(d_jf)\\
+			&= \sum_{0\leq j < i \leq n+2} (-1)^{i+j} d_i(d_jf)  + \sum_{0\leq i \leq j \leq n+1} (-1)^{i+j} d_{j+1}(d_if) \\
+			&= \sum_{0\leq j < i \leq n+2} (-1)^{i+j} d_i(d_jf)  + \sum_{0\leq j < i \leq n+2} (-1)^{i+j-1} d_{i}(d_jf) \\
+			&= \sum_{0\leq j < i \leq n+2} (-1)^{i+j}(d_i(d_jf)-d_i(d_jf)) = 0
+		%(\partial^{n+1}(\partial_{n} f))(g_1,\ldots, g_{n+2}) = \sum\limits_{i=0}^{n+2}\sum\limits_{j=0}^{n+1} (-1)^{i+j} (d_i(d_jf))(g_1,\ldots, g_{n+2})
+		\end{align*}
+	\end{demostracion}
+\end{teorema}
+
+% simplificar esto haciendo referencia a la seccion de complejos de cocadenas y escribir solo lo de la accion 
+\begin{definicion}
+	La proposición anterior nos permite definir los grupos de $n$-cobordes y $n$-cociclos como 
+	\begin{align*}
+		B^n_\varphi(G,A) &= \Image(\partial^{n-1}) \\
+		Z^n_\varphi(G,A) &= \Ker(\partial^{n})
+	\end{align*}
+	
+	Con ellos podemos definir entonces el $n$-ésimo grupo de cohomología como 
+	\begin{equation}
+		H^n_\varphi(G,A) = \frac{Z^n_\varphi(G,A)}{B^n_\varphi(G,A)} = \frac{\Image(\partial^{n-1})}{\Ker(\partial^{n})}
+	\end{equation}
+	
+	Dado $f\in Z^n(G,A)$, denotaremos su clase de equivalencia por $[f]\in H^n(G,A)$. Diremos que dos cociclos que pertenecen a la misma clase son cohomólogos. 
+\end{definicion}
+
+\begin{teorema}\label{thm:trivialH}
+	% dicho de otra forma, H^n(Q,A) es un Z_m-modulo donde m=|Q|
+	Sea $A$ un $G$-módulo con $\mcd(\ord{G}, \ord{A}) = 1$. Entonces $H^n(G,A)$ es trivial para todo $n\in\Z^+$.
+	\begin{demostracion}
+		Sea $c\in Z^n(Q,A)$
+%		\begin{multline}\label{eq:ncocycle}
+%			q_1\cdot c(q_2,\hdots,q_{n+1}) + \left[\sum\limits_{i=1}^{n} (-1)^i c(q_1,\ldots,q_iq_{i+1},\hdots,q_{n+1}) \right] + \\ + (-1)^{n+1}c(q_1,\hdots,q_n) = 0
+%		\end{multline}		
+		\begin{equation}\label{eq:ncocycle}
+			\sum\limits_{i=0}^{n+1} (-1)^i(d_ic)(g_1,\ldots,g_{n+1}) = 0
+		\end{equation}
+		
+		Definiendo $\tilde c(g_1,\hdots,g_{n-1}) = {\displaystyle \sum_{g_n\in G} c(g_1,\hdots,g_{n})}$ y haciendo la suma en \eqref{eq:ncocycle} para cada $g_{n+1} \in G$
+%		\begin{multline*}
+%			q_1\cdot \tilde c(q_2,\hdots,q_n) + \left[\sum\limits_{i=1}^{n-1}(-1)^i \tilde c(q_1,\hdots,q_iq_{i+1},\hdots,q_{n}) \right] +\\+ (-1)^n\tilde c(q_1,\hdots,q_{n-1})+ \ord{Q}(-1)^{n+1} c(q_1,\hdots,q_n) = 0
+%		\end{multline*}
+		
+%		\begin{multline*}
+%			\sum\limits_{q_{n+1}\in Q}\sum\limits_{i=0}^{n+1} (-1)^i(d_ic)(q_1,\ldots,q_{n+1}) = \\ =			
+%			\sum\limits_{q_{n+1}\in Q}d_0c(q_1,\ldots,q_{n+1}) + 
+%			\sum\limits_{q_{n+1}\in Q}\sum\limits_{i=i}^{n-1} (-1)^i(d_ic)(q_1,\ldots,q_{n+1}) + \\ +
+%			\sum\limits_{q_{n+1}\in Q}d_n c(q_1,\ldots,q_{n+1}) + 
+%			\sum\limits_{q_{n+1}\in Q}d_{n+1}c(q_1,\ldots,q_{n+1}) = \\ =			
+%			q_1 \cdot \tilde c(q_1,\ldots,q_n) + 
+%			\sum\limits_{i=i}^{n-1} (-1)^i(d_i\tilde c)(q_1,\ldots,q_n) + \\ +
+%			(-1)^n\tilde c(q_1,\ldots,q_{n-1}) + 
+%			(-1)^{n+1}\ord{Q}\tilde c(q_1,\ldots,q_n) = 0
+%		\end{multline*}
+
+		\begin{multline*}
+			\sum\limits_{g_{n+1}\in G}\sum\limits_{i=0}^{n+1} (-1)^i(d_ic)(g_1,\ldots,g_{n+1}) = \\ =			
+			%g_1 \cdot \tilde c(g_2,\ldots,g_n) + 
+			\sum\limits_{i=0}^{n} (-1)^i(d_i\tilde c)(g_1,\ldots,g_n) +
+			(-1)^{n+1}\ord{G} c(g_1,\ldots,g_n) = 0
+		\end{multline*}
+		
+		Como $\mcd(\ord{G}, \ord{A}) = 1$, por la identidad de Bezout existe $k\in \N$ tal que $k \ord{G} \equiv (-1)^{n} \mod \ord{A}$. Multiplicando por $k$
+		\begin{equation*}
+			c(g_1,\hdots,g_n) = \sum\limits_{i=0}^n (-1)^i(d_i k\tilde c)(g_1,\ldots,g_n)
+		\end{equation*}
+		
+		El cociclo $c$ es el coborde de la función $k \tilde c$ y por tanto $H^n(G,A)$ es trivial.
+		
+		
+	\end{demostracion}
+\end{teorema}
+
+\section{Cociclos normalizados y $H^2$}
+
+ \textit{Resultados que se usan en el capitulo de extensiones}
+
+%\begin{definicion}% en general un n-cociclo f es normalizado cuando f(q_1,...,q_n) = 0 si cualquiera de los q_i = 0
+%	Un $2$-cociclo $c\in Z^2(Q,A)$ se dice que es normalizado cuando $c(1,1)= 0$
+%\end{definicion}
+%
+%% esto tb es cierto para un cociclo no normalizado con accion trivial
+%\begin{proposicion}
+%	Sea $c\in Z^2(Q,A)$ un $2$-cociclo normalizado. Entonces para todo $q\in Q$
+%	\begin{equation*}
+%		c(1,q)=0=c(q,1)
+%	\end{equation*}
+%	\begin{demostracion}
+%		Evaluando la condición de un $2$-cociclo en $(1,1,q)\in Q^3$
+%		\begin{equation*}
+%			1\cdot c(1,q) - c(1,q) + c(1,q) - c(1,1) = c(1,q) =0
+%		\end{equation*} 
+%		De igual manera, evaluando en $(q,1,1)\in Q^3$
+%		\begin{equation*}
+%			q\cdot c(1,1) - c(q,1) + c(q,1) - c(q,1) = -c(q,1) = 0
+%		\end{equation*}
+%	\end{demostracion}
+%\end{proposicion}
+
+\begin{definicion}% en general un n-cociclo f es normalizado cuando f(q_1,...,q_n) = 0 si cualquiera de los q_i = 0
+	Un $2$-cociclo $c\in Z^2(G,A)$ se dice que es normalizado cuando para todo $g\in G$
+	\begin{equation*}
+		c(1,g)= 0 = c(g,1)
+	\end{equation*}
+\end{definicion}
+
+\begin{proposicion}
+	$c\in Z^2(Q,A)$ es un $2$-cociclo normalizado si y solo si $c(1,1)=0$.
+	\begin{demostracion}
+		Sea $c(1,1) = 0$. Evaluando $\partial^2 c$ en $(1,1,g)\in G^3$
+		\begin{equation*}
+			1\cdot c(1,g) - c(1,g) + c(1,g) - c(1,1) = c(1,g) =0
+		\end{equation*} 
+		De igual manera, evaluando en $(g,1,1)\in G^3$
+		\begin{equation*}
+			g\cdot c(1,1) - c(g,1) + c(g,1) - c(g,1) = -c(g,1) = 0
+		\end{equation*}
+	\end{demostracion}
+\end{proposicion}
+
+\begin{proposicion}\label{prop:normcoc}
+	Todo $2$-cociclo $c\in Z^2(Q,A)$ es cohomólogo a un $2$-cociclo normalizado. %Esto es, $\frac{Z^{*n}_\varphi(Q,A)}{B^n_\varphi(Q,A)} = \frac{Z^n_\varphi(Q,A)}{B^n_\varphi(Q,A)}$
+	\begin{demostracion}
+		Tomamos una función $\homo \phi Q A$ tal que $\phi(1) = -c(1,1)$ y construímos el $2$-coborde b de $\phi$
+		\begin{equation*}
+			b(q_1,q_2) = (\partial^1 \phi)(q_1,q_2) =  q_1\cdot \phi(q_2) - \phi(q_1q_2) + \phi(q_1)
+		\end{equation*}
+		$b$ verifica que $b(1,1) = \phi(1) = -c(1,1)$ y por tanto el cociclo $\tilde c = c+b$ es un $2$-cociclo normalizado.
+	\end{demostracion}
+\end{proposicion}
+

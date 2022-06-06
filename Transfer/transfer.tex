@@ -1,0 +1,261 @@
+% !TeX root=../tfg2.tex
+
+\chapter{Transfer}
+
+Sea $G$ un grupo y $H$ un subgrupo de $G$ de índice finito $n$. Dado un homomorfismo $\homo \theta H A$ sobre un grupo abeliano, el transfer permite definir un homomorfismo de $G$ sobre $A$. %El estudio de homomorfismos sobre grupos abelianos es de gran interés 
+
+Para ello tomamos $\transversal t n$ un conjunto de representantes de las coclases a derecha de $H$ en $G$. La multiplicación a derecha de las coclases $Ht_i$ por elementos de $G$ nos define una acción
+\begin{align}\label{minitransfer}
+	G/H\times G &\to {G/H} \nonumber\\
+	(Ht_i,g) &\mapsto Ht_ig = Ht_{(i)g}
+\end{align}
+donde $i\mapsto (i)g$ es una permutación de $S_n$. Se tiene entonces que $t_igt_{(i)g}^{-1}\in H$ para todo $g\in G$ y esto nos da una forma natural de definir una función sobre $G$ haciendo el producto siguiente que llamaremos pre-transfer de $G$ a $H$.
+\begin{equation}
+	{\pretransfer G H}(g)= \prod_{i=1}^n t_igt_{(i)g}
+\end{equation}
+El pre-transfer no es en general independiente de la transversal ni un homomorfismo de grupos. Estos dos problemas se pueden solucionar componiendo el pre-transfer con un homomorfismo sobre un grupo abeliano. %De hecho, haciendo el producto en distinto orden no está bien definido.
+
+\section{Homomorfismo del transfer}
+
+\begin{definicion}
+	Sea $G$ un grupo, $H$ un subgrupo de $G$ de índice finito $n$, $\{t_1,\ldots, t_n\}$ una transversal a derecha de $H$ a $G$ y $\homo \theta H A$ un homomorfismo sobre un grupo abeliano $A$. El transfer de $\theta$ se define como la composición de $\theta$ con el pre-transfer $\pretransfer G H$
+	\begin{align}
+		{\transfer G H} \colon 	G &\to A \nonumber \\
+							g &\mapsto \prod_{i=1}^n \theta\left(t_igt_{(i)g}^{-1}\right)
+	\end{align}
+	
+	Dado que $A$ es abeliano, el orden de los factores no importa y $\transfer G H$ está bien definido.  % sacar fuera, poner arriba? nose
+\end{definicion}
+
+%En principio, la transferencia definida parece depender
+
+% independencia de la transversal
+\begin{proposicion}
+	El transfer $\homo {\transfer G H} G A$ es un homomorfismo que no depende de la elección de la transversal.
+	\begin{demostracion}
+		Sean  $\transversal t n$ y  $\transversal s n$ dos transversales tales que $s_i = h_it_i$ con $h_i\in H$. Entonces, para todo $g\in G$
+		\begin{align*}
+			\prod_{i=1}^n \theta\left(s_igs_{(i)g}^{-1}\right) 
+			&= \prod_{i=1}^n \theta\left(h_it_igt_{(i)g}^{-1}h_{(i)g}^{-1}\right) \\
+			&= \prod_{i=1}^n \theta\left(t_igt_{(i)g}^{-1}\right)\theta\left(h_ih_{(i)g}^{-1}\right)\\
+			&=\prod_{i=1}^n \theta\left(t_igt_{(i)g}^{-1}\right) 
+		\end{align*}
+		% observar que las h se cancelan porque (i)g es una permutacion de los indices
+
+		Para ver que es un homomorfismo, cogemos $x,y\in G$
+		\begin{align*}
+			\theta^*(xy) &= \prod_{i=1}^n \theta\left(t_ixyt_{(i)xy}^{-1}\right) \\
+			&=  \prod_{i=1}^n \theta\left((t_ixt_{(i)x}^{-1})(t_{(i)x}yt_{(i)xy}^{-1})\right) \\
+			&= \prod_{i=1}^n \theta\left(t_ixt_{(i)x}^{-1}\right)\theta\left(t_{(i)x}yt_{(i)xy}^{-1}\right)\\
+			&= \theta^*(x)\theta^*(y)
+		\end{align*}
+	\end{demostracion}
+\end{proposicion}
+
+\begin{observacion}
+	Sea $G$ un grupo y $\homo \tau G A$ un homomorfismo sobre un grupo abeliano $A$. Entonces, $G' \leq \Ker(\tau)$ y por tanto $\tau$ factoriza de forma única a través de la abelianización de $G$. Es decir, existe un único homomorfismo $\homo {\tilde\tau} {\Ab G} A $ que hace al siguiente diagrama conmutativo.
+	% https://q.uiver.app/?q=WzAsMyxbMCwwLCJHIl0sWzIsMCwiQSJdLFswLDIsIkdee1xcdGV4dHthYn19Il0sWzAsMSwiXFx0aGV0YSJdLFswLDIsIlxccGkiLDJdLFsyLDEsIlxcZXhpc3RzIVxcdGlsZGVcXHRoZXRhIiwyXV0=
+\[\begin{tikzcd}
+	G && A \\
+	\\
+	{\Ab G}
+	\arrow["\tau", from=1-1, to=1-3]
+	\arrow["\AbFunctor"', from=1-1, to=3-1]
+	\arrow["{\exists!\tilde\tau}"', from=3-1, to=1-3]
+\end{tikzcd}\]
+\end{observacion}
+
+\section{Cálculo del transfer}
+
+En ocasiones, dado un $x\in G$ se puede calcular el transfer de manera eficiente con una buena elección de los representantes de las coclases. El elemento $x$ actúa sobre las coclases $\transversal {Ht} n$ por multiplicación a derecha permutándolas. Las órbitas bajo esta acción tienen la siguiente forma
+
+\begin{equation}
+	\left\{Hs_i,\ldots,Hs_i^{l_i-1}\right\}
+\end{equation}
+con $l_i$ el menor natural tal que $Hs_ix^{l_i} = Hs_i$.
+
+Se tiene entonces que los elementos $s_ix^j$ con $i=1,\ldots,k$, $j=0,\ldots,l_i-1$ y $k$ el número de órbitas forman una transversal de $H$ a $G$. Además, por el teorema de la Órbita-Estabilizador, se tiene que $l_i \bigm| \ord{G}$.
+
+% por favor quitar este trabalenguas
+\begin{lema}
+	Si $\transversal s k$ son representantes de las coclases de las órbitas de la acción de $x$, entonces
+	\begin{equation}
+		 \tau(x) = \prod_{i=1}^k \theta(\,^{s_i}x^{l_i})
+	\end{equation}
+	\begin{demostracion}
+		Miramos la contribución de la órbita de $s_i$ al transfer de $x$.
+		\begin{align*}
+			\prod_{j=0}^{l_i-1}\theta(s_ix^j x (s_ix^j)^{-1}) = \prod_{j=0}^{l_i-1}\theta(s_ixs_i^{-1}) = \theta(s_ixs_i^{-1})^{l_i} = \theta(\,^{s_i}x^{l_i})
+		\end{align*}
+		
+		Multiplicando las contribuciones de todas las órbitas se llega al resultado.
+	\end{demostracion}
+\end{lema}
+
+\section{Transfer a un subgrupo}
+
+Nos centramos a continuación en el caso en que $\theta$ es la abelianización del subgrupo $H$, es decir, $\homo \theta H {\Ab H}$. En este caso, denotaremos al transfer por $\homo {\transfer G H} G {\Ab H}$ y diremos que $\transfer G H$ es el transfer de $G$ a $H$. % ta bn?
+
+
+\begin{ejemplo}
+	Si $G$ es abeliano y $H\leq G$ con $\ord{G:H} = n < \infty$, el transfer de $G$ a $H$ es $g \mapsto g^n$.
+	\begin{demostracion}
+		Sea $\transversal t n$ una transversal de $H$. Entonces para todo $g\in G$
+		\begin{equation*}
+			\prod_{i=1}^n t_ig(t_{(i)g})^{-1} = g^n \prod_{i=1}^n t_i(t_{(i)g})^{-1} = g^n
+		\end{equation*}
+	\end{demostracion}
+\end{ejemplo}
+
+\begin{proposicion}
+	Sea $G$ un grupo y $H\leq K \leq G$ tal que $\ord{G:H}$ es finito. Entonces, el transfer de $G$ a $H$ es $\transfer G H = \ptransfer K H \circ \transfer G K = \ptransfer K H \circ \ptransfer G K \circ \AbFunctor$.
+	
+	% POR FAVOR LAS CURSIVAS ESTAN RARAS
+	
+	% https://q.uiver.app/?q=WzAsNixbMCwwLCJHIl0sWzIsMCwiSyJdLFs0LDAsIkgiXSxbMCwyLCJHXntcXHRleHR7YWJ9fSJdLFsyLDIsIktee1xcdGV4dHthYn19Il0sWzQsMiwiSF57XFx0ZXh0e2FifX0iXSxbMCwxLCJQX3tHL0t9Il0sWzEsMiwiUF97Sy9IfSJdLFswLDMsIkFiIl0sWzEsNCwiQWIiXSxbMiw1LCJBYiJdLFszLDQsIlxcdGlsZGVcXHRhdV97Ry9LfSJdLFs0LDUsIlxcdGlsZGVcXHRhdV97Sy9IfSJdLFswLDQsIlxcdGF1X3tHL0t9Il0sWzEsNSwiXFx0YXVfe0svSH0iXV0=
+\[\begin{tikzcd}
+	G && K && H \\
+	\\
+	{\Ab G} && {\Ab K} && {\Ab H}
+	\arrow["{\pretransfer G K}", from=1-1, to=1-3]
+	\arrow["{\pretransfer K H}", from=1-3, to=1-5]
+	\arrow["\AbFunctor", from=1-1, to=3-1]
+	\arrow["\AbFunctor", from=1-3, to=3-3]
+	\arrow["\AbFunctor", from=1-5, to=3-5]
+	\arrow["{\ptransfer G K}", from=3-1, to=3-3]
+	\arrow["{\ptransfer K H}", from=3-3, to=3-5]
+	\arrow["{\transfer G K}", from=1-1, to=3-3]
+	\arrow["{\transfer K H}", from=1-3, to=3-5]
+\end{tikzcd}\]
+	\begin{demostracion}
+		Sean $\transversal g n$ y $\transversal k m$ transversales a derecha de $K$ a $G$ y de $H$ a $K$ respectivamente. Entonces 
+		\begin{equation*}
+			G = \bigsqcup_{i=1}^{n} K g_i = \bigsqcup_{i=1}^n\bigsqcup_{j=1}^m Hk_jg_i
+		\end{equation*}
+		y $\{k_jg_i \ | \ i=1,\ldots,n, \ j=1,\ldots m\}$ es una transversal de $H$ a $G$.
+		
+		Miramos como actúa un elemento $g$ en la coclase $Hk_jg_i$. 
+		\begin{equation}\label{eq:transact}
+			Hk_jg_ig = Hk_j g_ig(g_{(i)g}^{-1}g_{(i)g}) = Hk_{j} (g_igg_{(i)g}^{-1})g_{(i)g} = Hk_{(j)g_igg_{(i)g}^{-1}}g_{(i)g} % problema: el g_ig no se puede aplicar a Hk_j salvo que esté en K
+		\end{equation}
+		
+		Evaluando $\ptransfer K H \circ \transfer G K$ en $g$ y utilizando \eqref{eq:transact}		
+		\begin{align*}
+		{\ptransfer K H} \circ {\transfer G K (g)} &= {\ptransfer K H}\left(\prod_{i=1}^n K' g_i g g_{(i)g}^{-1}\right) \\
+			&= \prod_{j=1}^m\prod_{i=1}^n H'k_j g_i g g_{(i)g}^{-1} k_{(j)g_i g g_{(i)g}^{-1}}^{-1}  \\
+			&= \prod_{j=1}^m\prod_{i=1}^n H'k_j g_i g  (k_{(j)g_i g g_{(i)g}^{-1}} g_{(i)g})^{-1} \\
+			%&= \prod_{j=1}^m\prod_{i=1}^n H'k_j g_i g  (k_{(j)g_{(i)g}})^{-1} \\
+			%&= \prod_{j=1}^m\prod_{i=1}^n H'k_j g_i g  (k_{j}g_{(i)g})^{-1} \\
+			%&= \prod_{j=1}^m\prod_{i=1}^n H'k_j g_i g  (k_{j}g_{i})_g^{-1} \\
+			& = {\transfer G H}(g)
+		\end{align*}
+	\end{demostracion}
+\end{proposicion}
+
+\begin{proposicion}
+	Sea $G$ un grupo y $H\leq G$ de índice finito $n$. Sea $\transfer G H$ el transfer de $G$ a $H$. Entonces $(i\circ {\ptransfer G H})(gG') = g^nG'$ donde $i$ es la inclusión de $\Ab H$ en $\Ab G$ definida por $i(hH') = hG'$.
+
+% https://q.uiver.app/?q=WzAsMyxbMCwwLCJHIl0sWzAsMiwiXFxBYiBHIl0sWzIsMiwiXFxBYiBIIl0sWzEsMiwiXFxwdHJhbnNmZXIgRyBIIiwyLHsib2Zmc2V0IjoxfV0sWzIsMSwiaSIsMix7Im9mZnNldCI6MX1dLFswLDIsIlxcdHJhbnNmZXIgRyBIIl0sWzAsMSwiXFxBYkZ1bmN0b3IiLDJdXQ==
+\[\begin{tikzcd}
+	G \\
+	\\
+	{\Ab G} && {\Ab H}
+	\arrow["{\ptransfer G H}"', shift right=1, from=3-1, to=3-3]
+	\arrow["i"', shift right=1, from=3-3, to=3-1]
+	\arrow["{\transfer G H}", from=1-1, to=3-3]
+	\arrow["\AbFunctor"', from=1-1, to=3-1]
+\end{tikzcd}\]
+	
+	\begin{demostracion}
+		Sea $\transversal t n$ una transversal de $H$ y $\transfer G H$ el transfer de $G$ a $H$. %Dado $h\in H$, $t_iht_{(i)h}^{-1} \in H$ %(g) = \prod_{i=1}^n  t_igt_{(i)g}^{-1}H'
+		
+		\begin{align*}
+		(i\circ {\ptransfer G H})(gG') 
+		&= i(\prod_{i=1}^n  t_igt_{(i)g}^{-1}H') \\
+		&= \prod_{i=1}^n  i(t_igt_{(i)g}^{-1}H') \\
+		&= \prod_{i=1}^n  t_igt_{(i)g}^{-1}G' \\
+		&= g^n\prod_{i=1}^n  t_it_{(i)g}^{-1}G'=g^nG'
+		\end{align*}
+	\end{demostracion} 
+\end{proposicion}
+
+%\begin{proposicion}
+%	Sea $G$ un grupo y $H$ un subgrupo abeliano de $G$ de índice finito $n$. Entonces, el transfer de $G$ a $H$ es $\theta(g)=g^n$
+%	\begin{demostracion}
+%		% https://q.uiver.app/?q=WzAsMyxbMCwwLCJHIl0sWzIsMCwiSCJdLFswLDIsIlxcQWJ7R30iXSxbMCwxLCJcXHRoZXRhIl0sWzAsMiwiXFxwaSIsMl0sWzIsMSwiXFx0aWxkZVxcdGhldGEiLDAseyJvZmZzZXQiOi0xfV0sWzEsMiwiaSIsMCx7Im9mZnNldCI6LTF9XV0=
+%		\[\begin{tikzcd}
+%			G && H \\
+%			\\
+%			{\Ab{G}}
+%			\arrow["\theta", from=1-1, to=1-3]
+%			\arrow["\pi"', from=1-1, to=3-1]
+%			\arrow["\tilde\theta", shift left=1, from=3-1, to=1-3]
+%			\arrow["i", shift left=1, from=1-3, to=3-1]
+%		\end{tikzcd}\]
+%		Usando que $\theta = \tilde\theta \circ \pi$, $(i\circ\theta)(g) = $
+%	\end{demostracion}
+%\end{proposicion}
+
+\subsection{Transfer al centro}
+
+\begin{proposicion}
+	Sea $G$ un grupo y $H$ un subgrupo central de $G$ de índice $\ord{G:H}=n$. Entonces, el transfer de $G$ a $H$ es $\transfer G H (g) = g^{n}$
+	\begin{demostracion}
+		$\,^{s_i}g^{l_i}\in H\leq Z(G)$ y conjugando por $s_i$ se llega a $g^{l_i}\in Z(G)$. Finalmente 
+		\begin{equation}
+			\prod_{i=1}^k \,^{s_i}g^{l_i} = \prod_{i=1}^k g^{l_i} = g^n
+		\end{equation}
+	\end{demostracion}
+\end{proposicion}
+
+%Notese que en general, la función de elevar cada elemento a una potencia no es un homomorfismo salvo que $G$ sea abeliano. % blablabla soltar rollo sobre lo remarcable que es que elevar al indice del centro sí lo sea
+
+\begin{proposicion}\label{prop:quotfg} % poner encima del teorema de schur
+	Sea $G$ un grupo finitamente generado y $H$ un subgrupo de $G$ de índice finito $n$. Entonces $H$ es finitamente generado.
+	\begin{demostracion}
+		Sea $X$ un sistema generador finito de $G$ y $\{1=t_1,\ldots,t_n\}$ una transversal de $H$ a $G$.
+		Sea $h\in H$, entonces $h=x_1\cdots x_k$ donde cada $x_i\in X\cup X^{-1}$. Demostramos que $h$ es finitamente generado en $H$ por inducción en $k$.
+		Para el caso base, $k=1$, $h = x_1\in H$ por lo que $h$ es finitamente generado. % h fg?
+		
+		Supongamos ahora que todo elemento de $H$ generado por menos de $k$ elementos de $X\cup X^{-1}$ es finitamente generado en $H$. 
+		Definimos la función $\tau_{i}(x) = t_ixt_{(i)x}^{-1}\in H$ como en \eqref{minitransfer}, de esta forma $t_i x = \tau_{i}(x)t_{(i)x}$.
+		\begin{align*}
+			h 	= x_1\cdots x_k = t_1 x_1\cdots x_k &= \tau_{1}(x_1)t_{(1)x_1} x_2\cdots x_k \\
+			&= \tau_{1}(x_1) \tau_{(1)x_1}(x_2)t_{(1)x_1x_2} x_3\cdots x_k
+		\end{align*}
+		
+		Por hipótesis de inducción, $x_3\cdots x_k$ es finitamente generado por elementos de $H$
+		
+		
+		% caso base k=1
+		% h = x_1 \implies x_1 \in H
+		% 
+		% h = x_1...x_k = t_1 x_1...x_k  = \tau_i(x_1)t_{(i)x_1} x_2...x_k
+		% \tau_i(x_1)^{-1} h= t_{(i)x_1} x_2...x_k = t_{(i)x_1}^{-1} x_3...x_k
+		% \tau_{(i)x_1}(x_2)^{-1}\tau_i(x_1)^{-1}h = t_{(i)x_1}^{-1}x_3...x_k es un producto de k-1 elementos de G y por inducción es h es finitamente generado
+	
+	
+	
+	
+		Sea $X$ un sistema generador finito de $G$ y $\{1=t_1,\ldots,t_n\}$ una transversal de $H$ a $G$.
+		Sea $h\in H\leq G$, entonces $h=x_1\cdots x_k$ donde cada $x_i\in X\cup X^{-1}$.
+		% ESCRIBIR ESTO POR FAVOR NO SE ESCRIBIR AYUDA
+		Teniendo en cuenta que $t_iht_{(i)h}^{-1} \in H$, llamamos $\tau_{i}(h) = t_iht_{(i)h}^{-1}$ y por tanto $t_ih = \tau_{i}(h)t_{(i)h}$
+		\begin{equation*}
+			h = t_1x_1\cdots x_k = \tau_{1}(x_1)t_{(1)x_1}x_2\cdots x_k = \prod_{i=1}^k\left[ \tau_{(1)\prod_{j=1}^{i}x_j}\Big(\prod_{j=1}^{i}x_j\Big)\right]t_{(1)h}
+		\end{equation*}
+		
+		Como $t_1 = 1$ y $h\in H$, $t_{(1)h} = t_1 = 1$ y $H$ está generado por $\tau_i(x)$ para $i=\{1,\ldots,n\}$ y $x\in X\cup X^{-1}$.
+	\end{demostracion}
+\end{proposicion}
+
+\begin{corolario}[Schur]
+	Sea $G$ un grupo y $Z(G)$ de índice finito $n$, entonces $G'$ es finito y $G'^n = \{1\}$.
+	\begin{demostracion}
+		Sea $C=Z(G)$ y $\transversal {Cg} n$ las coclases a derecha de $C$ en $G$. Sean $c_ig_i,c_jg_j\in G$, entonces $[c_ig_i,c_j,g_j] = [g_i,g_j]$ y $G'$ está finitamente generado. Por el Segundo Teorema de Isomorfía $\frac{G'}{G'\cap C} = \frac{G'C}{C}$ es finito y por la Proposición \ref{prop:quotfg}, $G'\cap C$ está finitamente generado.
+		El transfer de $G$ a $C$ viene dado por $x\mapsto x^n$ y como $G'$ está contenido en el kernel, $G'^n = \{1\}$, en particular, $(G'\cap C)^n = \{1\}$. Por el teorema de clasificación de grupos abelianos finitamente generados, $G'\cap C$ es finito y como $\ord{G':G'\cap C}$ es finito se deduce que $G'$ es finito.
+	\end{demostracion}
+\end{corolario}
+
+
+%\subsection{Transfer a un subgrupo de Sylow}

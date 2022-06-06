@@ -1,0 +1,54 @@
+% !TeX root=../tfg2.tex
+\chapter{Normalización de un cociclo}\label{apen:norm}
+
+Tomando una sección $s$ de la extensión $\extension i \pi A E Q$ y usando la Proposición \ref{prop:normcoc} si llamamos a $x = c(1,1)$, podemos normalizar el cociclo sumandole el $2$-coborde $b(q_1,q_2) = -q_1\cdot x$.
+
+\begin{equation}
+	\tilde c(q_1,q_2) = c(q_1,q_2) - q_1\cdot c(1,1) = s(q_1)s(q_2)s(q_1q_2)^{-1} - q_1\cdot s(1)
+\end{equation}
+
+\begin{align*}
+	i(a_1)s(q_1)i(a_2)s(q_2) &= i(a_1)i(a_2)^{q_1}s(q_1)s(q_2) \\
+	&= i(a_1 + q_1\cdot a_2 + c(q_1,q_2) - q_1\cdot x)
+\end{align*}
+
+% operacion
+
+Operación definida en $A\times Q$ a partir de la operación de $E$
+\begin{align*}
+	(a_1,q_1)(a_2,q_2) = (a_1+q_1\cdot a_2 + c(q_1,q_2) - q_1\cdot x,q_1q_2)
+\end{align*}
+	
+% identidad
+Identidad
+\begin{align*}
+	&(0,1)(a,q) = (0 + 1\cdot a + c(1,q) - 1\cdot x,q) = (a,q) \\
+	&(a,q)(0,1) = (a+q\cdot 0 + c(q,1) - q\cdot x,q) = (a,q)
+\end{align*}
+	
+% inverso
+Inverso
+\begin{align*}
+	(a,q)(x-q^{-1}\cdot c(q,q^{-1}) - q^{-1}\cdot a,q^{-1}) &= (a + q\cdot x - c(q,q^{-1}) -a + c(q,q^{-1}) - q\cdot x, 1) = (0,1) \\
+	(x-q^{-1}\cdot c(q,q^{-1}) - q^{-1}\cdot a,q^{-1})(a,q) &= (x-q^{-1}\cdot c(q,q^{-1}) - q^{-1}\cdot a + q^{-1}\cdot a + c(q^{-1},q) - q^{-1}\cdot x, 1) =
+\end{align*}
+
+\begin{align*}
+	&x -q^{-1}\cdot c(q,q^{-1}) + c(q^{-1},q) - q^{-1}\cdot x = \\
+	&x - c(1,q^{-1}) + c(q^{-1},1) - c(q^{-1},q) + c(q^{-1},q) - q^{-1}\cdot x = \\
+	&x - c(1,q^{-1}) + c(q^{-1},1) - q^{-1}\cdot x = \tilde c(q^{-1},1)-\tilde c(1,q^{-1}) = 0
+\end{align*}
+	
+% asociatividad
+Asociatividad
+\begin{align*}
+	&(a_1,q_1)(a_2,q_2)(a_3,q_3) =\\
+	 &(a_1 + q_1\cdot a_2 + c(q_1,q_2) - q_1\cdot x,q_1q_2)(a_3,q_3) =\\
+	  &(a_1 + q_1\cdot a_2 + c(q_1,q_2) - q_1\cdot x + q_1q_2\cdot a_3 + c(q_1q_2,q_3)-q_1q_2\cdot x,q_1q_2q_3)
+\end{align*}
+
+\begin{align*}
+	&(a_1,q_1)(a_2,q_2)(a_3,q_3) = \\ 
+	&(a_1,q_1)(a_2+q_2\cdot a_3 + c(q_2,q_3) - q_2\cdot x,q_2q_3) =\\
+	&(a_1+q_1\cdot a_2 + q_1q_2\cdot a_3 + q_1\cdot c(q_2,q_3) - q_1q_2\cdot x + c(q_1,q_2q_3) - q_1\cdot x,q_1q_2q_3)
+\end{align*}

@@ -1,0 +1,146 @@
+% !TeX root=../tfg2.tex
+\chapter{Suma de Baer}\label{baersum}
+
+
+\begin{lema}\label{prop:pullback}
+	Dada una extensión $\extension i \pi A E Q$ y un homomorfismo $\homo \alpha {Q'} Q$, existe una extensión $\extension {} {} A {E'} {Q'}$ única salvo equivalencia que hace al siguiente diagrama conmutativo.
+	% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiQSJdLFsyLDAsIkUiXSxbMywwLCJRIl0sWzQsMCwiMSJdLFswLDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiQSJdLFszLDEsIlEnIl0sWzQsMSwiMSJdLFsyLDEsIkUnIl0sWzQsMF0sWzAsMSwiaSJdLFsxLDIsIlxccGkiXSxbMiwzXSxbNSw2XSxbNiw5LCJpJyJdLFs5LDcsIlxccGknIl0sWzcsOF0sWzAsNiwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDAsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywyLCJcXGFscGhhIl0sWzksMSwiZiJdXQ==
+	\[\begin{tikzcd}
+		1 & A & E & Q & 1 \\
+		1 & A & {E'} & {Q'} & 1
+		\arrow[from=1-1, to=1-2]
+		\arrow["i", from=1-2, to=1-3]
+		\arrow["\pi", from=1-3, to=1-4]
+		\arrow[from=1-4, to=1-5]
+		\arrow[from=2-1, to=2-2]
+		\arrow["{i'}", from=2-2, to=2-3]
+		\arrow["{\pi'}", from=2-3, to=2-4]
+		\arrow[from=2-4, to=2-5]
+		\arrow[shift left=1, no head, from=1-2, to=2-2]
+		\arrow[shift left=1, no head, from=2-2, to=1-2]
+		\arrow["\alpha", from=2-4, to=1-4]
+		\arrow["f", from=2-3, to=1-3]
+	\end{tikzcd}\]
+	\begin{demostracion}
+		Tomamos $E'=E\times_Q Q' = \{(e,q)\in E\times Q \ | \ \pi(e) = \alpha(q)\}$ el pullback de $\pi$ y $\alpha$ con la inclusión $i'$ y proyección $\pi'$ definidas por
+		\begin{gather*}
+			i'(a) = (a,1) \\
+			\pi'(e,q) = q
+		\end{gather*}
+		Entonces $f(e,q) = e$ hace al diagrama conmutativo, ya que $(f\circ i') (a) =  a = i(a) $ y $(\pi\circ f)(e,q) = \pi(e) = \alpha(q) = (\alpha\circ \pi')(e,q)$.
+	\end{demostracion}
+\end{lema}
+
+\begin{lema}\label{prop:pushout}
+	Dada una extensión $\extension i \pi A E Q$ y un homomorfismo $\homo \beta {A} {A'}$, existe una extensión $\extension {} {} {A'} {E'} Q$ única salvo equivalencia que hace al siguiente diagrama conmutativo.
+	% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiTiJdLFsyLDAsIkUiXSxbMywwLCJRIl0sWzQsMCwiMSJdLFswLDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiTiJdLFszLDEsIlEiXSxbNCwxLCIxIl0sWzIsMSwiRSciXSxbNCwwXSxbMCwxXSxbMSwyXSxbMiwzXSxbNSw2XSxbNiw5XSxbOSw3XSxbNyw4XSxbMCw2LCJcXGJldGEiXSxbMSw5LCJmIl0sWzcsMiwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDcsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+\[\begin{tikzcd}
+	1 & A & E & Q & 1 \\
+	1 & A & {E'} & Q & 1
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow["\beta", from=1-2, to=2-2]
+	\arrow["f", from=1-3, to=2-3]
+	\arrow[shift left=1, no head, from=2-4, to=1-4]
+	\arrow[shift left=1, no head, from=1-4, to=2-4]
+\end{tikzcd}\]
+\end{lema}
+
+\begin{teorema}
+	Dadas dos extensiones $\extension{i_j} {\pi_j} A {E_j} Q$, para $j=1,2$, podemos expresar la suma de extensiones dada por la estructura aditiva de $H^2(Q,A)$ descrita en la Proposición \ref{extsum} con el siguiente diagrama conmutativo. La última fila se conoce como la suma de Baer de las extensiones $E_1$ y $E_2$.
+	
+	% https://q.uiver.app/?q=WzAsMTUsWzEsNCwiQSJdLFszLDQsIlxcZnJhY3tFXzFcXHRpbWVzX1EgRV8yfXtLZXIoKyl9Il0sWzUsNCwiUSJdLFszLDAsIkVfMVxcdGltZXMgRV8yIl0sWzEsMiwiQVxcdGltZXMgQSJdLFs1LDIsIlEiXSxbMSwwLCJBXFx0aW1lcyBBIl0sWzUsMCwiUVxcdGltZXMgUSJdLFszLDIsIkVfMVxcdGltZXNfUSBFXzIiXSxbMCw0LCIxIl0sWzAsMiwiMSJdLFswLDAsIjEiXSxbNiw0LCIxIl0sWzYsMiwiMSJdLFs2LDAsIjEiXSxbNiwzLCJpXzFcXHRpbWVzIGlfMiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzMsNywiXFxwaV8xXFx0aW1lcyBcXHBpXzIiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbNCw4LCJcXHRpbGRlXFxpbWF0aCIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzgsNSwiXFx0aWxkZVxccGkiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbNCwwLCIrIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzAsMSwiaV8zIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwyLCJcXHBpXzMiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbNywzLCJzXzFcXHRpbWVzIHNfMiIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzIsMSwic18zIiwwLHsib2Zmc2V0IjotMSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbNSw3LCJcXERlbHRhIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbNSw4LCJcXHRpbGRlIHMiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs4LDMsImkiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs2LDQsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw2LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNSwiIiwyLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDIsIiIsMix7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCwxLCJcXHBpX3tLZXIoKyl9IiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzExLDZdLFsxMCw0XSxbOSwwXSxbNywxNF0sWzUsMTNdLFsyLDEyXV0=
+		\begin{tikzcd}
+			1 & {A\times A} && {E_1\times E_2} && {Q\times Q} & 1 \\
+			\\
+			1 & {A\times A} && {E_1\times_Q E_2} && Q & 1 \\
+			\\
+			1 & A && {\frac{E_1\times_Q E_2}{\Ker(+)}} && Q & 1
+			\arrow["{i_1\times i_2}", hook, from=1-2, to=1-4]
+			\arrow["{\pi_1\times \pi_2}", shift left=1, two heads, from=1-4, to=1-6]
+			\arrow["\tilde\imath", hook, from=3-2, to=3-4]
+			\arrow["\tilde\pi", shift left=1, two heads, from=3-4, to=3-6]
+			\arrow["{+}"', two heads, from=3-2, to=5-2]
+			\arrow["{i_3}", hook, from=5-2, to=5-4]
+			\arrow["{\pi_3}", shift left=1, two heads, from=5-4, to=5-6]
+			\arrow["{s_1\times s_2}", shift left=1, hook, from=1-6, to=1-4]
+			\arrow["{s_3}", shift left=1, hook, from=5-6, to=5-4]
+			\arrow["\Delta", hook, from=3-6, to=1-6]
+			\arrow["{\tilde s}", shift left=1, hook, from=3-6, to=3-4]
+			\arrow["i", hook, from=3-4, to=1-4]
+			\arrow[shift left=1, no head, from=1-2, to=3-2]
+			\arrow[shift left=1, no head, from=3-2, to=1-2]
+			\arrow[shift left=1, no head, from=5-6, to=3-6]
+			\arrow[shift left=1, no head, from=3-6, to=5-6]
+			\arrow["{\pi_{\Ker(+)}}"', two heads, from=3-4, to=5-4]
+			\arrow[from=1-1, to=1-2]
+			\arrow[from=3-1, to=3-2]
+			\arrow[from=5-1, to=5-2]
+			\arrow[from=1-6, to=1-7]
+			\arrow[from=3-6, to=3-7]
+			\arrow[from=5-6, to=5-7]
+		\end{tikzcd}
+		
+		donde $\Delta$ es la inclusión diagonal, $+$ es la proyección a través de la suma de las componentes y $E_1\times_Q E_2$ es el pullback de $E_1$ y $E_2$.
+		\begin{gather*}
+			+(a_1,a_2) = a_1+a_2 \\
+			\Delta(q) = (q,q) \\
+			E_1\times_Q E_2 = \{(e_1,e_2)\in E_1\times E_2\ |\ \pi_1(e_1)=\pi_2(e_2)\}
+		\end{gather*}
+		
+		\begin{demostracion}
+			A partir de las extensiones $E_1$ y $E_2$ se construye la extensión del producto directo tomando la inclusión y proyección coordenada a coordenada. El objetivo será utilizar los cociclos $c_1$ y $c_2$ asociados a las extensiones $E_1$ y $E_2$ respectivamente para construir una sucesión exacta $\extension {i_3} {\pi_3} A {E_3} Q$ cuyo cociclo asociado sea $c_3=c_1+c_2$.
+		\begin{equation}
+			1\xrightarrow{} A\times A \xrightarrow{i_1\times i_2} E_1\times E_2\xrightarrow{\pi_1\times\pi_2} Q\times Q \xrightarrow{} 1 % comprobar que es exacta
+		\end{equation}
+		La sección $s_1\times s_2$ de $\pi_1\times \pi_2$ tiene como cociclo asociado
+		\begin{align}
+			(c_1\times c_2)\colon (Q\times Q)\times (Q\times Q) &\to A\times A \nonumber\\
+			                              ((q_{11},q_{12}),(q_{21},q_{22})) &\mapsto (c_1(q_{11},q_{12}),c_2(q_{21},q_{22})) % comprobar el orden de la operacion
+		\end{align}
+		Proyectando $A\times A$ sobre $A$ haciendo la suma de componentes movemos $(c_1\times c_2)((q_{11},q_{12}),(q_{21},q_{22}))$ a $c_1(q_{11},q_{12}) + c_2(q_{21},q_{22})$. Ahora identificando $q_{11}$ con $q_{21}$ y $q_{12}$ con $q_{22}$ mediante la inclusión diagonal $\homo \Delta Q {Q\times Q}$, el cociclo asociado a la ultima fila es $c_3=+\circ (c_1\times c_2)\circ \Delta=c_1+c_2$
+		
+		%en verdad seria \Delta\times\Delta
+		\begin{equation}
+			Q\times Q \xrightarrow{\Delta} (Q\times Q)\times (Q\times Q) \xrightarrow{c_1\times c_2} A\times A\xrightarrow{+} A
+		\end{equation}
+		
+		A continuación, buscamos el grupo que hace que la extensión de $Q$ por $A$ conmute con el diagrama.
+		
+		Por el Lema \ref{prop:pullback}, tenemos el siguiente diagrama conmutativo
+		% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiQVxcdGltZXMgQSJdLFsyLDAsIkVfMVxcdGltZXMgRV8yIl0sWzMsMCwiUVxcdGltZXMgUSJdLFs0LDAsIjEiXSxbMCwwLCIxIl0sWzAsMSwiMSJdLFsxLDEsIkFcXHRpbWVzIEEiXSxbMywxLCJRIl0sWzQsMSwiMSJdLFsyLDEsIihFXzFcXHRpbWVzIEVfMilcXHRpbWVzX3tRXFx0aW1lcyBRfVEiXSxbNCwwXSxbMCwxLCJpXzFcXHRpbWVzIGlfMiJdLFsxLDIsIlxccGlfMVxcdGltZXMgXFxwaV8yIl0sWzIsM10sWzUsNl0sWzYsOSwiXFx0aWxkZSBpIl0sWzcsOF0sWzAsNiwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDAsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywyLCJcXERlbHRhIl0sWzksMSwiaSJdLFs5LDcsIlxcdGlsZGVcXHBpIl1d
+		\[\begin{tikzcd}
+			1 & {A\times A} & {E_1\times E_2} & {Q\times Q} & 1 \\
+			1 & {A\times A} & {(E_1\times E_2)\times_{Q\times Q}Q} & {Q} & 1
+			\arrow[from=1-1, to=1-2]
+			\arrow["{i_1\times i_2}", from=1-2, to=1-3]
+			\arrow["{\pi_1\times \pi_2}", from=1-3, to=1-4]
+			\arrow[from=1-4, to=1-5]
+			\arrow[from=2-1, to=2-2]
+			\arrow["{\tilde i}", from=2-2, to=2-3]
+			\arrow[from=2-4, to=2-5]
+			\arrow[shift left=1, no head, from=1-2, to=2-2]
+			\arrow[shift left=1, no head, from=2-2, to=1-2]
+			\arrow["\Delta", from=2-4, to=1-4]
+			\arrow["i", from=2-3, to=1-3]
+			\arrow["\tilde\pi", from=2-3, to=2-4]
+		\end{tikzcd}\]
+		
+		Observese que el pullback de $\pi_1\times \pi_2$ y $\Delta$ es igual que el pullback de $\pi_1$y $\pi_2$.
+		\begin{align*}
+			(E_1\times E_2)\times_{Q\times Q}Q 
+			&= \{(e_1,e_2,q)\in E_1\times E_2\times Q \ | \ (\pi_1\times \pi_2)(e_1,e_2) = (q,q)\} \\
+			&= \{(e_1,e_2)\in E_1\times E_2 \ | \ \pi_1(e_1)=\pi_2(e_2)\} \\
+			&= E_1\times_Q E_2
+		\end{align*}
+		
+		Por el Lema \ref{prop:pushout}, tenemos el siguiente diagrama conmutativo
+		
+		\end{demostracion}
+\end{teorema}

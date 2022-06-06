@@ -18,8 +18,8 @@
 
 % dark theme
 \usepackage{xcolor}
-%\pagecolor[rgb]{0,0,0}
-%\color[rgb]{1,1,1}
+\pagecolor[rgb]{0,0,0}
+\color[rgb]{1,1,1}
 
 
 
@@ -37,8 +37,13 @@
 \DeclareMathOperator{\Inn}{Inn}
 \DeclareMathOperator{\Out}{Out}
 \DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\PSL}{PSL}
 \DeclareMathOperator{\car}{car}
 \DeclareMathOperator{\sgn}{sgn}
+%\DeclareMathOperator{\det}{det}
 %\DeclareMathOperator{\HomFunctor}{Hom}
 \DeclareMathOperator{\ExtFunctor}{Ext}
 \DeclareMathOperator{\TorFunctor}{Tor}
@@ -60,7 +65,7 @@
 \newcommand{\extension}[5]{1\xrightarrow{} #3 \xrightarrow{#1} #4\xrightarrow{#2} #5 \xrightarrow{} 1}
 \newcommand{\transversal}[2]{\{#1_1,\ldots,#1_#2\}}
 \newcommand{\transfer}[2]{\tau_{#1/ #2}}
-\newcommand{\pretransfer}[2]{\Pletra_{#1/ #2}}
+\newcommand{\pretransfer}[2]{P_{#1/ #2}}
 \newcommand{\ptransfer}[2]{\tilde\tau_{#1/ #2}}
 
 \begin{document}

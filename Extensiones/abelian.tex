@@ -17,7 +17,7 @@ Por la Observación \ref{extact}, como $\Inn(A)$ es trivial, $Out(N)=Aut(N)$ y l
 % suena raro lo del axioma de eleccion aprende a escribir
 Para estudiar esta extensión, consideramos una sección $s$ de $\pi$, que en el caso de $Q$ infinito se puede asegurar que existe asumiendo el axioma de elección. Como $Q\cong E/i(A)$, dados $g,h\in Q$, $\pi\left(s(g)s(h)s(gh)^{-1}\right) = 1_{Q}$ por ser $\pi$ homomorfismo. Por tanto, $s(gh)$ y $s(g)s(h)$ distan en un elemento de $i(A)$ y podemos definir una función $\homo c {Q\times Q} {A}$ que mide cuánto dista $s$ de ser un homomorfismo
 
-\begin{equation}
+\begin{equation}\label{eq:factorsystem}
 	s(g)s(h) = i\left(c(g,h)\right)s(gh)
 \end{equation}
 
@@ -102,16 +102,19 @@ Sea $\varphi$ una acción de $Q$ en $A$ y $\homo c {Q\times Q} A$ una función q
 \end{proposicion}
 
 \begin{proposicion}\label{prop:res2}
-	Sea $E$ una extensión de $Q$ por $A$ y $s_1,s_2$ dos secciones normalizadas de $Q$ a $E$ y $c_1,c_2$ los cociclos asociados a $s_1$ y $s_2$. Entonces, $c_1$ y $c_2$ se diferencian en un $2$-coborde normalizado. %Esto es, la extensión $E$ determina la clase $[c_1]\in H^2_\varphi(Q,A)$.
+	Sea $E$ una extensión de $Q$ por $A$, $s_1$ y $s_2$ dos secciones normalizadas de $Q$ a $E$ y $c_1,c_2$ los cociclos asociados a $s_1$ y $s_2$. Entonces, $c_1$ y $c_2$ se diferencian en un $2$-coborde normalizado y la extensión $E$ determina la clase $[c_1]\in H_\varphi^2(Q,A)$. 
 	
 	\begin{demostracion}
-		La diferencia de $s_1$ y $s_2$ define una función $\homo e Q {A}$ por $s_2(q) = i(e(q))s_1(q)$.
-		
-		Cambiando la sección $s_2$ por $s_1$
+		La diferencia de $s_1$ y $s_2$ define una función $\homo e Q {A}$ por $s_2(q) = i(e(q))s_1(q)$. Cambiando la sección $s_2$ por $s_1$ en \eqref{eq:factorsystem}
 		\begin{align*}
-			i(c_2(g,h))s_2(gh) &= s_2(g)s_2(h) \\ &= i(e(g))s_1(g)i(e(h))s_1(h)\\ &= i(e(g) + g \cdot e(h)) s_1(g)s_1(h) \\ &= i(e(g) + g \cdot e(h) + c(g,h))s_1(gh)
+			i(c_2(g,h))s_2(gh) 
+			&= s_2(g)s_2(h) \\ 
+			&= i(e(g))s_1(g)i(e(h))s_1(h)\\ 
+			&= i(e(g) + g \cdot e(h)) s_1(g)s_1(h) \\ 
+			&= i(e(g) + g \cdot e(h) + c_1(g,h))s_1(gh) \\
+			&= i(e(g) + g \cdot e(h) - e(gh) + c_1(g,h))s_2(gh)
 		\end{align*}
-		obtenemos que la diferencia de $c_2$ y $c_1$ verifica la ecuación de un $2$-coborde
+		obtenemos que la diferencia de $c_2$ y $c_1$ es el coborde de $e$
 		\begin{equation} 
 			(c_2-c_1)(g,h) = g \cdot e(h) - e(gh) + e(g)
 		\end{equation}
@@ -125,7 +128,7 @@ Sea $\varphi$ una acción de $Q$ en $A$ y $\homo c {Q\times Q} A$ una función q
 \end{proposicion}
 
 %En \ref{prop:equivcoc} hemos probado que la extens
-Hemos visto en \ref{prop:res1} que un $2$-cociclo normalizado da lugar a una extensión de $Q$ por $A$ y en \ref{prop:res2} que dos extensiones son equivalentes cuando los $2$-cociclos normalizados se diferencian en un $2$-coborde normalizado. La elección de cociclos normalizados es valida ya que como se ha visto en la Proposición \ref{prop:normcoc}, todo $2$-cociclo es cohomólogo a uno normalizado. En el Apéndice $\ref{apen:norm}$ se da la expresión de $E_c$ para un cociclo no normalizado.
+Hemos visto en \ref{prop:res1} que un $2$-cociclo normalizado da lugar a una extensión de $Q$ por $A$ y en \ref{prop:res2} que dos extensiones son equivalentes cuando los $2$-cociclos normalizados son cohomólogos. La elección de cociclos normalizados es valida ya que como se ha visto en la Proposición \ref{prop:normcoc}, todo $2$-cociclo es cohomólogo a uno normalizado. En el Apéndice $\ref{apen:norm}$ se da la operación de grupo de $E_c$ para un cociclo no normalizado.
 
 Queda demostrado el siguiente teorema. % Como se dice cuando algo no pierde generalidad
 
@@ -149,9 +152,9 @@ Queda demostrado el siguiente teorema. % Como se dice cuando algo no pierde gene
 	Sean $[E_1],[E_2]\in Ext(Q,A)$ dos extensiones y $[c_1],[c_2]\in H^2(Q,A)$ sus cociclos asociados, podemos definir la suma $[E_1] + [E_2]$ como la clase de extensiones equivalentes asociada a $[c1+c2]\in H^2(Q,A)$. Es decir, $Ext_\varphi(Q,A)$ tiene una estructura de grupo abeliano heredada de $H^2(Q,A)$.
 \end{proposicion}
 
-En el Apéndice \ref{baersum}, se da otra forma de construir la suma anterior sin el uso de cociclos.
+En el Apéndice \ref{baersum} se da otra forma de construir la suma anterior sin el uso de cociclos.
 
-\subsection{Teorema de Schur-Zassenhaus. Caso abeliano}
+\section{Teorema de Schur-Zassenhaus. Caso abeliano}
 
 
 

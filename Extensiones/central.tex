@@ -1,3 +1,75 @@
-\subsection{Extensiones abelianas}
+% !TeX root=../tfg2.tex
 
-Un caso particular de \eqref{exta} es cuando la acción de $Q$ en $A$ es trivial
+\subsection{Extensiones centrales}
+
+En esta sección introduciremos las extensiones centrales y daremos una caracterización de cúando el grupo intermedio de una extensión es abeliano.
+
+\begin{definicion}
+	Decimos que una extension $\extension i \pi A E Q$ es una extensión central cuando $i(A)\leq Z(E)$. 
+	
+	Diremos que es abeliana cuando el grupo central $E$ de la extensión es abeliano. No debe confundirse con una extensión con núcleo abeliano.
+\end{definicion}
+
+\begin{proposicion}
+	Una extensión $\extension i \pi A E Q$ es central si y solo si la acción es trivial.
+	\begin{demostracion}
+		Dada una sección $\homo s Q E$, la acción de $Q$ en $A$ viene dada por conjugación $\,^{s(q)}i(a)=q\cdot a$.
+		
+		
+		Por un lado, si $i(A)$ es central, la acción de $Q$ por conjugación en $i(A)$ es trivial. En la otra dirección, 
+	\end{demostracion}
+\end{proposicion}
+
+\begin{definicion}
+	Sea $c\in Z^2(Q,A)$ un $2$-cociclo. Decimos que $c$ es un $2$-cociclo simétrico cuando para todo $q_1,q_2\in G$
+	\begin{equation*}
+		c(q_1,q_2)=c(q_2,q_1)
+	\end{equation*}
+	
+	Claramente la suma de dos cociclos también es simétrica. Denotaremos a los subgrupos de $2$-cociclos y $2$-cobordes simétricos como $Z^2(Q,A)_s$ y $B^2(Q,A)_s$ respectivamente.
+\end{definicion}
+
+
+\begin{teorema}\label{thm:abext}
+	Una extensión $\extension i \pi A E Q$ es abeliana si y solo si es una extensión central, $Q$ es abeliano y todo cociclo asociado a la extensión es simétrico.
+	\begin{demostracion}
+		Supongamos que $E$ es abeliano. Entonces la extensión es central y cualquier subgrupo y cociente de $E$ es abeliano, en particular $Q$. Sean $q_1,q_2\in Q$, entonces
+		\begin{equation*}
+			c(q_1,q_2)=s(q_1)s(q_2)s(q_1q_2)^{-1} = s(q_2)s(q_1)s(q_2q_1)^{-1} = c(q_2,q_1)
+		\end{equation*}
+		
+		Supongamos ahora que $c$ es un cociclo simétrico y $A$ y $Q$ son abelianos. Entonces la operación en $E_c$ descrita en \ref{extop} viene dada por 
+		\begin{align*}
+			(a_1,q_1)(a_2,q_2) 
+			& = (a_1+q_1\cdot a_2 + c(q_1,q_2),q_1q_2) \\
+			& = (a_2 + q_2\cdot a_1 + c(q_2,q_1),q_2q_1) \\
+			& = (a_2,q_2)(a_1,q_1)
+		\end{align*}
+		y $E$ es abeliano.
+	\end{demostracion}
+\end{teorema}
+
+A partir de ahora consideraremos que $Q$ es abeliano y la acción de $Q$ en $A$ es trivial.
+
+\begin{proposicion}
+		Todo $2$-coborde es simétrico. Por tanto, $B^2(Q,A)_s=B^2(Q,A)$.
+	\begin{demostracion}
+		Sea $\phi\in C^1(Q,A)$ una $1$-cocadena. Entonces
+		\begin{equation*}
+			(\partial^1\phi)(q_1,q_2) = \phi(q_2) - \phi(q_1q_2) + \phi(q_1) = (\partial^1\phi)(q_2,q_1).
+		\end{equation*}
+	\end{demostracion}
+\end{proposicion}
+
+\begin{corolario}
+	Sea $c\in Z^2(Q,A)_s$ un $2$-cociclo simétrico. Entonces, $c'\in [c]$ es también un $2$-cociclo simétrico.
+	\begin{demostracion}
+		$c' = c+b$ para algún $b\in B^2(Q,A)=B^2(Q,A)_s\leq C^2(Q,A)_s$. $C^2(Q,A)_s$ es un subgrupo y por tanto $c'$ es simétrico.
+	\end{demostracion}
+\end{corolario}
+
+Por tanto, las clases de cociclos simétricos están bien definidas y podemos definir
+	\begin{equation*}
+	H^2(Q,A)_s \hookrightarrow H^2(Q,A)
+	\end{equation*}
+	el subgrupo de coclases de cociclos simétricos. Por lo visto en los teoremas \ref{h2} y \ref{thm:abext}, las extensiones abelianas están clasificadas por $H^2(Q,A)_s$ salvo equivalencia.

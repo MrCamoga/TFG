@@ -192,15 +192,41 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 		d_id_jf=d_{j+1}d_if
 	\end{equation}
 	\begin{demostracion}
-%		Para facilitar los calculos, expresaremos la $n$-tupla $(g_1,\ldots,g_n)$ como $(\ldots,1,g_1,\ldots,g_n,1,\ldots)$ donde las barras indica el inicio y fin de la tupla. De esta forma, tras aplicar $d_i$ y $d_j$, todo lo que quede a la izquierda se aplicara sobre $f$ y todo lo que quede a la derecha se ignorará. % o se aplicara a la derecha con acción trivial.
-%		
-%		$(d_i(d_j))(\ldots,1,g_1,\ldots,g_n,1,\ldots) = 
-%		d_j(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_n,1,\ldots) = 
-%		(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_{j+1}g_{j+2},\ldots,g_n,1,\ldots) $
-%		
-%		$(d_{j+1}(d_i))(\ldots,1,g_1,\ldots,g_n,1,\ldots) = 
-%		d_i(\ldots,1,g_1,\ldots,g_{j+1}g_{j+2},\ldots,g_n,1,\ldots) = 
-%		(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_{j+1}g_{j+2},\ldots,g_n,1,\ldots) $
+		Para facilitar los calculos, extendemos la $n$-tupla $(g_1,\ldots,g_{n+2})$ a $(1,1,g_1,\ldots,g_{n+2},1,1)$.
+		Definimos la operación de $d_i$ sobre la tupla infinita como $d_i(\ldots,g_0|g_1,\ldots,g_n,g_{n+1},\ldots) = (\ldots,g_0|g_1,\ldots,g_ig_{i+1},\ldots,g_n,\ldots)$tras aplicar $d_i$ y $d_j$, todo lo que quede a la izquierda se aplicara sobre $f$ y todo lo que quede a la derecha se ignorará. 
+		
+		\textit{Caso $j=i$}
+		\begin{align*}
+			&(d_i(d_i))(1,1,g_1,\ldots,g_{n+2},1,1) = \\
+			&d_i(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_n,1,\ldots) = \\
+			&(\ldots,1,g_1,\ldots,g_ig_{i+1}g_{i+2},\ldots,g_n,1,\ldots)
+		\end{align*}
+		\begin{align*}
+			&(d_{i+1}(d_i))(1,1,g_1,\ldots,g_{n+2},1,1) = \\
+			&d_i(\ldots,1,g_1,\ldots,g_{i+1}g_{i+2},\ldots,g_n,1,\ldots) = \\
+			&(\ldots,1,g_1,\ldots,g_ig_{i+1}g_{i+2},\ldots,g_n,1,\ldots)
+		\end{align*}
+		Son iguales
+		
+		\textit{Caso $j=i+1$}
+		\begin{align*}
+			&(d_i(d_{i+1}))(\ldots,1,g_1,\ldots,g_n,1,\ldots) = \\
+			&d_{i+1}(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_n,1,\ldots) = \\
+			&(\ldots,1,g_1,\ldots,g_ig_{i+1},g_{i+2}g_{i+3},\ldots,g_n,1,\ldots)
+		\end{align*}
+		\begin{align*}
+			&(d_{i+2}(d_i))(\ldots,1,g_1,\ldots,g_n,1,\ldots) = \\
+			&d_i(\ldots,1,g_1,\ldots,g_{i+2}g_{i+3},\ldots,g_n,1,\ldots) = \\
+			&(\ldots,1,g_1,\ldots,g_ig_{i+1},g_{i+2}g_{i+3},\ldots,g_n,1,\ldots)
+		\end{align*}
+		Son iguales
+		
+		\textit{Caso $j>i+1$}
+		\begin{align*}
+			&(d_{j+1}(d_i))(\ldots,1,g_1,\ldots,g_n,1,\ldots) = \\
+			&d_i(\ldots,1,g_1,\ldots,g_{j+1}g_{j+2},\ldots,g_n,1,\ldots) = \\
+			&(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_{j+1}g_{j+2},\ldots,g_n,1,\ldots)
+		\end{align*}
 		
 		\begin{align*}
 			(\partial^2(\partial^1f))(g_1,g_2,g_3) 

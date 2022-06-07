@@ -130,17 +130,17 @@ El estudio de las extensiones lo haremos haciendo uso de secciones, que se defin
 \begin{observacion}\label{extact}
 	Una extensión $\extension i \pi N E Q$ determina, por conjugación por elementos de $E$, un homomorfismo $\homo \alpha E {\Aut(N)}$ definido por
 	\begin{equation*} % tecnicamente es i(n) e i(N) pero bueno es inyectiva noseque da igual imagino no creo q se enfade nadie por hacer un pequeño abuso de notacion
-		\alpha(g)(n) = \,^gn = gng^{-1}
+		\alpha(g)(n) = \,^gi(n) = gi(n)g^{-1}
 	\end{equation*}
 	
 	Entonces, $\alpha(N) = \Inn(N)$ y $\alpha$ induce un homomorfismo  % explicar que esta bien definida
-	\begin{align*}
-		\tilde\alpha\colon E/N &\to \Out(N) \\
-		gN &\mapsto \overline{\alpha(g)} 
-	\end{align*}
+	\begin{align}\label{eq:actionconj}
+		\tilde\alpha\colon E/i(N) &\to \Out(N) \nonumber \\
+		g i(N) &\mapsto \overline{\alpha(g)} 
+	\end{align}
 	
 	El homomorfismo $\tilde\alpha$ se conoce como el kernel abstracto de la extensión. % no se usa
-	Fijando una sección $s$ de $\pi$, para todo $q\in Q$, la conjugación por $s(q)$ determina un automorfismo $\varphi(s(q))$ de $N$ definido por $\varphi(s(q))(n) = \alpha(s(q))(n)$. 
+	Fijando una sección $s$ de $\pi$, para todo $q\in Q$, la conjugación por $s(q)$ determina un automorfismo $\varphi(q)$ de $N$ definido por $\varphi(q)(n) = \alpha(s(q))(n)$. 
 	
 	Notese que la función $\homo \varphi Q {\Aut(N)}$ no es necesariamente un homomorfismo de grupos, pero sí lo es salvo automorfismos internos. En particular, si la sección $s$ es un homomorfismo o el grupo de automorfismos internos de $N$ es trivial, como se estudia en las secciones \ref{sec:split} y \ref{sec:ab}, entonces $\varphi$ sí es un homomorfismo y podremos hablar de grupos de la acción de la extensión. %%?????????????????
 \end{observacion}

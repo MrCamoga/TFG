@@ -213,39 +213,24 @@ Nos centramos a continuación en el caso en que $\theta$ es la abelianización d
 \begin{proposicion}\label{prop:quotfg} % poner encima del teorema de schur
 	Sea $G$ un grupo finitamente generado y $H$ un subgrupo de $G$ de índice finito $n$. Entonces $H$ es finitamente generado.
 	\begin{demostracion}
-		Sea $X$ un sistema generador finito de $G$ y $\{1=t_1,\ldots,t_n\}$ una transversal de $H$ a $G$.
-		Sea $h\in H$, entonces $h=x_1\cdots x_k$ donde cada $x_i\in X\cup X^{-1}$. Demostramos que $h$ es finitamente generado en $H$ por inducción en $k$.
-		Para el caso base, $k=1$, $h = x_1\in H$ por lo que $h$ es finitamente generado. % h fg?
+		Sea $X$ un sistema generador finito de $G$ y $\{1=t_1,\ldots,t_n\}$ una transversal de $H$ a $G$. Definimos la función $\tau_{i}(g) = t_igt_{(i)g}^{-1}\in H$ como en \eqref{minitransfer}, de esta forma $t_i g = \tau_{i}(g)t_{(i)g}$.
+		Sea $h\in H$, entonces $h=x_1\cdots x_k$ donde cada $x_i\in X\cup X^{-1}$. Demostramos por inducción en $k$ que $h$ es finitamente generado en $H$ por $Y=\{\tau_i(x) \ | \ x\in X, \ i=1,\ldots,n\}$. Llamamos $\tilde X = X \cup \transversal t n$.
 		
-		Supongamos ahora que todo elemento de $H$ generado por menos de $k$ elementos de $X\cup X^{-1}$ es finitamente generado en $H$. 
-		Definimos la función $\tau_{i}(x) = t_ixt_{(i)x}^{-1}\in H$ como en \eqref{minitransfer}, de esta forma $t_i x = \tau_{i}(x)t_{(i)x}$.
+		Para el caso base, $k=1$, tenemos $h = x_1\in H$ y $\tau_1(x_1) = t_1x_1t_{(1)x_1} = x_1$ observando que $t_{(1)x_1} = t_1$ ya que $x_1\in H$, por lo que $h$ está generado por $\tau_1(x_1)$.
+		
+		Supongamos ahora que todo elemento de $H$ generado por menos de $k$ elementos de $\tilde X\cup\tilde X^{-1}$ es finitamente generado en $H$ por elementos de $Y$. 
 		\begin{align*}
-			h 	= x_1\cdots x_k = t_1 x_1\cdots x_k &= \tau_{1}(x_1)t_{(1)x_1} x_2\cdots x_k \\
+			h = x_1\cdots x_k = t_1 x_1\cdots x_k &= \tau_{1}(x_1)t_{(1)x_1} x_2\cdots x_k \\
 			&= \tau_{1}(x_1) \tau_{(1)x_1}(x_2)t_{(1)x_1x_2} x_3\cdots x_k
 		\end{align*}
 		
-		Por hipótesis de inducción, $x_3\cdots x_k$ es finitamente generado por elementos de $H$
-		
-		
-		% caso base k=1
-		% h = x_1 \implies x_1 \in H
-		% 
-		% h = x_1...x_k = t_1 x_1...x_k  = \tau_i(x_1)t_{(i)x_1} x_2...x_k
-		% \tau_i(x_1)^{-1} h= t_{(i)x_1} x_2...x_k = t_{(i)x_1}^{-1} x_3...x_k
-		% \tau_{(i)x_1}(x_2)^{-1}\tau_i(x_1)^{-1}h = t_{(i)x_1}^{-1}x_3...x_k es un producto de k-1 elementos de G y por inducción es h es finitamente generado
+		Por hipótesis de inducción, $t_{(1)x_1x_2} x_3\cdots x_k$ es finitamente generado por elementos de $Y$ y, por tanto, $h$ también.
 	
-	
-	
-	
-		Sea $X$ un sistema generador finito de $G$ y $\{1=t_1,\ldots,t_n\}$ una transversal de $H$ a $G$.
-		Sea $h\in H\leq G$, entonces $h=x_1\cdots x_k$ donde cada $x_i\in X\cup X^{-1}$.
-		% ESCRIBIR ESTO POR FAVOR NO SE ESCRIBIR AYUDA
-		Teniendo en cuenta que $t_iht_{(i)h}^{-1} \in H$, llamamos $\tau_{i}(h) = t_iht_{(i)h}^{-1}$ y por tanto $t_ih = \tau_{i}(h)t_{(i)h}$
-		\begin{equation*}
-			h = t_1x_1\cdots x_k = \tau_{1}(x_1)t_{(1)x_1}x_2\cdots x_k = \prod_{i=1}^k\left[ \tau_{(1)\prod_{j=1}^{i}x_j}\Big(\prod_{j=1}^{i}x_j\Big)\right]t_{(1)h}
-		\end{equation*}
-		
-		Como $t_1 = 1$ y $h\in H$, $t_{(1)h} = t_1 = 1$ y $H$ está generado por $\tau_i(x)$ para $i=\{1,\ldots,n\}$ y $x\in X\cup X^{-1}$.
+%		\begin{equation*}
+%			h = t_1x_1\cdots x_k = \tau_{1}(x_1)t_{(1)x_1}x_2\cdots x_k = \prod_{i=1}^k\left[ \tau_{(1)\prod_{j=1}^{i}x_j}\Big(\prod_{j=1}^{i}x_j\Big)\right]t_{(1)h}
+%		\end{equation*}
+%		
+%		Como $t_1 = 1$ y $h\in H$, $t_{(1)h} = t_1 = 1$ y $H$ está generado por $\tau_i(x)$ para $i=\{1,\ldots,n\}$ y $x\in X\cup X^{-1}$.
 	\end{demostracion}
 \end{proposicion}
 

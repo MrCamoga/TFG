@@ -4,7 +4,11 @@
 
 A continuación estudiaremos el caso en que $N$ es un grupo abeliano que a partir de ahora denotaremos por $A$. 
 
-Por la Observación \ref{extact}, como $\Inn(A)$ es trivial, $Out(N)=Aut(N)$ y la acción de $Q$ en $A$ es un homomorfismo de grupos, lo que hace a $A$ un $Q$-módulo. A partir de ahora, fijaremos una acción de $Q$ en $A$ y estudiaremos todas las extensiones que dan lugar a dicha acción.
+Por la Observación \ref{extact}, como $\Inn(A)$ es trivial, $Out(N)=Aut(N)$ y la acción de $Q$ en $A$ es un homomorfismo de grupos, lo que hace a $A$ un $Q$-módulo. Dada una sección $\homo s Q E$, la acción de un elemento $q\in Q$ en un elemento $a\in A$ viene dada por
+\begin{equation}
+	q\cdot a = \,^{s(q)}i(a)
+\end{equation}
+A partir de ahora, fijaremos una acción de $Q$ en $A$ y estudiaremos todas las extensiones que dan lugar a dicha acción.
 
 \begin{equation}\label{exta}
 	1\to A\xrightarrow{i} E\xrightarrow{\pi} Q\to 1
@@ -32,8 +36,7 @@ i(a_1)s(q_1)i(a_2)s(q_2) &= i(a_1)i(q_1\cdot a_2)s(q_1)s(q_2) \\ &= i(a_1+ q_1\c
 (a_1,q_1)(a_2,q_2) = (a_1 + q_1\cdot a_2 + c(q_1,q_2),q_1q_2)
 \end{equation}
 
-Notese que este producto no depende directamente de la sección $s$ escogida. Por ello, supondremos que la sección $s$ es normalizada 
-
+Dado que la sección la podemos escoger de manera arbitraria, podemos suponer que la sección $s$ es normalizada para facilitar los cálculos.
 \begin{equation}
 	s(1) = 1
 \end{equation}
@@ -54,7 +57,7 @@ De esta forma, el isomorfismo $\homo f {E_c} E$ viene dado por $f(a,q) = i(a)s(q
 Sea $\varphi$ una acción de $Q$ en $A$ y $\homo c {Q\times Q} A$ una función que verifica la condición de normalización \eqref{cocnorm}. Entonces, la operación \eqref{extop} define una extensión de $Q$ por $A$ cuando $c$ es un $2$-cociclo normalizado.
 	\begin{demostracion}
 	Para ver que la funcion define una operación de grupo comprobamos la asociatividad y la existencia de identidad e inversos.
-	%	(a_1+q_1\cdot a_2 + c(q_1,q_2),q_1q_2)(a_3,q_3) = 
+%	(a_1+q_1\cdot a_2 + c(q_1,q_2),q_1q_2)(a_3,q_3) = 
 %	(a_1+q_1\cdot a_2 + c(q_1,q_2) + q_1q_2\cdot a_3 + c(q_1q_2,q_3),q_1q_2q_3)
 	
 %	(a_1,q_1)(a_2+q_2\cdot a_3 + c(q_2,q_3),q_2q_3) = 
@@ -127,8 +130,7 @@ Sea $\varphi$ una acción de $Q$ en $A$ y $\homo c {Q\times Q} A$ una función q
 	\end{demostracion}
 \end{proposicion}
 
-%En \ref{prop:equivcoc} hemos probado que la extens
-Hemos visto en \ref{prop:res1} que un $2$-cociclo normalizado da lugar a una extensión de $Q$ por $A$ y en \ref{prop:res2} que dos extensiones son equivalentes cuando los $2$-cociclos normalizados son cohomólogos. La elección de cociclos normalizados es valida ya que como se ha visto en la Proposición \ref{prop:normcoc}, todo $2$-cociclo es cohomólogo a uno normalizado. En el Apéndice $\ref{apen:norm}$ se da la operación de grupo de $E_c$ para un cociclo no normalizado.
+Hemos visto en \ref{prop:res1} que un $2$-cociclo normalizado da lugar a una extensión de $Q$ por $A$ y en \ref{prop:res2} que dos extensiones son equivalentes cuando los $2$-cociclos normalizados son cohomólogos. La elección de cociclos normalizados es valida y clasifica todas las extensiones ya que como se ha visto en la Proposición \ref{prop:normcoc}, todo $2$-cociclo es cohomólogo a uno normalizado. En el Apéndice $\ref{apen:norm}$ se da la operación de grupo de $E_c$ para un cociclo no normalizado.
 
 Queda demostrado el siguiente teorema. % Como se dice cuando algo no pierde generalidad
 
@@ -146,8 +148,6 @@ Queda demostrado el siguiente teorema. % Como se dice cuando algo no pierde gene
 	\end{demostracion}
 \end{observacion}
 
-% hablar de la estructura de grupo de H2 (suma de cociclos es cociclo): de esto hablo en la definicion de cociclo
-% mencionar que es no vacio
 \begin{proposicion}\label{extsum}
 	Sean $[E_1],[E_2]\in Ext(Q,A)$ dos extensiones y $[c_1],[c_2]\in H^2(Q,A)$ sus cociclos asociados, podemos definir la suma $[E_1] + [E_2]$ como la clase de extensiones equivalentes asociada a $[c1+c2]\in H^2(Q,A)$. Es decir, $Ext_\varphi(Q,A)$ tiene una estructura de grupo abeliano heredada de $H^2(Q,A)$.
 \end{proposicion}
@@ -156,9 +156,9 @@ En el Apéndice \ref{baersum} se da otra forma de construir la suma anterior sin
 
 \section{Teorema de Schur-Zassenhaus. Caso abeliano}
 
+% comentar que es importante para los teorema de hall
 
-
-\begin{teorema}\label{thmschurab} Sea $G$ un grupo finito y sea $N \norm G$ abeliano, $\ord{N}=n$ y $\ord{G:N}=m$ con $\mcd(n,m)=1$. Entonces $G$ contiene subgrupos de orden $m$ y dos cualesquiera son conjugados.
+\begin{teorema}\label{thmschurab} Sea $G$ un grupo finito y sea $A \norm G$ abeliano, $\ord{A}=n$ y $\ord{G:A}=m$ con $\mcd(n,m)=1$. Entonces $G$ contiene subgrupos de orden $m$ y dos cualesquiera son conjugados.
 	\begin{demostracion}
 %		Tomamos una sección $s$ y su $2$-cociclo asociado $c$. 
 %		\begin{equation}
@@ -185,7 +185,7 @@ En el Apéndice \ref{baersum} se da otra forma de construir la suma anterior sin
 %		\end{equation}
 %		vemos que $a$ verifica la ecuación de un $1$-coborde para la función $k\tilde a$ y $H^1(Q,N)$ es trivial. Por el Teorema $\ref{h1}$, todas las escisiones son $N$-conjugadas y por tanto son conjugadas.
 
-		Por el Teorema \ref{thm:trivialH}, $H^2(Q,N)$ es trivial y por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $N$. Esto prueba la parte de existencia.
+		Por el Teorema \ref{thm:trivialH}, $H^2(Q,A)$ es trivial y por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $A$. Esto prueba la parte de existencia.
 		
 		Para la conjugación, cualquier subgrupo $\tilde Q$ de $G$ de orden $m$, al ser $\mcd(n,m)=1$, tiene intersección trivial con $N$ y la proyección sobre $G/N$ es inyectiva. Por tanto, $\tilde Q$ es una escisión de $G$. Por el mismo teorema, $H^1(Q,N)$ es trivial y por el Teorema \ref{h1} todas las escisiones de la extensión $G$ son $N$-conjugadas y por tanto conjugadas. 
 	\end{demostracion}

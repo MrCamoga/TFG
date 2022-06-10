@@ -210,13 +210,13 @@ Nos centramos a continuación en el caso en que $\theta$ es la abelianización d
 
 %Notese que en general, la función de elevar cada elemento a una potencia no es un homomorfismo salvo que $G$ sea abeliano. % blablabla soltar rollo sobre lo remarcable que es que elevar al indice del centro sí lo sea
 
-\begin{proposicion}\label{prop:quotfg} % poner encima del teorema de schur
+\begin{proposicion}[Lema de Schreier]\label{prop:quotfg} % poner encima del teorema de schur
 	Sea $G$ un grupo finitamente generado y $H$ un subgrupo de $G$ de índice finito $n$. Entonces $H$ es finitamente generado.
 	\begin{demostracion}
 		Sea $X$ un sistema generador finito de $G$ y $\{1=t_1,\ldots,t_n\}$ una transversal de $H$ a $G$. Definimos la función $\tau_{i}(g) = t_igt_{(i)g}^{-1}\in H$ como en \eqref{minitransfer}, de esta forma $t_i g = \tau_{i}(g)t_{(i)g}$.
-		Sea $h\in H$, entonces $h=x_1\cdots x_k$ donde cada $x_i\in X\cup X^{-1}$. Demostramos por inducción en $k$ que $h$ es finitamente generado en $H$ por $Y=\{\tau_i(x) \ | \ x\in X, \ i=1,\ldots,n\}$. Llamamos $\tilde X = X \cup \transversal t n$.
+		Sea $h\in H$, entonces $h=x_1\cdots x_k$ donde cada $x_i\in X\cup X^{-1}$. Demostramos por inducción en $k$ que $h$ es finitamente generado en $H$. Supongamos que $h$ está generado por $k$ elementos de $X\cup X^{-1}$.
 		
-		Para el caso base, $k=1$, tenemos $h = x_1\in H$ y $\tau_1(x_1) = t_1x_1t_{(1)x_1} = x_1$ observando que $t_{(1)x_1} = t_1$ ya que $x_1\in H$, por lo que $h$ está generado por $\tau_1(x_1)$.
+		Para el caso base, $k=1$, tenemos $h = x_1\in H$ y $\tau_1(x_1) = t_1x_1t_{(1)x_1}^{-1} = x_1$ observando que $t_{(1)x_1} = t_1$ ya que $x_1\in H$, por lo que $h$ está generado por $\tau_1(x_1)$.
 		
 		Supongamos ahora que todo elemento de $H$ generado por menos de $k$ elementos de $\tilde X\cup\tilde X^{-1}$ es finitamente generado en $H$ por elementos de $Y$. 
 		\begin{align*}

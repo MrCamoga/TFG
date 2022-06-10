@@ -136,7 +136,7 @@ $\Z[G]$ tiene estructura de anillo con unidad. Notese que este anillo será conm
 
 %Un complejo de cadenas es un par $(C,d)$ donde $C$ es un $R$-módulo graduado y $d$ es un 
 % la cohomologia mide como de lejos está el complejo de ser exacto.
-Sea $R$ un anillo conmutativo con unidad. Un $R$-módulo graduado es una sucesión de $R$-módulos $C=\{C_n\}_{n\in\Z}$. Diremos que los elementos del $R$-módulo $C_n$ tienen grado $n$.
+Sea $R$ un anillo con unidad. Un $R$-módulo graduado es una sucesión de $R$-módulos $C=\{C_n\}_{n\in\Z}$. Diremos que los elementos del $R$-módulo $C_n$ tienen grado $n$.
 Definimos un mapa de grado $r$ entre dos $R$-módulos graduados $C$ y $C'$ como una sucesión de homomorfismos de $R$-módulos $f=\{\homo {f_n} {C_n} {C_{n+r}'}\}_{n\in\Z}$.
 
 Un complejo de cadenas sobre $R$ es el par $(C,d)$ donde $C$ es un $R$-módulo graduado y $\homo d C C$ un mapa de grado $-1$ llamado operador de borde que verifica $d_{n}\circ d_{n+1}=0$ para todo $n\in\Z$, escrito sin subíndices como $d^2 = 0$. Equivalentemente, el operador de borde verifica $\Image(d_{n+1})\subseteq \Ker(d_{n})$.
@@ -187,55 +187,59 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 
 % dar indicacion o ejemplo del calculo
 \begin{lema}\label{lem:coborde}
-	Sea $f\in C^n$, entonces para todo $i=0,\ldots,n+1$ y $j=i,\ldots,n$
+	Sea $f\in C^{n-1}$, entonces para todo $i=0,\ldots,n+1$ y $j=i,\ldots,n$
 	\begin{equation}
 		d_id_jf=d_{j+1}d_if
 	\end{equation}
 	\begin{demostracion}
-		Para facilitar los calculos, extendemos la $n$-tupla $(g_1,\ldots,g_{n+2})$ a $(1,1,g_1,\ldots,g_{n+2},1,1)$.
-		Definimos la operación de $d_i$ sobre la tupla infinita como $d_i(\ldots,g_0|g_1,\ldots,g_n,g_{n+1},\ldots) = (\ldots,g_0|g_1,\ldots,g_ig_{i+1},\ldots,g_n,\ldots)$tras aplicar $d_i$ y $d_j$, todo lo que quede a la izquierda se aplicara sobre $f$ y todo lo que quede a la derecha se ignorará. 
+		Para facilitar los calculos, extendemos $(g_1,\ldots,g_{n+1})$ a $(g_0,\ldots,g_{n+3})$ con $g_0=g_{n+2}=g_{n+3}=1$.
+		Definimos la operación de $d_i$ sobre la tupla como $d_i(g_0,\ldots,g_{n+3}) = (g_0,\ldots,g_ig_{i+1},\ldots,g_{n+3})$. La tupla obtenida tras aplicar $d_i$ y $d_j$, se aplicará a $f$ de la siguiente forma 
+		\begin{equation*}
+			f\cdot (\tilde g_0,\ldots,\tilde g_{n+1}) = \tilde g_0 \cdot f(\tilde g_1,\ldots,\tilde g_{n-1})
+		\end{equation*}
+		esto es equivalente a calcular $d_i(d_jf)(g_1,\ldots,g_{n+1})$.
 		
-		\textit{Caso $j=i$}
-		\begin{align*}
-			&(d_i(d_i))(1,1,g_1,\ldots,g_{n+2},1,1) = \\
-			&d_i(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_n,1,\ldots) = \\
-			&(\ldots,1,g_1,\ldots,g_ig_{i+1}g_{i+2},\ldots,g_n,1,\ldots)
-		\end{align*}
-		\begin{align*}
-			&(d_{i+1}(d_i))(1,1,g_1,\ldots,g_{n+2},1,1) = \\
-			&d_i(\ldots,1,g_1,\ldots,g_{i+1}g_{i+2},\ldots,g_n,1,\ldots) = \\
-			&(\ldots,1,g_1,\ldots,g_ig_{i+1}g_{i+2},\ldots,g_n,1,\ldots)
-		\end{align*}
-		Son iguales
-		
-		\textit{Caso $j=i+1$}
-		\begin{align*}
-			&(d_i(d_{i+1}))(\ldots,1,g_1,\ldots,g_n,1,\ldots) = \\
-			&d_{i+1}(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_n,1,\ldots) = \\
-			&(\ldots,1,g_1,\ldots,g_ig_{i+1},g_{i+2}g_{i+3},\ldots,g_n,1,\ldots)
-		\end{align*}
-		\begin{align*}
-			&(d_{i+2}(d_i))(\ldots,1,g_1,\ldots,g_n,1,\ldots) = \\
-			&d_i(\ldots,1,g_1,\ldots,g_{i+2}g_{i+3},\ldots,g_n,1,\ldots) = \\
-			&(\ldots,1,g_1,\ldots,g_ig_{i+1},g_{i+2}g_{i+3},\ldots,g_n,1,\ldots)
-		\end{align*}
-		Son iguales
-		
-		\textit{Caso $j>i+1$}
-		\begin{align*}
-			&(d_{j+1}(d_i))(\ldots,1,g_1,\ldots,g_n,1,\ldots) = \\
-			&d_i(\ldots,1,g_1,\ldots,g_{j+1}g_{j+2},\ldots,g_n,1,\ldots) = \\
-			&(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_{j+1}g_{j+2},\ldots,g_n,1,\ldots)
-		\end{align*}
-		
-		\begin{align*}
-			(\partial^2(\partial^1f))(g_1,g_2,g_3) 
-			& = g_1\cdot (\partial^1f)(g_2,g_3) - (\partial^1f)(g_1g_2,g_3) + (\partial^1f)(g_1,g_2g_3) - (\partial^1f)(g_1,g_2) \\
-			& = g_1g_2\cdot f(g_3) - g_1\cdot f(g_2g_3) + g_1\cdot f(g_2) \\
-			& - g_1g_2\cdot f(g_3) + f(g_1g_2g_3) - f(g_1g_2) \\
-			& + g_1\cdot f(g_2g_3) - f(g_1g_2g_3) + f(g_1) \\
-			& - g_1\cdot f(g_2) + f(g_1g_2) - f(g_1)
-		\end{align*}
+%		\textit{Caso $j=i$}
+%		\begin{align*}
+%			&(d_i(d_i))(1,1,g_1,\ldots,g_{n+2},1,1) = \\
+%			&d_i(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_n,1,\ldots) = \\
+%			&(\ldots,1,g_1,\ldots,g_ig_{i+1}g_{i+2},\ldots,g_n,1,\ldots)
+%		\end{align*}
+%		\begin{align*}
+%			&(d_{i+1}(d_i))(1,1,g_1,\ldots,g_{n+2},1,1) = \\
+%			&d_i(\ldots,1,g_1,\ldots,g_{i+1}g_{i+2},\ldots,g_n,1,\ldots) = \\
+%			&(\ldots,1,g_1,\ldots,g_ig_{i+1}g_{i+2},\ldots,g_n,1,\ldots)
+%		\end{align*}
+%		Son iguales
+%		
+%		\textit{Caso $j=i+1$}
+%		\begin{align*}
+%			&(d_i(d_{i+1}))(\ldots,1,g_1,\ldots,g_n,1,\ldots) = \\
+%			&d_{i+1}(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_n,1,\ldots) = \\
+%			&(\ldots,1,g_1,\ldots,g_ig_{i+1},g_{i+2}g_{i+3},\ldots,g_n,1,\ldots)
+%		\end{align*}
+%		\begin{align*}
+%			&(d_{i+2}(d_i))(\ldots,1,g_1,\ldots,g_n,1,\ldots) = \\
+%			&d_i(\ldots,1,g_1,\ldots,g_{i+2}g_{i+3},\ldots,g_n,1,\ldots) = \\
+%			&(\ldots,1,g_1,\ldots,g_ig_{i+1},g_{i+2}g_{i+3},\ldots,g_n,1,\ldots)
+%		\end{align*}
+%		Son iguales
+%		
+%		\textit{Caso $j>i+1$}
+%		\begin{align*}
+%			&(d_{j+1}(d_i))(\ldots,1,g_1,\ldots,g_n,1,\ldots) = \\
+%			&d_i(\ldots,1,g_1,\ldots,g_{j+1}g_{j+2},\ldots,g_n,1,\ldots) = \\
+%			&(\ldots,1,g_1,\ldots,g_ig_{i+1},\ldots,g_{j+1}g_{j+2},\ldots,g_n,1,\ldots)
+%		\end{align*}
+%		
+%		\begin{align*}
+%			(\partial^2(\partial^1f))(g_1,g_2,g_3) 
+%			& = g_1\cdot (\partial^1f)(g_2,g_3) - (\partial^1f)(g_1g_2,g_3) + (\partial^1f)(g_1,g_2g_3) - (\partial^1f)(g_1,g_2) \\
+%			& = g_1g_2\cdot f(g_3) - g_1\cdot f(g_2g_3) + g_1\cdot f(g_2) \\
+%			& - g_1g_2\cdot f(g_3) + f(g_1g_2g_3) - f(g_1g_2) \\
+%			& + g_1\cdot f(g_2g_3) - f(g_1g_2g_3) + f(g_1) \\
+%			& - g_1\cdot f(g_2) + f(g_1g_2) - f(g_1)
+%		\end{align*}
 	\end{demostracion}
 \end{lema}
 
@@ -246,9 +250,9 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 %	\end{equation*}
 	$(C,\partial)$ un complejo de cocadenas.
 	\begin{demostracion}
-		Sea $f\in C^n$ %y $g_1,\ldots,g_{n+2}\in G$, entonces
 		
-		Para probarlo separaremos la siguiente suma en dos triangulos,  $j<i$ y $j\geq i$, aplicaremos el Lema \ref{lem:coborde} al segundo y finalmente reescribiremos los índices del sumatorio.
+		Para probarlo separaremos la siguiente suma en dos triangulos,  $j<i$ y $j\geq i$, aplicaremos el Lema \ref{lem:coborde} al segundo y finalmente reescribiremos los índices del sumatorio. 
+		Sea $f\in C^n$ %y $g_1,\ldots,g_{n+2}\in G$, entonces
 		\begin{align*}
 		\partial^{n+1}(\partial^{n} f) 
 			&= \sum_{i=0}^{n+2} (-1)^i d_i(\partial^n f) = \sum_{i=0}^{n+2}\sum_{j=0}^{n+1} (-1)^{i+j} d_i(d_jf)\\
@@ -355,10 +359,11 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 	\begin{equation*}
 		c(1,g)= 0 = c(g,1)
 	\end{equation*}
+	% definimos Z^2_N y B^2_N
 \end{definicion}
 
 \begin{proposicion}
-	$c\in Z^2(Q,A)$ es un $2$-cociclo normalizado si y solo si $c(1,1)=0$.
+	$c\in Z^2(G,A)$ es un $2$-cociclo normalizado si y solo si $c(1,1)=0$.
 	\begin{demostracion}
 		Sea $c(1,1) = 0$. Evaluando $\partial^2 c$ en $(1,1,g)\in G^3$
 		\begin{equation*}
@@ -371,14 +376,30 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 	\end{demostracion}
 \end{proposicion}
 
-\begin{proposicion}\label{prop:normcoc}
-	Todo $2$-cociclo $c\in Z^2(Q,A)$ es cohomólogo a un $2$-cociclo normalizado. %Esto es, $\frac{Z^{*n}_\varphi(Q,A)}{B^n_\varphi(Q,A)} = \frac{Z^n_\varphi(Q,A)}{B^n_\varphi(Q,A)}$
+\begin{lema}\label{prop:normcoc}
+	Todo $2$-cociclo $c\in Z^2(G,A)$ es cohomólogo a un $2$-cociclo normalizado. %Esto es, $\frac{Z^{*n}_\varphi(Q,A)}{B^n_\varphi(Q,A)} = \frac{Z^n_\varphi(Q,A)}{B^n_\varphi(Q,A)}$
 	\begin{demostracion}
-		Tomamos una función $\homo \phi Q A$ tal que $\phi(1) = -c(1,1)$ y construímos el $2$-coborde b de $\phi$
+		Tomamos una función $\homo \phi G A$ tal que $\phi(1) = -c(1,1)$ y construímos el $2$-coborde b de $\phi$
 		\begin{equation*}
-			b(q_1,q_2) = (\partial^1 \phi)(q_1,q_2) =  q_1\cdot \phi(q_2) - \phi(q_1q_2) + \phi(q_1)
+			b(g_1,g_2) = (\partial^1 \phi)(g_1,g_2) =  q_1\cdot \phi(g_2) - \phi(g_1g_2) + \phi(g_1)
 		\end{equation*}
 		$b$ verifica que $b(1,1) = \phi(1) = -c(1,1)$ y por tanto el cociclo $\tilde c = c+b$ es un $2$-cociclo normalizado.
 	\end{demostracion}
-\end{proposicion}
+\end{lema}
+
+\begin{teorema}\label{thm:h2hn2}
+	Tenemos la siguiente biyección
+	\begin{equation}
+		H^2_N(G,A) = \frac{Z^2_N(G,A)}{B^2_N(G,A)} \cong \frac{Z^2(G,A)}{B^2(G,A)} = H^2(G,A)
+	\end{equation}
+	\begin{demostracion}
+		Por el Lema \ref{prop:normcoc}, tenemos el siguiente epimorfismo
+		\begin{align*}
+			\Phi \ \colon \ Z^2_N(G,A) &\twoheadrightarrow H^2(G,A) \\
+			c \ &\mapsto [c]
+		\end{align*}
+		
+		El kernel de $\Phi$ es precisamente la intersección de $Z^2_N(G,A)$ y $B^2(G,A)$, esto es, $B^2_N(G,A)$. Por el Primer Teorema de Isomorfía, se sigue el resultado.
+	\end{demostracion}
+\end{teorema}
 

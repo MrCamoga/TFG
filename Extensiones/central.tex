@@ -25,7 +25,7 @@ A partir de ahora consideraremos que $Q$ es abeliano y la acción de $Q$ en $A$ 
 		c(q_1,q_2)=c(q_2,q_1)
 	\end{equation*}
 	
-	Claramente la suma de dos cociclos también es simétrica. Denotaremos a los subgrupos de $2$-cociclos y $2$-cobordes simétricos como $Z^2(Q,A)_s$ y $B^2(Q,A)_s$ respectivamente.
+	Claramente la suma de dos cociclos simétricos también es simétrica. Denotaremos a los subgrupos de $2$-cociclos y $2$-cobordes simétricos como $Z^2(Q,A)_s$ y $B^2(Q,A)_s$ respectivamente.
 \end{definicion}
 
 
@@ -34,7 +34,7 @@ A partir de ahora consideraremos que $Q$ es abeliano y la acción de $Q$ en $A$ 
 	\begin{demostracion}
 		Supongamos que $E$ es abeliano. Entonces la extensión es central y cualquier subgrupo y cociente de $E$ es abeliano, en particular $Q$. Sean $q_1,q_2\in Q$, entonces
 		\begin{equation*}
-			c(q_1,q_2)=s(q_1)s(q_2)s(q_1q_2)^{-1} = s(q_2)s(q_1)s(q_2q_1)^{-1} = c(q_2,q_1)
+			c(q_1,q_2)=s(q_1)s(q_2)s(q_1q_2)^{-1} = s(q_2)s(q_1)s(q_2q_1)^{-1} = c(q_2,q_1) % enverdad falta i
 		\end{equation*}
 		
 		Supongamos ahora que $c$ es un cociclo simétrico y $A$ y $Q$ son abelianos. Entonces la operación en $E_c$ descrita en \ref{extop} viene dada por 
@@ -61,15 +61,15 @@ A partir de ahora consideraremos que $Q$ es abeliano y la acción de $Q$ en $A$ 
 \begin{corolario}
 	Sea $c\in Z^2(Q,A)_s$ un $2$-cociclo simétrico. Entonces, $c'\in [c]$ es también un $2$-cociclo simétrico.
 	\begin{demostracion}
-		$c' = c+b$ para algún $b\in B^2(Q,A)=B^2(Q,A)_s\leq C^2(Q,A)_s$. $C^2(Q,A)_s$ es un subgrupo y por tanto $c'$ es simétrico.
+		$c' = c+b$ para algún $b\in B^2(Q,A)=B^2(Q,A)_s\leq Z^2(Q,A)_s$. $Z^2(Q,A)_s$ es un subgrupo y por tanto $c'$ es simétrico.
 	\end{demostracion}
 \end{corolario}
 
-Por tanto, las clases de cociclos simétricos están bien definidas y tiene sentido definir $H^2(Q,A)_s$, el subgrupo de clases de cociclos simétricos. Por lo visto en los teoremas \ref{h2} y \ref{thm:abext}, las extensiones abelianas están clasificadas por $H^2(Q,A)_s$ salvo equivalencia.
+Por tanto, las clases de cociclos simétricos están bien definidas y tiene sentido hablar de $H^2(Q,A)_s$, el subgrupo de clases de cociclos simétricos. Por lo visto en los teoremas \ref{h2} y \ref{thm:abext}, las extensiones abelianas están clasificadas  salvo equivalencia por $H^2(Q,A)_s$.
 
 \begin{teorema}
 	Sea $Q$ abeliano y $A$ un $Q$-módulo trivial. Entonces, las extensiones abelianas salvo equivalencia están en biyección con los elementos de $H^2(Q,A)_s$.
 	\begin{equation*}
-		\ExtFunctor_{ab}(Q,A) \cong H^2(Q,A)_s
+		\ExtFunctor_{Ab}(Q,A) \cong H^2(Q,A)_s
 	\end{equation*}
 \end{teorema}

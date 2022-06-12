@@ -192,13 +192,42 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 		d_id_jf=d_{j+1}d_if
 	\end{equation}
 	\begin{demostracion}
-		Para facilitar los calculos, extendemos $(g_1,\ldots,g_{n+1})$ a $(g_0,\ldots,g_{n+3})$ con $g_0=g_{n+2}=g_{n+3}=1$.
-		Definimos la operación de $d_i$ sobre la tupla como $d_i(g_0,\ldots,g_{n+3}) = (g_0,\ldots,g_ig_{i+1},\ldots,g_{n+3})$. La tupla obtenida tras aplicar $d_i$ y $d_j$, se aplicará a $f$ de la siguiente forma 
-		\begin{equation*}
-			f\cdot (\tilde g_0,\ldots,\tilde g_{n+1}) = \tilde g_0 \cdot f(\tilde g_1,\ldots,\tilde g_{n-1})
-		\end{equation*}
-		esto es equivalente a calcular $d_i(d_jf)(g_1,\ldots,g_{n+1})$.
+		Para simplificar los calculos, extendemos $(g_1,\ldots,g_{n+1})$ a $(g_0,\ldots,g_{n+3})$ con $g_0=g_{n+2}=g_{n+3}=1$.
+		Definimos la operación de $d_i$ sobre la tupla como $d_i(g_0,\ldots,g_{n+3}) = (g_0,\ldots,g_ig_{i+1},\ldots,g_{n+3})$. La tupla obtenida tras aplicar $d_i$ y $d_j$, se aplicará a $f$ actuando el primer elemento a la izquierda con la acción de $G$-módulo en $A$ y omitiendo los dos últimos elementos (o actuándolos a la derecha con acción trivial). Así tenemos la siguiente forma de calcular $d_i(d_jf)$
+		\begin{align}
+			f\cdot (\tilde g_0,\ldots,\tilde g_{n+1}) = \tilde g_0 \cdot f(\tilde g_1,\ldots,\tilde g_{n-1})  \\
+			f\cdot (d_j(d_i(g_0,\ldots,g_{n+3}))) = d_i(d_jf)(g_1,\ldots,g_{n+1})	\label{eq:homcohom}
+		\end{align}
+		De esta forma, reducimos los casos frontera a un mismo caso homogéneo que estudiaremos a continuación.
 		
+		\begin{itemize}
+			\item Caso $j=i$
+				\begin{align*}
+					d_i(d_i(g_0,\ldots,g_{n+3})) 
+					&= d_i(g_0,\ldots,g_ig_{i+1},\ldots,g_{n+3}) \\
+					&= (g_0,\ldots,g_ig_{i+1}g_{i+2},\ldots,g_{n+3}) \\
+					&= d_i(g_0,\ldots,g_{i+1}g_{i+2},\ldots,g_{n+3}) \\
+					&= d_i(d_{i+1}(g_0,\ldots,g_{n+3}))
+				\end{align*}
+			\item Caso $j=i+1$
+				\begin{align*}
+					d_{i+1}(d_i(g_0,\ldots,g_{n+3})) 
+					&= d_{i+1}(g_0,\ldots,g_ig_{i+1},\ldots,g_{n+3}) \\
+					&= (g_0,\ldots,g_ig_{i+1},g_{i+2}g_{i+3},\ldots,g_{n+3}) \\
+					&= d_i(g_0,\ldots,g_{i+2}g_{i+3},\ldots,g_{n+3}) \\
+					&= d_i(d_{i+2}(g_0,\ldots,g_{n+3}))
+				\end{align*}
+			\item Caso $j>i+1$
+				\begin{align*}
+					d_j(d_i(g_0,\ldots,g_{n+3})) 
+					&= d_j(g_0,\ldots,g_ig_{i+1},\ldots,g_{n+3}) \\
+					&= (g_0,\ldots,g_ig_{i+1},\ldots,g_{j+1}g_{j+2},\ldots,g_{n+3}) \\
+					&= d_i(g_0,\ldots,g_{j+1}g_{j+2},\ldots,g_{n+3}) \\
+					&= d_i(d_{j+1}(g_0,\ldots,g_{n+3}))
+				\end{align*}
+		\end{itemize}
+		
+		Usando \eqref{eq:homcohom}, hemos probado el resultado.
 %		\textit{Caso $j=i$}
 %		\begin{align*}
 %			&(d_i(d_i))(1,1,g_1,\ldots,g_{n+2},1,1) = \\
@@ -280,6 +309,14 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 	
 	Dado $f\in Z^n(G,A)$, denotaremos su clase de equivalencia por $[f]\in H^n(G,A)$. Diremos que dos cociclos que pertenecen a la misma clase son cohomólogos. 
 \end{definicion}
+
+\begin{observacion}
+	$C^0(G,A)$ es el conjunto de funciones de $G^0=1$ a $A$ que es naturalmente isomorfo a $A$. El complejo de cocadenas $(C,\partial)$ puede extenderse a la izquierda con un $0$
+	\begin{equation*}
+		0 \xrightarrow{\partial^{-1}} A \xrightarrow{\partial^0} C^{1}(G,A) \xrightarrow{\partial^1} C^2(G,A) \xrightarrow{\partial^2} \cdots
+	\end{equation*}
+	lo que permite definir el grupo de cohomología $H^0$ como $\Ker(\partial^0)/\Image(\partial^{-1}) = \{a\in A \ : \ g\cdot a = a \ \forall g\in G \} = A^G$.
+\end{observacion}
 
 \begin{teorema}\label{thm:trivialH}
 	% dicho de otra forma, H^n(Q,A) es un Z_m-modulo donde m=|Q|

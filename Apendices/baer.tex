@@ -3,84 +3,144 @@
 
 
 \begin{lema}\label{prop:pullback}
-	Dada una extensión $\extension i \pi A E Q$ y un homomorfismo $\homo \alpha {Q'} Q$, existe una extensión $\extension {} {} A {E'} {Q'}$ única salvo equivalencia que hace al siguiente diagrama conmutativo.
+	Dada una extensión $\extension i \pi A E Q$ y un homomorfismo $\homo \alpha {Q'} Q$, existe una extensión $\extension {} {} A {E_1} {Q'}$ única salvo equivalencia que hace al siguiente diagrama conmutativo.
 	% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiQSJdLFsyLDAsIkUiXSxbMywwLCJRIl0sWzQsMCwiMSJdLFswLDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiQSJdLFszLDEsIlEnIl0sWzQsMSwiMSJdLFsyLDEsIkUnIl0sWzQsMF0sWzAsMSwiaSJdLFsxLDIsIlxccGkiXSxbMiwzXSxbNSw2XSxbNiw5LCJpJyJdLFs5LDcsIlxccGknIl0sWzcsOF0sWzAsNiwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDAsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywyLCJcXGFscGhhIl0sWzksMSwiZiJdXQ==
 	\[\begin{tikzcd}
 		1 & A & E & Q & 1 \\
-		1 & A & {E'} & {Q'} & 1
+		1 & A & {E_1} & {Q'} & 1
 		\arrow[from=1-1, to=1-2]
 		\arrow["i", from=1-2, to=1-3]
 		\arrow["\pi", from=1-3, to=1-4]
 		\arrow[from=1-4, to=1-5]
 		\arrow[from=2-1, to=2-2]
-		\arrow["{i'}", from=2-2, to=2-3]
-		\arrow["{\pi'}", from=2-3, to=2-4]
+		\arrow["{i_1}", from=2-2, to=2-3]
+		\arrow["{\pi_1}", from=2-3, to=2-4]
 		\arrow[from=2-4, to=2-5]
 		\arrow[shift left=1, no head, from=1-2, to=2-2]
 		\arrow[shift left=1, no head, from=2-2, to=1-2]
 		\arrow["\alpha", from=2-4, to=1-4]
-		\arrow["f", from=2-3, to=1-3]
+		\arrow["f_1", from=2-3, to=1-3]
 	\end{tikzcd}\]
 	\begin{demostracion}
-		Tomamos $E'=E\times_Q Q' = \{(e,q)\in E\times Q \ | \ \pi(e) = \alpha(q)\}$ el pullback de $\pi$ y $\alpha$ con la inclusión $i'$ y proyección $\pi'$ definidas por
+		Tomamos $E_1=E\times_Q Q' = \{(e,q)\in E\times Q \ | \ \pi(e) = \alpha(q)\}$ el pullback de $\pi$ y $\alpha$ con la inclusión $i_1$ y proyección $\pi_1$ definidas por
 		\begin{gather*}
-			i'(a) = (i(a),1) \\
-			\pi'(e,q) = q
+			i_1(a) = (i(a),1) \\
+			\pi_1(e,q) = q
 		\end{gather*}
 		
-		Entonces $f(e,q) = e$ hace al diagrama conmutativo, ya que 
+		Entonces $f_1(e,q) = e$ hace al diagrama conmutativo, ya que 
 		\begin{gather*}
-			(f\circ i') (a) =  i(a)\\
-			(\pi\circ f)(e,q) = \pi(e) = \alpha(q) = (\alpha\circ \pi')(e,q)
+			(f_1\circ i_1) (a) =  i(a)\\
+			(\pi\circ f_1)(e,q) = \pi(e) = \alpha(q) = (\alpha\circ \pi_1)(e,q)
 		\end{gather*}
 			
 		Finalmente comprobamos que es exacta
 		\begin{equation*}
-			\pi'(i'(a)) = \pi'(a,1)=1
+			\pi_1(i_1(a)) = \pi_1(a,1)=1
 		\end{equation*}
 		
-		Para probar que es única salvo equivalencia
+		Sea $\extension {i_2} {\pi_2} A {E_2} {Q'}$ otra extensión que hace al diagrama conmutativo. Por la propiedad universal del pullback, existe $\homo f {E_2} {E_1}$ que hace al siguiente diagrama conmutativo
+		% https://q.uiver.app/?q=WzAsMTYsWzQsMSwiMSJdLFswLDIsIjEiXSxbNCwyLCIxIl0sWzAsMSwiMSJdLFsxLDEsIkEiXSxbMywxLCJRIl0sWzEsMiwiQSJdLFsyLDIsIkVfMSJdLFszLDIsIlEnIl0sWzAsMCwiMSJdLFsxLDAsIkEiXSxbMiwwLCJFXzIiXSxbMywwLCJRJyJdLFs0LDAsIjEiXSxbMiwxLCJFIl0sWzcsMl0sWzMsNF0sWzEsNl0sWzYsNywiaV8xIl0sWzcsOCwiXFxwaV8xIl0sWzgsMl0sWzgsNSwiXFxhbHBoYSJdLFsxMiw1LCJcXGFscGhhIiwyXSxbOSwxMF0sWzEwLDExLCJpXzIiXSxbMTEsMTIsIlxccGlfMiJdLFsxMiwxM10sWzEwLDQsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwxMCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDYsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw0LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsMTQsImkiXSxbMTQsNSwiXFxwaSJdLFs3LDE0LCJmXzEiXSxbMTEsMTQsImZfMiIsMl0sWzUsMF0sWzExLDcsImYiLDEseyJsYWJlbF9wb3NpdGlvbiI6MjAsImN1cnZlIjotMn1dLFsxMiw4LCIiLDEseyJvZmZzZXQiOi0xLCJjdXJ2ZSI6LTIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCwxMiwiIiwxLHsib2Zmc2V0IjotMSwiY3VydmUiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+		\[\begin{tikzcd}
+			1 & A & {E_2} & {Q'} & 1 \\
+			1 & A & E & Q & 1 \\
+			1 & A & {E_1} & {Q'} & 1
+			\arrow[from=2-1, to=2-2]
+			\arrow[from=3-1, to=3-2]
+			\arrow["{i_1}", from=3-2, to=3-3]
+			\arrow["{\pi_1}", from=3-3, to=3-4]
+			\arrow[from=3-4, to=3-5]
+			\arrow["\alpha", from=3-4, to=2-4]
+			\arrow["\alpha"', from=1-4, to=2-4]
+			\arrow[from=1-1, to=1-2]
+			\arrow["{i_2}", from=1-2, to=1-3]
+			\arrow["{\pi_2}", from=1-3, to=1-4]
+			\arrow[from=1-4, to=1-5]
+			\arrow[shift left=1, no head, from=1-2, to=2-2]
+			\arrow[shift left=1, no head, from=2-2, to=1-2]
+			\arrow[shift left=1, no head, from=2-2, to=3-2]
+			\arrow[shift left=1, no head, from=3-2, to=2-2]
+			\arrow["i", from=2-2, to=2-3]
+			\arrow["\pi", from=2-3, to=2-4]
+			\arrow["{f_1}", from=3-3, to=2-3]
+			\arrow["{f_2}"', from=1-3, to=2-3]
+			\arrow[from=2-4, to=2-5]
+			\arrow["f"{description, pos=0.2}, curve={height=-12pt}, from=1-3, to=3-3]
+			\arrow[shift left=1, curve={height=-12pt}, no head, from=1-4, to=3-4]
+			\arrow[shift left=1, curve={height=12pt}, no head, from=3-4, to=1-4]
+		\end{tikzcd}\]
+		y $E_1$ y $E_2$ son extensiones equivalentes.
 	\end{demostracion}
 \end{lema}
 
 \begin{lema}\label{prop:pushout}
-	Dada una extensión $\extension i \pi A E Q$ y un homomorfismo $\homo \beta {A} {A'}$, existe una extensión $\extension {} {} {A'} {E'} Q$ única salvo equivalencia que hace al siguiente diagrama conmutativo.
+	Dada una extensión $\extension i \pi A E Q$ y un homomorfismo $\homo \beta {A} {A'}$, existe una extensión $\extension {} {} {A'} {E_1} Q$ única salvo equivalencia que hace al siguiente diagrama conmutativo.
 	% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiQSJdLFsyLDAsIkUiXSxbMywwLCJRIl0sWzQsMCwiMSJdLFswLDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiQSciXSxbMywxLCJRIl0sWzQsMSwiMSJdLFsyLDEsIkUnIl0sWzQsMF0sWzAsMSwiaSJdLFsxLDIsIlxccGkiXSxbMiwzXSxbNSw2XSxbNiw5LCJpJyJdLFs5LDcsIlxccGknIl0sWzcsOF0sWzEsOSwiZiJdLFs3LDIsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw3LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsNiwiXFxiZXRhIl1d
 	\[\begin{tikzcd}
 		1 & A & E & Q & 1 \\
-		1 & {A'} & {E'} & Q & 1
+		1 & {A'} & {E_1} & Q & 1
 		\arrow[from=1-1, to=1-2]
 		\arrow["i", from=1-2, to=1-3]
 		\arrow["\pi", from=1-3, to=1-4]
 		\arrow[from=1-4, to=1-5]
 		\arrow[from=2-1, to=2-2]
-		\arrow["{i'}", from=2-2, to=2-3]
-		\arrow["{\pi'}", from=2-3, to=2-4]
+		\arrow["{i_1}", from=2-2, to=2-3]
+		\arrow["{\pi_1}", from=2-3, to=2-4]
 		\arrow[from=2-4, to=2-5]
-		\arrow["f", from=1-3, to=2-3]
+		\arrow["{f_1}", from=1-3, to=2-3]
 		\arrow[shift left=1, no head, from=2-4, to=1-4]
 		\arrow[shift left=1, no head, from=1-4, to=2-4]
 		\arrow["\beta", from=1-2, to=2-2]
 	\end{tikzcd}\]
 	\begin{demostracion}
-		Tomamos $E'=E\sqcup_A A' = \frac{E\times A'}{\{(i(a),-\beta(a))\in E\times A' \ | \ a\in A\}}$ el pushout de $i$ y $\beta$ con la inclusión $i'$ y proyección $\pi'$ definidas por
+		Tomamos $E_1=E\sqcup_A A' = \frac{E\times A'}{\{(i(a),-\beta(a))\in E\times A' \ : \ a\in A\}}$ el pushout de $i$ y $\beta$ con la inclusión $i_1$ y proyección $\pi_1$ definidas por
 		\begin{gather*}
-			i'(a) = \overline{(1,a)} \\
-			\pi'(\overline{(e,a)}) = \pi(e)
+			i_1(a) = \overline{(1,a)} \\
+			\pi_1(\overline{(e,a)}) = \pi(e)
 		\end{gather*}
 		
-		Entonces $f(e) = \overline{(e,0)}$ hace al diagrama conmutativo, ya que 
+		Entonces $f_1(e) = \overline{(e,0)}$ hace al diagrama conmutativo, ya que 
 		\begin{gather*}
-			(i'\circ \beta)(a) = \overline{(1,\beta(a))} = \overline{(i(a),0)} = (f\circ i)(a)\\
-			(\pi'\circ f)(e) = \pi(e)
+			(i_1\circ \beta)(a) = \overline{(1,\beta(a))} = \overline{(i(a),0)} = (f_1\circ i)(a)\\
+			(\pi_1\circ f_1)(e) = \pi(e)
 		\end{gather*}
 		
 		Finalmente se prueba que la sucesión es exacta
 		\begin{equation*}
-			(\pi¡\circ i')(a) = \pi'(\overline{(1,a)}) = \pi(1) = 1
+			(\pi\circ i_1)(a) = \pi'(\overline{(1,a)}) = \pi(1) = 1
 		 \end{equation*}
 		 
-		Para probar que es única salvo equivalencia
+		Para probar que es única salvo equivalencia, tomamos otra extensión $\extension {i_2} {\pi_2} {A'} {E_2} Q$ y por la propiedad universal del pushout, existe $\homo f {E_1}{E_2}$ tal que el siguiente diagrama conmuta
+		% https://q.uiver.app/?q=WzAsMTYsWzAsMCwiMSJdLFswLDEsIjEiXSxbMCwyLCIxIl0sWzQsMiwiMSJdLFsxLDAsIkEnIl0sWzEsMSwiQSJdLFsyLDEsIkUiXSxbMywxLCJRIl0sWzMsMCwiUSJdLFszLDIsIlEiXSxbMiwwLCJFXzIiXSxbMSwyLCJBJyJdLFsyLDIsIkVfMSJdLFszLDNdLFs0LDAsIjEiXSxbNCwxLCIxIl0sWzEsNV0sWzUsNiwiaSJdLFs2LDcsIlxccGkiXSxbMCw0XSxbNCwxMCwiaV8yIl0sWzEwLDgsIlxccGlfMiJdLFsyLDExXSxbMTEsMTIsImlfMSJdLFsxMiw5LCJcXHBpXzEiXSxbOSwzXSxbNSw0LCJcXGJldGEiLDJdLFs1LDExLCJcXGJldGEiXSxbNiwxMCwiZl8yIiwyXSxbNiwxMiwiZl8xIl0sWzcsOCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDcsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNyw5LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksNywiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDE0LCIiLDAseyJvZmZzZXQiOjF9XSxbNywxNSwiIiwwLHsib2Zmc2V0IjoxfV0sWzEyLDEwLCJmIiwxLHsibGFiZWxfcG9zaXRpb24iOjIwLCJjdXJ2ZSI6LTJ9XSxbNCwxMSwiIiwxLHsib2Zmc2V0IjotMSwiY3VydmUiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsNCwiIiwxLHsib2Zmc2V0IjotMSwiY3VydmUiOi0yLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+		\[\begin{tikzcd}
+			1 & {A'} & {E_2} & Q & 1 \\
+			1 & A & E & Q & 1 \\
+			1 & {A'} & {E_1} & Q & 1
+			\arrow[from=2-1, to=2-2]
+			\arrow["i", from=2-2, to=2-3]
+			\arrow["\pi", from=2-3, to=2-4]
+			\arrow[from=1-1, to=1-2]
+			\arrow["{i_2}", from=1-2, to=1-3]
+			\arrow["{\pi_2}", from=1-3, to=1-4]
+			\arrow[from=3-1, to=3-2]
+			\arrow["{i_1}", from=3-2, to=3-3]
+			\arrow["{\pi_1}", from=3-3, to=3-4]
+			\arrow[from=3-4, to=3-5]
+			\arrow["\beta"', from=2-2, to=1-2]
+			\arrow["\beta", from=2-2, to=3-2]
+			\arrow["{f_2}"', from=2-3, to=1-3]
+			\arrow["{f_1}", from=2-3, to=3-3]
+			\arrow[shift left=1, no head, from=2-4, to=1-4]
+			\arrow[shift left=1, no head, from=1-4, to=2-4]
+			\arrow[shift left=1, no head, from=2-4, to=3-4]
+			\arrow[shift left=1, no head, from=3-4, to=2-4]
+			\arrow[shift right=1, from=1-4, to=1-5]
+			\arrow[shift right=1, from=2-4, to=2-5]
+			\arrow["f"{description, pos=0.2}, curve={height=-12pt}, from=3-3, to=1-3]
+			\arrow[shift left=1, curve={height=12pt}, no head, from=1-2, to=3-2]
+			\arrow[shift left=1, curve={height=-12pt}, no head, from=3-2, to=1-2]
+		\end{tikzcd}\]
+		y $E_1$ y $E_2$ son extensiones equivalentes.
 	\end{demostracion}
 \end{lema}
 

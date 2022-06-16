@@ -1,6 +1,10 @@
 % !TeX root=../tfg2.tex
-\chapter{Suma de Baer}\label{baersum}
+\chapter{Suma de Baer y propiedades functoriales de $H^2$}\label{baersum}
 
+%\begin{definicion}
+%	Dados dos homomorfismos de grupos $\homo f A C$ y $\homo g B C$, se define el pullback de $f$ y $g$ como $A\times_C B=\{(a,b)\in A\times B \ : \ f(a)=g(b)\}$.
+%	El pullback verifica la siguiente propiedad universal. Dado otro grupo $X$ tal que el siguiente diagrama conmuta
+%\end{definicion}
 
 \begin{lema}\label{prop:pullback}
 	Dada una extensión $\extension i \pi A E Q$ y un homomorfismo $\homo \alpha {Q'} Q$, existe una extensión $\extension {} {} A {E_1} {Q'}$ única salvo equivalencia que hace al siguiente diagrama conmutativo.
@@ -19,7 +23,7 @@
 		\arrow[shift left=1, no head, from=1-2, to=2-2]
 		\arrow[shift left=1, no head, from=2-2, to=1-2]
 		\arrow["\alpha", from=2-4, to=1-4]
-		\arrow["f_1", from=2-3, to=1-3]
+		\arrow["{\alpha_*}", from=2-3, to=1-3]
 	\end{tikzcd}\]
 	\begin{demostracion}
 		Tomamos $E_1=E\times_Q Q' = \{(e,q)\in E\times Q \ | \ \pi(e) = \alpha(q)\}$ el pullback de $\pi$ y $\alpha$ con la inclusión $i_1$ y proyección $\pi_1$ definidas por
@@ -28,10 +32,10 @@
 			\pi_1(e,q) = q
 		\end{gather*}
 		
-		Entonces $f_1(e,q) = e$ hace al diagrama conmutativo, ya que 
+		Entonces $\alpha_*(e,q) = e$ hace al diagrama conmutativo, ya que 
 		\begin{gather*}
-			(f_1\circ i_1) (a) =  i(a)\\
-			(\pi\circ f_1)(e,q) = \pi(e) = \alpha(q) = (\alpha\circ \pi_1)(e,q)
+			(\alpha_*\circ i_1) (a) =  i(a)\\
+			(\pi\circ \alpha_*)(e,q) = \pi(e) = \alpha(q) = (\alpha\circ \pi_1)(e,q)
 		\end{gather*}
 			
 		Finalmente comprobamos que es exacta
@@ -62,8 +66,8 @@
 			\arrow[shift left=1, no head, from=3-2, to=2-2]
 			\arrow["i", from=2-2, to=2-3]
 			\arrow["\pi", from=2-3, to=2-4]
-			\arrow["{f_1}", from=3-3, to=2-3]
-			\arrow["{f_2}"', from=1-3, to=2-3]
+			\arrow["{\alpha_*}", from=3-3, to=2-3]
+			\arrow["{\tilde\alpha_*}"', from=1-3, to=2-3]
 			\arrow[from=2-4, to=2-5]
 			\arrow["f"{description, pos=0.2}, curve={height=-12pt}, from=1-3, to=3-3]
 			\arrow[shift left=1, curve={height=-12pt}, no head, from=1-4, to=3-4]
@@ -87,7 +91,7 @@
 		\arrow["{i_1}", from=2-2, to=2-3]
 		\arrow["{\pi_1}", from=2-3, to=2-4]
 		\arrow[from=2-4, to=2-5]
-		\arrow["{f_1}", from=1-3, to=2-3]
+		\arrow["{\beta_*}", from=1-3, to=2-3]
 		\arrow[shift left=1, no head, from=2-4, to=1-4]
 		\arrow[shift left=1, no head, from=1-4, to=2-4]
 		\arrow["\beta", from=1-2, to=2-2]
@@ -99,10 +103,10 @@
 			\pi_1(\overline{(e,a)}) = \pi(e)
 		\end{gather*}
 		
-		Entonces $f_1(e) = \overline{(e,0)}$ hace al diagrama conmutativo, ya que 
+		Entonces $\beta_*(e) = \overline{(e,0)}$ hace al diagrama conmutativo, ya que 
 		\begin{gather*}
-			(i_1\circ \beta)(a) = \overline{(1,\beta(a))} = \overline{(i(a),0)} = (f_1\circ i)(a)\\
-			(\pi_1\circ f_1)(e) = \pi(e)
+			(i_1\circ \beta)(a) = \overline{(1,\beta(a))} = \overline{(i(a),0)} = (\beta_*\circ i)(a)\\
+			(\pi_1\circ \beta_*)(e) = \pi(e)
 		\end{gather*}
 		
 		Finalmente se prueba que la sucesión es exacta
@@ -128,8 +132,8 @@
 			\arrow[from=3-4, to=3-5]
 			\arrow["\beta"', from=2-2, to=1-2]
 			\arrow["\beta", from=2-2, to=3-2]
-			\arrow["{f_2}"', from=2-3, to=1-3]
-			\arrow["{f_1}", from=2-3, to=3-3]
+			\arrow["{\tilde\beta_*}"', from=2-3, to=1-3]
+			\arrow["{\beta_*}", from=2-3, to=3-3]
 			\arrow[shift left=1, no head, from=2-4, to=1-4]
 			\arrow[shift left=1, no head, from=1-4, to=2-4]
 			\arrow[shift left=1, no head, from=2-4, to=3-4]
@@ -144,46 +148,69 @@
 	\end{demostracion}
 \end{lema}
 
-\begin{teorema}
+% propiedades functoriales de H^2
+\begin{observacion}
+	Los homomorfismos $\homo \alpha {Q'} Q$ y $\homo \beta A {A'}$ determinan a partir de la extensión $\extension {}{} A E Q$, una única extensión salvo equivalencia de $Q'$ por $A$ y $Q$ por $A'$ respectivamente. Por tanto, inducen funciones sobre las clases de extensiones equivalentes o, por el Teorema \ref{h2}, sobre los segundos grupos de cohomología
+	\begin{align*}
+		H^2(\alpha,1_A) \colon H^2(Q,A) &\to H^2(Q',A) \\
+						   [E] &\mapsto [\alpha_*(E)] = [E'] \\
+		H^2(1_Q,\beta) \colon H^2(Q,A) &\to H^2(Q,A') \\
+						   [E] &\mapsto [\beta_*(E)] = [E']
+	\end{align*}
+	Estas funciones preservan la composición de homomorfismos y el homomorfismo identidad, es decir, dados $\homo {f_1} {Q''} {Q'}$, $\homo {f_2} {Q'} {Q}$, $\homo {g_1} A {A'}$ y $\homo {g_2} {A'} {A''}$, se verifica
+	\begin{gather*}
+		H^2(f_2\circ f_1,A) = H^2(f_2,A)\circ H^2(f_1,A) \\
+		H^2(Q,g_2\circ g_1) = H^2(Q,g_2)\circ H^2(Q,g_1) \\
+		H^2(1_Q,A) = 1_{H^2(Q,A)} \\
+		H^2(Q,1_A) = 1_{H^2(Q,A)}
+	\end{gather*}
+	y por tanto $H^2(-,-)$ es un functor de la categoría $\normalfont\textbf{Grp} \times \normalfont\textbf{Ab}$ a la categoría $\normalfont\textbf{Ab}$ contravariante en el primer argumento y covariante en el segundo. % explicar contra/co-variante
+	
+	FALTARÍA PROBAR QUE $H^2(\alpha,\beta) = H^2(\alpha,1_{A'})\circ H^2(1_Q,\beta) = H^2(1_{Q'},\beta) \circ H^2(\alpha,1_{A})$ PARA DECIR QUE $H^2$ ES UN BIFUNCTOR
+	
+		
+\end{observacion}
+
+\begin{teorema}\label{thm:baer}
 	Dadas dos extensiones $\extension{i_j} {\pi_j} A {E_j} Q$, para $j=1,2$, podemos expresar la suma de extensiones dada por la estructura aditiva de $H^2(Q,A)$ descrita en la Proposición \ref{extsum} con el siguiente diagrama conmutativo. La última fila se conoce como la suma de Baer de las extensiones $E_1$ y $E_2$.
 	
-	% https://q.uiver.app/?q=WzAsMTUsWzEsNCwiQSJdLFszLDQsIlxcZnJhY3tFXzFcXHRpbWVzX1EgRV8yfXtLZXIoKyl9Il0sWzUsNCwiUSJdLFszLDAsIkVfMVxcdGltZXMgRV8yIl0sWzEsMiwiQVxcdGltZXMgQSJdLFs1LDIsIlEiXSxbMSwwLCJBXFx0aW1lcyBBIl0sWzUsMCwiUVxcdGltZXMgUSJdLFszLDIsIkVfMVxcdGltZXNfUSBFXzIiXSxbMCw0LCIxIl0sWzAsMiwiMSJdLFswLDAsIjEiXSxbNiw0LCIxIl0sWzYsMiwiMSJdLFs2LDAsIjEiXSxbNiwzLCJpXzFcXHRpbWVzIGlfMiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzMsNywiXFxwaV8xXFx0aW1lcyBcXHBpXzIiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbNCw4LCJcXHRpbGRlXFxpbWF0aCIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzgsNSwiXFx0aWxkZVxccGkiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbNCwwLCIrIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzAsMSwiaV8zIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwyLCJcXHBpXzMiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbNywzLCJzXzFcXHRpbWVzIHNfMiIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzIsMSwic18zIiwwLHsib2Zmc2V0IjotMSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbNSw3LCJcXERlbHRhIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbNSw4LCJcXHRpbGRlIHMiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs4LDMsImkiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs2LDQsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw2LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNSwiIiwyLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDIsIiIsMix7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCwxLCJcXHBpX3tLZXIoKyl9IiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzExLDZdLFsxMCw0XSxbOSwwXSxbNywxNF0sWzUsMTNdLFsyLDEyXV0=
-		\begin{tikzcd}
-			1 & {A\times A} && {E_1\times E_2} && {Q\times Q} & 1 \\
-			\\
-			1 & {A\times A} && {E_1\times_Q E_2} && Q & 1 \\
-			\\
-			1 & A && {\frac{E_1\times_Q E_2}{\Ker(+)}} && Q & 1
-			\arrow["{i_1\times i_2}", hook, from=1-2, to=1-4]
-			\arrow["{\pi_1\times \pi_2}", shift left=1, two heads, from=1-4, to=1-6]
-			\arrow["\tilde\imath", hook, from=3-2, to=3-4]
-			\arrow["\tilde\pi", shift left=1, two heads, from=3-4, to=3-6]
-			\arrow["{+}"', two heads, from=3-2, to=5-2]
-			\arrow["{i_3}", hook, from=5-2, to=5-4]
-			\arrow["{\pi_3}", shift left=1, two heads, from=5-4, to=5-6]
-			\arrow["{s_1\times s_2}", shift left=1, hook, from=1-6, to=1-4]
-			\arrow["{s_3}", shift left=1, hook, from=5-6, to=5-4]
-			\arrow["\Delta", hook, from=3-6, to=1-6]
-			\arrow["{\tilde s}", shift left=1, hook, from=3-6, to=3-4]
-			\arrow["i", hook, from=3-4, to=1-4]
-			\arrow[shift left=1, no head, from=1-2, to=3-2]
-			\arrow[shift left=1, no head, from=3-2, to=1-2]
-			\arrow[shift left=1, no head, from=5-6, to=3-6]
-			\arrow[shift left=1, no head, from=3-6, to=5-6]
-			\arrow["{\pi_{\Ker(+)}}"', two heads, from=3-4, to=5-4]
-			\arrow[from=1-1, to=1-2]
-			\arrow[from=3-1, to=3-2]
-			\arrow[from=5-1, to=5-2]
-			\arrow[from=1-6, to=1-7]
-			\arrow[from=3-6, to=3-7]
-			\arrow[from=5-6, to=5-7]
-		\end{tikzcd}
+	% https://q.uiver.app/?q=WzAsMTUsWzEsNCwiQSJdLFszLDQsIkVfMStFXzIiXSxbNSw0LCJRIl0sWzMsMCwiRV8xXFx0aW1lcyBFXzIiXSxbMSwyLCJBXFx0aW1lcyBBIl0sWzUsMiwiUSJdLFsxLDAsIkFcXHRpbWVzIEEiXSxbNSwwLCJRXFx0aW1lcyBRIl0sWzMsMiwiRV8xXFx0aW1lc19RIEVfMiJdLFswLDQsIjEiXSxbMCwyLCIxIl0sWzAsMCwiMSJdLFs2LDQsIjEiXSxbNiwyLCIxIl0sWzYsMCwiMSJdLFs2LDMsImlfMVxcdGltZXMgaV8yIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMyw3LCJcXHBpXzFcXHRpbWVzIFxccGlfMiIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFs0LDgsIlxcdGlsZGVcXGltYXRoIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbOCw1LCJcXHRpbGRlXFxwaSIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFs0LDAsIlxcbmFibGEiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMCwxLCJpXzMiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsxLDIsIlxccGlfMyIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFs3LDMsInNfMVxcdGltZXMgc18yIiwwLHsib2Zmc2V0IjotMSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMiwxLCJzXzMiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs1LDcsIlxcRGVsdGEiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs4LDMsIlxcRGVsdGFfKiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzYsNCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDYsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw1LCIiLDIseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsMiwiIiwyLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDEsIlxcbmFibGFfKiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFsxMSw2XSxbMTAsNF0sWzksMF0sWzcsMTRdLFs1LDEzXSxbMiwxMl1d
+	\begin{tikzcd}
+		1 & {A\times A} && {E_1\times E_2} && {Q\times Q} & 1 \\
+		\\
+		1 & {A\times A} && {E_1\times_Q E_2} && Q & 1 \\
+		\\
+		1 & A && {E_1+E_2} && Q & 1
+		\arrow["{i_1\times i_2}", hook, from=1-2, to=1-4]
+		\arrow["{\pi_1\times \pi_2}", shift left=1, two heads, from=1-4, to=1-6]
+		\arrow["\tilde\imath", hook, from=3-2, to=3-4]
+		\arrow["\tilde\pi", two heads, from=3-4, to=3-6]
+		\arrow["\nabla"', two heads, from=3-2, to=5-2]
+		\arrow["{i_3}", hook, from=5-2, to=5-4]
+		\arrow["{\pi_3}", shift left=1, two heads, from=5-4, to=5-6]
+		\arrow["{s_1\times s_2}", shift left=1, hook, from=1-6, to=1-4]
+		\arrow["{s_3}", shift left=1, hook, from=5-6, to=5-4]
+		\arrow["\Delta", hook, from=3-6, to=1-6]
+		\arrow["{\Delta_*}", hook, from=3-4, to=1-4]
+		\arrow[shift left=1, no head, from=1-2, to=3-2]
+		\arrow[shift left=1, no head, from=3-2, to=1-2]
+		\arrow[shift left=1, no head, from=5-6, to=3-6]
+		\arrow[shift left=1, no head, from=3-6, to=5-6]
+		\arrow["{\nabla_*}"', two heads, from=3-4, to=5-4]
+		\arrow[from=1-1, to=1-2]
+		\arrow[from=3-1, to=3-2]
+		\arrow[from=5-1, to=5-2]
+		\arrow[from=1-6, to=1-7]
+		\arrow[from=3-6, to=3-7]
+		\arrow[from=5-6, to=5-7]
+	\end{tikzcd}
 		
-		donde $\Delta$ es la inclusión diagonal, $+$ es la proyección a través de la suma de las componentes y $E_1\times_Q E_2$ es el pullback de $E_1$ y $E_2$.
+		donde 
 		\begin{gather*}
-			+(a_1,a_2) = a_1+a_2 \\
+			\nabla(a_1,a_2) = a_1+a_2 \\
 			\Delta(q) = (q,q) \\
-			E_1\times_Q E_2 = \{(e_1,e_2)\in E_1\times E_2\ |\ \pi_1(e_1)=\pi_2(e_2)\}
+			E_1\times_Q E_2 = \{(e_1,e_2)\in E_1\times E_2 \ : \ \pi_1(e_1)=\pi_2(e_2)\} \\
+			E_1+E_2 = E_1\times_Q E_2 /\{(i_1(a),-i_2(a)) \ : \ a\in A\}
 		\end{gather*}
 		
 		\begin{demostracion}
@@ -196,43 +223,128 @@
 			(c_1\times c_2)\colon (Q\times Q)\times (Q\times Q) &\to A\times A \nonumber\\
 			                              ((q_{11},q_{12}),(q_{21},q_{22})) &\mapsto (c_1(q_{11},q_{12}),c_2(q_{21},q_{22})) % comprobar el orden de la operacion
 		\end{align}
-		Proyectando $A\times A$ sobre $A$ haciendo la suma de componentes movemos $(c_1\times c_2)((q_{11},q_{12}),(q_{21},q_{22}))$ a $c_1(q_{11},q_{12}) + c_2(q_{21},q_{22})$. Ahora identificando $q_{11}$ con $q_{21}$ y $q_{12}$ con $q_{22}$ mediante la inclusión diagonal $\homo \Delta Q {Q\times Q}$, el cociclo asociado a la ultima fila es $c_3=+\circ (c_1\times c_2)\circ \Delta=c_1+c_2$
+		Proyectando $A\times A$ sobre $A$ haciendo la suma de componentes movemos $(c_1\times c_2)((q_{11},q_{12}),(q_{21},q_{22}))$ a $c_1(q_{11},q_{12}) + c_2(q_{21},q_{22})$. Ahora identificando $q_{11}$ con $q_{21}$ y $q_{12}$ con $q_{22}$ mediante la inclusión diagonal $\homo \Delta Q {Q\times Q}$, el cociclo asociado a la ultima fila es $c_3=\nabla\circ (c_1\times c_2)\circ \Delta=c_1+c_2$
 		
 		%en verdad seria \Delta\times\Delta
 		\begin{equation}
-			Q\times Q \xrightarrow{\Delta} (Q\times Q)\times (Q\times Q) \xrightarrow{c_1\times c_2} A\times A\xrightarrow{+} A
+			Q\times Q \xrightarrow{\Delta} (Q\times Q)\times (Q\times Q) \xrightarrow{c_1\times c_2} A\times A\xrightarrow{\nabla} A
 		\end{equation}
 		
-		A continuación, buscamos el grupo que hace que la extensión de $Q$ por $A$ conmute con el diagrama.
+		A continuación, probamos que los grupos centrales hacen al diagrama conmutativo.
+		Para la fila central, definimos las funciones de la siguiente forma
+		\begin{gather*}
+		\tilde\imath(a_1,a_2) = (i_1(a_1),i_2(a_2)) \\
+		\Delta_*(e_1,e_2) = (e_1,e_2) \\
+		\tilde\pi(e_1,e_2) = \pi_1(e_1)=\pi_2(e_2)
+		\end{gather*}
 		
-		Por el Lema \ref{prop:pullback}, tenemos el siguiente diagrama conmutativo
-		% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiQVxcdGltZXMgQSJdLFsyLDAsIkVfMVxcdGltZXMgRV8yIl0sWzMsMCwiUVxcdGltZXMgUSJdLFs0LDAsIjEiXSxbMCwwLCIxIl0sWzAsMSwiMSJdLFsxLDEsIkFcXHRpbWVzIEEiXSxbMywxLCJRIl0sWzQsMSwiMSJdLFsyLDEsIihFXzFcXHRpbWVzIEVfMilcXHRpbWVzX3tRXFx0aW1lcyBRfVEiXSxbNCwwXSxbMCwxLCJpXzFcXHRpbWVzIGlfMiJdLFsxLDIsIlxccGlfMVxcdGltZXMgXFxwaV8yIl0sWzIsM10sWzUsNl0sWzYsOSwiXFx0aWxkZSBpIl0sWzcsOF0sWzAsNiwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDAsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywyLCJcXERlbHRhIl0sWzksMSwiaSJdLFs5LDcsIlxcdGlsZGVcXHBpIl1d
-		\[\begin{tikzcd}
-			1 & {A\times A} & {E_1\times E_2} & {Q\times Q} & 1 \\
-			1 & {A\times A} & {(E_1\times E_2)\times_{Q\times Q}Q} & {Q} & 1
-			\arrow[from=1-1, to=1-2]
-			\arrow["{i_1\times i_2}", from=1-2, to=1-3]
-			\arrow["{\pi_1\times \pi_2}", from=1-3, to=1-4]
-			\arrow[from=1-4, to=1-5]
-			\arrow[from=2-1, to=2-2]
-			\arrow["{\tilde \imath}", from=2-2, to=2-3]
-			\arrow[from=2-4, to=2-5]
-			\arrow[shift left=1, no head, from=1-2, to=2-2]
-			\arrow[shift left=1, no head, from=2-2, to=1-2]
-			\arrow["\Delta", from=2-4, to=1-4]
-			\arrow["i", from=2-3, to=1-3]
-			\arrow["\tilde\pi", from=2-3, to=2-4]
-		\end{tikzcd}\]
+		Se verifica trivialmente que conmuta con la fila superior y que la fila es exacta
+		\begin{gather*}
+			(\Delta_* \circ \tilde\imath)(a_1,a_2) = (i_1(a_1),i_2(a_2))=(i_1\times i_2)(a_1,a_2)    \\
+			(\Delta \circ \tilde\pi)(e_1,e_2) = (\pi_1(e_1),\pi_1(e_1)) = (\pi_1(e_1),\pi_2(e_2)) = ((\pi_1\times\pi_2)\circ \Delta_*)(e_1,e_2) \\
+			(\tilde\pi \circ \tilde\imath) (a_1,a_2) = \pi_1(i_1(a_1)) = \pi_2(i_2(a_2))=1
+		\end{gather*}
 		
-		Observese que el pullback de $\pi_1\times \pi_2$ y $\Delta$ es igual que el pullback de $\pi_1$y $\pi_2$.
-		\begin{align*}
-			(E_1\times E_2)\times_{Q\times Q}Q 
-			&= \{(e_1,e_2,q)\in E_1\times E_2\times Q \ | \ (\pi_1\times \pi_2)(e_1,e_2) = (q,q)\} \\
-			&= \{(e_1,e_2)\in E_1\times E_2 \ | \ \pi_1(e_1)=\pi_2(e_2)\} \\
-			&= E_1\times_Q E_2
-		\end{align*}
+		Para la fila inferior, definimos las funciones
+		\begin{gather*}
+			i_3(a) = \overline{(i_1(a),1)}= \overline{(1,i_2(a))} \\
+			\nabla_*(e_1,e_2) = \overline{(e_1,e_2)} \\
+			\pi_3(\overline{(e_1,e_2)}) = \pi_1(e_1) = \pi_2(e_2)
+		\end{gather*}
+		$\pi_3$ está bien definida ya que $\pi_1(e_1) = \pi_1(e_1i_1(a))$ para todo $a\in A$.
 		
-		Por el Lema \ref{prop:pushout}, tenemos el siguiente diagrama conmutativo
+		De nuevo, estas funciones hacen conmutativas las filas central e inferior y esta última es exacta
+		\begin{gather*}
+			(i_3\circ \nabla)(a_1,a_2) = \overline{(i_1(a_1+a_2),1)} = \overline{(i_1(a_1),i_2(a_2))}= (\nabla_*\circ \tilde\imath)(a_1,a_2) \\
+			(\pi_3\circ \nabla_*)(e_1,e_2) = \overline{(e_1,e_2)} = \pi_1(e_1) = \tilde\pi(e_1,e_2) \\
+			(\pi_3\circ i_3) (a) = \pi_3(\overline{(i_1(a),1)})=\pi_1(i_1(a)) = 1
+		\end{gather*}
 		
+		Por los Lemas \ref{prop:pullback} y \ref{prop:pushout}, estas extensiones son únicas salvo equivalencia y la suma de Baer está bien definida y coincide con la suma de extensiones dada anteriormente.
+
 		\end{demostracion}
 \end{teorema}
+
+\begin{corolario}
+	Los functores $\alpha_* = H^2(\alpha,A)$ y $\beta_* = H^2(Q,\beta)$ son homomorfismos de grupos, es decir, para todo par de extensiones $\extension {}{} A {E_i} Q$, $i=1,2$ se tiene % falta alpha(0)=0
+	\begin{gather*}
+		%\alpha_*(-E) = -\alpha_*(E) \\
+		%\beta_*(-E) = -\beta_*(E) \\
+		\alpha_*(E_1+E_2) = \alpha_*(E_1)+\alpha_*(E_2)\\
+		\beta_*(E_1+E_2) = \beta_*(E_1)+\beta_*(E_2)
+	\end{gather*}
+	lo que hacen a $H^2$ un bifunctor aditivo.
+	\begin{demostracion}
+		Lo probamos para $\alpha_*$, para $\beta_*$ se hace de manera análoga usando el lema \ref{prop:pushout}. Basta mirar el siguiente diagrama.
+		% https://q.uiver.app/?q=WzAsMzAsWzMsNCwiQSJdLFs1LDIsIkVfMSdcXHRpbWVzX3tRJ31FXzInIl0sWzIsMSwiQVxcdGltZXMgQSJdLFs0LDEsIkVfMVxcdGltZXMgRV8yIl0sWzYsMSwiUVxcdGltZXMgUSJdLFs0LDMsIkVfMVxcdGltZXNfUSBFXzIiXSxbNiwzLCJRIl0sWzIsMywiQVxcdGltZXMgQSJdLFsyLDUsIkEiXSxbNCw1LCJcXGZyYWN7RV8xXFx0aW1lc19RIEVfMn17S2VyKCspfSJdLFs2LDUsIlEiXSxbNywyLCJRJyJdLFs3LDAsIlEnXFx0aW1lcyBRJyJdLFs1LDAsIkVfMSdcXHRpbWVzIEVfMiciXSxbMywwLCJBIFxcdGltZXMgQSJdLFszLDIsIkFcXHRpbWVzIEEiXSxbNSw0LCJcXGZyYWN7RV8xJ1xcdGltZXNfe1EnfSBFXzInfXtLZXIoKyl9Il0sWzcsNCwiUSciXSxbMSwwLCIxIl0sWzAsMSwiMSJdLFsxLDIsIjEiXSxbMCwzLCIxIl0sWzEsNCwiMSJdLFswLDUsIjEiXSxbOCw1LCIxIl0sWzksNCwiMSJdLFs5LDIsIjEiXSxbOCwzLCIxIl0sWzgsMSwiMSJdLFs5LDAsIjEiXSxbNiwxMSwiXFxhbHBoYSIsMV0sWzQsMTIsIlxcYWxwaGFcXHRpbWVzXFxhbHBoYSIsMV0sWzMsMTMsIlxcYWxwaGFfKlxcdGltZXNcXGFscGhhXyoiLDFdLFsyLDE0LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE0LDIsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw3LCIiLDEseyJvZmZzZXQiOjEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywyLCIiLDEseyJvZmZzZXQiOjEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwzXSxbNSw5XSxbNyw4LCIrIiwxLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzYsMTAsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTAsNiwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMSwxMiwiXFxEZWx0YSciLDEseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbMSwxM10sWzUsNiwiXFx0aWxkZVxccGkiLDEseyJsYWJlbF9wb3NpdGlvbiI6NzB9XSxbNyw1LCJcXHRpbGRlXFxpbWF0aCIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFs4LDksImkiLDFdLFs5LDEwLCJcXHBpIiwxXSxbMTMsMTIsIlxccGlfMSdcXHRpbWVzXFxwaV8yJyIsMV0sWzIsMywiaV8xXFx0aW1lcyBpXzIiLDEseyJsYWJlbF9wb3NpdGlvbiI6NzB9XSxbMyw0LCJcXHBpXzFcXHRpbWVzXFxwaV8yIiwxLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzE0LDEzLCJpXzEnXFx0aW1lcyBpXzInIiwxXSxbMTQsMTUsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTUsMTQsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywxNSwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNSw3LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE1LDEsIlxcdGlsZGVcXGltYXRoJyIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFsxLDExLCJcXHRpbGRlXFxwaSciLDEseyJsYWJlbF9wb3NpdGlvbiI6NzB9XSxbNiw0LCJcXERlbHRhIiwxLHsibGFiZWxfcG9zaXRpb24iOjMwfV0sWzAsMTYsImknIiwxLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzE2LDE3LCJcXHBpJyIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFsxMSwxNywiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNywxMSwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDE2XSxbMTUsMCwiKyIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFs4LDAsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCw4LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsMSwiXFxhbHBoYV8qIiwxXSxbOSwxNiwiXFxhbHBoYV8qIiwxXSxbMTAsMTcsIlxcYWxwaGEiLDFdLFsxOCwxNF0sWzE5LDJdLFsyMCwxNV0sWzIxLDddLFsyMiwwXSxbMjMsOF0sWzEwLDI0XSxbMTcsMjVdLFs2LDI3XSxbMTEsMjZdLFs0LDI4XSxbMTIsMjldXQ==
+		\[\adjustbox{width=\textwidth}{
+		
+		% https://q.uiver.app/?q=WzAsMzAsWzMsNCwiQSJdLFs1LDIsIlxcYWxwaGFfKihFXzEpXFx0aW1lc197USd9XFxhbHBoYV8qKEVfMikiXSxbMiwxLCJBXFx0aW1lcyBBIl0sWzQsMSwiRV8xXFx0aW1lcyBFXzIiXSxbNiwxLCJRXFx0aW1lcyBRIl0sWzQsMywiRV8xXFx0aW1lc19RIEVfMiJdLFs2LDMsIlEiXSxbMiwzLCJBXFx0aW1lcyBBIl0sWzIsNSwiQSJdLFs0LDUsIkVfMStFXzIiXSxbNiw1LCJRIl0sWzcsMiwiUSciXSxbNywwLCJRJ1xcdGltZXMgUSciXSxbNSwwLCJcXGFscGhhXyooRV8xKVxcdGltZXMgXFxhbHBoYV8qKEVfMikiXSxbMywwLCJBIFxcdGltZXMgQSJdLFszLDIsIkFcXHRpbWVzIEEiXSxbNSw0LCJcXGFscGhhXyooRV8xKStcXGFscGhhXyooRV8yKSJdLFs3LDQsIlEnIl0sWzksMCwiMSJdLFs4LDEsIjEiXSxbOSwyLCIxIl0sWzgsMywiMSJdLFs5LDQsIjEiXSxbOCw1LCIxIl0sWzAsNSwiMSJdLFsxLDQsIjEiXSxbMCwzLCIxIl0sWzEsMiwiMSJdLFswLDEsIjEiXSxbMSwwLCIxIl0sWzExLDYsIlxcYWxwaGEiLDFdLFsxMiw0LCJcXGFscGhhXFx0aW1lc1xcYWxwaGEiLDFdLFsxMywzLCJcXGFscGhhXypcXHRpbWVzXFxhbHBoYV8qIiwxXSxbMiwxNCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNCwyLCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNywiIiwxLHsib2Zmc2V0IjoxLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsMiwiIiwxLHsib2Zmc2V0IjoxLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsMywiXFxEZWx0YV8qIiwxLHsibGFiZWxfcG9zaXRpb24iOjMwfV0sWzUsOSwiXFxuYWJsYV8qIiwxLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzcsOCwiXFxuYWJsYSIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFs2LDEwLCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEwLDYsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsMTIsIlxcRGVsdGEnIiwxLHsibGFiZWxfcG9zaXRpb24iOjMwfV0sWzEsMTMsIlxcRGVsdGEnXyoiLDEseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbNSw2LCJcXHRpbGRlXFxwaSIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFs3LDUsIlxcdGlsZGVcXGltYXRoIiwxLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzgsOSwiaSIsMV0sWzksMTAsIlxccGkiLDFdLFsxMywxMiwiXFxwaV8xJ1xcdGltZXNcXHBpXzInIiwxXSxbMiwzLCJpXzFcXHRpbWVzIGlfMiIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFszLDQsIlxccGlfMVxcdGltZXNcXHBpXzIiLDEseyJsYWJlbF9wb3NpdGlvbiI6NzB9XSxbMTQsMTMsImlfMSdcXHRpbWVzIGlfMiciLDFdLFsxNCwxNSwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNSwxNCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs3LDE1LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE1LDcsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTUsMSwiXFx0aWxkZVxcaW1hdGgnIiwxLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzEsMTEsIlxcdGlsZGVcXHBpJyIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFs2LDQsIlxcRGVsdGEiLDEseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbMCwxNiwiaSciLDEseyJsYWJlbF9wb3NpdGlvbiI6NzB9XSxbMTYsMTcsIlxccGknIiwxLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzExLDE3LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE3LDExLCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMTYsIlxcbmFibGFfKiIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFsxNSwwLCJcXG5hYmxhIiwxLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzgsMCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDgsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSw1LCJcXGFscGhhXyoiLDFdLFsxNiw5LCJcXGFscGhhXyoiLDFdLFsxNywxMCwiXFxhbHBoYSIsMV0sWzEyLDE4XSxbNCwxOV0sWzExLDIwXSxbNiwyMV0sWzE3LDIyXSxbMTAsMjNdLFsyNCw4XSxbMjUsMF0sWzI2LDddLFsyNywxNV0sWzI4LDJdLFsyOSwxNF1d
+		\begin{tikzcd}
+			& 1 && {A \times A} && {\alpha_*(E_1)\times \alpha_*(E_2)} && {Q'\times Q'} && 1 \\
+			1 && {A\times A} && {E_1\times E_2} && {Q\times Q} && 1 \\
+			& 1 && {A\times A} && {\alpha_*(E_1)\times_{Q'}\alpha_*(E_2)} && {Q'} && 1 \\
+			1 && {A\times A} && {E_1\times_Q E_2} && Q && 1 \\
+			& 1 && A && {\alpha_*(E_1)+\alpha_*(E_2)} && {Q'} && 1 \\
+			1 && A && {E_1+E_2} && Q && 1
+			\arrow["\alpha"{description}, from=3-8, to=4-7]
+			\arrow["\alpha\times\alpha"{description}, from=1-8, to=2-7]
+			\arrow["{\alpha_*\times\alpha_*}"{description}, from=1-6, to=2-5]
+			\arrow[shift left=1, no head, from=2-3, to=1-4]
+			\arrow[shift left=1, no head, from=1-4, to=2-3]
+			\arrow[shift right=1, no head, from=2-3, to=4-3]
+			\arrow[shift right=1, no head, from=4-3, to=2-3]
+			\arrow["{\Delta_*}"{description, pos=0.3}, from=4-5, to=2-5]
+			\arrow["{\nabla_*}"{description, pos=0.7}, from=4-5, to=6-5]
+			\arrow["\nabla"{description, pos=0.7}, from=4-3, to=6-3]
+			\arrow[shift left=1, no head, from=4-7, to=6-7]
+			\arrow[shift left=1, no head, from=6-7, to=4-7]
+			\arrow["{\Delta'}"{description, pos=0.3}, from=3-8, to=1-8]
+			\arrow["{\Delta'_*}"{description, pos=0.3}, from=3-6, to=1-6]
+			\arrow["\tilde\pi"{description, pos=0.7}, from=4-5, to=4-7]
+			\arrow["\tilde\imath"{description, pos=0.7}, from=4-3, to=4-5]
+			\arrow["i"{description}, from=6-3, to=6-5]
+			\arrow["\pi"{description}, from=6-5, to=6-7]
+			\arrow["{\pi_1'\times\pi_2'}"{description}, from=1-6, to=1-8]
+			\arrow["{i_1\times i_2}"{description, pos=0.7}, from=2-3, to=2-5]
+			\arrow["{\pi_1\times\pi_2}"{description, pos=0.7}, from=2-5, to=2-7]
+			\arrow["{i_1'\times i_2'}"{description}, from=1-4, to=1-6]
+			\arrow[shift left=1, no head, from=1-4, to=3-4]
+			\arrow[shift left=1, no head, from=3-4, to=1-4]
+			\arrow[shift left=1, no head, from=4-3, to=3-4]
+			\arrow[shift left=1, no head, from=3-4, to=4-3]
+			\arrow["{\tilde\imath'}"{description, pos=0.7}, from=3-4, to=3-6]
+			\arrow["{\tilde\pi'}"{description, pos=0.7}, from=3-6, to=3-8]
+			\arrow["\Delta"{description, pos=0.3}, from=4-7, to=2-7]
+			\arrow["{i'}"{description, pos=0.7}, from=5-4, to=5-6]
+			\arrow["{\pi'}"{description, pos=0.7}, from=5-6, to=5-8]
+			\arrow[shift left=1, no head, from=3-8, to=5-8]
+			\arrow[shift left=1, no head, from=5-8, to=3-8]
+			\arrow["{\nabla_*}"{description, pos=0.7}, from=3-6, to=5-6]
+			\arrow["\nabla"{description, pos=0.7}, from=3-4, to=5-4]
+			\arrow[shift left=1, no head, from=6-3, to=5-4]
+			\arrow[shift left=1, no head, from=5-4, to=6-3]
+			\arrow["{\alpha_*}"{description}, from=3-6, to=4-5]
+			\arrow["{\alpha_*}"{description}, from=5-6, to=6-5]
+			\arrow["\alpha"{description}, from=5-8, to=6-7]
+			\arrow[from=1-8, to=1-10]
+			\arrow[from=2-7, to=2-9]
+			\arrow[from=3-8, to=3-10]
+			\arrow[from=4-7, to=4-9]
+			\arrow[from=5-8, to=5-10]
+			\arrow[from=6-7, to=6-9]
+			\arrow[from=6-1, to=6-3]
+			\arrow[from=5-2, to=5-4]
+			\arrow[from=4-1, to=4-3]
+			\arrow[from=3-2, to=3-4]
+			\arrow[from=2-1, to=2-3]
+			\arrow[from=1-2, to=1-4]
+		\end{tikzcd}
+		}\]
+		
+		El plano frontal y trasero son las sumas de Baer $E_1+E_2$ y $\alpha_*(E_1)+\alpha_*(E_2)$ respectivamente, y por el Lema \ref{prop:pullback} la fila superior frontal conmuta con la trasera porque está definida componente a componente. Las filas centrales conmutan observando que $\Delta,\Delta',\Delta_*$ y $\Delta_*'$ son inyectivas y definiendo $\alpha_*$ como $\Delta_*^{-1}\circ (\alpha_*\times\alpha_*)\circ \Delta_*'$. Por último, las filas inferiores son cocientes de las filas centrales y definimos $\alpha_*$ como el homomorfismo inducido por el $\alpha_*$ de la fila central.
+		
+		La flecha $\homo {\alpha_*} {\alpha_*(E_1)+\alpha_*(E_2)} {E_1+E_2}$ dice que $\alpha_*(E_1+E_2) = \alpha_*(E_1)+\alpha_*(E_2)$.
+		
+	\end{demostracion}
+\end{corolario}

@@ -6,6 +6,7 @@
 \usepackage{mathtools}
 \usepackage{hyperref}
 \usepackage{tikz,pgfplots,pkgs/quiver}
+\usepackage{adjustbox}
 \usetikzlibrary{positioning, babel}
 \pgfplotsset{compat=1.18}
 
@@ -68,15 +69,16 @@
 \newcommand{\pretransfer}[2]{P_{#1/ #2}}
 \newcommand{\ptransfer}[2]{\tilde\tau_{#1/ #2}}
 
+
 \begin{document}
 \renewcommand{\tablename}{Tabla}
 \frontmatter
 
-\titulo{Cosa nose}
+\titulo{Extensiones de grupos y teoremas de Hall}
 \nombre{Carlos Moya García}
 \director{Jon González Sánchez}
 \otrodirector{}
-\fecha{08/06/2022}
+\fecha{22/06/2022}
 
 \maketitle
 \thispagestyle{empty}
@@ -95,20 +97,14 @@
 
 \mainmatter
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter. #1}{}}
-% Cohomologia
-\input{Cohom/cohomology.tex}
 
-% Extensiones
-%\include{Extensiones/sucio.tex}
+\input{Cohom/cohomology.tex}
 \input{Extensiones/extensiones.tex}
 \input{Extensiones/split.tex}
 \input{Extensiones/abelian.tex}
 \input{Extensiones/central.tex}
-
 \input{Hall/hall.tex}
 \input{Transfer/transfer.tex}
-
-%\apendices
 \apendices
 \input{Apendices/ejercicios.tex}
 %\input{Apendices/generalcocycleextension.tex}
@@ -116,6 +112,6 @@
 
 
 
-%\incluir{Bibliografia}
+\input{Bibliografia}
 
 \end{document}

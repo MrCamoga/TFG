@@ -5,7 +5,7 @@
 % introduccion explicando que es util para el estudio de extensiones etc
 Introduccion 
 
-%\section{No sé dónde meter la definicion de sucesiones exactas}% preeliminares
+Comenzamos repasando las definiciones y algunas propiedades de los módulos y de las sucesiones exactas.
 
 \section{G-módulos}
 
@@ -17,8 +17,7 @@ Introduccion
 		\item $g\cdot (a_1+a_2)=g\cdot a_1+g\cdot a_2$
 	\end{enumerate} 
 	
-	% esto igual aqui no pinta mucho pero bueno nose
-	Se sigue de (iii) que $g\cdot 0 = 0$ y que $q\cdot (-a) = - q\cdot a$ para todo $g\in G$ y $a\in A$.
+	Se sigue de (iii) que $g\cdot 0 = 0$ y que $g\cdot (-a) = - g\cdot a$ para todo $g\in G$ y $a\in A$.
 \end{definicion}
 
 \begin{definicion}
@@ -32,9 +31,9 @@ Introduccion
 \end{definicion}
 
 % demostrar o dejar como ejercicio
-\begin{ejercicio}
-	$\FHom G A B$ tiene estructura de $G$-módulo.
-\end{ejercicio}
+%\begin{ejercicio}
+%	$\FHom G A B$ tiene estructura de $G$-módulo.
+%\end{ejercicio}
 
 %
 %\begin{observacion}
@@ -46,27 +45,27 @@ Introduccion
 
 \section{Anillos de grupos}
 
-Dado un grupo $G$ definimos el anillo $\Z[G]$ como el $\Z$-módulo libre generado por los elementos de $G$. Es decir, un elemento en $\Z[G]$ es de la forma
+Dado un grupo $G$ definimos el anillo $\Z[G]$ como el $\Z$-módulo libre generado por los elementos de $G$. Es decir, un elemento en $\Z[G]$ es una suma finita
 \begin{equation*}
-	\sum_i a_ig_i
+	\sum_{i=1}^n a_ig_i
 \end{equation*}
-donde $g_i\in G$ y $a_i\in \Z$ y $a_i=0$ para casi todo $i$.
+donde $g_i\in G$ y $a_i\in \Z$.
 
 Definiendo el producto en $\Z[G]$ de la siguiente forma
 \begin{equation*}
-	\left(\sum_i a_ig_i\right) \left(\sum_jb_jh_j\right) = \sum_i\sum_j a_ib_jg_ih_j
+	\left(\sum_i a_ig_i\right) \left(\sum_jb_jh_j\right) = \sum_{i,j} a_ib_jg_ih_j
 \end{equation*}
 $\Z[G]$ tiene estructura de anillo con unidad. Notese que este anillo será conmutativo si y solo si $G$ es abeliano.
 
 \begin{observacion}
-	Una estructura de $G$-módulo sobre un grupo abeliano $A$ extiende de manera única a un $\Z[G]$-módulo por linealidad.
-	%De igual manera, un homomorfismo de $G$-módulos extiende a un homomorfismo de $\Z[G]$-módulos.
+	Una estructura de $G$-módulo sobre un grupo abeliano $A$ extiende de manera única a un $\Z[G]$-módulo por linealidad. Esto es, dado $n\in\N$, $g\in G$ y $a\in A$ definimos la acción de $ng$ sobre $a$ como $(ng)\cdot a = g\cdot (na)$ y $(-n g)\cdot a = (n g)\cdot (-a)$. Recíprocamente, a partir de una estructura de $\Z[G]$-módulo en $A$, ésta da una acción de $G$ en $A$ restringiendo la acción al subgrupo $G$.
+	
+	De igual manera, un homomorfismo de $G$-módulos extiende a un homomorfismo de $\Z[G]$-módulos.
 	Por ello, a partir de ahora hablaremos indistintamente de $G$ y $\Z[G]$-módulos.
 \end{observacion}
 
 \section{Sucesiones exactas}
 
-% introducir aqui las sucesiones exactas
 \begin{definicion}
 	Una sucesión de grupos $G_i$ y homomorfismos $f_i$
 	\begin{equation*}
@@ -80,7 +79,6 @@ $\Z[G]$ tiene estructura de anillo con unidad. Notese que este anillo será conm
 	\end{equation}
 \end{definicion}
 
-% poner mas bonito o redactar sin separar por lineas
 \begin{observacion}\label{obs:exact}
 	La definición de sucesión exacta corta dice que $f_2$ es inyectiva, $f_3$ sobreyectiva y $G_2/\Image(f_2)\cong G_3$.
 	 
@@ -95,10 +93,6 @@ $\Z[G]$ tiene estructura de anillo con unidad. Notese que este anillo será conm
 %		
 %		$\Ker(f_3)=\Image(f_2) \cong G_1 \implies {G_2}/{f_2(G_1)}\cong G_3$ por el Primer Teorema de Isomorfía.
 %	\end{demostracion}
-
-%\begin{definicion}
-%	Sean $\extension {}{} A B C$ y $\extension {}{} {A'} {B'} {C'}$ dos sucesiones exactas. Un homomorfismo de sucesiones exactas
-%\end{definicion}
 
 \begin{proposicion}[Lema corto de los cinco]\label{prop:sflem}
 	Si las filas del siguiente diagrama conmutativo son exactas y $g$ y $h$ son isomorfismos entonces $f$ es un isomorfismo.
@@ -130,12 +124,14 @@ $\Z[G]$ tiene estructura de anillo con unidad. Notese que este anillo será conm
 
 
 \section{Complejos de cadenas}
+
+Antes de tratar el caso de la cohomología de grupos, introducimos en general los complejos de cadenas y cocadenas.
 	
 %Sea $R$ un anillo. Un $R$-módulo graduado es una sucesión $C=\{C_n\}_{n\in \Z}$ de $R$-módulos. 
 %Una función de grado $r\in\Z$ entre dos $R$-módulos graduados $C$ y $C'$ es una sucesión de homomorfismos de $R$-módulos $f=\{\homo {f_n} {C_n} {C_{n+r}}\}_{n\in\Z}$.
 
 %Un complejo de cadenas es un par $(C,d)$ donde $C$ es un $R$-módulo graduado y $d$ es un 
-% la cohomologia mide como de lejos está el complejo de ser exacto.
+
 Sea $R$ un anillo con unidad. Un $R$-módulo graduado es una sucesión de $R$-módulos $C=\{C_n\}_{n\in\Z}$. Diremos que los elementos del $R$-módulo $C_n$ tienen grado $n$.
 Definimos un mapa de grado $r$ entre dos $R$-módulos graduados $C$ y $C'$ como una sucesión de homomorfismos de $R$-módulos $f=\{\homo {f_n} {C_n} {C_{n+r}'}\}_{n\in\Z}$.
 
@@ -153,7 +149,8 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 
 \section{Cohomología de grupos}
 
-%introduccion explicar que queremos construir como lo haremos, si eso quitar esta definicion y ponerlo en un parrafo
+Ahora nos centraremos en la cohomología de grupos. Para comenzar, fijaremos un $Q$-módulo $A$ y definiremos unos grupos abelianos a partir de $Q$ y $A$ sobre los que construiremos un operador coborde. Los resultados principales de esta sección probarán que el mapa define un complejo de cocadenas y que la cohomología de éste es trivial cuando $Q$ y $A$ tienen órdenes coprimos. 
+%Estos serán de gran ayuda en el estudio de las extensiones,  %%El estudio de la cohomología de grupos es de gran interés en numerosas areas de las matématicas. P
 
 \begin{definicion}
 	Sea $A$ un $G$-módulo con acción $\varphi$ y sea $n\in \N$. Denotamos por $C^n_\varphi(G,A)$ al conjunto de funciones de $G^n$ a $A$. Este conjunto junto con la operación $(f+g)(g_1,\ldots,g_n) = f(g_1,\ldots,g_n) + g(g_1,\ldots,g_n)$ para $f,g\in C^n$ y la acción de $G$ dada por $(g\cdot f)(g_1,\ldots,g_n) = g\cdot f(g_1,\ldots,g_n)$ para $f\in C^n$ y $g\in G$ hacen a $C^n_\varphi(G,A)$ un $G$-módulo. % de hecho es un ZQ-modulo de anillos 
@@ -185,7 +182,6 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 
 %Es obvio que el operador coborde es homomorfismo de Q-modulos
 
-% dar indicacion o ejemplo del calculo
 \begin{lema}\label{lem:coborde}
 	Sea $f\in C^{n-1}$, entonces para todo $i=0,\ldots,n+1$ y $j=i,\ldots,n$
 	\begin{equation}
@@ -201,7 +197,7 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 		De esta forma, reducimos los casos frontera a un mismo caso homogéneo que estudiaremos a continuación.
 		
 		\begin{itemize}
-			\item Caso $j=i$
+			\item Caso $j=i$:
 				\begin{align*}
 					d_i(d_i(g_0,\ldots,g_{n+3})) 
 					&= d_i(g_0,\ldots,g_ig_{i+1},\ldots,g_{n+3}) \\
@@ -209,15 +205,7 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 					&= d_i(g_0,\ldots,g_{i+1}g_{i+2},\ldots,g_{n+3}) \\
 					&= d_i(d_{i+1}(g_0,\ldots,g_{n+3}))
 				\end{align*}
-			\item Caso $j=i+1$
-				\begin{align*}
-					d_{i+1}(d_i(g_0,\ldots,g_{n+3})) 
-					&= d_{i+1}(g_0,\ldots,g_ig_{i+1},\ldots,g_{n+3}) \\
-					&= (g_0,\ldots,g_ig_{i+1},g_{i+2}g_{i+3},\ldots,g_{n+3}) \\
-					&= d_i(g_0,\ldots,g_{i+2}g_{i+3},\ldots,g_{n+3}) \\
-					&= d_i(d_{i+2}(g_0,\ldots,g_{n+3}))
-				\end{align*}
-			\item Caso $j>i+1$
+			\item Caso $j\geq i+1$:
 				\begin{align*}
 					d_j(d_i(g_0,\ldots,g_{n+3})) 
 					&= d_j(g_0,\ldots,g_ig_{i+1},\ldots,g_{n+3}) \\
@@ -294,7 +282,6 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 	\end{demostracion}
 \end{teorema}
 
-% simplificar esto haciendo referencia a la seccion de complejos de cocadenas y escribir solo lo de la accion 
 \begin{definicion}
 	La proposición anterior nos permite definir los grupos de $n$-cobordes y $n$-cociclos como 
 	\begin{align*}
@@ -318,40 +305,21 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 	lo que permite definir el grupo de cohomología $H^0$ como $\Ker(\partial^0)/\Image(\partial^{-1}) = \{a\in A \ : \ g\cdot a = a \ \forall g\in G \} = A^G$.
 \end{observacion}
 
+% H^n(G,A) es un Z_m-modulo
+
 \begin{teorema}\label{thm:trivialH}
-	% dicho de otra forma, H^n(Q,A) es un Z_m-modulo donde m=|Q|
 	Sea $A$ un $G$-módulo con $\mcd(\ord{G}, \ord{A}) = 1$. Entonces $H^n(G,A)$ es trivial para todo $n\in\Z^+$.
 	\begin{demostracion}
 		Sea $c\in Z^n(Q,A)$
-%		\begin{multline}\label{eq:ncocycle}
-%			q_1\cdot c(q_2,\hdots,q_{n+1}) + \left[\sum\limits_{i=1}^{n} (-1)^i c(q_1,\ldots,q_iq_{i+1},\hdots,q_{n+1}) \right] + \\ + (-1)^{n+1}c(q_1,\hdots,q_n) = 0
-%		\end{multline}		
 		\begin{equation}\label{eq:ncocycle}
 			\sum\limits_{i=0}^{n+1} (-1)^i(d_ic)(g_1,\ldots,g_{n+1}) = 0
 		\end{equation}
 		
 		Definiendo $\tilde c(g_1,\hdots,g_{n-1}) = {\displaystyle \sum_{g_n\in G} c(g_1,\hdots,g_{n})}$ y haciendo la suma en \eqref{eq:ncocycle} para cada $g_{n+1} \in G$
-%		\begin{multline*}
-%			q_1\cdot \tilde c(q_2,\hdots,q_n) + \left[\sum\limits_{i=1}^{n-1}(-1)^i \tilde c(q_1,\hdots,q_iq_{i+1},\hdots,q_{n}) \right] +\\+ (-1)^n\tilde c(q_1,\hdots,q_{n-1})+ \ord{Q}(-1)^{n+1} c(q_1,\hdots,q_n) = 0
-%		\end{multline*}
-		
-%		\begin{multline*}
-%			\sum\limits_{q_{n+1}\in Q}\sum\limits_{i=0}^{n+1} (-1)^i(d_ic)(q_1,\ldots,q_{n+1}) = \\ =			
-%			\sum\limits_{q_{n+1}\in Q}d_0c(q_1,\ldots,q_{n+1}) + 
-%			\sum\limits_{q_{n+1}\in Q}\sum\limits_{i=i}^{n-1} (-1)^i(d_ic)(q_1,\ldots,q_{n+1}) + \\ +
-%			\sum\limits_{q_{n+1}\in Q}d_n c(q_1,\ldots,q_{n+1}) + 
-%			\sum\limits_{q_{n+1}\in Q}d_{n+1}c(q_1,\ldots,q_{n+1}) = \\ =			
-%			q_1 \cdot \tilde c(q_1,\ldots,q_n) + 
-%			\sum\limits_{i=i}^{n-1} (-1)^i(d_i\tilde c)(q_1,\ldots,q_n) + \\ +
-%			(-1)^n\tilde c(q_1,\ldots,q_{n-1}) + 
-%			(-1)^{n+1}\ord{Q}\tilde c(q_1,\ldots,q_n) = 0
-%		\end{multline*}
 
 		\begin{multline*}
-			\sum\limits_{g_{n+1}\in G}\sum\limits_{i=0}^{n+1} (-1)^i(d_ic)(g_1,\ldots,g_{n+1}) = \\ =			
-			%g_1 \cdot \tilde c(g_2,\ldots,g_n) + 
-			\sum\limits_{i=0}^{n} (-1)^i(d_i\tilde c)(g_1,\ldots,g_n) +
-			(-1)^{n+1}\ord{G} c(g_1,\ldots,g_n) = 0
+			\sum\limits_{g_{n+1}\in G}\sum\limits_{i=0}^{n+1} (-1)^i(d_ic)(g_1,\ldots,g_{n+1}) = \\ 
+			= \sum\limits_{i=0}^{n} (-1)^i(d_i\tilde c)(g_1,\ldots,g_n) + (-1)^{n+1}\ord{G} c(g_1,\ldots,g_n) = 0
 		\end{multline*}
 		
 		Como $\mcd(\ord{G}, \ord{A}) = 1$, por la identidad de Bezout existe $k\in \N$ tal que $k \ord{G} \equiv (-1)^{n} \mod \ord{A}$. Multiplicando por $k$
@@ -360,14 +328,12 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 		\end{equation*}
 		
 		El cociclo $c$ es el coborde de la función $k \tilde c$ y por tanto $H^n(G,A)$ es trivial.
-		
-		
 	\end{demostracion}
 \end{teorema}
 
 \section{Cociclos normalizados y $H^2$}
 
- \textit{Resultados que se usan en el capitulo de extensiones}
+En esta sección daremos un isomorfismo entre el segundo grupo de cohomología y un grupo más pequeño en el que los $2$-cociclos verifican cierta condición de normalización que definiremos a continuación. Este isomorfismo será de gran ayuda para simplificar la clasificación de extensiones en el siguiente capítulo.
 
 %\begin{definicion}% en general un n-cociclo f es normalizado cuando f(q_1,...,q_n) = 0 si cualquiera de los q_i = 0
 %	Un $2$-cociclo $c\in Z^2(Q,A)$ se dice que es normalizado cuando $c(1,1)= 0$
@@ -396,13 +362,14 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 	\begin{equation*}
 		c(1,g)= 0 = c(g,1)
 	\end{equation*}
-	% definimos Z^2_N y B^2_N
+	La suma de dos cociclos normalizados es también un cociclo normalizado. Definimos los grupos de cociclos y cobordes normalizados como $Z^2_N(G,A)$ y $B^2_N(G,A)$ respectivamente.
 \end{definicion}
 
 \begin{proposicion}
-	$c\in Z^2(G,A)$ es un $2$-cociclo normalizado si y solo si $c(1,1)=0$.
+	$c\in Z^2_N(G,A)$ si y solo si $c(1,1)=0$.
 	\begin{demostracion}
-		Sea $c(1,1) = 0$. Evaluando $\partial^2 c$ en $(1,1,g)\in G^3$
+		La implicación a la derecha viene de la definición. Para la implicación no trivial, tomamos $c\in Z^2(G,A)$ tal que $c(1,1) = 0$. 
+		Evaluando $\partial^2 c$ en $(1,1,g)\in G^3$
 		\begin{equation*}
 			1\cdot c(1,g) - c(1,g) + c(1,g) - c(1,1) = c(1,g) =0
 		\end{equation*} 
@@ -425,7 +392,7 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 \end{lema}
 
 \begin{teorema}\label{thm:h2hn2}
-	Tenemos la siguiente biyección
+	Tenemos el siguiente isomorfismo entre los grupos de cohomología
 	\begin{equation}
 		H^2_N(G,A) = \frac{Z^2_N(G,A)}{B^2_N(G,A)} \cong \frac{Z^2(G,A)}{B^2(G,A)} = H^2(G,A)
 	\end{equation}

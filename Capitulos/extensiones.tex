@@ -1,0 +1,523 @@
+% !TeX root=../tfg2.tex
+
+\chapter{Extensiones de grupos}
+
+% introduccion explicar qué se va a hacer, mencionar que se darán interpretaciones de los grupos H^1 y H^2. comentar si eso que el H^3
+El objetivo de este capítulo es estudiar todas las formas de construir un grupo $E$ a partir de dos grupos $Q$ y $N$, de tal forma que $E$ tenga un subgrupo normal isomorfo a $N$ y cuyo cociente sea isomorfo a $Q$. Para ello, definiremos una relación de equivalencia sobre el conjunto de extensiones y daremos una clasificación usando los grupos de cohomología $H^1$ y $H^2$ (Teoremas \ref{h1} y \ref{h2}).
+
+\section{Equivalencia de extensiones}
+
+% comentar que ya se ha explicado en el cpaitulo anterior las sucesiones exactas etc
+
+\begin{definicion}
+	Una extensión de un grupo $Q$ por un grupo $N$ es una sucesión exacta corta
+	\begin{equation}\label{eq:ext}
+		\extension i \pi N E Q.
+	\end{equation}
+	Al grupo $N$ lo llamaremos kernel de la extensión, al grupo $Q$ el cociente de la extensión y a $E$ el grupo central de la extensión.
+	
+	Decimos que otra extensión $\extension {i'} {\pi'} N {E'} Q $ es equivalente si existe un homomorfismo $\homo f E {E'}$ tal que el siguiente diagrama conmuta
+
+	%	\begin{figure}[h!] % quitar figure?
+	%		\centering	
+			% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiTiJdLFsyLDAsIkUiXSxbMywwLCJRIl0sWzQsMCwiMSJdLFswLDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiTiJdLFszLDEsIlEiXSxbNCwxLCIxIl0sWzIsMSwiRSciXSxbNCwwXSxbMCwxLCJpIl0sWzEsMiwiXFxwaSJdLFsyLDNdLFs1LDZdLFs2LDksImknIl0sWzksNywiXFxwaSciXSxbNyw4XSxbMiw3LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsMiwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDksImYiXSxbMCw2LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+	\begin{equation}\begin{tikzcd}
+		1 & N & E & Q & 1 \\
+		1 & N & {E'} & Q & 1
+		\arrow[from=1-1, to=1-2]
+		\arrow["i", from=1-2, to=1-3]
+		\arrow["\pi", from=1-3, to=1-4]
+		\arrow[from=1-4, to=1-5]
+		\arrow[from=2-1, to=2-2]
+		\arrow["{i'}", from=2-2, to=2-3]
+		\arrow["{\pi'}", from=2-3, to=2-4]
+		\arrow[from=2-4, to=2-5]
+		\arrow[shift left=1, no head, from=1-4, to=2-4]
+		\arrow[shift left=1, no head, from=2-4, to=1-4]
+		\arrow["f", from=1-3, to=2-3]
+		\arrow[shift left=1, no head, from=1-2, to=2-2]
+		\arrow[shift left=1, no head, from=2-2, to=1-2]
+	\end{tikzcd}
+	\end{equation}
+	%\end{figure}
+\end{definicion}
+
+El interés está en clasificar todas las extensiones de $Q$ por $N$. La equivalencia de extensiones captura la idea de que los grupos centrales se construyen a partir de $N$ y $Q$ esencialmente de la misma forma, ya que $N$ y $Q$ se incluyen y proyectan de la misma manera. % repetitivo: de la misma forma/manera
+
+A continuación se dan unos ejemplos conocidos de extensiones de grupos.
+
+\begin{ejemplo}
+	El grupo diédrico $D_{2n} = \langle a,b\ |\ a^n = b^2 = 1, \ a^b = a^{-1}\rangle$ es una extensión de $C_2=\langle b\rangle$ por $C_n=\langle a\rangle$.
+\end{ejemplo}
+
+\begin{ejemplo}
+	El grupo alternado $A_n$ se define como el kernel del homomorfimo del signo $\homo {\sgn} {S_n} {\{1,-1\}^\times}$ que manda una permutación a $1$ si es producto de un número par de transposiciones, y a $-1$ si es un número impar. Por tanto, $S_n$ es una extensión de $C_2$ por $A_n$.
+	\begin{equation*}
+		\extension i {sgn} {A_n} {S_n} {C_2}.
+	\end{equation*}
+\end{ejemplo}
+
+\begin{ejemplo}
+	Siguiendo el ejemplo anterior, dado un cuerpo $\mathbb K$ y $n\in \Z^+$, el grupo especial lineal $\SL_n(\mathbb K)$ es el grupo de las matrices $n\times n$ sobre $\mathbb K$ con determinante $1$. $\SL_n(\mathbb K)$ es precisamente el kernel del homomorfismo determinante $\homo \det {\GL_n(\mathbb K)} {\mathbb K^\times}$. Así, $\GL_n(\mathbb K)$ es una extensión de $\mathbb K^\times$ por $\SL_n(\mathbb K)$.
+	\begin{equation*}
+		\extension i \det {\SL_n(\mathbb K)} {\GL_n(\mathbb K)} {\mathbb K^\times}.
+	\end{equation*}
+\end{ejemplo}
+
+\begin{ejemplo}
+	Dados dos grupos $G$ y $H$, se construye la extensión trivial $\extension i \pi  G {G\times H} H$ con $G\times H$ el producto directo e $i$ y $\pi$ la inclusión y proyección canónicas.
+\end{ejemplo}
+
+\begin{ejemplo}
+	Más generalmente, dados dos grupos $G$ y $N$ y una acción de grupos $\homo \varphi G {Aut(N)}$, el producto semidirecto $N\rtimes_\varphi G$ es una extensión de $G$ por $N$.
+\end{ejemplo}
+
+% reeescribir demostracion
+\begin{observacion}\label{prop:eqiso}
+	Por la Proposición \ref{prop:sflem}, dos extensiones equivalentes $\extension {i_{j}} {\pi_j} N {E_j} Q$ para $j=1,2$ dan lugar a grupos centrales isomorfos.
+\end{observacion}
+
+El siguiente ejemplo muestra que el recíproco no es cierto, y por tanto la equivalencia de extensiones es más fuerte que tener grupos centrales isomorfos. 
+% ejemplo, poner dem en apendice?
+\begin{ejemplo}
+	Las extensiones $\extension {\times 3} {\times n} {\Z_3} {\Z_9} {\Z_3}$ para $n=1,2$ no son equivalentes.
+	% https://q.uiver.app/?q=WzAsMTAsWzAsMCwiMSJdLFsxLDAsIlxcbWF0aGJie1p9XzMiXSxbMiwwLCJcXG1hdGhiYntafV85Il0sWzMsMCwiXFxtYXRoYmJ7Wn1fMyJdLFs0LDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiXFxtYXRoYmJ7Wn1fMyJdLFsyLDEsIlxcbWF0aGJie1p9XzkiXSxbMywxLCJcXG1hdGhiYntafV8zIl0sWzQsMSwiMSJdLFswLDFdLFsxLDIsIlxcdGltZXMgMyJdLFsyLDMsIlxcdGltZXMgMSJdLFszLDRdLFs1LDZdLFs2LDcsIlxcdGltZXMgMyJdLFs3LDgsIlxcdGltZXMgMiJdLFs4LDldLFsxLDYsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiwxLCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNywiZiIsMl0sWzMsOCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDMsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+%\[\begin{tikzcd}
+%	1 & {\Z_3} & {\Z_9} & {\Z_3} & 1 \\
+%	1 & {\Z_3} & {\Z_9} & {\Z_3} & 1
+%	\arrow[from=1-1, to=1-2]
+%	\arrow["{\times 3}", from=1-2, to=1-3]
+%	\arrow["{\times 1}", from=1-3, to=1-4]
+%	\arrow[from=1-4, to=1-5]
+%	\arrow[from=2-1, to=2-2]
+%	\arrow["{\times 3}", from=2-2, to=2-3]
+%	\arrow["{\times 2}", from=2-3, to=2-4]
+%	\arrow[from=2-4, to=2-5]
+%	%\arrow[shift left=1, no head, from=1-2, to=2-2]
+%	%\arrow[shift left=1, no head, from=2-2, to=1-2]
+%	%\arrow["f"', from=1-3, to=2-3]
+%	%\arrow[shift left=1, no head, from=1-4, to=2-4]
+%	%\arrow[shift left=1, no head, from=2-4, to=1-4]
+%\end{tikzcd}\]
+	\begin{demostracion} %$\Z_9$ tiene un único subgrupo de orden $3$ y por tanto la inclusión es única. Para la proyección, se debe mandar el $\bar1$ de $\Z_9$ al $\bar1$ o $\bar2$ de $\Z_3$, lo que da lugar a las dos extensiones mostradas.
+		Lo probamos por reducción al absurdo. Supongamos que existe $\homo f {\Z_9} {\Z_9}$ que haga a las dos extensiones equivalentes. Un automorfismo $f$ de $\Z_9$ viene dado por $f(x) = kx$ con $x\in \Z_9$ y $k\in \Z_9^{\times} = \{1,2,4,5,7,8\}$.	 
+		
+		Para que $\pi_2\circ f = \pi_1$, $(\times2\circ f)(x) = 2kx = x \mod 3$, $k \equiv 2 \mod 3$, por lo que $k = 2,5,8$.
+		
+		Por otro lado, para que $f\circ i_1 = i_2$, $(f\circ \times3)(x) = 3kx = 3x \mod 9$, por lo que $k = 1,4,7$.
+		
+		Por tanto, no existe un isomorfismo $f$ que haga al diagrama conmutativo y las extensiones no son equivalentes.
+	\end{demostracion}
+\end{ejemplo}
+
+\begin{proposicion}
+	La equivalencia de extensiones es una relación de equivalencia.
+	\begin{demostracion}
+		\begin{enumerate}
+			\item Reflexiva: $E$ es equivalente a $E$ tomando $f=1_E$.
+			\item Simétrica: Si $\homo f {E_1} {E_2}$ es una equivalencia, por la Observación \eqref{prop:eqiso}, $\homo {f^{-1}} {E_2} {E_1}$ es una equivalencia. 
+			\item Transitiva: Si $\homo f {E_1} {E_2}$ y $\homo g {E_2} {E_3}$ son equivalencias, $g\circ f\circ i_1 = g\circ i_2 = i_3$ y $\pi_1 \circ g \circ f = \pi_2 \circ f = \pi_3$, entonces $\homo {g\circ f} {E_1} {E_3}$ es una equivalencia.
+		\end{enumerate}
+	\end{demostracion}
+\end{proposicion}
+
+El estudio de las extensiones lo haremos haciendo uso de secciones, que se definen a continuación. La idea será tomar una sección y tratar de construir extensiones equivalentes definiendo una operación de grupo sobre el producto $N\times Q$.
+
+\begin{definicion}
+	Sea $\homo \pi A B$ un homomorfismo de grupos, una sección $s$ de $\pi$ es una inversa a la derecha de $\pi$, esto es, $\homo s B A$ tal que $\pi \circ s = 1_B$.
+\end{definicion}
+
+\begin{observacion}\label{extact}
+	Una extensión $\extension i \pi N E Q$ determina, por conjugación por elementos de $E$, un homomorfismo $\homo \alpha E {\Aut(N)}$ definido por
+	\begin{equation*} % tecnicamente es i(n) e i(N) pero bueno es inyectiva noseque da igual imagino no creo q se enfade nadie por hacer un pequeño abuso de notacion
+		\alpha(g)(n) = \,^gi(n) = gi(n)g^{-1}.
+	\end{equation*}
+	
+	Entonces, $\alpha(N) = \Inn(N)$ y $\alpha$ induce un homomorfismo  % explicar que esta bien definida
+	\begin{align}\label{eq:actionconj}
+		\tilde\alpha\colon E/i(N) &\to \Out(N) \nonumber \\
+		g i(N) &\mapsto \overline{\alpha(g)} .
+	\end{align}
+	
+	El homomorfismo $\tilde\alpha$ se conoce como el kernel abstracto de la extensión. % no se usa
+	Fijando una sección $s$ de $\pi$, para todo $q\in Q$, la conjugación por $s(q)$ determina un automorfismo $\varphi(q)$ de $N$ definido por $\varphi(q)(n) = \alpha(s(q))(n)$. 
+	
+	Notese que la función $\homo \varphi Q {\Aut(N)}$ no es necesariamente un homomorfismo de grupos, pero sí lo es salvo automorfismos internos. En particular, si la sección $s$ es un homomorfismo o el grupo de automorfismos internos de $N$ es trivial, como se estudia en las secciones \ref{sec:split} y \ref{sec:ab}, entonces $\varphi$ sí es un homomorfismo y podremos hablar de grupos de la acción de la extensión. %%?????????????????
+\end{observacion}
+
+\begin{observacion}
+	Dos extensiones $E$ y $E'$ equivalentes dan lugar a un mismo kernel abstracto.
+	\begin{demostracion}
+	 	$f\left(i(n)^{s(q)}\right) = i'(n)^{s'(q)}$
+	 \end{demostracion}
+\end{observacion}
+
+Por ello, para estudiar las extensiones salvo equivalencia procederemos de la siguiente forma.
+\begin{enumerate}
+	\item Determinar todas las acciones externas de $Q$ en $N$ que dan lugar a una extensión de grupos de $Q$ por $N$.
+	\item Para cada acción, construir todas las extensiones de $Q$ por $N$ que dan lugar a esa acción.
+	\item Ver cuáles de ellas son equivalentes.
+\end{enumerate}
+% podemos fijar una acción $\homo \varphi Q {\Aut(N)}$ y estudiar las extensiones que dan lugar a esa acción.
+
+\begin{definicion}
+	Sean $Q$ y $N$ grupos y $\varphi$ una acción de $Q$ en $N$. Denotamos por $\Ext_\varphi(Q,N)$ al conjunto de clases de extensiones equivalentes de $Q$ por $N$ que dan lugar a la acción $\varphi$.
+\end{definicion}
+
+
+%%%%%%%% EXTENSIONES SPLIT
+
+\section{Extensiones que escinden}\label{sec:split}
+
+
+\begin{definicion}	
+	Decimos que una extensión $\extension i \pi N E Q$ escinde cuando existe una sección $\homo s Q E$ de $\pi$ que es un homomorfismo.
+\end{definicion}
+
+\begin{teorema}\label{splitext}
+	Una extensión $\extension i \pi N E Q$ que escinde es equivalente a $\extension {} {} N {N\rtimes_{\varphi} Q} Q$, donde $\homo \varphi Q \Aut(N)$ es una acción de grupos de $Q$ en $N$.
+	\begin{demostracion}
+		Si $E$ escinde, existe una sección $\homo s Q E$ que es homomorfismo. $s$ es inyectiva porque es una inversa por la derecha de $\pi$ y, por tanto, $Q\cong s(Q) \leq E$.
+		Por ser una sucesión exacta, $s(q)\in i(N)$ sí y solo sí $q = 1_Q$, por lo que $s(Q)\cap i(N) = {1_E}$ y $E$ es isomorfo a un producto semidirecto externo de $Q$ por $N$.
+		
+		El isomorfismo $\homo f {N\rtimes Q} E$ viene dado por $f(n,q) = i(n)s(q)$. Para ver que es un homomorfismo, se comprueba que la operación de grupo en $E$ es compatible con la del producto semidirecto.
+		
+		Sean $(n_1,q_1),(n_2,q_2)\in N\times Q$
+		\begin{equation*}
+			i(n_1)s(q_1)i(n_2)s(q_2) = i(n_1)i(n_2)^{q_1}s(q_1)s(q_2) = i(n_1 n_2^{q_1})s(q_1q_2).
+			% i(n_1 (n_2)(q_1)\varphi)s(q_1q_2) 
+		\end{equation*}
+		Esto prueba que $f(n_1,q_1)f(n_2,q_2) = f((n_1,q_1)(n_2,q_2))$.
+		
+		Para ver que las extensiones son equivalentes, se toman la inclusión $i'$ y proyección $\pi'$ canónicas de $N\rtimes Q$ y se verifica trivialmente que $i=f \circ i'$ y $\pi = \pi' \circ f$.
+		% <=
+		%En la otra dirección, definiendo para $n\in N, \ q\in Q$ $i(n) = (1_Q,n)$ y $\pi((n,q)) = qN$ % TODO
+	\end{demostracion}
+\end{teorema}
+
+
+% Splittings (Escisiones)
+\section{Clasificación de las escisiones}
+
+Hemos visto que las extensiones que escinden son únicas salvo equivalencia. A continuación tomaremos la escisión canónica
+
+\begin{equation}\label{extsplit}
+	\extension i \pi A {A \rtimes Q} Q
+\end{equation}
+y daremos una clasificación de las escisiones de la extensión cuando A es abeliano. 
+% caso no abeliano H^1 blablabla
+
+\begin{definicion}
+	Diremos que dos escisiones $s_1$ y $s_2$ son $A$-conjugadas si existe un $a\in A$ tal que $s_1(q)=s_2(q)^{i(a)}$ para todo $q\in Q$. 
+\end{definicion}
+
+% escisiones vienen dadas por 1-cociclos
+\begin{proposicion}\label{prop:coc1}
+	Las escisiones de \eqref{extsplit} son homomorfismos de la forma $s(q) = (c(q),q)$ donde $\homo c Q A$ es un $1$-cociclo.
+	\begin{proof}
+		Una sección $s$ de $\pi$ tiene la forma $s(q) = (c(q),q)$ donde $c$ es una función $\homo c Q A$. Imponiendo que la sección sea un homomorfismo
+		\begin{align*}
+			s(q_1)s(q_2) &= (c(q_1) + q_1\cdot c(q_2),q_1q_2), \\
+			s(q_1q_2) &= (c(q_1q_2),q_1q_2).
+		\end{align*}
+		
+		La función $c$ tiene que verificar la ecuación de un $1$-cociclo para que $s$ sea una escisión.
+		\begin{equation}
+			q_1 \cdot c(q_2) - c(q_1q_2) + c(q_1) = 0.
+		\end{equation}
+	\end{proof}
+\end{proposicion}
+
+\begin{proposicion}\label{prop:cob1}
+	Sean $s_1$ y $s_2$ dos escisiones y $c_1$ y $c_2$ los $1$-cociclos asociados. Entonces $s_1$ y $s_2$ son $A$-conjugadas si $c_1$ y $c_2$ se diferencian en un $1$-coborde.
+	\begin{demostracion}
+		Si existe un $a \in A$ tal que $s_1(q) = s_2(q)^{i(a)}$ para todo $q\in Q$, 
+		\begin{align*}
+		(c_1(q),q) &= (-a,1)(c_2(q),q)(a,1) \\
+					&= (-a  + c_2(q) + q\cdot a,q).
+		\end{align*}
+		
+		La diferencia entre $c_1$ y $c_2$ verifica la ecuación de un $1$-coborde para la función constante $a$
+		
+		\begin{equation}
+			c_1(q) - c_2(q) = q\cdot a - a.
+		\end{equation}
+	\end{demostracion}
+\end{proposicion}
+
+%\begin{observacion}
+%	Las definiciones de $1$-cociclos y $1$-cobordes dadas se corresponden con las definiciones usuales en el caso en que $N$ es abeliano.
+%	\begin{align}
+%		c(q_1q_2) = c(q_1)^{q_2}c(q_2) = c(q_1)\cdot q_2 + c(q_2) \\
+%		c_1(q) = n^{-q}c_2(q)n \iff c_2(q)-c_1(q) = n\cdot q - n
+%	\end{align}
+%\end{observacion}
+
+% explicar que se corresponde con el grupo de cohomologia en el caso abeliano
+Las proposiciones \ref{prop:coc1} y \ref{prop:cob1} prueban el siguiente teorema.
+\begin{teorema}\label{h1}
+	Sea $Q$ un grupo, $A$ un $Q$-módulo y $E$ una extensión de $Q$ por $A$. Entonces, las clases de escisiones $A$-conjugadas están en correspondencia uno a uno con los elementos de $H^1(Q,A)$.
+\end{teorema}
+
+% se comprueba trivialmente que es una relacion de equivalencia
+
+
+%%%%%%%%%% EXTESIONES NUCLEO ABELIANO
+
+\section{Extensiones con kernel abeliano}\label{sec:ab}
+
+A continuación estudiaremos el caso en que $N$ es un grupo abeliano que a partir de ahora denotaremos por $A$. 
+
+Por la Observación \ref{extact}, como $\Inn(A)$ es trivial, $Out(N)=Aut(N)$ y la acción de $Q$ en $A$ es un homomorfismo de grupos, lo que hace a $A$ un $Q$-módulo. Dada una sección $\homo s Q E$, la acción de un elemento $q\in Q$ en un elemento $a\in A$ viene dada por
+\begin{equation}
+	q\cdot a = \,^{s(q)}i(a).
+\end{equation}
+A partir de ahora, fijaremos una acción de $Q$ en $A$ y estudiaremos todas las extensiones que dan lugar a dicha acción.
+\begin{gather}
+	1\to A\xrightarrow{i} E\xrightarrow{\pi} Q\to 1, \label{exta} \\
+	\varphi \colon Q \to Aut(A).
+\end{gather}
+
+% suena raro lo del axioma de eleccion aprende a escribir
+Para estudiar esta extensión, consideramos una sección $s$ de $\pi$, que en el caso de $Q$ infinito se puede asegurar que existe asumiendo el axioma de elección. Como $Q\cong E/i(A)$, dados $g,h\in Q$, $\pi\left(s(g)s(h)s(gh)^{-1}\right) = 1_{Q}$ por ser $\pi$ homomorfismo. Por tanto, $s(gh)$ y $s(g)s(h)$ distan en un elemento de $i(A)$ y podemos definir una función $\homo c {Q\times Q} {A}$ que mide cuánto dista $s$ de ser un homomorfismo
+\begin{equation}\label{eq:factorsystem}
+	s(g)s(h) = i\left(c(g,h)\right)s(gh).
+\end{equation}
+
+Podemos recuperar la extensión \eqref{exta} a partir de la acción $\varphi$ que hemos fijado y de la función $c$. 
+Como $$E=\bigsqcup\limits_{q\in Q} i(A)s(q) = i(A)s(Q)$$ es una unión disjunta, podemos expresar unívocamente cada elemento de $E$ como un producto de elementos de $i(A)$ y $s(Q)$. Es decir, tenemos una biyección $A\times Q \to E$. A partir del producto en $E$, podemos definir una operación de grupo en $A\times Q$, que denotaremos por $E_{c}$. Dados $(a_1,q_1),(a_2,q_2)\in A\times Q$ tenemos:
+\begin{align}\begin{split}
+i(a_1)s(q_1)i(a_2)s(q_2) &= i(a_1)i(q_1\cdot a_2)s(q_1)s(q_2) \\ &= i(a_1+ q_1\cdot a_2 + c(q_1,q_2))s(q_1q_2).
+\end{split}\end{align}
+\noindent Por tanto, la operación en $E_c$ viene dada por:
+
+\begin{equation}\label{extop}
+(a_1,q_1)(a_2,q_2) = (a_1 + q_1\cdot a_2 + c(q_1,q_2),q_1q_2).
+\end{equation}
+
+Dado que la sección la podemos escoger de manera arbitraria, podemos suponer que la sección $s$ es normalizada para facilitar los cálculos. Es decir,
+\begin{equation}
+	s(1) = 1.
+\end{equation}
+
+De aquí obtenemos que $c$ verifica la siguiente condición de normalización
+\begin{equation}\label{cocnorm}
+	c(1,q) = 0 = c(q,1).
+\end{equation}
+De esta forma, el isomorfismo $\homo f {E_c} E$ viene dado por $f(a,q) = i(a)s(q)$. La inclusión de $A$ a $E_c$ y la proyección a $Q$ son las canónicas, haciendo a la extensión $E_c$ equivalente a \eqref{exta}.
+
+%Queda demostrada la siguiente proposición.
+%\begin{proposicion}\label{prop:equivcoc}
+%	La extensión $\extension {i'} {\pi'} A {E_c} Q$ es equivalente a \eqref{exta}.
+%\end{proposicion}
+
+%La siguiente proposición prueba que una función $\homo c {Q\times Q} A$ define una operación de grupo en $E_c$ con la acción $\varphi$ cuando $c$ es un 2-cociclo.
+
+\begin{proposicion}\label{prop:res1}
+Sea $\varphi$ una acción de $Q$ en $A$ y $\homo c {Q\times Q} A$ una función que verifica la condición de normalización \eqref{cocnorm}. Entonces, la operación \eqref{extop} define una extensión de $Q$ por $A$ cuando $c$ es un $2$-cociclo normalizado.
+	\begin{demostracion}
+	Para ver que la funcion define una operación de grupo comprobamos la asociatividad y la existencia de identidad e inversos.
+%	(a_1+q_1\cdot a_2 + c(q_1,q_2),q_1q_2)(a_3,q_3) = 
+%	(a_1+q_1\cdot a_2 + c(q_1,q_2) + q_1q_2\cdot a_3 + c(q_1q_2,q_3),q_1q_2q_3)
+	
+%	(a_1,q_1)(a_2+q_2\cdot a_3 + c(q_2,q_3),q_2q_3) = 
+%	(a_1 + q_1\cdot a_2 + q_1q_2\cdot a_3 + q_1\cdot c(q_2,q_3) + c(q_1,q_2q_3),q_1q_2q_3)
+	
+%	c(q_1,q_2) + c(q_1q_2,q_3) = q_1\cdot c(q_2,q_3) + c(q_1,q_2q_3)
+
+	\textit{(i) Asociatividad.}
+	Imponiendo que para todo $(a_i,q_i)\in A\times Q$ con $i=1,2,3$
+	\begin{equation*}
+		[(a_1,q_1)(a_2,q_2)](a_3,q_3) = (a_1,q_1)[(a_2,q_2)(a_3,q_3)]
+	\end{equation*} 
+	llegamos a que $c$ verifica la ecuación de un $2$-cociclo normalizado	
+	\begin{equation}\label{eq2coc}	
+		 q_1\cdot c(q_2,q_3) - c(q_1q_2,q_3) + c(q_1,q_2q_3) - c(q_1,q_2) = 0.
+	\end{equation}
+	
+	\textit{(ii) Identidad.} Comprobamos que $(0,1)$ es la identidad de $E_c$. 
+	Sea $(a,q)\in A\times Q$,
+	\begin{align*}
+		(0,1)(a,q) &= (0 + 1\cdot a + c(1,q), q) = (a,q), \\
+		(a,q)(0,1) &= (a+q\cdot 0 + c(q,1),q) = (a,q).
+	\end{align*}
+	
+	\textit{(iii) Inverso.} Se comprueba utilizando \eqref{eq2coc} que el inverso de $(a,q)\in A\times Q$ es $(-q^{-1}\cdot a -c(q^{-1},q),q^{-1})$.
+%	\begin{align*}
+%		(a,q)(-q^{-1}\cdot a -c(q^{-1},q),q^{-1}) 
+%		&= (a+q\cdot (-q^{-1}\cdot a -c(q^{-1},q)) + c(q,q^{-1}),1)   \\
+%		&= (a - a - q\cdot c(q^{-1},q)+c(q,q^{-1}),1) \\
+%		&= (c(q,1)-c(1,q),1) = (0,1) \\
+%		(-q^{-1}\cdot a -c(q^{-1},q),q^{-1})(a,q)
+%	\end{align*}
+	
+	Finalmente, comprobamos que la inclusión $i$ y proyección $\pi$ canónicas de $A\times Q$ son homomorfismos y hacen a la sucesión exacta.
+	\begin{gather*}
+		i(a_1)i(a_2)=(a_1 + 1 \cdot a_2+c(1,1),1) = (a_1+a_2,1)=i(a_1+a_2), \\
+		\pi((a_1,q_1)(a_2,q_2))=\pi(-,q_1q_2) = q_1q_2 = \pi(a_1,q_1)\pi(a_2,q_2), \\
+		\pi(i(a)) = \pi(a,1) = 1.
+	\end{gather*}
+	\end{demostracion}
+\end{proposicion}
+
+\begin{proposicion}\label{prop:res2}
+	Sea $E$ una extensión de $Q$ por $A$, $s_1$ y $s_2$ dos secciones normalizadas de $Q$ a $E$ y $c_1,c_2$ los cociclos asociados a $s_1$ y $s_2$. Entonces, $c_1$ y $c_2$ se diferencian en un $2$-coborde normalizado y la extensión $E$ determina la clase $[c_1]\in H_\varphi^2(Q,A)$. 
+	
+	\begin{demostracion}
+		La diferencia de $s_1$ y $s_2$ define una función $\homo e Q {A}$ por $s_2(q) = i(e(q))s_1(q)$. Cambiando la sección $s_2$ por $s_1$ en \eqref{eq:factorsystem}
+		\begin{align*}
+			i(c_2(g,h))s_2(gh) 
+			&= s_2(g)s_2(h) \\ 
+			&= i(e(g))s_1(g)i(e(h))s_1(h)\\ 
+			&= i(e(g) + g \cdot e(h)) s_1(g)s_1(h) \\ 
+			&= i(e(g) + g \cdot e(h) + c_1(g,h))s_1(gh) \\
+			&= i(e(g) + g \cdot e(h) - e(gh) + c_1(g,h))s_2(gh)
+		\end{align*}
+		obtenemos que la diferencia de $c_2$ y $c_1$ es el coborde de $e$
+		\begin{equation} 
+			(c_2-c_1)(g,h) = g \cdot e(h) - e(gh) + e(g).
+		\end{equation}
+		
+		Además, por ser $c_1$ y $c_2$ cociclos normalizados $$(c_2-c_1)(1,1) = e(1) = 0, $$ de donde deducimos que	$c_2-c_1$ es un coborde normalizado.
+	\end{demostracion}
+\end{proposicion}
+
+Hemos visto en \ref{prop:res1} que un $2$-cociclo normalizado da lugar a una extensión de $Q$ por $A$ y en \ref{prop:res2} que dos extensiones son equivalentes cuando los $2$-cociclos normalizados son cohomólogos. La elección de cociclos normalizados es valida y clasifica todas las extensiones ya que como se ha visto en el Teorema \ref{thm:h2hn2}, el segundo grupo de cohomología es isomorfo al segundo grupo de cohomología normalizado. %En el Apéndice $\ref{apen:norm}$ se da la operación de grupo de $E_c$ para un cociclo no normalizado.
+
+Queda demostrado el siguiente teorema. % Como se dice cuando algo no pierde generalidad
+
+\begin{teorema}\label{h2}
+	Sea $A$ un $Q$-módulo dado por una acción $\homo \varphi Q {Aut(A)}$. Entonces, las extensiones salvo equivalencia de $Q$ por $A$ están en correspondencia uno a uno con los elementos del segundo grupo de cohomología.
+	\begin{equation*}
+		\Ext_{\varphi}(Q,A)\cong H^2_{\varphi}(Q,A).
+	\end{equation*}
+\end{teorema}
+
+\begin{observacion}\label{obs:split}
+	El producto semidirecto se corresponde con el elemento neutro de $H^2(Q,A)$.
+	\begin{demostracion}
+		Por el Teorema \ref{splitext}, si una sección es un homomorfismo, el $2$-cociclo asociado a ésta es trivial.
+	\end{demostracion}
+\end{observacion}
+
+\begin{proposicion}\label{extsum}
+	Sean $[E_1],[E_2]\in Ext(Q,A)$ dos extensiones y $[c_1],[c_2]\in H^2(Q,A)$ sus cociclos asociados, podemos definir la suma $[E_1] + [E_2]$ como la clase de extensiones equivalentes asociada a $[c1+c2]\in H^2(Q,A)$. Es decir, $Ext_\varphi(Q,A)$ tiene una estructura de grupo abeliano heredada de $H^2(Q,A)$.
+\end{proposicion}
+
+En el Apéndice \ref{baersum} se da otra forma de construir la suma anterior sin el uso de cociclos y se estudian algunas propiedades de $H^2$.
+
+\section{Teorema de Schur-Zassenhaus. Caso abeliano}
+
+% comentar que es importante para los teorema de hall
+
+\begin{teorema}\label{thmschurab} Sea $G$ un grupo finito y sea $A \norm G$ abeliano, $\ord{A}=n$ y $\ord{G:A}=m$ con $\mcd(n,m)=1$. Entonces $G$ contiene subgrupos de orden $m$ y dos cualesquiera son conjugados.
+	\begin{demostracion}
+%		Tomamos una sección $s$ y su $2$-cociclo asociado $c$. 
+%		\begin{equation}
+%			c(q_1,q_2)\cdot q_3  - c(q_1,q_2q_3)+ c(q_1q_2,q_3) -c(q_2,q_3) =0
+%		\end{equation}
+%		Definimos la función ${\displaystyle \tilde c(x) = \sum_{t\in Q} c(t,x)}$ y hacemos la suma en $q_1\in Q$
+%		\begin{equation}\label{coccob}
+%			m c(q_2,q_3) = \tilde c(q_2)\cdot q_3 + \tilde c(q_3) - \tilde c(q_2q_3)
+%		\end{equation}
+%		
+%		Como $\mcd(m,n)=1$, existe un $k\in \Z$ tal que $km\equiv 1 \mod n$. Multiplicando por $k$ llegamos a 
+%		\begin{equation}
+%			c(q_2,q_3) = k \tilde c(q_2)\cdot q_3 + k \tilde c(q_3) - k \tilde c(q_2q_3)
+%		\end{equation}
+%		Por tanto, $c$ verifica la ecuación de un coborde para la función $k \tilde c$ y $H^{2}(Q,N)$ es trivial. Por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $N$.
+%		
+%		Para ver que dos subgrupos cualesquiera son conjugados, cogemos $s$ una escisión de $G$ y $a$ su $1$-cociclo asociado. 
+%		\begin{equation}
+%			a(q_1q_2)=a(q_1)\cdot q_2 + a(q_2)
+%		\end{equation}
+%		Haciendo la suma en $q_1\in Q$ y multiplicando por $k$
+%		\begin{equation}
+%			a(q_2) = k\tilde a - k\tilde a \cdot q_2
+%		\end{equation}
+%		vemos que $a$ verifica la ecuación de un $1$-coborde para la función $k\tilde a$ y $H^1(Q,N)$ es trivial. Por el Teorema $\ref{h1}$, todas las escisiones son $N$-conjugadas y por tanto son conjugadas.
+
+		Por el Teorema \ref{thm:trivialH}, $H^2(Q,A)$ es trivial y por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $A$. Esto prueba la parte de existencia.
+		
+		Para la conjugación, cualquier subgrupo $\tilde Q$ de $G$ de orden $m$, al ser $\mcd(n,m)=1$, tiene intersección trivial con $N$ y la proyección sobre $G/N$ es inyectiva. Por tanto, $\tilde Q$ es una escisión de $G$. Por el mismo teorema, $H^1(Q,N)$ es trivial y por el Teorema \ref{h1} todas las escisiones de la extensión $G$ son $N$-conjugadas y por tanto conjugadas. 
+	\end{demostracion}
+\end{teorema}
+
+
+
+%%%%%%%%%%%%%%%% EXTENSIONES CENTRALES
+
+
+\section{Extensiones centrales y abelianas}
+
+En esta sección introduciremos las extensiones centrales y daremos una caracterización de cúando el grupo intermedio de una extensión es abeliano.
+
+\begin{definicion}
+	Decimos que una extension $\extension i \pi A E Q$ es una extensión central cuando $i(A)\leq Z(E)$. 
+	
+	Diremos que es abeliana cuando el grupo central $E$ de la extensión es abeliano. No debe confundirse con una extensión con núcleo abeliano.
+\end{definicion}
+
+\begin{proposicion}
+	Una extensión $\extension i \pi A E Q$ es central si y solo si la acción es trivial.
+	\begin{demostracion}
+		Sea una sección $\homo s Q E$, la acción de $Q$ en $A$ viene dada por conjugación $q\cdot a = \,^{s(q)}i(a)$ que es trivial si y solo si $\,^{s(q)}i(a) = i(a)$. Como la acción de $q$ no depende de la sección $s$, $i(a)$ está en el centro y la extensión es central.
+	\end{demostracion}
+\end{proposicion}
+
+A partir de ahora consideraremos que $Q$ es abeliano y la acción de $Q$ en $A$ es trivial.
+
+\begin{definicion}
+	Sea $c\in Z^2(Q,A)$ un $2$-cociclo. Decimos que $c$ es un $2$-cociclo simétrico cuando para todo $q_1,q_2\in Q$
+	\begin{equation*}
+		c(q_1,q_2)=c(q_2,q_1).
+	\end{equation*}
+	
+	Claramente la suma de dos cociclos simétricos también es simétrica. Denotaremos a los subgrupos de $2$-cociclos y $2$-cobordes simétricos como $Z^2(Q,A)_s$ y $B^2(Q,A)_s$ respectivamente.
+\end{definicion}
+
+
+\begin{teorema}\label{thm:abext}
+	Una extensión $\extension i \pi A E Q$ es abeliana si y solo si es una extensión central, $Q$ es abeliano y todo cociclo asociado a la extensión es simétrico.
+	\begin{demostracion}
+		Supongamos que $E$ es abeliano. Entonces la extensión es central y cualquier subgrupo y cociente de $E$ es abeliano, en particular $Q$. Sean $q_1,q_2\in Q$, entonces
+		\begin{equation*}
+			c(q_1,q_2)=s(q_1)s(q_2)s(q_1q_2)^{-1} = s(q_2)s(q_1)s(q_2q_1)^{-1} = c(q_2,q_1). % enverdad falta i
+		\end{equation*}
+		
+		Supongamos ahora que $c$ es un cociclo simétrico y $A$ y $Q$ son abelianos. Entonces la operación en $E_c$ descrita en \ref{extop} viene dada por 
+		\begin{align*}
+			(a_1,q_1)(a_2,q_2) 
+			& = (a_1+a_2 + c(q_1,q_2),q_1q_2) \\
+			& = (a_2+a_1 + c(q_2,q_1),q_2q_1) \\
+			& = (a_2,q_2)(a_1,q_1)
+		\end{align*}
+		y $E$ es abeliano.
+	\end{demostracion}
+\end{teorema}
+
+\begin{proposicion}
+		Todo $2$-coborde es simétrico. Por tanto, $B^2(Q,A)_s=B^2(Q,A)$.
+	\begin{demostracion}
+		Sea $\phi\in C^1(Q,A)$ una $1$-cocadena. Entonces
+		\begin{equation*}
+			(\partial^1\phi)(q_1,q_2) = \phi(q_2) - \phi(q_1q_2) + \phi(q_1) = (\partial^1\phi)(q_2,q_1).
+		\end{equation*}
+	\end{demostracion}
+\end{proposicion}
+
+\begin{corolario}
+	Sea $c\in Z^2(Q,A)_s$ un $2$-cociclo simétrico. Entonces, $c'\in [c]$ es también un $2$-cociclo simétrico.
+	\begin{demostracion}
+		$c' = c+b$ para algún $b\in B^2(Q,A)=B^2(Q,A)_s\leq Z^2(Q,A)_s$. $Z^2(Q,A)_s$ es un subgrupo y por tanto $c'$ es simétrico.
+	\end{demostracion}
+\end{corolario}
+
+Por tanto, las clases de cociclos simétricos están bien definidas y tiene sentido hablar de $H^2(Q,A)_s$, el subgrupo de clases de cociclos simétricos. Por lo visto en los teoremas \ref{h2} y \ref{thm:abext}, las extensiones abelianas están clasificadas  salvo equivalencia por $H^2(Q,A)_s$.
+
+\begin{teorema}
+	Sea $Q$ abeliano y $A$ un $Q$-módulo trivial. Entonces, las extensiones abelianas salvo equivalencia están en biyección con los elementos de $H^2(Q,A)_s$.
+	\begin{equation*}
+		\ExtFunctor_{Ab}(Q,A) \cong H^2(Q,A)_s.
+	\end{equation*}
+\end{teorema}

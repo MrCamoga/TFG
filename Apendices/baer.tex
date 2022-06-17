@@ -28,19 +28,19 @@
 	\begin{demostracion}
 		Tomamos $E_1=E\times_Q Q' = \{(e,q)\in E\times Q \ | \ \pi(e) = \alpha(q)\}$ el pullback de $\pi$ y $\alpha$ con la inclusión $i_1$ y proyección $\pi_1$ definidas por
 		\begin{gather*}
-			i_1(a) = (i(a),1) \\
-			\pi_1(e,q) = q
+			i_1(a) = (i(a),1), \\
+			\pi_1(e,q) = q.
 		\end{gather*}
 		
 		Entonces $\alpha_*(e,q) = e$ hace al diagrama conmutativo, ya que 
 		\begin{gather*}
-			(\alpha_*\circ i_1) (a) =  i(a)\\
-			(\pi\circ \alpha_*)(e,q) = \pi(e) = \alpha(q) = (\alpha\circ \pi_1)(e,q)
+			(\alpha_*\circ i_1) (a) =  i(a),\\
+			(\pi\circ \alpha_*)(e,q) = \pi(e) = \alpha(q) = (\alpha\circ \pi_1)(e,q).
 		\end{gather*}
 			
 		Finalmente comprobamos que es exacta
 		\begin{equation*}
-			\pi_1(i_1(a)) = \pi_1(a,1)=1
+			\pi_1(i_1(a)) = \pi_1(a,1)=1.	
 		\end{equation*}
 		
 		Sea $\extension {i_2} {\pi_2} A {E_2} {Q'}$ otra extensión que hace al diagrama conmutativo. Por la propiedad universal del pullback, existe $\homo f {E_2} {E_1}$ que hace al siguiente diagrama conmutativo
@@ -99,19 +99,19 @@
 	\begin{demostracion}
 		Tomamos $E_1=E\sqcup_A A' = \frac{E\times A'}{\{(i(a),-\beta(a))\in E\times A' \ : \ a\in A\}}$ el pushout de $i$ y $\beta$ con la inclusión $i_1$ y proyección $\pi_1$ definidas por
 		\begin{gather*}
-			i_1(a) = \overline{(1,a)} \\
-			\pi_1(\overline{(e,a)}) = \pi(e)
+			i_1(a) = \overline{(1,a)}, \\
+			\pi_1(\overline{(e,a)}) = \pi(e).
 		\end{gather*}
 		
 		Entonces $\beta_*(e) = \overline{(e,0)}$ hace al diagrama conmutativo, ya que 
 		\begin{gather*}
-			(i_1\circ \beta)(a) = \overline{(1,\beta(a))} = \overline{(i(a),0)} = (\beta_*\circ i)(a)\\
-			(\pi_1\circ \beta_*)(e) = \pi(e)
+			(i_1\circ \beta)(a) = \overline{(1,\beta(a))} = \overline{(i(a),0)} = (\beta_*\circ i)(a), \\
+			(\pi_1\circ \beta_*)(e) = \pi(e).
 		\end{gather*}
 		
 		Finalmente se prueba que la sucesión es exacta
 		\begin{equation*}
-			(\pi\circ i_1)(a) = \pi'(\overline{(1,a)}) = \pi(1) = 1
+			(\pi\circ i_1)(a) = \pi'(\overline{(1,a)}) = \pi(1) = 1.
 		 \end{equation*}
 		 
 		Para probar que es única salvo equivalencia, tomamos otra extensión $\extension {i_2} {\pi_2} {A'} {E_2} Q$ y por la propiedad universal del pushout, existe $\homo f {E_1}{E_2}$ tal que el siguiente diagrama conmuta
@@ -153,21 +153,17 @@
 	Los homomorfismos $\homo \alpha {Q'} Q$ y $\homo \beta A {A'}$ determinan a partir de la extensión $\extension {}{} A E Q$, una única extensión salvo equivalencia de $Q'$ por $A$ y $Q$ por $A'$ respectivamente. Por tanto, inducen funciones sobre las clases de extensiones equivalentes o, por el Teorema \ref{h2}, sobre los segundos grupos de cohomología
 	\begin{align*}
 		H^2(\alpha,1_A) \colon H^2(Q,A) &\to H^2(Q',A) \\
-						   [E] &\mapsto [\alpha_*(E)] = [E'] \\
+						   [E] &\mapsto [\alpha_*(E)] = [E'], \\
 		H^2(1_Q,\beta) \colon H^2(Q,A) &\to H^2(Q,A') \\
-						   [E] &\mapsto [\beta_*(E)] = [E']
+						   [E] &\mapsto [\beta_*(E)] = [E'].
 	\end{align*}
 	Estas funciones preservan la composición de homomorfismos y el homomorfismo identidad, es decir, dados $\homo {f_1} {Q''} {Q'}$, $\homo {f_2} {Q'} {Q}$, $\homo {g_1} A {A'}$ y $\homo {g_2} {A'} {A''}$, se verifica
 	\begin{gather*}
-		H^2(f_2\circ f_1,A) = H^2(f_2,A)\circ H^2(f_1,A) \\
-		H^2(Q,g_2\circ g_1) = H^2(Q,g_2)\circ H^2(Q,g_1) \\
-		H^2(1_Q,A) = 1_{H^2(Q,A)} \\
-		H^2(Q,1_A) = 1_{H^2(Q,A)}
+		H^2(f_2\circ f_1,1_A) = H^2(f_2,1_A)\circ H^2(f_1,1_A), \\
+		H^2(1_Q,g_2\circ g_1) = H^2(1_Q,g_2)\circ H^2(1_Q,g_1), \\
+		H^2(1_Q,1_A) = 1_{H^2(Q,1_A)}.
 	\end{gather*}
 	y por tanto $H^2(-,-)$ es un functor de la categoría $\normalfont\textbf{Grp} \times \normalfont\textbf{Ab}$ a la categoría $\normalfont\textbf{Ab}$ contravariante en el primer argumento y covariante en el segundo. % explicar contra/co-variante
-	
-	FALTARÍA PROBAR QUE $H^2(\alpha,\beta) = H^2(\alpha,1_{A'})\circ H^2(1_Q,\beta) = H^2(1_{Q'},\beta) \circ H^2(\alpha,1_{A})$ PARA DECIR QUE $H^2$ ES UN BIFUNCTOR
-	
 		
 \end{observacion}
 
@@ -207,57 +203,59 @@
 		
 		donde 
 		\begin{gather*}
-			\nabla(a_1,a_2) = a_1+a_2 \\
-			\Delta(q) = (q,q) \\
-			E_1\times_Q E_2 = \{(e_1,e_2)\in E_1\times E_2 \ : \ \pi_1(e_1)=\pi_2(e_2)\} \\
-			E_1+E_2 = E_1\times_Q E_2 /\{(i_1(a),-i_2(a)) \ : \ a\in A\}
+			\nabla(a_1,a_2) = a_1+a_2, \\
+			\Delta(q) = (q,q), \\
+			E_1\times_Q E_2 = \{(e_1,e_2)\in E_1\times E_2 \ : \ \pi_1(e_1)=\pi_2(e_2)\}, \\
+			E_1+E_2 = E_1\times_Q E_2 /\{(i_1(a),-i_2(a)) \ : \ a\in A\}.
 		\end{gather*}
 		
 		\begin{demostracion}
-			A partir de las extensiones $E_1$ y $E_2$ se construye la extensión del producto directo tomando la inclusión y proyección coordenada a coordenada. El objetivo será utilizar los cociclos $c_1$ y $c_2$ asociados a las extensiones $E_1$ y $E_2$ respectivamente para construir una sucesión exacta $\extension {i_3} {\pi_3} A {E_3} Q$ cuyo cociclo asociado sea $c_3=c_1+c_2$.
+			A partir de las extensiones $E_1$ y $E_2$ se construye la extensión del producto directo tomando la inclusión y proyección coordenada a coordenada
 		\begin{equation}
-			1\xrightarrow{} A\times A \xrightarrow{i_1\times i_2} E_1\times E_2\xrightarrow{\pi_1\times\pi_2} Q\times Q \xrightarrow{} 1 % comprobar que es exacta
-		\end{equation}
+			1\xrightarrow{} A\times A \xrightarrow{i_1\times i_2} E_1\times E_2\xrightarrow{\pi_1\times\pi_2} Q\times Q \xrightarrow{} 1.
+		\end{equation} 
+		El objetivo será utilizar los cociclos $c_1$ y $c_2$ asociados a las extensiones $E_1$ y $E_2$ respectivamente para construir una sucesión exacta $\extension {i_3} {\pi_3} A {E_3} Q$ cuyo cociclo asociado sea $c_3=c_1+c_2$.
+		
 		La sección $s_1\times s_2$ de $\pi_1\times \pi_2$ tiene como cociclo asociado
 		\begin{align}
 			(c_1\times c_2)\colon (Q\times Q)\times (Q\times Q) &\to A\times A \nonumber\\
-			                              ((q_{11},q_{12}),(q_{21},q_{22})) &\mapsto (c_1(q_{11},q_{12}),c_2(q_{21},q_{22})) % comprobar el orden de la operacion
+			                              ((q_{11},q_{12}),(q_{21},q_{22})) &\mapsto (c_1(q_{11},q_{12}),c_2(q_{21},q_{22})).
 		\end{align}
 		Proyectando $A\times A$ sobre $A$ haciendo la suma de componentes movemos $(c_1\times c_2)((q_{11},q_{12}),(q_{21},q_{22}))$ a $c_1(q_{11},q_{12}) + c_2(q_{21},q_{22})$. Ahora identificando $q_{11}$ con $q_{21}$ y $q_{12}$ con $q_{22}$ mediante la inclusión diagonal $\homo \Delta Q {Q\times Q}$, el cociclo asociado a la ultima fila es $c_3=\nabla\circ (c_1\times c_2)\circ \Delta=c_1+c_2$
 		
 		%en verdad seria \Delta\times\Delta
 		\begin{equation}
-			Q\times Q \xrightarrow{\Delta} (Q\times Q)\times (Q\times Q) \xrightarrow{c_1\times c_2} A\times A\xrightarrow{\nabla} A
+			Q\times Q \xrightarrow{\Delta} (Q\times Q)\times (Q\times Q) \xrightarrow{c_1\times c_2} A\times A\xrightarrow{\nabla} A.
 		\end{equation}
 		
 		A continuación, probamos que los grupos centrales hacen al diagrama conmutativo.
 		Para la fila central, definimos las funciones de la siguiente forma
 		\begin{gather*}
-		\tilde\imath(a_1,a_2) = (i_1(a_1),i_2(a_2)) \\
-		\Delta_*(e_1,e_2) = (e_1,e_2) \\
-		\tilde\pi(e_1,e_2) = \pi_1(e_1)=\pi_2(e_2)
+		\tilde\imath(a_1,a_2) = (i_1(a_1),i_2(a_2)), \\
+		\Delta_*(e_1,e_2) = (e_1,e_2), \\
+		\tilde\pi(e_1,e_2) = \pi_1(e_1)=\pi_2(e_2).
 		\end{gather*}
 		
 		Se verifica trivialmente que conmuta con la fila superior y que la fila es exacta
 		\begin{gather*}
-			(\Delta_* \circ \tilde\imath)(a_1,a_2) = (i_1(a_1),i_2(a_2))=(i_1\times i_2)(a_1,a_2)    \\
-			(\Delta \circ \tilde\pi)(e_1,e_2) = (\pi_1(e_1),\pi_1(e_1)) = (\pi_1(e_1),\pi_2(e_2)) = ((\pi_1\times\pi_2)\circ \Delta_*)(e_1,e_2) \\
-			(\tilde\pi \circ \tilde\imath) (a_1,a_2) = \pi_1(i_1(a_1)) = \pi_2(i_2(a_2))=1
+			(\Delta_* \circ \tilde\imath)(a_1,a_2) = (i_1(a_1),i_2(a_2))=(i_1\times i_2)(a_1,a_2),    \\
+			(\Delta \circ \tilde\pi)(e_1,e_2) = (\pi_1(e_1),\pi_1(e_1)) = (\pi_1(e_1),\pi_2(e_2)) = ((\pi_1\times\pi_2)\circ \Delta_*)(e_1,e_2), \\
+			(\tilde\pi \circ \tilde\imath) (a_1,a_2) = \pi_1(i_1(a_1)) = \pi_2(i_2(a_2))=1.
 		\end{gather*}
 		
 		Para la fila inferior, definimos las funciones
 		\begin{gather*}
-			i_3(a) = \overline{(i_1(a),1)}= \overline{(1,i_2(a))} \\
-			\nabla_*(e_1,e_2) = \overline{(e_1,e_2)} \\
-			\pi_3(\overline{(e_1,e_2)}) = \pi_1(e_1) = \pi_2(e_2)
+			i_3(a) = \overline{(i_1(a),1)}= \overline{(1,i_2(a))}, \\
+			\nabla_*(e_1,e_2) = \overline{(e_1,e_2)}, \\
+			\pi_3(\overline{(e_1,e_2)}) = \pi_1(e_1) = \pi_2(e_2).
 		\end{gather*}
 		$\pi_3$ está bien definida ya que $\pi_1(e_1) = \pi_1(e_1i_1(a))$ para todo $a\in A$.
 		
 		De nuevo, estas funciones hacen conmutativas las filas central e inferior y esta última es exacta
 		\begin{gather*}
-			(i_3\circ \nabla)(a_1,a_2) = \overline{(i_1(a_1+a_2),1)} = \overline{(i_1(a_1),i_2(a_2))}= (\nabla_*\circ \tilde\imath)(a_1,a_2) \\
-			(\pi_3\circ \nabla_*)(e_1,e_2) = \overline{(e_1,e_2)} = \pi_1(e_1) = \tilde\pi(e_1,e_2) \\
-			(\pi_3\circ i_3) (a) = \pi_3(\overline{(i_1(a),1)})=\pi_1(i_1(a)) = 1
+			(i_3\circ \nabla)(a_1,a_2) = \overline{(i_1(a_1+a_2),1)} = \overline{(i_1(a_1),i_2(a_2))}= (\nabla_*\circ \tilde\imath)(a_1,a_2), \\
+			(\pi_3\circ \nabla_*)(e_1,e_2) = \overline{(e_1,e_2)} = \pi_1(e_1) = \tilde\pi(e_1,e_2), \\
+			(\pi_3\circ i_3) (a) = \pi_3(\overline{(i_1(a),1)})=\pi_1(i_1(a)) = 1.
 		\end{gather*}
 		
 		Por los Lemas \ref{prop:pullback} y \ref{prop:pushout}, estas extensiones son únicas salvo equivalencia y la suma de Baer está bien definida y coincide con la suma de extensiones dada anteriormente.
@@ -266,12 +264,12 @@
 \end{teorema}
 
 \begin{corolario}
-	Los functores $\alpha_* = H^2(\alpha,A)$ y $\beta_* = H^2(Q,\beta)$ son homomorfismos de grupos, es decir, para todo par de extensiones $\extension {}{} A {E_i} Q$, $i=1,2$ se tiene % falta alpha(0)=0
+	Los functores $\alpha_* = H^2(\alpha,1_A)$ y $\beta_* = H^2(1_Q,\beta)$ son homomorfismos de grupos, es decir, para todo par de extensiones $\extension {}{} A {E_i} Q$, $i=1,2$ se tiene % falta alpha(0)=0
 	\begin{gather*}
 		%\alpha_*(-E) = -\alpha_*(E) \\
 		%\beta_*(-E) = -\beta_*(E) \\
-		\alpha_*(E_1+E_2) = \alpha_*(E_1)+\alpha_*(E_2)\\
-		\beta_*(E_1+E_2) = \beta_*(E_1)+\beta_*(E_2)
+		\alpha_*(E_1+E_2) = \alpha_*(E_1)+\alpha_*(E_2),\\
+		\beta_*(E_1+E_2) = \beta_*(E_1)+\beta_*(E_2),
 	\end{gather*}
 	lo que hacen a $H^2$ un bifunctor aditivo.
 	\begin{demostracion}

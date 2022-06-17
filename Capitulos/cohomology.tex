@@ -24,7 +24,7 @@ Comenzamos repasando las definiciones y algunas propiedades de los módulos y de
 	Dados dos $G$-módulos $A$ y $B$, un homomorfismo de $G$-módulos o $G$-homomorfismo es una función $\homo f A B$ que verifica
 	\begin{enumerate}
 		\item $f(a_1+a_2) = f(a_1)+f(a_2)$
-		\item $f(g\cdot a) = g\cdot f(a)$
+		\item $f(g\cdot a) = g\cdot f(a)$.
 	\end{enumerate}
 	
 	Denotamos por $\FHom G A B$ al conjunto de $G$-homomorfismos de $A$ a $B$.
@@ -53,9 +53,9 @@ donde $g_i\in G$ y $a_i\in \Z$.
 
 Definiendo el producto en $\Z[G]$ de la siguiente forma
 \begin{equation*}
-	\left(\sum_i a_ig_i\right) \left(\sum_jb_jh_j\right) = \sum_{i,j} a_ib_jg_ih_j
+	\left(\sum_i a_ig_i\right) \left(\sum_jb_jh_j\right) = \sum_{i,j} a_ib_jg_ih_j.
 \end{equation*}
-$\Z[G]$ tiene estructura de anillo con unidad. Notese que este anillo será conmutativo si y solo si $G$ es abeliano.
+Por tanto $\Z[G]$ tiene estructura de anillo con unidad. Notese que este anillo será conmutativo si y solo si $G$ es abeliano.
 
 \begin{observacion}
 	Una estructura de $G$-módulo sobre un grupo abeliano $A$ extiende de manera única a un $\Z[G]$-módulo por linealidad. Esto es, dado $n\in\N$, $g\in G$ y $a\in A$ definimos la acción de $ng$ sobre $a$ como $(ng)\cdot a = g\cdot (na)$ y $(-n g)\cdot a = (n g)\cdot (-a)$. Recíprocamente, a partir de una estructura de $\Z[G]$-módulo en $A$, ésta da una acción de $G$ en $A$ restringiendo la acción al subgrupo $G$.
@@ -117,7 +117,7 @@ $\Z[G]$ tiene estructura de anillo con unidad. Notese que este anillo será conm
 		
 		Comenzamos viendo que $f$ es inyectiva. Sea $x\in \Ker(f)$, por la conmutatividad del diagrama, $h(\pi_1(x))=\pi_2(f(x)) = \pi_2(1) = 1$. Entonces, $\pi_1(x)\in \Ker(h) = \{1\}$ y $x\in \Ker(\pi_1)$, por tanto existe $\tilde x\in A_1$ tal que $i_1(\tilde x)=x$, de nuevo por conmutatividad, $i_2(g(\tilde x))=f(i_1(\tilde x))=f(x)=1$ y como $i_2$ y $g$ son inyectivas, $\tilde x = 1$ y $x = i_1(\tilde x)=1$.
 		
-		Ahora vemos la sobreyectividad. Sea $x\in B_2$, como $\pi_1$ y $h$ son sobreyectivas existe $ x_1\in B_1$ tal que $\pi_2(x)=h(\pi_1(x_1)) = \pi_2(f(x_1))$. Por tanto, $x f(x_1)^{-1} \in \Ker(\pi_2)= \Image(i_2)$ y existe $\tilde x\in A_2$ tal que $i_2(\tilde x)=x f(x_1)^{-1}$. Usando que $g$ es isomorfismo, $i_2(\tilde x) = f(i_1(g^{-1}(\tilde x)))$. Despejando $x = f(i_1(g^{-1}(\tilde x)) x_1)$, $f$ es sobreyectiva.
+		Ahora vemos la sobreyectividad. Sea $x\in B_2$, como $\pi_1$ y $h$ son sobreyectivas existe $ x_1\in B_1$ tal que $\pi_2(x)=h(\pi_1(x_1)) = \pi_2(f(x_1))$. Por tanto, $x f(x_1)^{-1} \in \Ker(\pi_2)= \Image(i_2)$ y existe $\tilde x\in A_2$ tal que $i_2(\tilde x)=x f(x_1)^{-1}$. Usando que $g$ es isomorfismo, $i_2(\tilde x) = f(i_1(g^{-1}(\tilde x)))$. Despejando $x = f(i_1(g^{-1}(\tilde x)) x_1)$, obtenemos que $f$ es sobreyectiva.
 	\end{demostracion}
 \end{proposicion}
 
@@ -133,9 +133,9 @@ Antes de tratar el caso de la cohomología de grupos, introducimos en general lo
 %Un complejo de cadenas es un par $(C,d)$ donde $C$ es un $R$-módulo graduado y $d$ es un 
 
 Sea $R$ un anillo con unidad. Un $R$-módulo graduado es una sucesión de $R$-módulos $C=\{C_n\}_{n\in\Z}$. Diremos que los elementos del $R$-módulo $C_n$ tienen grado $n$.
-Definimos un mapa de grado $r$ entre dos $R$-módulos graduados $C$ y $C'$ como una sucesión de homomorfismos de $R$-módulos $f=\{\homo {f_n} {C_n} {C_{n+r}'}\}_{n\in\Z}$.
+Definimos una aplicación de grado $r$ entre dos $R$-módulos graduados $C$ y $C'$ como una sucesión de homomorfismos de $R$-módulos $f=\{\homo {f_n} {C_n} {C_{n+r}'}\}_{n\in\Z}$.
 
-Un complejo de cadenas sobre $R$ es el par $(C,d)$ donde $C$ es un $R$-módulo graduado y $\homo d C C$ un mapa de grado $-1$ llamado operador de borde que verifica $d_{n}\circ d_{n+1}=0$ para todo $n\in\Z$, escrito sin subíndices como $d^2 = 0$. Equivalentemente, el operador de borde verifica $\Image(d_{n+1})\subseteq \Ker(d_{n})$.
+Un complejo de cadenas sobre $R$ es el par $(C,d)$ donde $C$ es un $R$-módulo graduado y $\homo d C C$ una aplicación de grado $-1$ llamado operador de borde que verifica $d_{n}\circ d_{n+1}=0$ para todo $n\in\Z$, escrito sin subíndices como $d^2 = 0$. Equivalentemente, el operador de borde verifica $\Image(d_{n+1})\subseteq \Ker(d_{n})$.
 
 \begin{equation}
 	\cdots  \xrightarrow{} C_{n+1} \xrightarrow{d_{n+1}} C_n \xrightarrow{d_n} C_{n-1} \xrightarrow{} \cdots 
@@ -172,9 +172,9 @@ Ahora nos centraremos en la cohomología de grupos. Para comenzar, fijaremos un 
 	\[
 		(d_if)(g_1,\ldots,g_n) = 
 		\begin{cases*} % confuso porque en la formula de arriba f \in C^n y aqui f\in C^{n-1}
-			g_1\cdot f(g_2,\ldots,g_n) 				& si $ i=0$ \\
-			f(g_1,\ldots,g_ig_{i+1},\ldots,g_n) 	& si $ 0 < i <n$ \\ %f(q_1,\ldots,q_{i-1},q_iq_{i+1},q_{i+2},\ldots,q_{n+1}) & si $ 0 < i <n+1$ \\
-			f(g_1,\ldots,g_{n-1}) 					& si $ i=n$
+			g_1\cdot f(g_2,\ldots,g_n) 				& si $ i=0$, \\
+			f(g_1,\ldots,g_ig_{i+1},\ldots,g_n) 	& si $ 0 < i <n$, \\ %f(q_1,\ldots,q_{i-1},q_iq_{i+1},q_{i+2},\ldots,q_{n+1}) & si $ 0 < i <n+1$ \\
+			f(g_1,\ldots,g_{n-1}) 					& si $ i=n$.
 		\end{cases*}
 	\]
 	Diremos que $\partial f$ es el coborde de $f$. % definir el operador \partial C -> C
@@ -185,14 +185,14 @@ Ahora nos centraremos en la cohomología de grupos. Para comenzar, fijaremos un 
 \begin{lema}\label{lem:coborde}
 	Sea $f\in C^{n-1}$, entonces para todo $i=0,\ldots,n+1$ y $j=i,\ldots,n$
 	\begin{equation}
-		d_id_jf=d_{j+1}d_if
+		d_id_jf=d_{j+1}d_if.
 	\end{equation}
 	\begin{demostracion}
 		Para simplificar los calculos, extendemos $(g_1,\ldots,g_{n+1})$ a $(g_0,\ldots,g_{n+3})$ con $g_0=g_{n+2}=g_{n+3}=1$.
 		Definimos la operación de $d_i$ sobre la tupla como $d_i(g_0,\ldots,g_{n+3}) = (g_0,\ldots,g_ig_{i+1},\ldots,g_{n+3})$. La tupla obtenida tras aplicar $d_i$ y $d_j$, se aplicará a $f$ actuando el primer elemento a la izquierda con la acción de $G$-módulo en $A$ y omitiendo los dos últimos elementos (o actuándolos a la derecha con acción trivial). Así tenemos la siguiente forma de calcular $d_i(d_jf)$
 		\begin{align}
-			f\cdot (\tilde g_0,\ldots,\tilde g_{n+1}) = \tilde g_0 \cdot f(\tilde g_1,\ldots,\tilde g_{n-1})  \\
-			f\cdot (d_j(d_i(g_0,\ldots,g_{n+3}))) = d_i(d_jf)(g_1,\ldots,g_{n+1})	\label{eq:homcohom}
+			f\cdot (\tilde g_0,\ldots,\tilde g_{n+1}) = \tilde g_0 \cdot f(\tilde g_1,\ldots,\tilde g_{n-1}),  \\
+			f\cdot (d_j(d_i(g_0,\ldots,g_{n+3}))) = d_i(d_jf)(g_1,\ldots,g_{n+1}).	\label{eq:homcohom}
 		\end{align}
 		De esta forma, reducimos los casos frontera a un mismo caso homogéneo que estudiaremos a continuación.
 		
@@ -203,7 +203,7 @@ Ahora nos centraremos en la cohomología de grupos. Para comenzar, fijaremos un 
 					&= d_i(g_0,\ldots,g_ig_{i+1},\ldots,g_{n+3}) \\
 					&= (g_0,\ldots,g_ig_{i+1}g_{i+2},\ldots,g_{n+3}) \\
 					&= d_i(g_0,\ldots,g_{i+1}g_{i+2},\ldots,g_{n+3}) \\
-					&= d_i(d_{i+1}(g_0,\ldots,g_{n+3}))
+					&= d_i(d_{i+1}(g_0,\ldots,g_{n+3})).
 				\end{align*}
 			\item Caso $j\geq i+1$:
 				\begin{align*}
@@ -211,7 +211,7 @@ Ahora nos centraremos en la cohomología de grupos. Para comenzar, fijaremos un 
 					&= d_j(g_0,\ldots,g_ig_{i+1},\ldots,g_{n+3}) \\
 					&= (g_0,\ldots,g_ig_{i+1},\ldots,g_{j+1}g_{j+2},\ldots,g_{n+3}) \\
 					&= d_i(g_0,\ldots,g_{j+1}g_{j+2},\ldots,g_{n+3}) \\
-					&= d_i(d_{j+1}(g_0,\ldots,g_{n+3}))
+					&= d_i(d_{j+1}(g_0,\ldots,g_{n+3})).
 				\end{align*}
 		\end{itemize}
 		
@@ -276,7 +276,7 @@ Ahora nos centraremos en la cohomología de grupos. Para comenzar, fijaremos un 
 			&= \sum_{0\leq j < i \leq n+2} (-1)^{i+j} d_i(d_jf)  + \sum_{0\leq i \leq j \leq n+1} (-1)^{i+j} d_i(d_jf)\\
 			&= \sum_{0\leq j < i \leq n+2} (-1)^{i+j} d_i(d_jf)  + \sum_{0\leq i \leq j \leq n+1} (-1)^{i+j} d_{j+1}(d_if) \\
 			&= \sum_{0\leq j < i \leq n+2} (-1)^{i+j} d_i(d_jf)  + \sum_{0\leq j < i \leq n+2} (-1)^{i+j-1} d_{i}(d_jf) \\
-			&= \sum_{0\leq j < i \leq n+2} (-1)^{i+j}(d_i(d_jf)-d_i(d_jf)) = 0
+			&= \sum_{0\leq j < i \leq n+2} (-1)^{i+j}(d_i(d_jf)-d_i(d_jf)) = 0.
 		%(\partial^{n+1}(\partial_{n} f))(g_1,\ldots, g_{n+2}) = \sum\limits_{i=0}^{n+2}\sum\limits_{j=0}^{n+1} (-1)^{i+j} (d_i(d_jf))(g_1,\ldots, g_{n+2})
 		\end{align*}
 	\end{demostracion}
@@ -285,13 +285,13 @@ Ahora nos centraremos en la cohomología de grupos. Para comenzar, fijaremos un 
 \begin{definicion}
 	La proposición anterior nos permite definir los grupos de $n$-cobordes y $n$-cociclos como 
 	\begin{align*}
-		B^n_\varphi(G,A) &= \Image(\partial^{n-1}) \\
-		Z^n_\varphi(G,A) &= \Ker(\partial^{n})
+		B^n_\varphi(G,A) &= \Image(\partial^{n-1}), \\
+		Z^n_\varphi(G,A) &= \Ker(\partial^{n}).
 	\end{align*}
 	
 	Con ellos podemos definir entonces el $n$-ésimo grupo de cohomología como 
 	\begin{equation}
-		H^n_\varphi(G,A) = \frac{Z^n_\varphi(G,A)}{B^n_\varphi(G,A)} = \frac{\Image(\partial^{n-1})}{\Ker(\partial^{n})}
+		H^n_\varphi(G,A) = \frac{Z^n_\varphi(G,A)}{B^n_\varphi(G,A)} = \frac{\Image(\partial^{n-1})}{\Ker(\partial^{n})}.
 	\end{equation}
 	
 	Dado $f\in Z^n(G,A)$, denotaremos su clase de equivalencia por $[f]\in H^n(G,A)$. Diremos que dos cociclos que pertenecen a la misma clase son cohomólogos. 
@@ -312,19 +312,19 @@ Ahora nos centraremos en la cohomología de grupos. Para comenzar, fijaremos un 
 	\begin{demostracion}
 		Sea $c\in Z^n(Q,A)$
 		\begin{equation}\label{eq:ncocycle}
-			\sum\limits_{i=0}^{n+1} (-1)^i(d_ic)(g_1,\ldots,g_{n+1}) = 0
+			\sum\limits_{i=0}^{n+1} (-1)^i(d_ic)(g_1,\ldots,g_{n+1}) = 0.
 		\end{equation}
 		
-		Definiendo $\tilde c(g_1,\hdots,g_{n-1}) = {\displaystyle \sum_{g_n\in G} c(g_1,\hdots,g_{n})}$ y haciendo la suma en \eqref{eq:ncocycle} para cada $g_{n+1} \in G$
+		Definiendo $\tilde c(g_1,\hdots,g_{n-1}) = {\displaystyle \sum_{g_n\in G} c(g_1,\hdots,g_{n})}$ y haciendo la suma en \eqref{eq:ncocycle} para cada $g_{n+1} \in G$ obtenemos que
 
 		\begin{multline*}
 			\sum\limits_{g_{n+1}\in G}\sum\limits_{i=0}^{n+1} (-1)^i(d_ic)(g_1,\ldots,g_{n+1}) = \\ 
-			= \sum\limits_{i=0}^{n} (-1)^i(d_i\tilde c)(g_1,\ldots,g_n) + (-1)^{n+1}\ord{G} c(g_1,\ldots,g_n) = 0
+			= \sum\limits_{i=0}^{n} (-1)^i(d_i\tilde c)(g_1,\ldots,g_n) + (-1)^{n+1}\ord{G} c(g_1,\ldots,g_n) = 0.
 		\end{multline*}
 		
 		Como $\mcd(\ord{G}, \ord{A}) = 1$, por la identidad de Bezout existe $k\in \N$ tal que $k \ord{G} \equiv (-1)^{n} \mod \ord{A}$. Multiplicando por $k$
 		\begin{equation*}
-			c(g_1,\hdots,g_n) = \sum\limits_{i=0}^n (-1)^i(d_i k\tilde c)(g_1,\ldots,g_n)
+			c(g_1,\hdots,g_n) = \sum\limits_{i=0}^n (-1)^i(d_i k\tilde c)(g_1,\ldots,g_n).
 		\end{equation*}
 		
 		El cociclo $c$ es el coborde de la función $k \tilde c$ y por tanto $H^n(G,A)$ es trivial.
@@ -360,9 +360,9 @@ En esta sección daremos un isomorfismo entre el segundo grupo de cohomología y
 \begin{definicion}% en general un n-cociclo f es normalizado cuando f(q_1,...,q_n) = 0 si cualquiera de los q_i = 0
 	Un $2$-cociclo $c\in Z^2(G,A)$ se dice que es normalizado cuando para todo $g\in G$
 	\begin{equation*}
-		c(1,g)= 0 = c(g,1)
+		c(1,g)= 0 = c(g,1).
 	\end{equation*}
-	La suma de dos cociclos normalizados es también un cociclo normalizado. Definimos los grupos de cociclos y cobordes normalizados como $Z^2_N(G,A)$ y $B^2_N(G,A)$ respectivamente.
+	Observemos que la suma de dos cociclos normalizados es también un cociclo normalizado. Definimos los grupos de cociclos y cobordes normalizados como $Z^2_N(G,A)$ y $B^2_N(G,A)$ respectivamente.
 \end{definicion}
 
 \begin{proposicion}
@@ -371,11 +371,11 @@ En esta sección daremos un isomorfismo entre el segundo grupo de cohomología y
 		La implicación a la derecha viene de la definición. Para la implicación no trivial, tomamos $c\in Z^2(G,A)$ tal que $c(1,1) = 0$. 
 		Evaluando $\partial^2 c$ en $(1,1,g)\in G^3$
 		\begin{equation*}
-			1\cdot c(1,g) - c(1,g) + c(1,g) - c(1,1) = c(1,g) =0
+			1\cdot c(1,g) - c(1,g) + c(1,g) - c(1,1) = c(1,g) =0.
 		\end{equation*} 
 		De igual manera, evaluando en $(g,1,1)\in G^3$
 		\begin{equation*}
-			g\cdot c(1,1) - c(g,1) + c(g,1) - c(g,1) = -c(g,1) = 0
+			g\cdot c(1,1) - c(g,1) + c(g,1) - c(g,1) = -c(g,1) = 0.
 		\end{equation*}
 	\end{demostracion}
 \end{proposicion}
@@ -385,25 +385,25 @@ En esta sección daremos un isomorfismo entre el segundo grupo de cohomología y
 	\begin{demostracion}
 		Tomamos una función $\homo \phi G A$ tal que $\phi(1) = -c(1,1)$ y construímos el $2$-coborde b de $\phi$
 		\begin{equation*}
-			b(g_1,g_2) = (\partial^1 \phi)(g_1,g_2) =  q_1\cdot \phi(g_2) - \phi(g_1g_2) + \phi(g_1)
+			b(g_1,g_2) = (\partial^1 \phi)(g_1,g_2) =  q_1\cdot \phi(g_2) - \phi(g_1g_2) + \phi(g_1).
 		\end{equation*}
-		$b$ verifica que $b(1,1) = \phi(1) = -c(1,1)$ y por tanto el cociclo $\tilde c = c+b$ es un $2$-cociclo normalizado.
+		De la igualdad anterior, se deduce  que $b$ verifica $b(1,1) = \phi(1) = -c(1,1)$ y por tanto el cociclo $\tilde c = c+b$ es un $2$-cociclo normalizado.
 	\end{demostracion}
 \end{lema}
 
 \begin{teorema}\label{thm:h2hn2}
-	Tenemos el siguiente isomorfismo entre los grupos de cohomología
+	Dado un grupo $G$ y $A$ un $G$-módulo, se tiene el siguiente isomorfismo entre los grupos de cohomología
 	\begin{equation}
-		H^2_N(G,A) = \frac{Z^2_N(G,A)}{B^2_N(G,A)} \cong \frac{Z^2(G,A)}{B^2(G,A)} = H^2(G,A)
+		H^2_N(G,A) = \frac{Z^2_N(G,A)}{B^2_N(G,A)} \cong \frac{Z^2(G,A)}{B^2(G,A)} = H^2(G,A).
 	\end{equation}
 	\begin{demostracion}
 		Por el Lema \ref{prop:normcoc}, tenemos el siguiente epimorfismo
 		\begin{align*}
 			\Phi \ \colon \ Z^2_N(G,A) &\twoheadrightarrow H^2(G,A) \\
-			c \ &\mapsto [c]
+			c \ &\mapsto [c].
 		\end{align*}
 		
-		El kernel de $\Phi$ es precisamente la intersección de $Z^2_N(G,A)$ y $B^2(G,A)$, esto es, $B^2_N(G,A)$. Por el Primer Teorema de Isomorfía, se sigue el resultado.
+		El kernel de $\Phi$ es precisamente la intersección de $Z^2_N(G,A)$ y $B^2(G,A)$, esto es, $B^2_N(G,A)$. Aplicando el Primer Teorema de Isomorfía, se sigue el resultado.
 	\end{demostracion}
 \end{teorema}
 

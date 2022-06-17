@@ -78,7 +78,7 @@
 \nombre{Carlos Moya García}
 \director{Jon González Sánchez}
 \otrodirector{}
-\fecha{22/06/2022}
+\fecha{22 de junio de 2022}
 
 \maketitle
 \thispagestyle{empty}
@@ -93,25 +93,26 @@
 \fancyhead[LE]{\thepage}
 \fancyhead[RE]{\slshape\nouppercase{\rightmark}}
 
-%\incluir{Introduccion}
+\incluir{Introduccion}
 
 \mainmatter
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter. #1}{}}
 
-\input{Cohom/cohomology.tex}
-\input{Extensiones/extensiones.tex}
-\input{Extensiones/split.tex}
-\input{Extensiones/abelian.tex}
-\input{Extensiones/central.tex}
-\input{Hall/hall.tex}
-\input{Transfer/transfer.tex}
+\incluir{Capitulos/cohomology.tex}
+\incluir{Capitulos/extensiones.tex}
+\incluir{Capitulos/hall.tex}
+\incluir{Capitulos/transfer.tex}
+%\incluir{Extensiones/split.tex}
+%\incluir{Extensiones/abelian.tex}
+%\incluir{Extensiones/central.tex}
+
 \apendices
-\input{Apendices/ejercicios.tex}
+\incluir{Apendices/ejercicios.tex}
 %\input{Apendices/generalcocycleextension.tex}
-\input{Apendices/baer.tex}
+\incluir{Apendices/baer.tex}
 
 
 
-\input{Bibliografia}
+\incluir{Bibliografia}
 
 \end{document}

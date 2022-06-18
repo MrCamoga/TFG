@@ -205,7 +205,7 @@ Nos centramos a continuación en el caso en que $\theta$ es la abelianización d
 
 %Notese que en general, la función de elevar cada elemento a una potencia no es un homomorfismo salvo que $G$ sea abeliano. % blablabla soltar rollo sobre lo remarcable que es que elevar al indice del centro sí lo sea
 
-\begin{proposicion}[Lema de Schreier]\label{prop:quotfg} % poner encima del teorema de schur
+\begin{lema}[Schreier]\label{prop:quotfg} % poner encima del teorema de schur
 	Sea $G$ un grupo finitamente generado y $H$ un subgrupo de $G$ de índice finito $n$. Entonces $H$ es finitamente generado.
 	\begin{demostracion}
 		Sea $X$ un sistema generador finito de $G$ y $T=\{1=t_1,\ldots,t_n\}$ un transversal normalizada de $H$ a $G$. Definimos la función $\tau_{i}(g) = t_igt_{(i)g}^{-1}\in H$ como en \eqref{minitransfer}, de esta forma $t_i g = \tau_{i}(g)t_{(i)g}$.
@@ -229,15 +229,15 @@ Nos centramos a continuación en el caso en que $\theta$ es la abelianización d
 %			h = t_1x_1\cdots x_k = \tau_{1}(x_1)t_{(1)x_1}x_2\cdots x_k = \prod_{i=1}^k\left[ \tau_{(1)\prod_{j=1}^{i}x_j}\Big(\prod_{j=1}^{i}x_j\Big)\right]t_{(1)h}
 %		\end{equation*}
 	\end{demostracion}
-\end{proposicion}
+\end{lema}
 
-\begin{corolario}[Schur]
+\begin{teorema}[Schur]
 	Sea $G$ un grupo y $Z(G)$ de índice finito $n$, entonces $G'$ es finito y $G'^n = \{1\}$.
 	\begin{demostracion}
 		Sea $C=Z(G)$ y $\transversal {Cg} n$ las coclases a derecha de $C$ en $G$. Sean $c_ig_i,c_jg_j\in G$, entonces $[c_ig_i,c_j,g_j] = [g_i,g_j]$ y $G'$ está finitamente generado. Por el Segundo Teorema de Isomorfía $\frac{G'}{G'\cap C} = \frac{G'C}{C}$ es finito y por la Proposición \ref{prop:quotfg}, $G'\cap C$ está finitamente generado.
 		El transfer de $G$ a $C$ viene dado por $x\mapsto x^n$ y como $G'$ está contenido en el kernel, $G'^n = \{1\}$, en particular, $(G'\cap C)^n = \{1\}$. Por el teorema de clasificación de grupos abelianos finitamente generados, $G'\cap C$ es finito y como $\ord{G':G'\cap C}$ es finito se deduce que $G'$ es finito.
 	\end{demostracion}
-\end{corolario}
+\end{teorema}
 
 
 %\subsection{Transfer a un subgrupo de Sylow}

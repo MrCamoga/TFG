@@ -2,10 +2,7 @@
 
 \chapter{Teoremas de Hall}
 
-
-% explicar que los pi subgrupos generalizan los p-subgrupos, hall subgrupos si existen son conjugados.
-
-En este capítulo se expone una generalización de los subgrupos de Sylow dada por Hall, en la que el orden de los subgrupos es coprimo con el índice. Estos subgrupos no tienen porqué existir pero cuando existen comparten muchas similitudes con los subgrupos de Sylow y como veremos, la existencia de estos da información sobre la resolubilidad del grupo.
+En este capítulo se expone una generalización de los subgrupos de Sylow dada por Hall, en la que el orden de los subgrupos es coprimo con el índice. Estos subgrupos no tienen porqué existir, pero cuando existen comparten muchas similitudes con los subgrupos de Sylow y como veremos, la existencia de estos da información sobre la resolubilidad del grupo.
 
 \section{Subgrupos de Hall}
 
@@ -17,10 +14,10 @@ Comenzaremos definiendo los subgrupos de Hall y viendo algunas propiedades que s
 \end{definicion}
 
 \begin{definicion}
-	Un $\pi$-subgrupo $H$ de $G$ decimos que es un $\pi$-subgrupo de Hall si $\ord{H}$ es un $\pi$-número y $\ord{G:H}$ es un $\pi'$-número, es decir, un número que no es divisible por ningún primo de $\pi$. Denotaremos por $\Hall \pi G$ al conjunto de los $\pi$-subgrupos de Hall.
+	Un $\pi$-subgrupo $H$ de $G$ decimos que es un $\pi$-subgrupo de Hall si $\ord{H}$ es un $\pi$-número y $\ord{G:H}$ es un $\pi'$-número, es decir, un número que no es divisible por ningún primo de $\pi$. Denotaremos por $\Hall \pi G$ al conjunto de los $\pi$-subgrupos de Hall de $G$.
 \end{definicion}
 
-Claramente los $\pi$-subgrupos de Hall son $\pi$-subgrupos de Sylow, pero mientras que estos últimos siempre existen, la existencia de los subgrupos de Hall no está garantizada. %A continuación se dan dos ejemplos de grupos en los que no existen subgrupos de Hall y 
+Claramente los $\pi$-subgrupos de Hall son $\pi$-subgrupos de Sylow, pero mientras que estos últimos siempre existen, la existencia de los subgrupos de Hall no está garantizada. A continuación se dan dos ejemplos de grupos, uno en los que no siempre existen subgrupos de Hall, y otro en el que sí existen. 
 
 \begin{ejemplo}
 	En $A_5$ no hay $\pi$-subgrupos de Hall para $\pi = \{2,5\}, \{3,5\}$. Por reducción al absurdo, si $A_5$ tuviese un subgrupo $H$ de índice menor que $5$, la acción sobre las coclases bien a derecha o a izquierda inducirían un homomorfismo de $A_5$ sobre $S_{A_5/H}\cong S_{\ord{A_5:H}}$. Como $A_5$ es simple y la acción no es trivial, el homomorfismo debería ser inyectivo pero esto es imposible ya que $\ord{A_5}=60 > n!$ para $n\leq 4$.
@@ -177,7 +174,10 @@ Equivalentemente, la extensión $\extension {}{} N G {G/N}$ escinde y $G$ es iso
 		Si $R=1$, como $G$ es resoluble existe un subgrupo normal minimal $M$ de $G$ y es un $p$-subgrupo elemental abeliano. Entonces $M$ está contenido en $R' = \Core {\pi'} G$. $SR'/R'$ es un $\pi$-subgrupo de Hall por inducción y por tanto $S\in \Hall \pi G$. Si $S_2$ es otro $\pi$-subgrupo de Hall, por inducción existe $g\in G$ tal que $S^gR'/R'=S_2R'/R'$. Se sigue que $S^gR' = S_2R'$ y por tanto $S^g \leq S_2R'$. Tenemos que $R'\norm S_2R'$ y podemos aplicar el Teorema \ref{thm:schur} para concluir que $S$ y $S_2$ son conjugados en $S_2R'$ y por tanto también lo son en $G$.
 	\end{demostracion}
 \end{teorema}
-% mencionar que se puede rebajar la condicion de resolubilidad a pi-separable?
+
+\begin{observacion}
+	La condición de resolubilidad se puede rebajar a $\pi$-separabilidad, en la que únicamente se pide que los factores de la serie de composición de $G$ sean $\pi$-grupos o $\pi'$-grupos. Bajo esta hipótesis, bien $\Core \pi G$ u $\Core {\pi'} {G}$ es no trivial y el resultado se sigue. La $\pi$-separabilidad se explica más en detalle en \cite{Robinson}.
+\end{observacion}
 
 \begin{lema}\label{lem:inthall} % basta que tengan indice finito pero como estamos trabajando con grupos finitos da igual
 	Sea $G$ un grupo finito y $H, K$ $p'$ y $q'$-subgrupos de Hall respectivamente, $p$ y $q$ primos distintos. Entonces $\ord{G:H\cap K} = \ord{G:H}\ord{G:K}$, es decir, $H\cap K$ es un $\{p,q\}'$-subgrupo de Hall.

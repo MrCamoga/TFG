@@ -2,7 +2,7 @@
 
 \chapter{Teoremas de Hall}
 
-En este capítulo se expone una generalización de los subgrupos de Sylow dada por Hall, en la que el orden de los subgrupos es coprimo con el índice. Estos subgrupos no tienen porqué existir, pero cuando existen comparten muchas similitudes con los subgrupos de Sylow y como veremos, la existencia de estos da información sobre la resolubilidad del grupo.
+En este capítulo se expone una generalización de los subgrupos de Sylow dada por Hall, en la que el orden de los subgrupos es coprimo con el índice. Estos subgrupos no tienen porqué existir, pero cuando se da el caso, estos comparten muchas similitudes con los subgrupos de Sylow y como veremos, la existencia de estos da información sobre la resolubilidad del grupo.
 
 \section{Subgrupos de Hall}
 
@@ -132,7 +132,7 @@ Equivalentemente, la extensión $\extension {}{} N G {G/N}$ escinde y $G$ es iso
 		
 		%Caso Opi=1
 		Si $\Core \pi G=1$, tomamos un subgrupo normal minimal $L/N$ de $G/N$, que existe por ser $G/N$ resoluble. 
-		Éste es un $p$-subgrupo elemental abeliano para algún $p\in\pi$. Por la Proposición \ref{prop:normalhall}, $H\cap L,K\cap L \in \Hall \pi L = \Syl p L$. Aplicando el Segundo Teorema de Sylow, existe un $g\in L$ tal que $H\cap L = (K\cap L)^g = K^g\cap L$. $H\cap L\norm H$ y $K^g\cap L\norm K^g$, por tanto, $H\cap L \norm \gensub {H,K^g} = J$. $J$ no puede ser todo $G$ porque $H\cap L$ sería un $\pi$-subgrupo normal no trivial, lo que contradice que $\Core \pi G$ sea trivial. Entonces $\ord{J} < \ord{G}$ y aplicando inducción se sigue que $H$ y $K^g$ son conjugados en $J < G$.
+		Este es un $p$-subgrupo elemental abeliano para algún $p\in\pi$. Por la Proposición \ref{prop:normalhall}, $H\cap L,K\cap L \in \Hall \pi L = \Syl p L$. Aplicando el Segundo Teorema de Sylow, existe un $g\in L$ tal que $H\cap L = (K\cap L)^g = K^g\cap L$. $H\cap L\norm H$ y $K^g\cap L\norm K^g$, por tanto, $H\cap L \norm \gensub {H,K^g} = J$. $J$ no puede ser todo $G$ porque $H\cap L$ sería un $\pi$-subgrupo normal no trivial, lo que contradice que $\Core \pi G$ sea trivial. Entonces $\ord{J} < \ord{G}$ y aplicando inducción se sigue que $H$ y $K^g$ son conjugados en $J < G$.
 		
 		%Caso Opi!=1
 		Si $\Core \pi G\neq 1$, por la Proposición \ref{prop:coreint} $\Core \pi G \norm H\cap K$ y pasando al cociente, $G/\Core \pi G = 1$ por lo que $H/\Core \pi G$ y $K/\Core \pi G$ son conjugados.

@@ -78,7 +78,7 @@
 \end{lema}
 
 \begin{lema}\label{prop:pushout}
-	Dada una extensión $\extension i \pi A E Q$ y un homomorfismo $\homo \beta {A} {A'}$, existe una extensión $\extension {} {} {A'} {E_1} Q$ única salvo equivalencia que hace al siguiente diagrama conmutativo.
+	Dada una extensión $\extension i \pi A E Q$ y un homomorfismo de $Q$-módulos $\homo \beta {A} {A'}$, existe una extensión $\extension {} {} {A'} {E_1} Q$ única salvo equivalencia que hace al siguiente diagrama conmutativo.
 	% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiQSJdLFsyLDAsIkUiXSxbMywwLCJRIl0sWzQsMCwiMSJdLFswLDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiQSciXSxbMywxLCJRIl0sWzQsMSwiMSJdLFsyLDEsIkUnIl0sWzQsMF0sWzAsMSwiaSJdLFsxLDIsIlxccGkiXSxbMiwzXSxbNSw2XSxbNiw5LCJpJyJdLFs5LDcsIlxccGknIl0sWzcsOF0sWzEsOSwiZiJdLFs3LDIsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw3LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsNiwiXFxiZXRhIl1d
 	\[\begin{tikzcd}
 		1 & A & E & Q & 1 \\
@@ -97,7 +97,7 @@
 		\arrow["\beta", from=1-2, to=2-2]
 	\end{tikzcd}\]
 	\begin{demostracion}
-		Tomamos $E_1=E\sqcup_A A' = \frac{E\times A'}{\{(i(a),-\beta(a))\in E\times A' \ : \ a\in A\}}$ el pushout de $i$ y $\beta$ con la inclusión $i_1$ y proyección $\pi_1$ definidas por
+		Tomamos $E_1=E\sqcup_A A' = \frac{E\ltimes A'}{\{(i(a),-\beta(a))\in E\times A' \ : \ a\in A\}}$ el pushout de $i$ y $\beta$ con la inclusión $i_1$ y proyección $\pi_1$ definidas por
 		\begin{gather*}
 			i_1(a) = \overline{(1,a)}, \\
 			\pi_1(\overline{(e,a)}) = \pi(e).
@@ -152,18 +152,19 @@
 \begin{observacion}
 	Los homomorfismos $\homo \alpha {Q'} Q$ y $\homo \beta A {A'}$ determinan a partir de la extensión $\extension {}{} A E Q$, una única extensión salvo equivalencia de $Q'$ por $A$ y $Q$ por $A'$ respectivamente. Por tanto, inducen funciones sobre las clases de extensiones equivalentes o, por el Teorema \ref{h2}, sobre los segundos grupos de cohomología
 	\begin{align*}
-		H^2(\alpha,1_A) \colon H^2(Q,A) &\to H^2(Q',A) \\
+		H^2(\alpha,A) \colon H^2(Q,A) &\to H^2(Q',A) \\
 						   [E] &\mapsto [\alpha_*(E)] = [E'], \\
-		H^2(1_Q,\beta) \colon H^2(Q,A) &\to H^2(Q,A') \\
+		H^2(Q,\beta) \colon H^2(Q,A) &\to H^2(Q,A') \\
 						   [E] &\mapsto [\beta_*(E)] = [E'].
 	\end{align*}
 	Estas funciones preservan la composición de homomorfismos y el homomorfismo identidad, es decir, dados $\homo {f_1} {Q''} {Q'}$, $\homo {f_2} {Q'} {Q}$, $\homo {g_1} A {A'}$ y $\homo {g_2} {A'} {A''}$, se verifica
 	\begin{gather*}
-		H^2(f_2\circ f_1,1_A) = H^2(f_2,1_A)\circ H^2(f_1,1_A), \\
-		H^2(1_Q,g_2\circ g_1) = H^2(1_Q,g_2)\circ H^2(1_Q,g_1), \\
-		H^2(1_Q,1_A) = 1_{H^2(Q,1_A)}.
+		H^2(f_2\circ f_1,A) = H^2(f_1,A)\circ H^2(f_2,A), \\
+		H^2(Q,g_2\circ g_1) = H^2(Q,g_2)\circ H^2(Q,g_1), \\
+		H^2(1_Q,A) = 1_{H^2(Q,A)}, \\
+		H^2(Q,1_A) = 1_{H^2(Q,A)}.
 	\end{gather*}
-	y por tanto $H^2(-,-)$ es un functor de la categoría $\normalfont\textbf{Grp} \times \normalfont\textbf{Ab}$ a la categoría $\normalfont\textbf{Ab}$ contravariante en el primer argumento y covariante en el segundo. % explicar contra/co-variante
+	y por tanto $H^2(-,A)$ es un functor contravariante de la categoría de grupos a la categoría de grupos abelianos y $H^2(Q,-)$ es un functor covariante de la categoría de $Q$-módulos a la categoría de grupos abelianos. % explicar contra/co-variante
 		
 \end{observacion}
 
@@ -264,14 +265,14 @@
 \end{teorema}
 
 \begin{corolario}
-	Los functores $\alpha_* = H^2(\alpha,1_A)$ y $\beta_* = H^2(1_Q,\beta)$ son homomorfismos de grupos, es decir, para todo par de extensiones $\extension {}{} A {E_i} Q$, $i=1,2$ se tiene % falta alpha(0)=0
+	Los functores $\alpha_* = H^2(\alpha,A)$ y $\beta_* = H^2(Q,\beta)$ son homomorfismos de grupos, es decir, para todo par de extensiones $\extension {}{} A {E_i} Q$, $i=1,2$ se tiene % falta alpha(0)=0
 	\begin{gather*}
 		%\alpha_*(-E) = -\alpha_*(E) \\
 		%\beta_*(-E) = -\beta_*(E) \\
 		\alpha_*(E_1+E_2) = \alpha_*(E_1)+\alpha_*(E_2),\\
 		\beta_*(E_1+E_2) = \beta_*(E_1)+\beta_*(E_2),
 	\end{gather*}
-	lo que hacen a $H^2$ un bifunctor aditivo.
+	lo que hacen a $H^2$ un functor aditivo.
 	\begin{demostracion}
 		Lo probamos para $\alpha_*$, para $\beta_*$ se hace de manera análoga usando el lema \ref{prop:pushout}. Basta mirar el siguiente diagrama.
 		% https://q.uiver.app/?q=WzAsMzAsWzMsNCwiQSJdLFs1LDIsIkVfMSdcXHRpbWVzX3tRJ31FXzInIl0sWzIsMSwiQVxcdGltZXMgQSJdLFs0LDEsIkVfMVxcdGltZXMgRV8yIl0sWzYsMSwiUVxcdGltZXMgUSJdLFs0LDMsIkVfMVxcdGltZXNfUSBFXzIiXSxbNiwzLCJRIl0sWzIsMywiQVxcdGltZXMgQSJdLFsyLDUsIkEiXSxbNCw1LCJcXGZyYWN7RV8xXFx0aW1lc19RIEVfMn17S2VyKCspfSJdLFs2LDUsIlEiXSxbNywyLCJRJyJdLFs3LDAsIlEnXFx0aW1lcyBRJyJdLFs1LDAsIkVfMSdcXHRpbWVzIEVfMiciXSxbMywwLCJBIFxcdGltZXMgQSJdLFszLDIsIkFcXHRpbWVzIEEiXSxbNSw0LCJcXGZyYWN7RV8xJ1xcdGltZXNfe1EnfSBFXzInfXtLZXIoKyl9Il0sWzcsNCwiUSciXSxbMSwwLCIxIl0sWzAsMSwiMSJdLFsxLDIsIjEiXSxbMCwzLCIxIl0sWzEsNCwiMSJdLFswLDUsIjEiXSxbOCw1LCIxIl0sWzksNCwiMSJdLFs5LDIsIjEiXSxbOCwzLCIxIl0sWzgsMSwiMSJdLFs5LDAsIjEiXSxbNiwxMSwiXFxhbHBoYSIsMV0sWzQsMTIsIlxcYWxwaGFcXHRpbWVzXFxhbHBoYSIsMV0sWzMsMTMsIlxcYWxwaGFfKlxcdGltZXNcXGFscGhhXyoiLDFdLFsyLDE0LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE0LDIsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw3LCIiLDEseyJvZmZzZXQiOjEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywyLCIiLDEseyJvZmZzZXQiOjEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwzXSxbNSw5XSxbNyw4LCIrIiwxLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzYsMTAsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTAsNiwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMSwxMiwiXFxEZWx0YSciLDEseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbMSwxM10sWzUsNiwiXFx0aWxkZVxccGkiLDEseyJsYWJlbF9wb3NpdGlvbiI6NzB9XSxbNyw1LCJcXHRpbGRlXFxpbWF0aCIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFs4LDksImkiLDFdLFs5LDEwLCJcXHBpIiwxXSxbMTMsMTIsIlxccGlfMSdcXHRpbWVzXFxwaV8yJyIsMV0sWzIsMywiaV8xXFx0aW1lcyBpXzIiLDEseyJsYWJlbF9wb3NpdGlvbiI6NzB9XSxbMyw0LCJcXHBpXzFcXHRpbWVzXFxwaV8yIiwxLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzE0LDEzLCJpXzEnXFx0aW1lcyBpXzInIiwxXSxbMTQsMTUsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTUsMTQsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywxNSwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNSw3LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE1LDEsIlxcdGlsZGVcXGltYXRoJyIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFsxLDExLCJcXHRpbGRlXFxwaSciLDEseyJsYWJlbF9wb3NpdGlvbiI6NzB9XSxbNiw0LCJcXERlbHRhIiwxLHsibGFiZWxfcG9zaXRpb24iOjMwfV0sWzAsMTYsImknIiwxLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzE2LDE3LCJcXHBpJyIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFsxMSwxNywiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNywxMSwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDE2XSxbMTUsMCwiKyIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFs4LDAsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCw4LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsMSwiXFxhbHBoYV8qIiwxXSxbOSwxNiwiXFxhbHBoYV8qIiwxXSxbMTAsMTcsIlxcYWxwaGEiLDFdLFsxOCwxNF0sWzE5LDJdLFsyMCwxNV0sWzIxLDddLFsyMiwwXSxbMjMsOF0sWzEwLDI0XSxbMTcsMjVdLFs2LDI3XSxbMTEsMjZdLFs0LDI4XSxbMTIsMjldXQ==

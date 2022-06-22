@@ -149,7 +149,7 @@ Notese que no hay ninguna diferencia esencial entre complejos de cadenas y cocad
 
 \section{Cohomología de grupos}
 
-Ahora nos centraremos en la cohomología de grupos. Para comenzar, fijaremos un $Q$-módulo $A$ y definiremos unos grupos abelianos a partir de $Q$ y $A$ sobre los que construiremos un operador coborde. Los resultados principales de esta sección probarán que el mapa define un complejo de cocadenas y que la cohomología de este es trivial cuando $Q$ y $A$ tienen órdenes coprimos. 
+Ahora nos centraremos en la cohomología de grupos. Para comenzar, fijaremos un $Q$-módulo $A$ y definiremos unos grupos abelianos a partir de $Q$ y $A$ sobre los que construiremos un operador coborde. Los resultados principales de esta sección probarán que el operador define un complejo de cocadenas y que la cohomología de este es trivial cuando $Q$ y $A$ tienen órdenes coprimos. 
 %Estos serán de gran ayuda en el estudio de las extensiones,  %%El estudio de la cohomología de grupos es de gran interés en numerosas areas de las matématicas. P
 
 \begin{definicion}
@@ -307,8 +307,13 @@ Ahora nos centraremos en la cohomología de grupos. Para comenzar, fijaremos un 
 
 % H^n(G,A) es un Z_m-modulo
 
-\begin{teorema}\label{thm:trivialH}
-	Sea $A$ un $G$-módulo con $\mcd(\ord{G}, \ord{A}) = 1$. Entonces $H^n(G,A)$ es trivial para todo $n\in\Z^+$.
+\begin{observacion}\label{lem:finiteexponentA}
+	Sea $G$ un grupo y $A$ un $G$-módulo de exponente $m$, esto es, $m$ es el máximo común divisor de los órdenes de los elementos de $A$. Entonces, como las cocadenas toman valores en $A$, $mH^n(G,A)=\{0\}$ para todo $n\in\N$.
+\end{observacion}
+	
+
+\begin{lema}\label{lem:finiteexponentG}
+	Sea $G$ un grupo finito de orden $m$ y $A$ un $G$-módulo. Entonces $mH^n(G,A)=\{0\}$ para todo $n \in \Z^+$.
 	\begin{demostracion}
 		Sea $c\in Z^n(Q,A)$
 		\begin{equation}\label{eq:ncocycle}
@@ -316,18 +321,19 @@ Ahora nos centraremos en la cohomología de grupos. Para comenzar, fijaremos un 
 		\end{equation}
 		
 		Definiendo $\tilde c(g_1,\hdots,g_{n-1}) = {\displaystyle \sum_{g_n\in G} c(g_1,\hdots,g_{n})}$ y haciendo la suma en \eqref{eq:ncocycle} para cada $g_{n+1} \in G$ obtenemos que
-
 		\begin{multline*}
 			\sum\limits_{g_{n+1}\in G}\sum\limits_{i=0}^{n+1} (-1)^i(d_ic)(g_1,\ldots,g_{n+1}) = \\ 
-			= \sum\limits_{i=0}^{n} (-1)^i(d_i\tilde c)(g_1,\ldots,g_n) + (-1)^{n+1}\ord{G} c(g_1,\ldots,g_n) = 0.
+			= \sum\limits_{i=0}^{n} (-1)^i(d_i\tilde c)(g_1,\ldots,g_n) + (-1)^{n+1}m c(g_1,\ldots,g_n) = 0.
 		\end{multline*}
 		
-		Como $\mcd(\ord{G}, \ord{A}) = 1$, por la identidad de Bezout existe $k\in \N$ tal que $k \ord{G} \equiv (-1)^{n} \mod \ord{A}$. Multiplicando por $k$
-		\begin{equation*}
-			c(g_1,\hdots,g_n) = \sum\limits_{i=0}^n (-1)^i(d_i k\tilde c)(g_1,\ldots,g_n).
-		\end{equation*}
-		
-		El cociclo $c$ es el coborde de la función $k \tilde c$ y por tanto $H^n(G,A)$ es trivial.
+		Despejando se obtiene que $mc$ es un coborde $$mc = (-1)^n \partial \tilde c \in B^n(G,A).$$
+	\end{demostracion} 
+\end{lema}
+
+\begin{teorema}\label{thm:trivialH}
+	Sea $A$ un $G$-módulo con $\mcd(\ord{G}, \ord{A}) = 1$. Entonces $H^n(G,A)=\{0\}$ para todo $n\in\Z^+$.
+	\begin{demostracion}
+		Por la Observación \ref{lem:finiteexponentA} y el Lema \ref{lem:finiteexponentG}, todo $[c]\in H^n(G,A)$ tiene orden divisible por $\ord{A}$ y $\ord{G}$, y por tanto divide al máximo común divisor de ambos y $[c]$ es trivial.
 	\end{demostracion}
 \end{teorema}
 
@@ -335,29 +341,8 @@ Ahora nos centraremos en la cohomología de grupos. Para comenzar, fijaremos un 
 
 En esta sección daremos un isomorfismo entre el segundo grupo de cohomología y un grupo más pequeño en el que los $2$-cociclos verifican cierta condición de normalización que definiremos a continuación. Este isomorfismo será de gran ayuda para simplificar la clasificación de extensiones en el siguiente capítulo.
 
-%\begin{definicion}% en general un n-cociclo f es normalizado cuando f(q_1,...,q_n) = 0 si cualquiera de los q_i = 0
-%	Un $2$-cociclo $c\in Z^2(Q,A)$ se dice que es normalizado cuando $c(1,1)= 0$
-%\end{definicion}
-%
-%% esto tb es cierto para un cociclo no normalizado con accion trivial
-%\begin{proposicion}
-%	Sea $c\in Z^2(Q,A)$ un $2$-cociclo normalizado. Entonces para todo $q\in Q$
-%	\begin{equation*}
-%		c(1,q)=0=c(q,1)
-%	\end{equation*}
-%	\begin{demostracion}
-%		Evaluando la condición de un $2$-cociclo en $(1,1,q)\in Q^3$
-%		\begin{equation*}
-%			1\cdot c(1,q) - c(1,q) + c(1,q) - c(1,1) = c(1,q) =0
-%		\end{equation*} 
-%		De igual manera, evaluando en $(q,1,1)\in Q^3$
-%		\begin{equation*}
-%			q\cdot c(1,1) - c(q,1) + c(q,1) - c(q,1) = -c(q,1) = 0
-%		\end{equation*}
-%	\end{demostracion}
-%\end{proposicion}
 
-\begin{definicion}% en general un n-cociclo f es normalizado cuando f(q_1,...,q_n) = 0 si cualquiera de los q_i = 0
+\begin{definicion}
 	Un $2$-cociclo $c\in Z^2(G,A)$ se dice que es normalizado cuando para todo $g\in G$
 	\begin{equation*}
 		c(1,g)= 0 = c(g,1).

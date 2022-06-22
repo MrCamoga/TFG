@@ -117,7 +117,7 @@ El siguiente ejemplo muestra que el recíproco no es cierto, y por tanto la equi
 El estudio de las extensiones lo haremos haciendo uso de secciones, que se definen a continuación. La idea será tomar una sección y tratar de construir extensiones equivalentes definiendo una operación de grupo sobre el producto $N\times Q$.
 
 \begin{definicion}
-	Sea $\homo \pi A B$ un homomorfismo de grupos, una sección $s$ de $\pi$ es una inversa a la derecha de $\pi$, esto es, $\homo s B A$ tal que $\pi \circ s = 1_B$.
+	Sea $\homo \pi A B$ un homomorfismo de grupos, una sección $s$ de $\pi$ es una inversa a la derecha de $\pi$, esto es, $\homo s B A$ tal que $\pi \circ s = 1_B$. Notese que $s$ no es necesariamente un homomorfismo de grupos.
 \end{definicion}
 
 \begin{observacion}\label{extact}
@@ -132,10 +132,10 @@ El estudio de las extensiones lo haremos haciendo uso de secciones, que se defin
 		g i(N) &\mapsto \overline{\alpha(g)} .
 	\end{align}
 	
-	El homomorfismo $\tilde\alpha$ se conoce como el kernel abstracto de la extensión. % no se usa
+	El homomorfismo $\tilde\alpha$ se conoce como el kernel abstracto de la extensión.
 	Fijando una sección $s$ de $\pi$, para todo $q\in Q$, la conjugación por $s(q)$ determina un automorfismo $\varphi(q)$ de $N$ definido por $\varphi(q)(n) = \alpha(s(q))(n)$. 
 	
-	Notese que la función $\homo \varphi Q {\Aut(N)}$ no es necesariamente un homomorfismo de grupos, pero sí lo es salvo automorfismos internos. En particular, si la sección $s$ es un homomorfismo o el grupo de automorfismos internos de $N$ es trivial, como se estudia en las secciones \ref{sec:split} y \ref{sec:ab} respectivamente, entonces $\varphi$ sí es un homomorfismo y podremos hablar de la acción de grupos de la extensión. %%?????????????????
+	Notese que la función $\homo \varphi Q {\Aut(N)}$ no es necesariamente un homomorfismo de grupos, pero sí lo es salvo automorfismos internos. En particular, si la sección $s$ es un homomorfismo o el grupo de automorfismos internos de $N$ es trivial, como se estudia en las secciones \ref{sec:split} y \ref{sec:ab} respectivamente, entonces $\varphi$ sí es un homomorfismo y podremos hablar de la acción de grupos de la extensión. 
 \end{observacion}
 
 \begin{observacion}
@@ -147,7 +147,7 @@ El estudio de las extensiones lo haremos haciendo uso de secciones, que se defin
 
 Por ello, para estudiar las extensiones salvo equivalencia procederemos de la siguiente forma.
 \begin{enumerate}
-	\item Determinar todas las acciones externas de $Q$ en $N$ que dan lugar a una extensión de grupos de $Q$ por $N$.
+	\item Determinar todas las acciones externas de $Q$ en $N$ que dan lugar a una extensión de grupos de $Q$ por $N$ (una acción externa no siempre da lugar a una extensión de grupos, ver \cite[IV, Lema 8.3]{MacLane}).
 	\item Para cada acción, construir todas las extensiones de $Q$ por $N$ que dan lugar a esa acción.
 	\item Ver cuáles de ellas son equivalentes.
 \end{enumerate}
@@ -229,10 +229,10 @@ y daremos una clasificación de las escisiones de la extensión cuando A es abel
 					&= (-a  + c_2(q) + q\cdot a,q).
 		\end{align*}
 		
-		La diferencia entre $c_1$ y $c_2$ verifica la ecuación de un $1$-coborde para la función constante $a$
+		La diferencia entre $c_1$ y $c_2$ es el coborde de la función constante $a$
 		
 		\begin{equation}
-			c_1(q) - c_2(q) = q\cdot a - a.
+			c_1(q) - c_2(q) = q\cdot a - a = (\partial^0a)(q).
 		\end{equation}
 	\end{demostracion}
 \end{proposicion}
@@ -366,7 +366,7 @@ Sea $\varphi$ una acción de $Q$ en $A$ y $\homo c {Q\times Q} A$ una función q
 		\end{align*}
 		obtenemos que la diferencia de $c_2$ y $c_1$ es el coborde de $e$
 		\begin{equation} 
-			(c_2-c_1)(g,h) = g \cdot e(h) - e(gh) + e(g).
+			(c_2-c_1)(g,h) = g \cdot e(h) - e(gh) + e(g) = (\partial^1e)(g,h).
 		\end{equation}
 		
 		Además, por ser $c_1$ y $c_2$ cociclos normalizados $$(c_2-c_1)(1,1) = e(1) = 0, $$ de donde deducimos que	$c_2-c_1$ es un coborde normalizado.
@@ -403,9 +403,9 @@ En el Apéndice \ref{baersum} se da otra forma de construir la suma anterior sin
 
 \begin{teorema}\label{thmschurab} Sea $G$ un grupo finito y sea $A \norm G$ abeliano, $\ord{A}=n$ y $\ord{G:A}=m$ con $\mcd(n,m)=1$. Entonces $G$ contiene subgrupos de orden $m$ y dos cualesquiera son conjugados.
 	\begin{demostracion}
-		Por el Teorema \ref{thm:trivialH}, $H^2(Q,A)$ es trivial y por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $A$. Esto prueba la parte de existencia.
+		Llamemos $Q = G/A$. Por el Teorema \ref{thm:trivialH}, $H^2(Q,A)$ es trivial y por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $A$. Esto prueba la parte de existencia.
 		
-		Para la conjugación, cualquier subgrupo $\tilde Q$ de $G$ de orden $m$, al ser $\mcd(n,m)=1$, tiene intersección trivial con $A$ y la proyección sobre $G/A$ es inyectiva. Por tanto, $\tilde Q$ es una escisión de $G$. Por el mismo teorema, $H^1(Q,A)$ es trivial y por el Teorema \ref{h1} todas las escisiones de la extensión $G$ son $A$-conjugadas y por tanto conjugadas. 
+		Para la conjugación, cualquier subgrupo $\tilde Q$ de $G$ de orden $m$, al ser $\mcd(n,m)=1$, tiene intersección trivial con $A$ y la proyección de $G$ sobre $G/A$ es inyectiva. Por tanto, $\tilde Q$ es una escisión de $G$. De nuevo, por el Teorema \ref{thm:trivialH}, $H^1(Q,A)$ es trivial y por el Teorema \ref{h1} todas las escisiones de la extensión $G$ son $A$-conjugadas y por tanto conjugadas. 
 	\end{demostracion}
 \end{teorema}
 

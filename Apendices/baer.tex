@@ -1,12 +1,51 @@
 % !TeX root=../tfg2.tex
 \chapter{Suma de Baer y propiedades functoriales de $H^2$}\label{baersum}
 
-%\begin{definicion}
-%	Dados dos homomorfismos de grupos $\homo f A C$ y $\homo g B C$, se define el pullback de $f$ y $g$ como $A\times_C B=\{(a,b)\in A\times B \ : \ f(a)=g(b)\}$.
-%	El pullback verifica la siguiente propiedad universal. Dado otro grupo $X$ tal que el siguiente diagrama conmuta
-%\end{definicion}
+\begin{definicion}
+	Dados dos homomorfismos de grupos $B \xrightarrow{f} A \xleftarrow{g} C$, se define el pullback de $f$ y $g$ como el triple $(P,b,c)$ donde $P$ es un grupo y $\homo b P B$ y $\homo c P C$ son homomorfismos de grupos que hacen al siguiente diagrama conmutativo
+	% https://q.uiver.app/?q=WzAsNCxbMCwwLCJQIl0sWzEsMCwiQyJdLFswLDEsIkIiXSxbMSwxLCJBIl0sWzAsMiwiYiIsMl0sWzAsMSwiYyJdLFsxLDMsImYiXSxbMiwzLCJnIiwyXV0=
+		\[\begin{tikzcd}
+			P & C \\
+			B & A
+			\arrow["b"', from=1-1, to=2-1]
+			\arrow["c", from=1-1, to=1-2]
+			\arrow["g", from=1-2, to=2-2]
+			\arrow["f"', from=2-1, to=2-2]
+		\end{tikzcd}\]
+	y verifica la siguiente propiedad universal. Dado otro triple $(D,b',c')$ que hace al cuadrado conmutativo, existe un único homomorfismo $\homo h D P$ que hace al siguiente diagrama conmutativo.
+	% https://q.uiver.app/?q=WzAsNSxbMSwxLCJQIl0sWzIsMSwiQyJdLFsxLDIsIkIiXSxbMiwyLCJBIl0sWzAsMCwiRCJdLFswLDIsImIiLDJdLFswLDEsImMiXSxbMSwzLCJmIl0sWzIsMywiZyIsMl0sWzQsMSwiYyciLDAseyJjdXJ2ZSI6LTJ9XSxbNCwyLCJiJyIsMix7ImN1cnZlIjoyfV0sWzQsMCwiXFxleGlzdHMhaCIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+	\[\begin{tikzcd}
+		D \\
+		& P & C \\
+		& B & A
+		\arrow["b"', from=2-2, to=3-2]
+		\arrow["c", from=2-2, to=2-3]
+		\arrow["g", from=2-3, to=3-3]
+		\arrow["f"', from=3-2, to=3-3]
+		\arrow["{c'}", curve={height=-12pt}, from=1-1, to=2-3]
+		\arrow["{b'}"', curve={height=12pt}, from=1-1, to=3-2]
+		\arrow["{\exists!h}", dashed, from=1-1, to=2-2]
+	\end{tikzcd}\]
+\end{definicion}
 
-Ey que pasa \cite{milneCFT}
+\begin{definicion}
+	El pushout se define de manera dual como el triple $(P,b,c)$ que completa al diagrama $B \xleftarrow{f} A \xrightarrow{g} C$ y verifica la siguiente propiedad universal. Dado otro triple $(D,b',c')$ que completa al diagrama, existe un único homomorfismo $\homo h P D$ que hace al siguiente diagrama conmutativo
+	% https://q.uiver.app/?q=WzAsNSxbMSwxLCJQIl0sWzEsMCwiQyJdLFswLDEsIkIiXSxbMCwwLCJBIl0sWzIsMiwiRCJdLFsyLDAsImIiLDJdLFsxLDAsImMiXSxbMSw0LCJjJyIsMCx7ImN1cnZlIjotMn1dLFsyLDQsImInIiwyLHsiY3VydmUiOjJ9XSxbMCw0LCJcXGV4aXN0cyFoIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsMiwiZiJdLFszLDEsImciLDJdXQ==
+	\[\begin{tikzcd}
+		A & C \\
+		B & P \\
+		&& D
+		\arrow["b"', from=2-1, to=2-2]
+		\arrow["c", from=1-2, to=2-2]
+		\arrow["{c'}", curve={height=-12pt}, from=1-2, to=3-3]
+		\arrow["{b'}"', curve={height=12pt}, from=2-1, to=3-3]
+		\arrow["{\exists!h}"', dashed, from=2-2, to=3-3]
+		\arrow["f", from=1-1, to=2-1]
+		\arrow["g"', from=1-1, to=1-2]
+	\end{tikzcd}\]
+\end{definicion}
+
+Ey que pasa \cite{Riehl}
 
 
 \begin{lema}\label{prop:pullback}
@@ -29,24 +68,9 @@ Ey que pasa \cite{milneCFT}
 		\arrow["{\alpha_*}", from=2-3, to=1-3]
 	\end{tikzcd}\]
 	\begin{demostracion}
-		Tomamos $E_1=E\times_Q Q' = \{(e,q)\in E\times Q \ | \ \pi(e) = \alpha(q)\}$ el pullback de $\pi$ y $\alpha$ con la inclusión $i_1$ y proyección $\pi_1$ definidas por
-		\begin{gather*}
-			i_1(a) = (i(a),1), \\
-			\pi_1(e,q) = q.
-		\end{gather*}
+		Tomamos $E_1$ el pullback de $\pi$ y $\alpha$. El homomorfismo $\homo 0 {A} Q'$ completa al diagrama $\extension i \pi A E Q$ y lo hace conmutativo. Por la propiedad universal del pullback, existe un homomorfismo de grupos $\homo {i_1} {A} {E_1}$ y $\extension {i_1} {\pi_1} A {E_1} {Q'}$ es una extensión de grupos. 
 		
-		Entonces $\alpha_*(e,q) = e$ hace al diagrama conmutativo, ya que 
-		\begin{gather*}
-			(\alpha_*\circ i_1) (a) =  i(a),\\
-			(\pi\circ \alpha_*)(e,q) = \pi(e) = \alpha(q) = (\alpha\circ \pi_1)(e,q).
-		\end{gather*}
-			
-		Finalmente comprobamos que es exacta
-		\begin{equation*}
-			\pi_1(i_1(a)) = \pi_1(a,1)=1.	
-		\end{equation*}
-		
-		Sea $\extension {i_2} {\pi_2} A {E_2} {Q'}$ otra extensión que hace al diagrama conmutativo. Por la propiedad universal del pullback, existe $\homo f {E_2} {E_1}$ que hace al siguiente diagrama conmutativo
+		Sea $\extension {i_2} {\pi_2} A {E_2} {Q'}$ otra extensión que hace al diagrama conmutativo. De nuevo, por la propiedad universal del pullback, existe $\homo f {E_2} {E_1}$ que hace al siguiente diagrama conmutativo
 		% https://q.uiver.app/?q=WzAsMTYsWzQsMSwiMSJdLFswLDIsIjEiXSxbNCwyLCIxIl0sWzAsMSwiMSJdLFsxLDEsIkEiXSxbMywxLCJRIl0sWzEsMiwiQSJdLFsyLDIsIkVfMSJdLFszLDIsIlEnIl0sWzAsMCwiMSJdLFsxLDAsIkEiXSxbMiwwLCJFXzIiXSxbMywwLCJRJyJdLFs0LDAsIjEiXSxbMiwxLCJFIl0sWzcsMl0sWzMsNF0sWzEsNl0sWzYsNywiaV8xIl0sWzcsOCwiXFxwaV8xIl0sWzgsMl0sWzgsNSwiXFxhbHBoYSJdLFsxMiw1LCJcXGFscGhhIiwyXSxbOSwxMF0sWzEwLDExLCJpXzIiXSxbMTEsMTIsIlxccGlfMiJdLFsxMiwxM10sWzEwLDQsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwxMCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDYsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw0LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsMTQsImkiXSxbMTQsNSwiXFxwaSJdLFs3LDE0LCJmXzEiXSxbMTEsMTQsImZfMiIsMl0sWzUsMF0sWzExLDcsImYiLDEseyJsYWJlbF9wb3NpdGlvbiI6MjAsImN1cnZlIjotMn1dLFsxMiw4LCIiLDEseyJvZmZzZXQiOi0xLCJjdXJ2ZSI6LTIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCwxMiwiIiwxLHsib2Zmc2V0IjotMSwiY3VydmUiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 		\[\begin{tikzcd}
 			1 & A & {E_2} & {Q'} & 1 \\
@@ -76,7 +100,7 @@ Ey que pasa \cite{milneCFT}
 			\arrow[shift left=1, curve={height=-12pt}, no head, from=1-4, to=3-4]
 			\arrow[shift left=1, curve={height=12pt}, no head, from=3-4, to=1-4]
 		\end{tikzcd}\]
-		y $E_1$ y $E_2$ son extensiones equivalentes.
+		y $f$ es una equivalencia de extensiones.
 	\end{demostracion}
 \end{lema}
 
@@ -100,22 +124,7 @@ Ey que pasa \cite{milneCFT}
 		\arrow["\beta", from=1-2, to=2-2]
 	\end{tikzcd}\]
 	\begin{demostracion}
-		Tomamos $E_1=E\sqcup_A A' = \frac{E\ltimes A'}{\{(i(a),-\beta(a))\in E\times A' \ : \ a\in A\}}$ el pushout de $i$ y $\beta$ con la inclusión $i_1$ y proyección $\pi_1$ definidas por
-		\begin{gather*}
-			i_1(a) = \overline{(1,a)}, \\
-			\pi_1(\overline{(e,a)}) = \pi(e).
-		\end{gather*}
-		
-		Entonces $\beta_*(e) = \overline{(e,0)}$ hace al diagrama conmutativo, ya que 
-		\begin{gather*}
-			(i_1\circ \beta)(a) = \overline{(1,\beta(a))} = \overline{(i(a),0)} = (\beta_*\circ i)(a), \\
-			(\pi_1\circ \beta_*)(e) = \pi(e).
-		\end{gather*}
-		
-		Finalmente se prueba que la sucesión es exacta
-		\begin{equation*}
-			(\pi\circ i_1)(a) = \pi'(\overline{(1,a)}) = \pi(1) = 1.
-		 \end{equation*}
+		Tomamos $E_1$ el pushout de $i$ y $\beta$. El homomorfismo $\homo 0 {A'} Q$ completa al diagrama $\extension i \pi A E Q$ y lo hace conmutativo. Por la propiedad universal del pushout, existe un homomorfismo $\homo {\pi_1} {E_1} Q$ que hace al diagrama conmutativo y $\extension {i_1} {\pi_1} {A'} {E_1} Q$ es una extensión de grupos.
 		 
 		Para probar que es única salvo equivalencia, tomamos otra extensión $\extension {i_2} {\pi_2} {A'} {E_2} Q$ y por la propiedad universal del pushout, existe $\homo f {E_1}{E_2}$ tal que el siguiente diagrama conmuta
 		% https://q.uiver.app/?q=WzAsMTYsWzAsMCwiMSJdLFswLDEsIjEiXSxbMCwyLCIxIl0sWzQsMiwiMSJdLFsxLDAsIkEnIl0sWzEsMSwiQSJdLFsyLDEsIkUiXSxbMywxLCJRIl0sWzMsMCwiUSJdLFszLDIsIlEiXSxbMiwwLCJFXzIiXSxbMSwyLCJBJyJdLFsyLDIsIkVfMSJdLFszLDNdLFs0LDAsIjEiXSxbNCwxLCIxIl0sWzEsNV0sWzUsNiwiaSJdLFs2LDcsIlxccGkiXSxbMCw0XSxbNCwxMCwiaV8yIl0sWzEwLDgsIlxccGlfMiJdLFsyLDExXSxbMTEsMTIsImlfMSJdLFsxMiw5LCJcXHBpXzEiXSxbOSwzXSxbNSw0LCJcXGJldGEiLDJdLFs1LDExLCJcXGJldGEiXSxbNiwxMCwiZl8yIiwyXSxbNiwxMiwiZl8xIl0sWzcsOCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDcsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNyw5LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksNywiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDE0LCIiLDAseyJvZmZzZXQiOjF9XSxbNywxNSwiIiwwLHsib2Zmc2V0IjoxfV0sWzEyLDEwLCJmIiwxLHsibGFiZWxfcG9zaXRpb24iOjIwLCJjdXJ2ZSI6LTJ9XSxbNCwxMSwiIiwxLHsib2Zmc2V0IjotMSwiY3VydmUiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsNCwiIiwxLHsib2Zmc2V0IjotMSwiY3VydmUiOi0yLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d

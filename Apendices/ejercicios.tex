@@ -11,14 +11,14 @@
 		
 		\textit{(Extensiones isomorfas a $\Z_p\times \Z_p$).}
 		\begin{equation*}
-			\extension i \pi {\Z_p} {\Z_p\times \Z_p} {\Z_p}
+			\extension i \pi {\Z_p} {\Z_p\times \Z_p} {\Z_p}.
 		\end{equation*}
 		
 		La proyección $\homo \pi {\Z_p\times \Z_p} {\Z_p}$ viene dada por las imágenes de los generadores $e_1=(1,0)$ y $e_2=(0,1)$. Como $\pi$ es sobreyectiva, $\pi(e_1)$ o $\pi(e_2)$ es distinto de la identidad, supongamos que $e_1\notin \Ker(\pi)$. Entonces $\langle e_1 \rangle$ es una escisión de $\pi$ y la extensión es trivial, por lo que se corresponde con el elemento neutro de $H^2$ y es única salvo equivalencia.
 		
 		\textit{(Extensiones isomorfas a $\Z_{p^2}$).}
 		\begin{equation*}
-			\extension {i_n} {\pi_n} {\Z_p} {\Z_{p^2}} {\Z_p}
+			\extension {i_n} {\pi_n} {\Z_p} {\Z_{p^2}} {\Z_p}.
 		\end{equation*}
 		
 		$\Z_{p^2}$ es cíclico y $\Z_p$ debe incluirse en el único subgrupo de $\Z_{p^2}$ de orden $p$. 
@@ -56,23 +56,20 @@
 		Una sección de $\pi_n$ es $s_n$ definida por $s_n(x) = n^{-1}x \mod p = \overline{n^{-1}x}\in \{0,\ldots,p-1\}$. En efecto, $\pi_n(s_n(x)) = \pi_n(\overline{n^{-1}x}) = nn^{-1}x = x$ para $x=0,\ldots,p-1$.
 		El cociclo asociado a esta sección es 
 		\begin{equation*}
-			c_n(x,y) = i_1^{-1}(s_n(x)+s_n(y)-s_n(x+y)) = \frac{\overline{n^{-1}x}+\overline{n^{-1}y}-\overline{n^{-1}(x+y)}}{p} %= i_1^{-1}\left(\overline{n^{-1}x}+\overline{n^{-1}y}-\overline{n^{-1}(x+y)}\right) 
+			c_n(x,y) = i_1^{-1}(s_n(x)+s_n(y)-s_n(x+y)) = \frac{\overline{n^{-1}x}+\overline{n^{-1}y}-\overline{n^{-1}(x+y)}}{p}. %= i_1^{-1}\left(\overline{n^{-1}x}+\overline{n^{-1}y}-\overline{n^{-1}(x+y)}\right) 
 		\end{equation*}
 		
 		Como $H^2$ es cíclico, podemos tomar $c_1$, cuya expresión es sencilla, y generar el resto de los cociclos con él
-		
-		\[
+		\begin{gather*}
 		    c_1(x,y) = \frac{\overline{x} + \overline{y} - \overline{x+y}}{p} =  \begin{cases}
-		        0 & \text{si } x+y < p\\
-		        1 & \text{si } x+y \geq p
-		        \end{cases}
-		\]
+		        0 & \text{si } x+y < p,\\
+		        1 & \text{si } x+y \geq p.
+		        \end{cases} \\
 		% comprobar si se corresponden con los pi_n o estan permutados por un n^-1 o algo asi
-		\[
 		    c_n(x,y) = nc_1(x,y) =  \begin{cases}
-		        0 & \text{si } x+y < p\\
-		        n & \text{si } x+y \geq p
+		        0 & \text{si } x+y < p,\\
+		        n & \text{si } x+y \geq p.
 		        \end{cases}
-		\]
+		\end{gather*}
 	\end{solucion}
 \end{ejercicio}

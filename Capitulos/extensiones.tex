@@ -14,10 +14,7 @@ El objetivo de este capítulo es estudiar todas las formas de construir un grupo
 	Al grupo $N$ lo llamaremos kernel de la extensión, al grupo $Q$ el cociente de la extensión y a $E$ el grupo central de la extensión.
 	
 	Decimos que otra extensión $\extension {i'} {\pi'} N {E'} Q $ es equivalente si existe un homomorfismo $\homo f E {E'}$ tal que el siguiente diagrama conmuta
-
-	%	\begin{figure}[h!] % quitar figure?
-	%		\centering	
-			% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiTiJdLFsyLDAsIkUiXSxbMywwLCJRIl0sWzQsMCwiMSJdLFswLDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiTiJdLFszLDEsIlEiXSxbNCwxLCIxIl0sWzIsMSwiRSciXSxbNCwwXSxbMCwxLCJpIl0sWzEsMiwiXFxwaSJdLFsyLDNdLFs1LDZdLFs2LDksImknIl0sWzksNywiXFxwaSciXSxbNyw4XSxbMiw3LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsMiwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDksImYiXSxbMCw2LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+	% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiTiJdLFsyLDAsIkUiXSxbMywwLCJRIl0sWzQsMCwiMSJdLFswLDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiTiJdLFszLDEsIlEiXSxbNCwxLCIxIl0sWzIsMSwiRSciXSxbNCwwXSxbMCwxLCJpIl0sWzEsMiwiXFxwaSJdLFsyLDNdLFs1LDZdLFs2LDksImknIl0sWzksNywiXFxwaSciXSxbNyw4XSxbMiw3LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsMiwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDksImYiXSxbMCw2LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMCwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
 	\begin{equation}\begin{tikzcd}
 		1 & N & E & Q & 1 \\
 		1 & N & {E'} & Q & 1
@@ -36,7 +33,6 @@ El objetivo de este capítulo es estudiar todas las formas de construir un grupo
 		\arrow[shift left=1, no head, from=2-2, to=1-2]
 	\end{tikzcd}
 	\end{equation}
-	%\end{figure}
 \end{definicion}
 
 El interés está en clasificar todas las extensiones de $Q$ por $N$. La equivalencia de extensiones captura la idea de que los grupos centrales se construyen a partir de $N$ y $Q$ esencialmente de la misma forma, ya que $N$ y $Q$ se incluyen y proyectan de la misma manera. % repetitivo: de la misma forma/manera
@@ -139,7 +135,7 @@ El estudio de las extensiones lo haremos haciendo uso de secciones, que se defin
 	El homomorfismo $\tilde\alpha$ se conoce como el kernel abstracto de la extensión. % no se usa
 	Fijando una sección $s$ de $\pi$, para todo $q\in Q$, la conjugación por $s(q)$ determina un automorfismo $\varphi(q)$ de $N$ definido por $\varphi(q)(n) = \alpha(s(q))(n)$. 
 	
-	Notese que la función $\homo \varphi Q {\Aut(N)}$ no es necesariamente un homomorfismo de grupos, pero sí lo es salvo automorfismos internos. En particular, si la sección $s$ es un homomorfismo o el grupo de automorfismos internos de $N$ es trivial, como se estudia en las secciones \ref{sec:split} y \ref{sec:ab}, entonces $\varphi$ sí es un homomorfismo y podremos hablar de grupos de la acción de la extensión. %%?????????????????
+	Notese que la función $\homo \varphi Q {\Aut(N)}$ no es necesariamente un homomorfismo de grupos, pero sí lo es salvo automorfismos internos. En particular, si la sección $s$ es un homomorfismo o el grupo de automorfismos internos de $N$ es trivial, como se estudia en las secciones \ref{sec:split} y \ref{sec:ab} respectivamente, entonces $\varphi$ sí es un homomorfismo y podremos hablar de la acción de grupos de la extensión. %%?????????????????
 \end{observacion}
 
 \begin{observacion}
@@ -158,7 +154,7 @@ Por ello, para estudiar las extensiones salvo equivalencia procederemos de la si
 % podemos fijar una acción $\homo \varphi Q {\Aut(N)}$ y estudiar las extensiones que dan lugar a esa acción.
 
 \begin{definicion}
-	Sean $Q$ y $N$ grupos y $\varphi$ una acción de $Q$ en $N$. Denotamos por $\Ext_\varphi(Q,N)$ al conjunto de clases de extensiones equivalentes de $Q$ por $N$ que dan lugar a la acción $\varphi$.
+	Sean $Q$ y $N$ grupos y $\varphi$ una acción externa de $Q$ en $N$. Denotamos por $\Ext_\varphi(Q,N)$ al conjunto de clases de extensiones equivalentes de $Q$ por $N$ que dan lugar a la acción externa $\varphi$.
 \end{definicion}
 
 
@@ -197,7 +193,6 @@ Por ello, para estudiar las extensiones salvo equivalencia procederemos de la si
 \section{Clasificación de las escisiones}
 
 Hemos visto que las extensiones que escinden son únicas salvo equivalencia. A continuación tomaremos la escisión canónica
-
 \begin{equation}\label{extsplit}
 	\extension i \pi A {A \rtimes Q} Q
 \end{equation}
@@ -287,7 +282,6 @@ Como $$E=\bigsqcup\limits_{q\in Q} i(A)s(q) = i(A)s(Q)$$ es una unión disjunta,
 i(a_1)s(q_1)i(a_2)s(q_2) &= i(a_1)i(q_1\cdot a_2)s(q_1)s(q_2) \\ &= i(a_1+ q_1\cdot a_2 + c(q_1,q_2))s(q_1q_2).
 \end{split}\end{align}
 \noindent Por tanto, la operación en $E_c$ viene dada por:
-
 \begin{equation}\label{extop}
 (a_1,q_1)(a_2,q_2) = (a_1 + q_1\cdot a_2 + c(q_1,q_2),q_1q_2).
 \end{equation}
@@ -409,31 +403,6 @@ En el Apéndice \ref{baersum} se da otra forma de construir la suma anterior sin
 
 \begin{teorema}\label{thmschurab} Sea $G$ un grupo finito y sea $A \norm G$ abeliano, $\ord{A}=n$ y $\ord{G:A}=m$ con $\mcd(n,m)=1$. Entonces $G$ contiene subgrupos de orden $m$ y dos cualesquiera son conjugados.
 	\begin{demostracion}
-%		Tomamos una sección $s$ y su $2$-cociclo asociado $c$. 
-%		\begin{equation}
-%			c(q_1,q_2)\cdot q_3  - c(q_1,q_2q_3)+ c(q_1q_2,q_3) -c(q_2,q_3) =0
-%		\end{equation}
-%		Definimos la función ${\displaystyle \tilde c(x) = \sum_{t\in Q} c(t,x)}$ y hacemos la suma en $q_1\in Q$
-%		\begin{equation}\label{coccob}
-%			m c(q_2,q_3) = \tilde c(q_2)\cdot q_3 + \tilde c(q_3) - \tilde c(q_2q_3)
-%		\end{equation}
-%		
-%		Como $\mcd(m,n)=1$, existe un $k\in \Z$ tal que $km\equiv 1 \mod n$. Multiplicando por $k$ llegamos a 
-%		\begin{equation}
-%			c(q_2,q_3) = k \tilde c(q_2)\cdot q_3 + k \tilde c(q_3) - k \tilde c(q_2q_3)
-%		\end{equation}
-%		Por tanto, $c$ verifica la ecuación de un coborde para la función $k \tilde c$ y $H^{2}(Q,N)$ es trivial. Por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $N$.
-%		
-%		Para ver que dos subgrupos cualesquiera son conjugados, cogemos $s$ una escisión de $G$ y $a$ su $1$-cociclo asociado. 
-%		\begin{equation}
-%			a(q_1q_2)=a(q_1)\cdot q_2 + a(q_2)
-%		\end{equation}
-%		Haciendo la suma en $q_1\in Q$ y multiplicando por $k$
-%		\begin{equation}
-%			a(q_2) = k\tilde a - k\tilde a \cdot q_2
-%		\end{equation}
-%		vemos que $a$ verifica la ecuación de un $1$-coborde para la función $k\tilde a$ y $H^1(Q,N)$ es trivial. Por el Teorema $\ref{h1}$, todas las escisiones son $N$-conjugadas y por tanto son conjugadas.
-
 		Por el Teorema \ref{thm:trivialH}, $H^2(Q,A)$ es trivial y por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $A$. Esto prueba la parte de existencia.
 		
 		Para la conjugación, cualquier subgrupo $\tilde Q$ de $G$ de orden $m$, al ser $\mcd(n,m)=1$, tiene intersección trivial con $A$ y la proyección sobre $G/A$ es inyectiva. Por tanto, $\tilde Q$ es una escisión de $G$. Por el mismo teorema, $H^1(Q,A)$ es trivial y por el Teorema \ref{h1} todas las escisiones de la extensión $G$ son $A$-conjugadas y por tanto conjugadas. 

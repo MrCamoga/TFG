@@ -1,6 +1,8 @@
 % !TeX root=../tfg2.tex
 \chapter{Suma de Baer y propiedades functoriales de $H^2$}\label{baersum}
 
+En este apéndice se introduce la suma de Baer de extensiones de grupos. Se probará que esta suma de extensiones es equivalente a la vista en la Proposición \ref{extsum}, se darán algunas propiedades functoriales de $H^2$ y relaciones entre ambas. Se recomienda \cite[Capítulos 1 y 3]{Riehl}
+
 \begin{definicion}
 	Dados dos homomorfismos de grupos $B \xrightarrow{f} A \xleftarrow{g} C$, se define el pullback de $f$ y $g$ como el triple $(P,b,c)$ donde $P$ es un grupo y $\homo b P B$ y $\homo c P C$ son homomorfismos de grupos que hacen al siguiente diagrama conmutativo
 	% https://q.uiver.app/?q=WzAsNCxbMCwwLCJQIl0sWzEsMCwiQyJdLFswLDEsIkIiXSxbMSwxLCJBIl0sWzAsMiwiYiIsMl0sWzAsMSwiYyJdLFsxLDMsImYiXSxbMiwzLCJnIiwyXV0=
@@ -44,8 +46,6 @@
 		\arrow["g"', from=1-1, to=1-2]
 	\end{tikzcd}\]
 \end{definicion}
-
-Ey que pasa \cite{Riehl}
 
 
 \begin{lema}\label{prop:pullback}
@@ -105,7 +105,7 @@ Ey que pasa \cite{Riehl}
 \end{lema}
 
 \begin{lema}\label{prop:pushout}
-	Dada una extensión $\extension i \pi A E Q$ y un homomorfismo de $Q$-módulos $\homo \beta {A} {A'}$, existe una extensión $\extension {} {} {A'} {E_1} Q$ única salvo equivalencia que hace al siguiente diagrama conmutativo.
+	Dada una extensión $\extension i \pi A E Q$ y un homomorfismo $\homo \beta {A} {A'}$, existe una extensión $\extension {} {} {A'} {E_1} Q$ única salvo equivalencia que hace al siguiente diagrama conmutativo.
 	% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiQSJdLFsyLDAsIkUiXSxbMywwLCJRIl0sWzQsMCwiMSJdLFswLDAsIjEiXSxbMCwxLCIxIl0sWzEsMSwiQSciXSxbMywxLCJRIl0sWzQsMSwiMSJdLFsyLDEsIkUnIl0sWzQsMF0sWzAsMSwiaSJdLFsxLDIsIlxccGkiXSxbMiwzXSxbNSw2XSxbNiw5LCJpJyJdLFs5LDcsIlxccGknIl0sWzcsOF0sWzEsOSwiZiJdLFs3LDIsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw3LCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsNiwiXFxiZXRhIl1d
 	\[\begin{tikzcd}
 		1 & A & E & Q & 1 \\
@@ -159,6 +159,11 @@ Ey que pasa \cite{Riehl}
 		y $E_1$ y $E_2$ son extensiones equivalentes.
 	\end{demostracion}
 \end{lema}
+
+\begin{observacion}
+	El homomorfismo $\homo \beta A {A'}$ es necesariamente un homomorfismo de $Q$-módulos.
+	Dadas $s$ y $s_1$ secciones de $\pi$ y $\pi_1$ respectivamente, y $a\in A$ y $q\in Q$ se tiene $$\beta(q\cdot a) = (i_1^{-1}\circ \beta_*\circ i)(a\cdot q) = (i_1^{-1}\circ \beta_*)(\,^{s(q)}i(a)) = i_1^{-1}(\,^{s_1(q)}i_1(\beta(a))) = q\cdot \beta(a).$$
+\end{observacion}
 
 % propiedades functoriales de H^2
 \begin{observacion}
@@ -277,7 +282,7 @@ Ey que pasa \cite{Riehl}
 \end{teorema}
 
 \begin{corolario}
-	Los functores $\alpha_* = H^2(\alpha,A)$ y $\beta_* = H^2(Q,\beta)$ son homomorfismos de grupos, es decir, para todo par de extensiones $\extension {}{} A {E_i} Q$, $i=1,2$ se tiene % falta alpha(0)=0
+	Los functores $\alpha_* = H^2(\alpha,A)$ y $\beta_* = H^2(Q,\beta)$ son homomorfismos de grupos, es decir, para todo par de extensiones $\extension {}{} A {E_i} Q$, $i=1,2$ se tiene
 	\begin{gather*}
 		%\alpha_*(-E) = -\alpha_*(E) \\
 		%\beta_*(-E) = -\beta_*(E) \\

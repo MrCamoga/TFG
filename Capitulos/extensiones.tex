@@ -108,7 +108,7 @@ El siguiente ejemplo muestra que el recíproco no es cierto, y por tanto la equi
 	\begin{demostracion}
 		\begin{enumerate}
 			\item Reflexiva: $E$ es equivalente a $E$ tomando $f=1_E$.
-			\item Simétrica: Si $\homo f {E_1} {E_2}$ es una equivalencia, por la Observación \eqref{prop:eqiso}, $\homo {f^{-1}} {E_2} {E_1}$ es una equivalencia. 
+			\item Simétrica: Si $\homo f {E_1} {E_2}$ es una equivalencia, por la Observación \ref{prop:eqiso}, $\homo {f^{-1}} {E_2} {E_1}$ es una equivalencia. 
 			\item Transitiva: Si $\homo f {E_1} {E_2}$ y $\homo g {E_2} {E_3}$ son equivalencias, $g\circ f\circ i_1 = g\circ i_2 = i_3$ y $\pi_1 \circ g \circ f = \pi_2 \circ f = \pi_3$, entonces $\homo {g\circ f} {E_1} {E_3}$ es una equivalencia.
 		\end{enumerate}
 	\end{demostracion}
@@ -123,13 +123,13 @@ El estudio de las extensiones lo haremos haciendo uso de secciones, que se defin
 \begin{observacion}\label{extact}
 	Una extensión $\extension i \pi N E Q$ determina, por conjugación por elementos de $E$, un homomorfismo $\homo \alpha E {\Aut(N)}$ definido por
 	\begin{equation*} % tecnicamente es i(n) e i(N) pero bueno es inyectiva noseque da igual imagino no creo q se enfade nadie por hacer un pequeño abuso de notacion
-		\alpha(g)(n) = \,^gi(n) = gi(n)g^{-1}.
+		\alpha(g)(n) = i^{-1}(\,^gi(n)) = i^{-1}(gi(n)g^{-1}).
 	\end{equation*}
 	
-	Entonces, $\alpha(N) = \Inn(N)$ y $\alpha$ induce un homomorfismo  % explicar que esta bien definida
+	Entonces, $\alpha(i(N)) = \Inn(N)$ y $\alpha$ induce un homomorfismo  % explicar que esta bien definida
 	\begin{align}\label{eq:actionconj}
 		\tilde\alpha\colon E/i(N) &\to \Out(N) \nonumber \\
-		g i(N) &\mapsto \overline{\alpha(g)} .
+		g i(N) &\mapsto \overline{\alpha(g)}.
 	\end{align}
 	
 	El homomorfismo $\tilde\alpha$ se conoce como el kernel abstracto de la extensión.
@@ -141,7 +141,7 @@ El estudio de las extensiones lo haremos haciendo uso de secciones, que se defin
 \begin{observacion}
 	Dos extensiones $E$ y $E'$ equivalentes dan lugar a un mismo kernel abstracto.
 	\begin{demostracion}
-	 	$f\left(i(n)^{s(q)}\right) = i'(n)^{s'(q)}$
+	 	$f\left(\,^{s(q)}i(n)\right) = \,^{s'(q)}i'(n)$
 	 \end{demostracion}
 \end{observacion}
 
@@ -262,7 +262,7 @@ A continuación estudiaremos el caso en que $N$ es un grupo abeliano que a parti
 
 Por la Observación \ref{extact}, como $\Inn(A)$ es trivial, $Out(A)=Aut(A)$ y la acción de $Q$ en $A$ es un homomorfismo de grupos, lo que hace a $A$ un $Q$-módulo. Dada una sección $\homo s Q E$, la acción de un elemento $q\in Q$ en un elemento $a\in A$ viene dada por
 \begin{equation}
-	q\cdot a = \,^{s(q)}i(a).
+	q\cdot a = i^{-1}(\,^{s(q)}i(a)).
 \end{equation}
 A partir de ahora, fijaremos una acción de $Q$ en $A$ y estudiaremos todas las extensiones que dan lugar a dicha acción.
 \begin{gather}
@@ -305,7 +305,7 @@ De esta forma, el isomorfismo $\homo f {E_c} E$ viene dado por $f(a,q) = i(a)s(q
 %La siguiente proposición prueba que una función $\homo c {Q\times Q} A$ define una operación de grupo en $E_c$ con la acción $\varphi$ cuando $c$ es un 2-cociclo.
 
 \begin{proposicion}\label{prop:res1}
-Sea $\varphi$ una acción de $Q$ en $A$ y $\homo c {Q\times Q} A$ una función que verifica la condición de normalización \eqref{cocnorm}. Entonces, la operación \eqref{extop} define una extensión de $Q$ por $A$ cuando $c$ es un $2$-cociclo normalizado.
+Sea $Q$ un grupo, $A$ un $Q$-módulo y $\homo c {Q\times Q} A$ una función que verifica la condición de normalización \eqref{cocnorm}. Entonces, la operación \eqref{extop} define una extensión de $Q$ por $A$ cuando $c$ es un $2$-cociclo normalizado.
 	\begin{demostracion}
 	Para ver que la funcion define una operación de grupo comprobamos la asociatividad y la existencia de identidad e inversos.
 %	(a_1+q_1\cdot a_2 + c(q_1,q_2),q_1q_2)(a_3,q_3) = 
@@ -405,7 +405,7 @@ En el Apéndice \ref{baersum} se da otra forma de construir la suma anterior sin
 	\begin{demostracion}
 		Llamemos $Q = G/A$. Por el Teorema \ref{thm:trivialH}, $H^2(Q,A)$ es trivial y por la Observación \ref{obs:split}, $G$ es un producto semidirecto de $Q$ por $A$. Esto prueba la parte de existencia.
 		
-		Para la conjugación, cualquier subgrupo $\tilde Q$ de $G$ de orden $m$, al ser $\mcd(n,m)=1$, tiene intersección trivial con $A$ y la proyección de $G$ sobre $G/A$ es inyectiva. Por tanto, $\tilde Q$ es una escisión de $G$. De nuevo, por el Teorema \ref{thm:trivialH}, $H^1(Q,A)$ es trivial y por el Teorema \ref{h1} todas las escisiones de la extensión $G$ son $A$-conjugadas y por tanto conjugadas. 
+		Para la conjugación, cualquier subgrupo $\tilde Q$ de $G$ de orden $m$, al ser $\mcd(n,m)=1$, tiene intersección trivial con $A$ y la proyección de $\tilde Q$ sobre $G/A$ es inyectiva. Por tanto, $\tilde Q$ es una escisión de $G$. De nuevo, por el Teorema \ref{thm:trivialH}, $H^1(Q,A)$ es trivial y por el Teorema \ref{h1} todas las escisiones de la extensión $G$ son $A$-conjugadas y por tanto conjugadas. 
 	\end{demostracion}
 \end{teorema}
 
@@ -427,7 +427,7 @@ En esta sección introduciremos las extensiones centrales y daremos una caracter
 \begin{proposicion}
 	Una extensión $\extension i \pi A E Q$ es central si y solo si la acción es trivial.
 	\begin{demostracion}
-		Sea una sección $\homo s Q E$, la acción de $Q$ en $A$ viene dada por conjugación $q\cdot a = \,^{s(q)}i(a)$ que es trivial si y solo si $\,^{s(q)}i(a) = i(a)$. Como la acción de $q$ no depende de la sección $s$, $i(a)$ está en el centro y la extensión es central.
+		Sea una sección $\homo s Q E$, la acción de $Q$ en $A$ viene dada por conjugación $q\cdot a = i^{-1}(\,^{s(q)}i(a))$ que es trivial si y solo si $\,^{s(q)}i(a) = i(a)$. Como la acción de $q$ no depende de la sección $s$, $i(a)$ está en el centro y la extensión es central.
 	\end{demostracion}
 \end{proposicion}
 
@@ -448,7 +448,7 @@ A partir de ahora consideraremos que $Q$ es abeliano y la acción de $Q$ en $A$ 
 	\begin{demostracion}
 		Supongamos que $E$ es abeliano. Entonces la extensión es central y cualquier subgrupo y cociente de $E$ es abeliano, en particular $Q$. Sean $q_1,q_2\in Q$, entonces
 		\begin{equation*}
-			c(q_1,q_2)=s(q_1)s(q_2)s(q_1q_2)^{-1} = s(q_2)s(q_1)s(q_2q_1)^{-1} = c(q_2,q_1). % enverdad falta i
+			i(c(q_1,q_2))=s(q_1)s(q_2)s(q_1q_2)^{-1} = s(q_2)s(q_1)s(q_2q_1)^{-1} = i(c(q_2,q_1)). % enverdad falta i
 		\end{equation*}
 		
 		Supongamos ahora que $c$ es un cociclo simétrico y $A$ y $Q$ son abelianos. Entonces la operación en $E_c$ descrita en \ref{extop} viene dada por 

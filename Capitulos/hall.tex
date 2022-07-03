@@ -135,7 +135,7 @@ Equivalentemente, la extensión $\extension {}{} N G {G/N}$ escinde y $G$ es iso
 		Este es un $p$-subgrupo elemental abeliano para algún $p\in\pi$. Por la Proposición \ref{prop:normalhall}, $H\cap L,K\cap L \in \Hall \pi L = \Syl p L$. Aplicando el Segundo Teorema de Sylow, existe un $g\in L$ tal que $H\cap L = (K\cap L)^g = K^g\cap L$. $H\cap L\norm H$ y $K^g\cap L\norm K^g$, por tanto, $H\cap L \norm \gensub {H,K^g} = J$. $J$ no puede ser todo $G$ porque $H\cap L$ sería un $\pi$-subgrupo normal no trivial, lo que contradice que $\Core \pi G$ sea trivial. Entonces $\ord{J} < \ord{G}$ y aplicando inducción se sigue que $H$ y $K^g$ son conjugados en $J < G$.
 		
 		%Caso Opi!=1
-		Si $\Core \pi G\neq 1$, por la Proposición \ref{prop:coreint} $\Core \pi G \norm H\cap K$ y pasando al cociente, $G/\Core \pi G = 1$ por lo que $H/\Core \pi G$ y $K/\Core \pi G$ son conjugados.
+		Si $\Core \pi G\neq 1$, por la Proposición \ref{prop:coreint} $\Core \pi G \norm H\cap K$ y pasando al cociente, $\Core \pi {G/\Core \pi G} = 1$ por lo que $H/\Core \pi G$ y $K/\Core \pi G$ son conjugados.
 		
 		\textit{(iv) Conjugación (Caso general)}. Por el Teorema de Feit-Thompson, todos los grupos de orden impar son resolubles, y como $m$ y $n$ son coprimos, $m$ o $n$ es impar y $G/N$ o $N$ es resoluble.
 	\end{demostracion}
@@ -210,7 +210,7 @@ El recíproco del Teorema \ref{thm:hall} también es cierto. Es decir, un grupo 
 \begin{teorema}[Hall]
 	Sea $G$ un grupo finito tal que para todo primo $p$ existe un $p'$-subgrupo de Hall. Entonces $G$ es resoluble.
 	\begin{demostracion}
-		Lo demostramos por reducción al absurdo. Si el resultado es falso, existe un grupo $G$ de orden mínimo para el que no se cumple. Sea $N\norm G$ y $H$ un $p'$-subgrupo de Hall, por la Proposición \ref{prop:normalhall}, $H\cap N$ y $HN/N$ son $p'$-subgrupos de Hall de $N$ y $G/N$ respectivamente. Por minimalidad de $G$, $N$ y $G/N$ son resolubles. Esto implicaría que $G$ es resoluble y por tanto, $G$ no puede tener subgrupos normales propios y debe simple.
+		Lo demostramos por reducción al absurdo. Si el resultado es falso, existe un grupo $G$ de orden mínimo para el que no se cumple. Sea $N\norm G$ y $H$ un $p'$-subgrupo de Hall, por la Proposición \ref{prop:normalhall}, $H\cap N$ y $HN/N$ son $p'$-subgrupos de Hall de $N$ y $G/N$ respectivamente. Por minimalidad de $G$, $N$ y $G/N$ son resolubles. Esto implicaría que $G$ es resoluble y por tanto, $G$ no puede tener subgrupos normales propios y debe ser simple.
 		
 		Sea $\ord{G} = p_1^{a_1}\cdots p_n^{a_n}$ con $a_i>0$ y $p_i$ primos distintos. Por el Teorema de Burnside $n>2$ ya que sino $G$ sería resoluble. Sea $G_i$ un $p_i'$-subgrupo de Hall, es decir, $\ord{G:G_i} = p_i^{a_i}$. Tomemos $H=\bigcap_{i=3}^{n} G_i$, por el Lema \ref{lem:inthall}, $\ord{H}=p_1^{a_1}p_2^{a_2} < \ord{G}$ y $H$ es resoluble por minimalidad de $G$. Tomamos $N$ un subgrupo normal minimal de $H$, entonces $N$ es un $p$-grupo elemental abeliano donde $p=p_1$ o $p_2$. Sin perdida de generalidad, supongamos que es $p_1$.
 		

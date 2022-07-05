@@ -1,0 +1,535 @@
+\documentclass[
+	11pt, % Set the default font size, options include: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt
+	%t, % Uncomment to vertically align all slide content to the top of the slide, rather than the default centered
+	%aspectratio=169, % Uncomment to set the aspect ratio to a 16:9 ratio which matches the aspect ratio of 1080p and 4K screens and projectors
+]{beamer}
+
+\usepackage[spanish]{babel}
+\uselanguage{spanish}
+\usepackage{tikz,pgfplots,../pkgs/quiver}
+\usetikzlibrary{positioning, babel}
+\pgfplotsset{compat=1.18}
+
+
+\DeclareMathOperator{\SylowSubgroup}{Syl}
+\DeclareMathOperator{\HallSubgroup}{Hall}
+\DeclareMathOperator{\OSubgroup}{O}
+\DeclareMathOperator{\Normalizer}{N}
+\DeclareMathOperator{\Center}{Z}
+\DeclareMathOperator{\mcd}{mcd}
+\DeclareMathOperator{\mcm}{mcm}
+%\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Image}{Im}
+%\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Out}{Out}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\car}{car}
+\DeclareMathOperator{\sgn}{sgn}
+%\DeclareMathOperator{\det}{det}
+%\DeclareMathOperator{\HomFunctor}{Hom}
+\DeclareMathOperator{\ExtFunctor}{Ext}
+\DeclareMathOperator{\TorFunctor}{Tor}
+\DeclareMathOperator{\AbFunctor}{Ab}
+\DeclareMathOperator{\Pletra}{P}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Hom}{Hom}
+
+\newcommand{\FHom}[3]{\Hom_{#1}(#2,#3)}
+\newcommand{\FTor}[3]{\TorFunctor_{#1}(#2,#3)}
+\newcommand{\FExt}[3]{\Ext_{#1}(#2,#3)}
+\newcommand{\Syl}[2]{\SylowSubgroup_{#1}(#2)}
+\newcommand{\Hall}[2]{\HallSubgroup_{#1}(#2)}
+\newcommand{\Core}[2]{\OSubgroup_{#1}(#2)}
+\newcommand{\Ab}[1]{#1^\text{ab}}
+\newcommand{\gensub}[1]{\left\langle#1\right\rangle}
+\newcommand{\Norm}[2]{\Normalizer_{#1}(#2)}
+\newcommand{\norm}{\trianglelefteq}
+\newcommand{\ord}[1]{\left|#1\right|}%\vert
+\newcommand{\homo}[3]{#1\colon #2\to #3}
+\newcommand{\extension}[5]{1\xrightarrow{} #3 \xrightarrow{#1} #4\xrightarrow{#2} #5 \xrightarrow{} 1}
+\newcommand{\transversal}[2]{\{#1_1,\ldots,#1_#2\}}
+\newcommand{\transfer}[2]{\tau_{#1/ #2}}
+\newcommand{\pretransfer}[2]{P_{#1/ #2}}
+\newcommand{\ptransfer}[2]{\tilde\tau_{#1/ #2}}
+
+\newtheorem{proposition}{Proposici\'on}
+
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule for better rules in tables
+
+%----------------------------------------------------------------------------------------
+%	SELECT LAYOUT THEME
+%----------------------------------------------------------------------------------------
+
+% Beamer comes with a number of default layout themes which change the colors and layouts of slides. Below is a list of all themes available, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+%----------------------------------------------------------------------------------------
+%	SELECT COLOR THEME
+%----------------------------------------------------------------------------------------
+
+% Beamer comes with a number of color themes that can be applied to any layout theme to change its colors. Uncomment each of these in turn to see how they change the colors of your selected layout theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{monarca}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{spruce}
+\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%----------------------------------------------------------------------------------------
+%	SELECT FONT THEME & FONTS
+%----------------------------------------------------------------------------------------
+
+% Beamer comes with several font themes to easily change the fonts used in various parts of the presentation. Review the comments beside each one to decide if you would like to use it. Note that additional options can be specified for several of these font themes, consult the beamer documentation for more information.
+
+\usefonttheme{default} % Typeset using the default sans serif font
+%\usefonttheme{serif} % Typeset using the default serif font (make sure a sans font isn't being set as the default font if you use this option!)
+%\usefonttheme{structurebold} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in bold
+%\usefonttheme{structureitalicserif} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in italic serif
+%\usefonttheme{structuresmallcapsserif} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in small caps serif
+
+%------------------------------------------------
+
+%\usepackage{mathptmx} % Use the Times font for serif text
+\usepackage{palatino} % Use the Palatino font for serif text
+
+%\usepackage{helvet} % Use the Helvetica font for sans serif text
+\usepackage[default]{opensans} % Use the Open Sans font for sans serif text
+%\usepackage[default]{FiraSans} % Use the Fira Sans font for sans serif text
+%\usepackage[default]{lato} % Use the Lato font for sans serif text
+
+%----------------------------------------------------------------------------------------
+%	SELECT INNER THEME
+%----------------------------------------------------------------------------------------
+
+% Inner themes change the styling of internal slide elements, for example: bullet points, blocks, bibliography entries, title pages, theorems, etc. Uncomment each theme in turn to see what changes it makes to your presentation.
+
+%\useinnertheme{default}
+\useinnertheme{circles}
+%\useinnertheme{rectangles}
+%\useinnertheme{rounded}
+%\useinnertheme{inmargin}
+
+%----------------------------------------------------------------------------------------
+%	SELECT OUTER THEME
+%----------------------------------------------------------------------------------------
+
+% Outer themes change the overall layout of slides, such as: header and footer lines, sidebars and slide titles. Uncomment each theme in turn to see what changes it makes to your presentation.
+
+%\useoutertheme{default}
+%\useoutertheme{infolines}
+%\useoutertheme{miniframes}
+%\useoutertheme{smoothbars}
+%\useoutertheme{sidebar}
+%\useoutertheme{split}
+%\useoutertheme{shadow}
+%\useoutertheme{tree}
+%\useoutertheme{smoothtree}
+
+%\setbeamertemplate{footline} % Uncomment this line to remove the footer line in all slides
+%\setbeamertemplate{footline}[page number] % Uncomment this line to replace the footer line in all slides with a simple slide count
+
+%\setbeamertemplate{navigation symbols}{} % Uncomment this line to remove the navigation symbols from the bottom of all slides
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title[]{Extensiones de grupos y teoremas de Hall} % The short title in the optional parameter appears at the bottom of every slide, the full title in the main parameter is only on the title page
+
+%\subtitle{Optional Subtitle} % Presentation subtitle, remove this command if a subtitle isn't required
+
+\author{Carlos Moya García} % Presenter name(s), the optional parameter can contain a shortened version to appear on the bottom of every slide, while the main parameter will appear on the title slide
+
+\institute[]{Universidad del País Vasco} % Your institution, the optional parameter can be used for the institution shorthand and will appear on the bottom of every slide after author names, while the required parameter is used on the title slide and can include your email address or additional information on separate lines
+
+\date{\today} % Presentation date or conference/meeting name, the optional parameter can contain a shortened version to appear on the bottom of every slide, while the required parameter value is output to the title slide
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SLIDE
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\titlepage % Output the title slide, automatically created using the text entered in the PRESENTATION INFORMATION block above
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS SLIDE
+%----------------------------------------------------------------------------------------
+
+% The table of contents outputs the sections and subsections that appear in your presentation, specified with the standard \section and \subsection commands. You may either display all sections and subsections on one slide with \tableofcontents, or display each section at a time on subsequent slides with \tableofcontents[pausesections]. The latter is useful if you want to step through each section and mention what you will discuss.
+
+\begin{frame}
+	\frametitle{Índice} % Slide title, remove this command for no title
+	
+	\tableofcontents % Output the table of contents (all sections on one slide)
+	%\tableofcontents[pausesections] % Output the table of contents (break sections up across separate slides)
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION BODY SLIDES
+%----------------------------------------------------------------------------------------
+
+\section{Cohomología}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Complejos de cocadenas}
+	Dada una sucesión de $R$-módulos $C = \{C^n\}_{n\in\mathbb Z}$, se define un complejo de cocadenas sobre $C$ como
+	\begin{equation*}
+		\cdots  \xrightarrow{} C^{n-1} \xrightarrow{\partial^{n-1}} C^n \xrightarrow{\partial^n} C^{n+1} \xrightarrow{} \cdots 
+	\end{equation*}
+	
+	donde cada $\partial^{i}$ es un homomorfismo de $R$-módulos y $\partial^{i+1}\circ \partial^i = 0$.
+	
+	\bigskip % Vertical whitespace
+	Se definen los grupos de $n$-cociclos, $n$-cobordes como
+	\begin{gather*}
+		Z^n(C) = \Ker(\partial^n), \\
+		B^n(C) = \Image(\partial^{n-1})
+	\end{gather*}
+	y el $n$-ésimo grupo de cohomología como
+	\begin{equation*}
+		H^n(C) = Z^n(C)/B^n(C).
+	\end{equation*}
+	
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Cohomología de grupos}
+	
+	Sea $G$ un grupo y $A$ un $G$-módulo. Denotamos por $C^n$ al conjunto de funciones de $G^n$ en $A$.
+	
+	Definimos el operador coborde  $\homo {\partial^n} {C^n} {C^{n+1}}$ como
+	\begin{equation*}
+		\partial^n f = \sum\limits_{i=0}^{n+1} (-1)^{i} d_i f
+	\end{equation*}
+	donde $d_i$ viene dado por 
+	\begin{equation*}
+		(d_if)(g_1,\ldots,g_n) = 
+		\begin{cases} 
+			g_1\cdot f(g_2,\ldots,g_n) 				& \text{si $ i=0$}, \\
+			f(g_1,\ldots,g_ig_{i+1},\ldots,g_n) 	& \text{si $ 0 < i <n$}, \\
+			f(g_1,\ldots,g_{n-1}) 				& \text{si $ i=n$}.
+		\end{cases}
+	\end{equation*}
+	
+	Se verifica que $\partial^{n+1}(\partial^n f) = 0$ y por tanto $(C,\partial)$ es un complejo de cocadenas.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohomología de grupos}
+	
+	\begin{exampleblock}{1-coborde}
+		 \centering$(\partial^0 a)(g) = g\cdot a - a$
+	\end{exampleblock}
+	\begin{exampleblock}{1-cociclo}
+		 \centering$(\partial^1 f)(g_1,g_2) = g_1\cdot f(g_2) - f(g_1g_2) + f(g_1) = 0$
+	\end{exampleblock}
+	\begin{exampleblock}{2-coborde}
+		 \centering$(\partial^1 f)(g_1,g_2) = g_1\cdot f(g_2) - f(g_1g_2) + f(g_1)$
+	\end{exampleblock}
+	\begin{exampleblock}{2-cociclo}
+		 \centering$(\partial^2 f)(g_1,g_2,g_3) = g_1\cdot f(g_2,g_3) - f(g_1g_2,g_3) + f(g_1,g_2g_3) - f(g_1,g_2)=0$
+	\end{exampleblock}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohomología de grupos}
+	
+	\begin{proposition}
+		Si $\ord{G} = m<\infty$ o $\ord{A} = m<\infty$, entonces $m\cdot H^{n}(G,A) = \{0\}.$
+	\end{proposition}
+	
+	\begin{theorem}
+		Si $\mcd(\ord{G},\ord{A}) = 1$, entonces $H^{n}(G,A) = \{0\}.$
+	\end{theorem}
+\end{frame}
+
+
+\section{Extensiones de grupos}
+
+\begin{frame}[fragile]
+	\frametitle{Extensiones de grupos}
+	
+	Una extensión de un grupo $Q$ por un grupo $N$ es una sucesión exacta $$\extension i \pi N E Q.$$
+	
+	%\pause
+	Decimos que dos extensiones son equivalentes cuando existe un homomorfismo $f$ que hace al siguiente diagrama conmutativo
+	\[\begin{tikzcd}
+		1 & N & E & Q & 1 \\
+		1 & N & {E'} & Q & 1.
+		\arrow[from=1-1, to=1-2]
+		\arrow["i", from=1-2, to=1-3]
+		\arrow["\pi", from=1-3, to=1-4]
+		\arrow[from=1-4, to=1-5]
+		\arrow[from=2-1, to=2-2]
+		\arrow["{i'}", from=2-2, to=2-3]
+		\arrow["{\pi'}", from=2-3, to=2-4]
+		\arrow[from=2-4, to=2-5]
+		\arrow[shift left=1, no head, from=1-4, to=2-4]
+		\arrow[shift left=1, no head, from=2-4, to=1-4]
+		\arrow["f", from=1-3, to=2-3]
+		\arrow[shift left=1, no head, from=1-2, to=2-2]
+		\arrow[shift left=1, no head, from=2-2, to=1-2]
+	\end{tikzcd}\]
+	
+	Necesariamente $f$ debe ser un isomorfismo de grupos.
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Extensiones que escinden}
+	
+	\begin{definition}
+		Se dice que una extensión $\extension {i} {\pi} N E Q$ escinde cuando existe un homomorfismo $\homo s Q E$ tal que $\pi \circ s = 1_Q$. % se dice que s es una sección de pi
+	\end{definition}
+	
+	\begin{theorem}
+		Una extensión $\extension {}{} N E Q$ que escinde es equivalente a $\extension {}{} N {N\rtimes Q} Q$.
+	\end{theorem}	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Clasificación de las escisiones}
+	\begin{definition}
+		Sea $A$ un grupo abeliano y $\extension i \pi A E Q$ un extensión de grupos. Diremos que dos escisiones $s_1$ y $s_2$ son $A$-conjugadas si existe $a\in A$ tal que $s_1(Q)^{i(a)} = s_2(Q)$.
+	\end{definition}
+	
+	\begin{theorem}
+		Las escisiones salvo $A$-conjugación están en biyección con $H^1(Q,A)$.
+	\end{theorem}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Clasificación de las extensiones}
+	
+	\begin{equation}\label{ext}
+		\extension i \pi A E Q
+	\end{equation}
+	\begin{equation*}
+		s(q_1)s(q_2)s(q_1q_2)^{-1} = i(c(q_1,q_2))
+	\end{equation*}
+	
+	$$	
+		E = \bigsqcup_{q\in Q} i(A)s(q) = i(A)s(Q)
+	$$
+	
+	$$
+		i(a_1)s(q_1)i(a_2)s(q_2) = %i(a_1+q_1\cdot a_2)s(q_1)s(q_2) = 
+		i(a_1+q_1\cdot a_2 + c(q_1,q_2))s(q_1q_2)
+	$$
+	El conjunto $A\times Q$ con la siguiente operación tiene estructura de grupo y es equivalente a \eqref{ext} con la inclusión y proyección canónicas
+	\begin{equation}\label{op}
+		(a_1,q_1)*(a_2,q_2) = (a_1+q_1\cdot a_2 + c(q_1,q_2),q_1q_2). 
+	\end{equation}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Clasificación de las extensiones}
+	\begin{proposition}
+		El conjunto $A\times Q$ con la operación definida en \eqref{op}
+	\end{proposition}
+	
+	
+\end{frame}
+
+
+%------------------------------------------------
+%------------------------------------------------
+%------------------------------------------------
+
+\section{Teoremas de Hall}
+
+\begin{frame}
+	\frametitle{Subgrupos de Hall}
+	
+	\begin{definition}
+		Sea $G$ un grupo, $H\leq G$ y $\pi$ un conjunto de primos. Se dice que $H$ es un $\pi$-subgrupo de Hall cuando $\ord{H}$ es producto de primos en $\pi$ y $\ord{G:H}$ es coprimo con $\ord H$. Denotamos al conjunto de $\pi$-subgrupos de Hall como $\Hall \pi G$.
+	\end{definition}
+	%\pause
+	\begin{definition}
+		Se define un $\pi$-subgrupo de Sylow como un $\pi$-subgrupo maximal. Denotamos al conjunto de $\pi$-subgrupos de Sylow como $\Syl \pi G$.
+	\end{definition}
+	%\pause
+	\smallskip % Vertical whitespace
+	
+	\begin{definition}
+		Se define el $\pi$-núcleo de $G$, $\Core \pi G$, como el subgrupo generado por todos los $\pi$-subgrupos normales. Equivalentemente, $\Core \pi G$ es la intersección de todos los $\pi$-subgrupos de Sylow.
+	\end{definition}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Subgrupos de Hall}
+	\framesubtitle{Propiedades}
+
+	\begin{proposition}
+		Sea $G$ un grupo, $N\norm G$ y $H\in \Hall \pi G$. Entonces $H\cap N \in \Hall \pi {N}$ y $HN/N\in \Hall \pi G/N$.
+	\end{proposition}
+	
+	\begin{proposition}
+		Sean
+	\end{proposition}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Teorema de Schur-Zassenhaus}
+	
+	\begin{theorem}
+		Sea $G$ un grupo y $N\norm G$ un subgrupo de Hall de orden $n$ e índice $m$. Entonces $G$ tiene subgrupos de orden $m$ y todos ellos son conjugados.
+	\end{theorem}
+ 
+ \end{frame}
+
+\begin{frame}
+	\frametitle{Teoremas de Hall}
+	
+	\begin{theorem}
+		Sea $G$ un grupo resoluble. Entonces, para todo conjunto de primos $\pi$ se tiene
+		\begin{itemize}
+			 \item $\Hall \pi G \neq \emptyset$
+			 \item $G$ actúa transitivamente por conjugación sobre los $\pi$-subgrupos de Hall
+		\end{itemize}
+	\end{theorem}
+	
+	\begin{theorem}
+		Sea $G$ un grupo tal que para todo conjunto de primos $\pi$ existen $\pi$-subgrupos de Hall. Entonces $G$ es resoluble.
+	\end{theorem}
+	
+\end{frame}
+
+%\begin{frame}
+%	\frametitle{Recíproco del Teorema de Hall}	
+%\end{frame}
+
+%------------------------------------------------
+
+\section{Homomorfismo del trasfer}
+
+\begin{frame}
+	\frametitle{Homomorfismo del transfer}
+	Sea $G$ un grupo, $H$ un subgrupo de índice finito $n$ y $T = \transversal t n$ representantes de las coclases de $H$.
+	Definimos la acción de $G$ sobre $T$ por
+	$$
+		Ht_i g = Ht_{(i)g},
+	$$
+	de esta forma se tiene
+	$$
+		t_igt_{(i)g}^{-1}\in H.
+	$$
+	
+	Dado $\homo \theta H A$ un homomorfismo sobre un grupo abeliano, se define el transfer de $\theta$ como
+	$$
+		{\transfer G H}(g) = \prod_{i=1}^n \theta\left(t_igt_{(i)g}^{-1}\right)
+	$$
+	
+	El transfer es un homomorfismo independiente del transversal.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cálculo del transfer}
+	Dado un elemento $x\in G$, las órbitas de la acción de $x$ sobre las coclases por multiplicación a derecha tienen la siguiente forma
+	$$
+		\left\{Hs_i,\ldots,Hs_i^{l_i-1}\right\},
+	$$
+	donde $l_i$ es el menor entero tal que $Hs_ix^{l_i} = Hs_i$.
+	
+	Los elementos $s_ix^j$ para $i=1,\ldots k$ y $j=0,\ldots,l_i-1$ forman un transversal de $H$ a $G$.
+	
+	El transfer con este transversal se escribe como
+	$$
+		{\transfer G H}(x) = \prod_{i=1}^{k}\,^{s_i}x^{l_i} = \prod_{i=1}^{k}s_ix^{l_i}s_i^{-1}.
+	$$
+\end{frame}
+
+\begin{frame}
+	\frametitle{Transfer a un subgrupo}
+	Definimos el transfer de $G$ a un subgrupo $H\leq G$ como el transfer a $\homo \AbFunctor H {\Ab H}$
+	$$
+		{\transfer G H}(g) = \prod_{i=1}^n \left(t_igt_{(i)g}^{-1}\right)H'.
+	$$
+	
+	Es de especial interés el transfer a subgrupos abelianos ya que dan lugar a endomorfismos de grupos.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Transfer al centro y teorema de Schur}
+	\begin{proposition}
+		Sea $H\leq G$ un subgrupo central de índice finito $\ord{G:H} = n$. Entonces el transfer de $G$ a $H$ es
+		$$
+			{\transfer G H}(g) = \prod_{i=1}^k \,^{s_i}x^{l_i} = x^n.
+		$$
+	\end{proposition}
+	
+	\begin{theorem}[Schur]
+		Sea $G$ un grupo con centro $Z(G)$ de índice finito $n$. Entonces $G'$ es finito y $G'^n = \{1\}$.
+	\end{theorem}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	CLOSING SLIDE
+%----------------------------------------------------------------------------------------
+
+\begin{frame}[plain] % The optional argument 'plain' hides the headline and footline
+	\begin{center}
+		{\Huge Fin}
+		
+		\bigskip\bigskip % Vertical whitespace
+		
+		{\LARGE Gracias por su atención}
+	\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document} 

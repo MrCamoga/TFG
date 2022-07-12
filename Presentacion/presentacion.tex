@@ -244,23 +244,24 @@
 	Se verifica que $\partial^{n+1}(\partial^n f) = 0$ y por tanto $(C,\partial)$ es un complejo de cocadenas.
 \end{frame}
 
-\begin{frame}
-	\frametitle{Cohomología de grupos}
-	
-	\begin{exampleblock}{1-coborde}
-		 \centering$(\partial^0 a)(g) = g\cdot a - a$
-	\end{exampleblock}
-	\begin{exampleblock}{2-coborde}
-		 \centering$(\partial^1 f)(g_1,g_2) = g_1\cdot f(g_2) - f(g_1g_2) + f(g_1)$
-	\end{exampleblock}
-	\begin{exampleblock}{1-cociclo}
-		 \centering$(\partial^1 f)(g_1,g_2) = g_1\cdot f(g_2) - f(g_1g_2) + f(g_1) = 0$
-	\end{exampleblock}
-	\begin{exampleblock}{2-cociclo}
-		 \centering$(\partial^2 f)(g_1,g_2,g_3) = g_1\cdot f(g_2,g_3) - f(g_1g_2,g_3) + f(g_1,g_2g_3) - f(g_1,g_2)=0$
-	\end{exampleblock}
-	
-\end{frame}
+
+%\begin{frame}
+%	\frametitle{Cohomología de grupos}
+%	
+%	\begin{exampleblock}{1-coborde}
+%		 \centering$(\partial^0 a)(g) = g\cdot a - a$
+%	\end{exampleblock}
+%	\begin{exampleblock}{2-coborde}
+%		 \centering$(\partial^1 f)(g_1,g_2) = g_1\cdot f(g_2) - f(g_1g_2) + f(g_1)$
+%	\end{exampleblock}
+%	\begin{exampleblock}{1-cociclo}
+%		 \centering$(\partial^1 f)(g_1,g_2) = g_1\cdot f(g_2) - f(g_1g_2) + f(g_1) = 0$
+%	\end{exampleblock}
+%	\begin{exampleblock}{2-cociclo}
+%		 \centering$(\partial^2 f)(g_1,g_2,g_3) = g_1\cdot f(g_2,g_3) - f(g_1g_2,g_3) + f(g_1,g_2g_3) - f(g_1,g_2)=0$
+%	\end{exampleblock}
+%	
+%\end{frame}
 
 \begin{frame}
 	\frametitle{Cohomología de grupos}
@@ -354,15 +355,16 @@
 	\begin{equation*}
 		s(q_1)s(q_2)s(q_1q_2)^{-1} = i(c(q_1,q_2)).
 	\end{equation*}
-	
+	\pause
 	$$	
 		E = \bigsqcup_{q\in Q} i(A)s(q) = i(A)s(Q)
 	$$
-	
+	\pause
 	$$
 		i(a_1)s(q_1)i(a_2)s(q_2) = %i(a_1+q_1\cdot a_2)s(q_1)s(q_2) = 
 		i(a_1+q_1\cdot a_2 + c(q_1,q_2))s(q_1q_2)
 	$$
+	\pause
 	El conjunto $A\times Q$ con la siguiente operación tiene estructura de grupo y es equivalente a \eqref{ext} con la inclusión y proyección canónicas
 	\begin{equation}\label{op}
 		(a_1,q_1)*(a_2,q_2) = (a_1+q_1\cdot a_2 + c(q_1,q_2),q_1q_2). 
@@ -385,7 +387,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Teorema de Schur-Zassenhaus}
+	\frametitle{Teorema de Schur-Zassenhaus. Caso abeliano}
 	\begin{theorem}
 		Sean $A$ y $Q$ grupos con órdenes coprimos y $\extension {}{} A E Q$ una extensión. Entonces la extensión escinde y todas las escisiones son conjugadas.
 	\end{theorem}
@@ -425,7 +427,6 @@
 	\begin{proposition}
 		Sean $\pi$ y $\tau$ conjuntos de primos disjuntos y $H\in \Hall {\pi'} G$ y $K\in \Hall {\tau'} G$ subgrupos de Hall. Entonces $H\cap K\in \Hall {\pi'\cap\tau'} G$.
 	\end{proposition}
-	
 \end{frame}
 
 \begin{frame}
@@ -456,7 +457,7 @@
 		Sea $G$ un grupo resoluble. Entonces, para todo conjunto de primos $\pi$ se tiene
 		\begin{itemize}
 			 \item $\Hall \pi G \neq \emptyset$
-			 \item $G$ actúa transitivamente por conjugación sobre los $\pi$-subgrupos de Hall
+			 \item Todos los $\pi$-subgrupos de Hall son conjugados
 		\end{itemize}
 	\end{theorem}
 	\pause
@@ -498,7 +499,7 @@
 
 \begin{frame}
 	\frametitle{Cálculo del transfer}
-	Dado un elemento $g\in G$, las órbitas de la acción de $x$ sobre las coclases por multiplicación a derecha tienen la siguiente forma
+	Dado un elemento $g\in G$, las órbitas de la acción de $g$ sobre las coclases por multiplicación a derecha tienen la siguiente forma
 	$$
 		\left\{Hs_i,\ldots,Hs_i^{l_i-1}\right\},
 	$$
